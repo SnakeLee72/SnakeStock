@@ -25,13 +25,13 @@
                               radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
             color: var(--text-primary);
             margin: 0;
-            padding: 20px;
+            padding: 10px; /* Adjusted for mobile */
             line-height: 1.8;
         }
         .container {
             max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 10px auto; /* Adjusted for mobile */
+            padding: 15px; /* Adjusted for mobile */
             background-color: rgba(16, 16, 36, 0.8);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -44,20 +44,20 @@
         }
         header h1 {
             color: var(--accent-blue);
-            font-size: 2.8em;
+            font-size: 2.5em; /* Adjusted for mobile */
             margin: 0;
             text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
         }
         header p {
             color: var(--text-secondary);
-            font-size: 1.1em;
+            font-size: 1em; /* Adjusted for mobile */
             margin-top: 5px;
         }
         section {
             margin-bottom: 40px;
         }
         h2 {
-            font-size: 1.8em;
+            font-size: 1.6em; /* Adjusted for mobile */
             color: var(--text-primary);
             border-bottom: 2px solid var(--accent-blue);
             padding-bottom: 10px;
@@ -70,15 +70,26 @@
             font-size: 1.2em;
             color: var(--accent-blue);
         }
+        
+        /* --- NEW CSS RULE FOR RESPONSIVE TABLES --- */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            min-width: 600px; /* Force table to be wide, prompting scroll */
         }
         th, td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            white-space: nowrap; /* Prevent text wrapping in cells */
         }
         thead th {
             background-color: rgba(42, 42, 74, 0.5);
@@ -146,82 +157,86 @@
 
         <section id="selections">
             <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>最新收盤價</th>
-                        <th>建議進場區間</th>
-                        <th class="stop-loss">停損價</th>
-                        <th class="target-price">波段目標價</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>2317</strong></td>
-                        <td><strong>鴻海</strong></td>
-                        <td>181.5</td>
-                        <td>178-182</td>
-                        <td class="stop-loss">172</td>
-                        <td class="target-price">190/200</td>
-                    </tr>
-                    <tr>
-                        <td><strong>3037</strong></td>
-                        <td><strong>欣興</strong></td>
-                        <td>138.5</td>
-                        <td>135-139</td>
-                        <td class="stop-loss">130</td>
-                        <td class="target-price">148/155</td>
-                    </tr>
-                    <tr>
-                        <td><strong>8086</strong></td>
-                        <td><strong>宏捷科</strong></td>
-                        <td>102.5</td>
-                        <td>98-103</td>
-                        <td class="stop-loss">95</td>
-                        <td class="target-price">110/118</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>最新收盤價</th>
+                            <th>建議進場區間</th>
+                            <th class="stop-loss">停損價</th>
+                            <th class="target-price">波段目標價</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>2317</strong></td>
+                            <td><strong>鴻海</strong></td>
+                            <td>181.5</td>
+                            <td>178-182</td>
+                            <td class="stop-loss">172</td>
+                            <td class="target-price">190/200</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3037</strong></td>
+                            <td><strong>欣興</strong></td>
+                            <td>138.5</td>
+                            <td>135-139</td>
+                            <td class="stop-loss">130</td>
+                            <td class="target-price">148/155</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8086</strong></td>
+                            <td><strong>宏捷科</strong></td>
+                            <td>102.5</td>
+                            <td>98-103</td>
+                            <td class="stop-loss">95</td>
+                            <td class="target-price">110/118</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="review">
             <h2><span class="icon">📈</span>上週績效回測 (7/28-8/1)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>進場區間</th>
-                        <th>本週最高收盤</th>
-                        <th>平均報酬率</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>8046</td>
-                        <td>南電</td>
-                        <td>170-180</td>
-                        <td>184.5</td>
-                        <td class="positive-return">+5.4%</td>
-                    </tr>
-                    <tr>
-                        <td>8086</td>
-                        <td>宏捷科</td>
-                        <td>90-95</td>
-                        <td>102.5</td>
-                        <td class="positive-return">+10.8%</td>
-                    </tr>
-                    <tr>
-                        <td>3037</td>
-                        <td>欣興</td>
-                        <td>128-132</td>
-                        <td>142</td>
-                        <td class="positive-return">+9.2%</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>進場區間</th>
+                            <th>本週最高收盤</th>
+                            <th>平均報酬率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8046</td>
+                            <td>南電</td>
+                            <td>170-180</td>
+                            <td>184.5</td>
+                            <td class="positive-return">+5.4%</td>
+                        </tr>
+                        <tr>
+                            <td>8086</td>
+                            <td>宏捷科</td>
+                            <td>90-95</td>
+                            <td>102.5</td>
+                            <td class="positive-return">+10.8%</td>
+                        </tr>
+                        <tr>
+                            <td>3037</td>
+                            <td>欣興</td>
+                            <td>128-132</td>
+                            <td>142</td>
+                            <td class="positive-return">+9.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="summary-text">
                 <strong>上週回顧總結：</strong>
                 <p>三檔個股皆在週內觸及並超越建議進場區間,且法人成本與技術線型良好。 宏捷科表現最亮眼,波段最高收盤價達102.5元,相較於建議進場區間有約+10%波段報酬。 欣興與南電也皆呈現正報酬且持續表現穩定,適合進場操作者參考。</p>
@@ -231,7 +246,7 @@
         <section id="analysis">
             <h2><span class="icon">🔬</span>本週精選股分析</h2>
             <div class="stock-card">
-                <h3>【2317 鴻海】</h3>
+                 <h3>【2317 鴻海】</h3>
                 <h4>價位規劃</h4>
                 <ul>
                     <li><strong>建議進場區間：</strong>178-182元(回測支撐可分批布局)</li>
@@ -280,17 +295,16 @@
                     <li>費半與那指持續上攻，激勵台股AI/半導體族群表現強勢。</li>
                     <li>Fed 九月降息機率上升，美債與美元走勢穩中帶偏空，有利風險性資產。</li>
                 </ul>
-                <h4>韓國關稅僅15%,對台股競爭加壓</h4>
+                 <h4>韓國關稅僅15%,對台股競爭加壓</h4>
                 <ul>
                     <li>台灣20%與韓國15%落差造成市場情緒偏保守。</li>
                     <li>然而外資與投信未大幅轉空，仍在觀望與逢低布局中。</li>
                 </ul>
-                <h4>強勢類股持續關注</h4>
+                 <h4>強勢類股持續關注</h4>
                 <ul>
                     <li>ABF 載板族群:南電、欣興、景碩短線拉回為切入機會。</li>
                     <li>砷化鎵概念:宏捷科續強、全新與穩懋醞釀補漲。</li>
                     <li>AI伺服器供應鏈:緯穎、鴻海、亞翔持續獲法人關注。</li>
-                    <li>中國概念+ 原物料族群:台玻、南亞仍有表現機會。</li>
                 </ul>
             </div>
         </section>
