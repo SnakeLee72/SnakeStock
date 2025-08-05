@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0719</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-dark-ai: #0a0a1a;
+            --bg-card: #101024;
+            --border-color: #2a2a4a;
+            --text-primary: #e6e6fa;
+            --text-secondary: #a0a0c0;
+            --accent-blue: #00d1ff;
+            --color-red: #ff5555;
+            --color-green: #50fa7b;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark-ai);
+            background-image: radial-gradient(circle at top left, rgba(0, 209, 255, 0.1), transparent 30%),
+                              radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(16, 16, 36, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: var(--accent-blue);
+            font-size: 2.8em;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        h2 .icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: var(--accent-blue);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        thead th {
+            background-color: rgba(42, 42, 74, 0.5);
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .positive-return { color: var(--color-red); font-weight: bold; }
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        
+        .stock-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        .stock-card h3 {
+            font-size: 1.6em;
+            margin-top: 0;
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px rgba(0, 209, 255, 0.3);
+        }
+        .stock-card h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .summary-list {
+            list-style-type: decimal;
+            padding-left: 25px;
+        }
+        .summary-list li {
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0719</h1>
+            <p>靈蛇投資研究中心 | 2025年7月19日</p>
+        </header>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>最新收盤價</th>
+                        <th>建議進場區間</th>
+                        <th class="stop-loss">停損價</th>
+                        <th class="target-price">波段目標價</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>3376</strong></td>
+                        <td><strong>新日興</strong></td>
+                        <td>235.5元</td>
+                        <td>225-235元</td>
+                        <td class="stop-loss">220元</td>
+                        <td class="target-price">260元</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6139</strong></td>
+                        <td><strong>亞翔</strong></td>
+                        <td>345元</td>
+                        <td>335-345元</td>
+                        <td class="stop-loss">325元</td>
+                        <td class="target-price">415元</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8086</strong></td>
+                        <td><strong>宏捷科</strong></td>
+                        <td>94.5元</td>
+                        <td>90-95元</td>
+                        <td class="stop-loss">88元</td>
+                        <td class="target-price">110元</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (7/14-7/18)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>進場區間(元)</th>
+                        <th>本週最高收盤(元)</th>
+                        <th>平均報酬率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3037</td>
+                        <td>欣興</td>
+                        <td>123-127</td>
+                        <td>135.5</td>
+                        <td class="positive-return">+8.4%</td>
+                    </tr>
+                    <tr>
+                        <td>2454</td>
+                        <td>聯發科</td>
+                        <td>1380-1400</td>
+                        <td>1410</td>
+                        <td class="positive-return">+1.4%</td>
+                    </tr>
+                    <tr>
+                        <td>8046</td>
+                        <td>南電</td>
+                        <td>138-142</td>
+                        <td>171</td>
+                        <td class="positive-return">+22.1%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="special-report">
+            <h2><span class="icon">🌟</span>ViVi 特選個股報告《6139 亞翔》</h2>
+            <div class="stock-card">
+                <h3>公司基本資料</h3>
+                <p><strong>產業類別:</strong> 其他電子業，專精於無塵室及機電系統整合工程</p>
+                <p><strong>主營業務:</strong> 高科技廠房無塵室機電系統整合(半導體、生技、電池廠等)</p>
+                <p><strong>客戶:</strong> 包含台積電、聯電、漢唐等國內一線大廠</p>
+            </div>
+            <div class="stock-card">
+                <h3>技術面與股價趨勢</h3>
+                <table>
+                    <tbody>
+                        <tr><td><strong>最新收盤價</strong></td><td>345元 (+0.73%)</td></tr>
+                        <tr><td><strong>5日/20日均線</strong></td><td>327.6元 / 316.3元 (多頭排列)</td></tr>
+                        <tr><td><strong>成交量</strong></td><td>1.59萬張, 溫和放量</td></tr>
+                        <tr><td><strong>技術指標</strong></td><td>KD 高檔鈍化、多頭延續; MACD維持紅柱</td></tr>
+                        <tr><td><strong>壓力/支撐</strong></td><td>上方壓力351、370元; 下方支撐335、316元</td></tr>
+                    </tbody>
+                </table>
+                 <p><strong>觀察重點:</strong> 日K站穩所有均線, 多方趨勢明確; 可等待有效突破前高。</p>
+            </div>
+             <div class="stock-card">
+                <h3>基本面與營收觀察</h3>
+                 <table>
+                     <tbody>
+                        <tr><td><strong>6月營收</strong></td><td>56.68億元 (+34.2% 月增)</td></tr>
+                        <tr><td><strong>營收趨勢</strong></td><td>明顯V轉向上, 月營收創一年新高</td></tr>
+                        <tr><td><strong>EPS 預估</strong></td><td>2024年預估 EPS上看18-20元, 獲利穩健</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>亮點:</strong> 高科技擴廠潮助攻訂單滿手, 累計訂單逾2,000億元，且訂單執行效率高於業界平均。</p>
+            </div>
+            <div class="stock-card">
+                <h3>結論與操作建議</h3>
+                <p>亞翔受惠半導體與東南亞建廠熱潮, 2025仍將是營運大年。技術面站穩, 法人成本明確, 具備攻擊續航力。建議中線投資人分批進場, 抱股過Q3財報, 目標價逐步上移至400元以上。</p>
+            </div>
+        </section>
+        
+        <section id="summary">
+            <h2><span class="icon">📋</span>本周總結與操作建議</h2>
+            <div class="stock-card">
+                <ol class="summary-list">
+                    <li>本週精選三檔皆屬強勢股，題材明確、股價尚未過熱，短中線兼具。建議以「回測區間買進」為策略，分批佈局。</li>
+                    <li>亞翔可作為中波段主軸，目標價已調升至415-500元，建議關注法人動向與月營收持續轉強趨勢。</li>
+                    <li>短線族可鎖定新日興與宏捷科操作，以波段低接高出為原則，停損點務必嚴守。</li>
+                    <li>大盤創高但追價風險升溫，投資人需留意開高走低型態與籌碼集中度變化。</li>
+                    <li>建議資金配置策略: 主軸股(亞翔)3成、波段股(新日興/宏捷科)4成、保留資金觀察潛力股3成，靈活操作。</li>
+                </ol>
+            </div>
+        </section>
+
+        <footer>
+            <p>祝投資順利,操盤得心應手!</p>
+            <p>- 靈蛇研究團隊謹製|2025年7月19日 -</p>
+        </footer>
+    </div>
+
+</body>
+</html>
