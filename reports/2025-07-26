@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0726</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-dark-ai: #0a0a1a;
+            --bg-card: #101024;
+            --border-color: #2a2a4a;
+            --text-primary: #e6e6fa;
+            --text-secondary: #a0a0c0;
+            --accent-blue: #00d1ff;
+            --color-red: #ff5555;
+            --color-green: #50fa7b;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark-ai);
+            background-image: radial-gradient(circle at top left, rgba(0, 209, 255, 0.1), transparent 30%),
+                              radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(16, 16, 36, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: var(--accent-blue);
+            font-size: 2.8em;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        h2 .icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: var(--accent-blue);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        thead th {
+            background-color: rgba(42, 42, 74, 0.5);
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .positive-return { color: var(--color-red); font-weight: bold; }
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        
+        .stock-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        .stock-card h3 {
+            font-size: 1.6em;
+            margin-top: 0;
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px rgba(0, 209, 255, 0.3);
+        }
+        .stock-card h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .stock-card .comment {
+            background-color: rgba(0, 209, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-blue);
+            margin-top: 15px;
+        }
+        blockquote {
+            background: var(--bg-card);
+            border-left: 10px solid var(--accent-blue);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.3em;
+            font-style: italic;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 0 8px 8px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0726</h1>
+            <p>靈蛇投資研究中心 | 2025年7月26日</p>
+        </header>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>最新收盤價</th>
+                        <th>建議進場區間</th>
+                        <th class="stop-loss">停損價</th>
+                        <th class="target-price">波段目標價</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>8046</strong></td>
+                        <td><strong>南電</strong></td>
+                        <td>180.50元</td>
+                        <td>170-180 元</td>
+                        <td class="stop-loss">165元</td>
+                        <td class="target-price">200元</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8086</strong></td>
+                        <td><strong>宏捷科</strong></td>
+                        <td>95.60元</td>
+                        <td>90-95元</td>
+                        <td class="stop-loss">88元</td>
+                        <td class="target-price">110元</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3037</strong></td>
+                        <td><strong>欣興</strong></td>
+                        <td>131.00元</td>
+                        <td>128-132元</td>
+                        <td class="stop-loss">125元</td>
+                        <td class="target-price">150元</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (7/21-7/25)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>進場區間(元)</th>
+                        <th>本週最高收盤(元)</th>
+                        <th>平均報酬率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3376</td>
+                        <td>新日興</td>
+                        <td>225-235元</td>
+                        <td>244.00</td>
+                        <td class="positive-return">+6.1%</td>
+                    </tr>
+                    <tr>
+                        <td>6139</td>
+                        <td>亞翔</td>
+                        <td>335-345元</td>
+                        <td>354.00</td>
+                        <td class="positive-return">+4.1%</td>
+                    </tr>
+                    <tr>
+                        <td>8086</td>
+                        <td>宏捷科</td>
+                        <td>90-95元</td>
+                        <td>95.60</td>
+                        <td class="positive-return">+3.4%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股分析</h2>
+            <div class="stock-card">
+                <h3>【8046 南電】</h3>
+                <h4>選股理由</h4>
+                <ul>
+                    <li>ABF 載板族群領頭羊,BT載板漲價傳聞帶動整體族群轉強。</li>
+                    <li>投信、外資同步買超,籌碼穩定。</li>
+                    <li>屬低位階回升股,本週創下一年新高。</li>
+                </ul>
+                <h4>近期表現</h4>
+                <ul>
+                    <li><strong>收盤價 (2025/07/25):</strong> 180.5元(+3.14%),日K創一年新高。</li>
+                    <li><strong>技術面:</strong> 5日、10日、20日均線呈多頭排列,MACD 紅柱擴大,KD 黃金交叉後維持高檔鈍化。</li>
+                    <li><strong>籌碼面:</strong> 投信連7買、外資回補,顯示法人積極卡位。</li>
+                    <li><strong>營收動能:</strong> 6月營收54.1億元,月增+9.99%,年增+13.74%,連三月回升。</li>
+                </ul>
+                <div class="comment"><strong>評語：</strong>低基期+籌碼集中+技術突破,具備主升段潛力。</div>
+            </div>
+            <div class="stock-card">
+                <h3>【8086 宏捷科】</h3>
+                <h4>選股理由</h4>
+                <ul>
+                    <li>砷化鎵族群轉強代表之一,搭上AI感測、雷射與手機前瞻應用。</li>
+                    <li>屬短線爆量轉強股,市場資金明顯回流。</li>
+                    <li>技術面突破年線,動能轉為多方格局。</li>
+                </ul>
+                <h4>近期表現</h4>
+                <ul>
+                    <li><strong>收盤價 (2025/07/25):</strong> 95.6元(+7.42%),連二日爆量上攻。</li>
+                    <li><strong>技術面:</strong> 均線翻多,MACD翻紅,KD進入黃金交叉初期。</li>
+                    <li><strong>籌碼面:</strong> 法人尚未明顯進場,但以投機主力與中小券商分點主導。</li>
+                    <li><strong>營收動能:</strong> 近三月營收連續 MoM 增長(4→5→6月),6月營收年減縮小、逐步回升。</li>
+                </ul>
+                <div class="comment"><strong>評語：</strong>屬短線資金作多指標股,適合高風險操作者價差進出。</div>
+            </div>
+            <div class="stock-card">
+                <h3>【3037 欣興】</h3>
+                <h4>選股理由</h4>
+                <ul>
+                    <li>ABF 載板補漲股,法人回補買盤明顯。</li>
+                    <li>獲利穩健、訂單動能續強,受惠高階晶片趨勢。</li>
+                    <li>技術面維持盤堅,籌碼穩定。</li>
+                </ul>
+                <h4>近期表現</h4>
+                <ul>
+                    <li><strong>收盤價 (2025/07/25):</strong> 131元(-1.13%),守住月線支撐。</li>
+                    <li><strong>技術面:</strong> 短中均線多頭排列,KD維持黃金交叉,MACD正向收斂。</li>
+                    <li><strong>籌碼面:</strong> 近五日外資與投信皆小幅買超,持續佈局中。</li>
+                    <li><strong>營收動能:</strong> 6月營收109.3億元,YoY+23.19%, MoM +2.89%。</li>
+                </ul>
+                <div class="comment"><strong>評語：</strong>ABF補漲題材代表,股價未噴出,具備後續上攻空間。</div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">📊</span>本週選股總評</h2>
+            <table>
+                 <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>題材</th>
+                        <th>籌碼面</th>
+                        <th>技術面</th>
+                        <th>營收動能</th>
+                        <th>評價</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>8046</td>
+                        <td>南電</td>
+                        <td>ABF 領頭</td>
+                        <td>投信外資齊買</td>
+                        <td>突破創高</td>
+                        <td>年月雙增</td>
+                        <td>穩健長多主升段</td>
+                    </tr>
+                    <tr>
+                        <td>8086</td>
+                        <td>宏捷科</td>
+                        <td>感測/砷化鎵</td>
+                        <td>投機主力進駐</td>
+                        <td>爆量翻多</td>
+                        <td>月月回升</td>
+                        <td>短線操作佳</td>
+                    </tr>
+                    <tr>
+                        <td>3037</td>
+                        <td>欣興</td>
+                        <td>ABF 補漲</td>
+                        <td>法人慢慢買</td>
+                        <td>月線盤堅</td>
+                        <td>YoY + MoM 正向</td>
+                        <td>補漲潛力股</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="macro">
+            <h2><span class="icon">🌐</span>宏觀總結與盤勢觀察重點</h2>
+            <div class="stock-card">
+                <h4>利多因子</h4>
+                <ul>
+                    <li>台灣關稅政策預期8/1明朗化,若公布在「15-20%」區間,台股有望補漲。</li>
+                    <li>國際股市續創高,美股 AI 股與日股、陸股資金面佳。</li>
+                </ul>
+                <h4>不確定因素</h4>
+                <ul>
+                    <li>台灣本土政治風險(大罷免)、政策利空未完全釋放。</li>
+                    <li>關稅細節尚未明朗,需控管資金部位。</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <blockquote>
+            有很高的機率上漲,但也不排除有下跌的可能性!
+            </blockquote>
+        </section>
+
+        <footer>
+            <p>祝投資順利、操盤愉快,靈蛇關心您!</p>
+            <p>- 靈蛇研究團隊謹製|2025年7月26日 -</p>
+        </footer>
+    </div>
+
+</body>
+</html>
