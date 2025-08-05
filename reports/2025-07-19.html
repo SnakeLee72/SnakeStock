@@ -25,13 +25,13 @@
                               radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
             color: var(--text-primary);
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             line-height: 1.8;
         }
         .container {
             max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 10px auto;
+            padding: 15px;
             background-color: rgba(16, 16, 36, 0.8);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -44,20 +44,20 @@
         }
         header h1 {
             color: var(--accent-blue);
-            font-size: 2.8em;
+            font-size: 2.5em;
             margin: 0;
             text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
         }
         header p {
             color: var(--text-secondary);
-            font-size: 1.1em;
+            font-size: 1em;
             margin-top: 5px;
         }
         section {
             margin-bottom: 40px;
         }
         h2 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: var(--text-primary);
             border-bottom: 2px solid var(--accent-blue);
             padding-bottom: 10px;
@@ -70,15 +70,25 @@
             font-size: 1.2em;
             color: var(--accent-blue);
         }
+        
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            min-width: 600px;
         }
         th, td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
         }
         thead th {
             background-color: rgba(42, 42, 74, 0.5);
@@ -136,114 +146,122 @@
 
         <section id="selections">
             <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>最新收盤價</th>
-                        <th>建議進場區間</th>
-                        <th class="stop-loss">停損價</th>
-                        <th class="target-price">波段目標價</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>3376</strong></td>
-                        <td><strong>新日興</strong></td>
-                        <td>235.5元</td>
-                        <td>225-235元</td>
-                        <td class="stop-loss">220元</td>
-                        <td class="target-price">260元</td>
-                    </tr>
-                    <tr>
-                        <td><strong>6139</strong></td>
-                        <td><strong>亞翔</strong></td>
-                        <td>345元</td>
-                        <td>335-345元</td>
-                        <td class="stop-loss">325元</td>
-                        <td class="target-price">415元</td>
-                    </tr>
-                    <tr>
-                        <td><strong>8086</strong></td>
-                        <td><strong>宏捷科</strong></td>
-                        <td>94.5元</td>
-                        <td>90-95元</td>
-                        <td class="stop-loss">88元</td>
-                        <td class="target-price">110元</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>最新收盤價</th>
+                            <th>建議進場區間</th>
+                            <th class="stop-loss">停損價</th>
+                            <th class="target-price">波段目標價</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>3376</strong></td>
+                            <td><strong>新日興</strong></td>
+                            <td>235.5元</td>
+                            <td>225-235元</td>
+                            <td class="stop-loss">220元</td>
+                            <td class="target-price">260元</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6139</strong></td>
+                            <td><strong>亞翔</strong></td>
+                            <td>345元</td>
+                            <td>335-345元</td>
+                            <td class="stop-loss">325元</td>
+                            <td class="target-price">415元</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8086</strong></td>
+                            <td><strong>宏捷科</strong></td>
+                            <td>94.5元</td>
+                            <td>90-95元</td>
+                            <td class="stop-loss">88元</td>
+                            <td class="target-price">110元</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="review">
             <h2><span class="icon">📈</span>上週績效回測 (7/14-7/18)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>進場區間(元)</th>
-                        <th>本週最高收盤(元)</th>
-                        <th>平均報酬率</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>3037</td>
-                        <td>欣興</td>
-                        <td>123-127</td>
-                        <td>135.5</td>
-                        <td class="positive-return">+8.4%</td>
-                    </tr>
-                    <tr>
-                        <td>2454</td>
-                        <td>聯發科</td>
-                        <td>1380-1400</td>
-                        <td>1410</td>
-                        <td class="positive-return">+1.4%</td>
-                    </tr>
-                    <tr>
-                        <td>8046</td>
-                        <td>南電</td>
-                        <td>138-142</td>
-                        <td>171</td>
-                        <td class="positive-return">+22.1%</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>進場區間(元)</th>
+                            <th>本週最高收盤(元)</th>
+                            <th>平均報酬率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3037</td>
+                            <td>欣興</td>
+                            <td>123-127</td>
+                            <td>135.5</td>
+                            <td class="positive-return">+8.4%</td>
+                        </tr>
+                        <tr>
+                            <td>2454</td>
+                            <td>聯發科</td>
+                            <td>1380-1400</td>
+                            <td>1410</td>
+                            <td class="positive-return">+1.4%</td>
+                        </tr>
+                        <tr>
+                            <td>8046</td>
+                            <td>南電</td>
+                            <td>138-142</td>
+                            <td>171</td>
+                            <td class="positive-return">+22.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="special-report">
             <h2><span class="icon">🌟</span>ViVi 特選個股報告《6139 亞翔》</h2>
             <div class="stock-card">
                 <h3>公司基本資料</h3>
-                <p><strong>產業類別:</strong> 其他電子業，專精於無塵室及機電系統整合工程</p>
+                <p><strong>產業類別:</strong> 其他電子業, 專精於無塵室及機電系統整合工程</p>
                 <p><strong>主營業務:</strong> 高科技廠房無塵室機電系統整合(半導體、生技、電池廠等)</p>
                 <p><strong>客戶:</strong> 包含台積電、聯電、漢唐等國內一線大廠</p>
             </div>
             <div class="stock-card">
                 <h3>技術面與股價趨勢</h3>
-                <table>
-                    <tbody>
-                        <tr><td><strong>最新收盤價</strong></td><td>345元 (+0.73%)</td></tr>
-                        <tr><td><strong>5日/20日均線</strong></td><td>327.6元 / 316.3元 (多頭排列)</td></tr>
-                        <tr><td><strong>成交量</strong></td><td>1.59萬張, 溫和放量</td></tr>
-                        <tr><td><strong>技術指標</strong></td><td>KD 高檔鈍化、多頭延續; MACD維持紅柱</td></tr>
-                        <tr><td><strong>壓力/支撐</strong></td><td>上方壓力351、370元; 下方支撐335、316元</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+                            <tr><td><strong>最新收盤價</strong></td><td>345元(+0.73%)</td></tr>
+                            <tr><td><strong>5日/20日均線</strong></td><td>327.6元 / 316.3元 (多頭排列)</td></tr>
+                            <tr><td><strong>成交量</strong></td><td>1.59萬張, 溫和放量</td></tr>
+                            <tr><td><strong>技術指標</strong></td><td>KD 高檔鈍化、多頭延續; MACD維持紅柱</td></tr>
+                            <tr><td><strong>壓力/支撐</strong></td><td>上方壓力351、370元; 下方支撐335、316元</td></tr>
+                        </tbody>
+                    </table>
+                </div>
                  <p><strong>觀察重點:</strong> 日K站穩所有均線, 多方趨勢明確; 可等待有效突破前高。</p>
             </div>
              <div class="stock-card">
                 <h3>基本面與營收觀察</h3>
-                 <table>
-                     <tbody>
-                        <tr><td><strong>6月營收</strong></td><td>56.68億元 (+34.2% 月增)</td></tr>
-                        <tr><td><strong>營收趨勢</strong></td><td>明顯V轉向上, 月營收創一年新高</td></tr>
-                        <tr><td><strong>EPS 預估</strong></td><td>2024年預估 EPS上看18-20元, 獲利穩健</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                     <table>
+                         <tbody>
+                            <tr><td><strong>6月營收</strong></td><td>56.68億元 (+34.2% 月增)</td></tr>
+                            <tr><td><strong>營收趨勢</strong></td><td>明顯V轉向上, 月營收創一年新高</td></tr>
+                            <tr><td><strong>EPS 預估</strong></td><td>2024年預估 EPS上看18-20元, 獲利穩健</td></tr>
+                        </tbody>
+                    </table>
+                </div>
                 <p><strong>亮點:</strong> 高科技擴廠潮助攻訂單滿手, 累計訂單逾2,000億元，且訂單執行效率高於業界平均。</p>
             </div>
             <div class="stock-card">
