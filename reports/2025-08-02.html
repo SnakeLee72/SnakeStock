@@ -102,3 +102,210 @@
             padding: 25px;
             margin-bottom: 25px;
             border: 1px solid var(--border-color);
+        }
+        .stock-card h3 {
+            font-size: 1.6em;
+            margin-top: 0;
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px rgba(0, 209, 255, 0.3);
+        }
+        .stock-card h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        blockquote {
+            background: var(--bg-card);
+            border-left: 10px solid var(--accent-blue);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.3em;
+            font-style: italic;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 0 8px 8px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0802</h1>
+            <p>靈蛇投資研究中心 | 2025年8月2日</p>
+        </header>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>最新收盤價</th>
+                        <th>建議進場區間</th>
+                        <th class="stop-loss">停損價</th>
+                        <th class="target-price">波段目標價</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2317</strong></td>
+                        <td><strong>鴻海</strong></td>
+                        <td>181.5</td>
+                        <td>178-182</td>
+                        <td class="stop-loss">172</td>
+                        <td class="target-price">190/200</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3037</strong></td>
+                        <td><strong>欣興</strong></td>
+                        <td>138.5</td>
+                        <td>135-139</td>
+                        <td class="stop-loss">130</td>
+                        <td class="target-price">148/155</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8086</strong></td>
+                        <td><strong>宏捷科</strong></td>
+                        <td>102.5</td>
+                        <td>98-103</td>
+                        <td class="stop-loss">95</td>
+                        <td class="target-price">110/118</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (7/28-8/1)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>股票代號</th>
+                        <th>名稱</th>
+                        <th>進場區間</th>
+                        <th>本週最高收盤</th>
+                        <th>平均報酬率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>8046</td>
+                        <td>南電</td>
+                        <td>170-180</td>
+                        <td>184.5</td>
+                        <td class="positive-return">+5.4%</td>
+                    </tr>
+                    <tr>
+                        <td>8086</td>
+                        <td>宏捷科</td>
+                        <td>90-95</td>
+                        <td>102.5</td>
+                        <td class="positive-return">+10.8%</td>
+                    </tr>
+                    <tr>
+                        <td>3037</td>
+                        <td>欣興</td>
+                        <td>128-132</td>
+                        <td>142</td>
+                        <td class="positive-return">+9.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="summary-text">
+                <strong>上週回顧總結：</strong>
+                <p>三檔個股皆在週內觸及並超越建議進場區間,且法人成本與技術線型良好。 宏捷科表現最亮眼,波段最高收盤價達102.5元,相較於建議進場區間有約+10%波段報酬。 欣興與南電也皆呈現正報酬且持續表現穩定,適合進場操作者參考。</p>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股分析</h2>
+            <div class="stock-card">
+                <h3>【2317 鴻海】</h3>
+                <h4>價位規劃</h4>
+                <ul>
+                    <li><strong>建議進場區間：</strong>178-182元(回測支撐可分批布局)</li>
+                    <li><strong>停損價：</strong> 172元(跌破前一波平台頸線)</li>
+                    <li><strong>波段目標價：</strong>第一目標:190元(前高壓力帶) / 第二目標:198-200元(波段延伸目標)</li>
+                </ul>
+                <h4>策略建議</h4>
+                <p>鴻海受惠 AI 伺服器+中國題材+SWITCH 2概念,近期持續創高,且投信與外資同步進場,搭配台幣貶值有利出口。 建議於178-182元區間分批進場,站穩185元可追加,波段續抱。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【3037 欣興】</h3>
+                <h4>價位規劃</h4>
+                <ul>
+                    <li><strong>建議進場區間：</strong>135-139元(靠近月線、短線整理區)</li>
+                    <li><strong>停損價：</strong>130元(跌破整理區間)</li>
+                    <li><strong>波段目標價：</strong>第一目標:148元(上波高點壓力) / 第二目標:155元(ABF 族群續強帶動)</li>
+                </ul>
+                <h4>策略建議</h4>
+                <p>欣興為 ABF 補漲題材主角,法人籌碼集中、技術面量能溫和放大,具有中線續攻潛力。 回測135元附近為低接良機,若突破142元壓力則可望挑戰前高。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【8086 宏捷科】</h3>
+                <h4>價位規劃</h4>
+                <ul>
+                    <li><strong>建議進場區間：</strong>98-103元(短線多方量價確認)</li>
+                    <li><strong>停損價：</strong>95元(跌破帶量紅K起漲區)</li>
+                    <li><strong>波段目標價：</strong>第一目標:110元(歷史壓力帶) / 第二目標:118元(長期形態突破續航)</li>
+                </ul>
+                <h4>策略建議</h4>
+                <p>宏捷科為砷化鎵三雄之一,具人形機器人/光通訊題材,加上外資連日買超,具備短線爆發力與中線續航潛力。 建議於98-103元區間分批進場,破百後守住可續抱挑戰110元以上。</p>
+            </div>
+        </section>
+
+        <section id="macro">
+            <h2><span class="icon">🌐</span>宏觀總結與盤勢觀察重點</h2>
+            <div class="stock-card">
+                <h4>台灣關稅20%暫時方案確定</h4>
+                <ul>
+                    <li>經濟部表示「20%為暫時性稅率」，後續將與美方總結會議，預期最終稅率落在15%-20%。</li>
+                    <li>政策不確定性減弱，台股震盪後走穩，利空出盡效應開始發酵。</li>
+                    <li>關稅利空未引發全面性賣壓，反而釋出低接機會。</li>
+                </ul>
+                <h4>美股三大指數續創高、資金風向穩健</h4>
+                <ul>
+                    <li>Meta、微軟、Google 財報亮眼，AI資本支出未見停歇。</li>
+                    <li>費半與那指持續上攻，激勵台股AI/半導體族群表現強勢。</li>
+                    <li>Fed 九月降息機率上升，美債與美元走勢穩中帶偏空，有利風險性資產。</li>
+                </ul>
+                <h4>韓國關稅僅15%,對台股競爭加壓</h4>
+                <ul>
+                    <li>台灣20%與韓國15%落差造成市場情緒偏保守。</li>
+                    <li>然而外資與投信未大幅轉空，仍在觀望與逢低布局中。</li>
+                </ul>
+                <h4>強勢類股持續關注</h4>
+                <ul>
+                    <li>ABF 載板族群:南電、欣興、景碩短線拉回為切入機會。</li>
+                    <li>砷化鎵概念:宏捷科續強、全新與穩懋醞釀補漲。</li>
+                    <li>AI伺服器供應鏈:緯穎、鴻海、亞翔持續獲法人關注。</li>
+                    <li>中國概念+ 原物料族群:台玻、南亞仍有表現機會。</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <blockquote>
+            雖然關稅是20%,但你的股票如果不漲,就算是0%也沒用。
+            </blockquote>
+        </section>
+
+        <footer>
+            <p>祝投資順利、操盤愉快,靈蛇關心您!</p>
+            <p>- 靈蛇研究團隊謹製|2025年8月2日 -</p>
+        </footer>
+    </div>
+
+</body>
+</html>
