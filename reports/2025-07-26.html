@@ -25,13 +25,13 @@
                               radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
             color: var(--text-primary);
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             line-height: 1.8;
         }
         .container {
             max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 10px auto;
+            padding: 15px;
             background-color: rgba(16, 16, 36, 0.8);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -44,20 +44,20 @@
         }
         header h1 {
             color: var(--accent-blue);
-            font-size: 2.8em;
+            font-size: 2.5em;
             margin: 0;
             text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
         }
         header p {
             color: var(--text-secondary);
-            font-size: 1.1em;
+            font-size: 1em;
             margin-top: 5px;
         }
         section {
             margin-bottom: 40px;
         }
         h2 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: var(--text-primary);
             border-bottom: 2px solid var(--accent-blue);
             padding-bottom: 10px;
@@ -70,15 +70,25 @@
             font-size: 1.2em;
             color: var(--accent-blue);
         }
+        
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            min-width: 600px;
         }
         th, td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
         }
         thead th {
             background-color: rgba(42, 42, 74, 0.5);
@@ -147,82 +157,86 @@
 
         <section id="selections">
             <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>最新收盤價</th>
-                        <th>建議進場區間</th>
-                        <th class="stop-loss">停損價</th>
-                        <th class="target-price">波段目標價</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>8046</strong></td>
-                        <td><strong>南電</strong></td>
-                        <td>180.50元</td>
-                        <td>170-180 元</td>
-                        <td class="stop-loss">165元</td>
-                        <td class="target-price">200元</td>
-                    </tr>
-                    <tr>
-                        <td><strong>8086</strong></td>
-                        <td><strong>宏捷科</strong></td>
-                        <td>95.60元</td>
-                        <td>90-95元</td>
-                        <td class="stop-loss">88元</td>
-                        <td class="target-price">110元</td>
-                    </tr>
-                    <tr>
-                        <td><strong>3037</strong></td>
-                        <td><strong>欣興</strong></td>
-                        <td>131.00元</td>
-                        <td>128-132元</td>
-                        <td class="stop-loss">125元</td>
-                        <td class="target-price">150元</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>最新收盤價</th>
+                            <th>建議進場區間</th>
+                            <th class="stop-loss">停損價</th>
+                            <th class="target-price">波段目標價</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>8046</strong></td>
+                            <td><strong>南電</strong></td>
+                            <td>180.50元</td>
+                            <td>170-180 元</td>
+                            <td class="stop-loss">165元</td>
+                            <td class="target-price">200元</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8086</strong></td>
+                            <td><strong>宏捷科</strong></td>
+                            <td>95.60元</td>
+                            <td>90-95元</td>
+                            <td class="stop-loss">88元</td>
+                            <td class="target-price">110元</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3037</strong></td>
+                            <td><strong>欣興</strong></td>
+                            <td>131.00元</td>
+                            <td>128-132元</td>
+                            <td class="stop-loss">125元</td>
+                            <td class="target-price">150元</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="review">
             <h2><span class="icon">📈</span>上週績效回測 (7/21-7/25)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>進場區間(元)</th>
-                        <th>本週最高收盤(元)</th>
-                        <th>平均報酬率</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>3376</td>
-                        <td>新日興</td>
-                        <td>225-235元</td>
-                        <td>244.00</td>
-                        <td class="positive-return">+6.1%</td>
-                    </tr>
-                    <tr>
-                        <td>6139</td>
-                        <td>亞翔</td>
-                        <td>335-345元</td>
-                        <td>354.00</td>
-                        <td class="positive-return">+4.1%</td>
-                    </tr>
-                    <tr>
-                        <td>8086</td>
-                        <td>宏捷科</td>
-                        <td>90-95元</td>
-                        <td>95.60</td>
-                        <td class="positive-return">+3.4%</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>進場區間(元)</th>
+                            <th>本週最高收盤(元)</th>
+                            <th>平均報酬率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3376</td>
+                            <td>新日興</td>
+                            <td>225-235元</td>
+                            <td>244.00</td>
+                            <td class="positive-return">+6.1%</td>
+                        </tr>
+                        <tr>
+                            <td>6139</td>
+                            <td>亞翔</td>
+                            <td>335-345元</td>
+                            <td>354.00</td>
+                            <td class="positive-return">+4.1%</td>
+                        </tr>
+                        <tr>
+                            <td>8086</td>
+                            <td>宏捷科</td>
+                            <td>90-95元</td>
+                            <td>95.60</td>
+                            <td class="positive-return">+3.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="analysis">
@@ -282,48 +296,50 @@
 
         <section>
             <h2><span class="icon">📊</span>本週選股總評</h2>
-            <table>
-                 <thead>
-                    <tr>
-                        <th>股票代號</th>
-                        <th>名稱</th>
-                        <th>題材</th>
-                        <th>籌碼面</th>
-                        <th>技術面</th>
-                        <th>營收動能</th>
-                        <th>評價</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>8046</td>
-                        <td>南電</td>
-                        <td>ABF 領頭</td>
-                        <td>投信外資齊買</td>
-                        <td>突破創高</td>
-                        <td>年月雙增</td>
-                        <td>穩健長多主升段</td>
-                    </tr>
-                    <tr>
-                        <td>8086</td>
-                        <td>宏捷科</td>
-                        <td>感測/砷化鎵</td>
-                        <td>投機主力進駐</td>
-                        <td>爆量翻多</td>
-                        <td>月月回升</td>
-                        <td>短線操作佳</td>
-                    </tr>
-                    <tr>
-                        <td>3037</td>
-                        <td>欣興</td>
-                        <td>ABF 補漲</td>
-                        <td>法人慢慢買</td>
-                        <td>月線盤堅</td>
-                        <td>YoY + MoM 正向</td>
-                        <td>補漲潛力股</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                     <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>名稱</th>
+                            <th>題材</th>
+                            <th>籌碼面</th>
+                            <th>技術面</th>
+                            <th>營收動能</th>
+                            <th>評價</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8046</td>
+                            <td>南電</td>
+                            <td>ABF 領頭</td>
+                            <td>投信外資齊買</td>
+                            <td>突破創高</td>
+                            <td>年月雙增</td>
+                            <td>穩健長多主升段</td>
+                        </tr>
+                        <tr>
+                            <td>8086</td>
+                            <td>宏捷科</td>
+                            <td>感測/砷化鎵</td>
+                            <td>投機主力進駐</td>
+                            <td>爆量翻多</td>
+                            <td>月月回升</td>
+                            <td>短線操作佳</td>
+                        </tr>
+                        <tr>
+                            <td>3037</td>
+                            <td>欣興</td>
+                            <td>ABF 補漲</td>
+                            <td>法人慢慢買</td>
+                            <td>月線盤堅</td>
+                            <td>YoY + MoM 正向</td>
+                            <td>補漲潛力股</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="macro">
