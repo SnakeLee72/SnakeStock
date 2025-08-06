@@ -6,166 +6,38 @@
     <title>靈蛇週報 - 個股儀表板</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        
-        :root {
-            --bg-dark-ai: #0a0a1a;
-            --bg-card: #101024;
-            --border-color: #2a2a4a;
-            --text-primary: #e6e6fa;
-            --text-secondary: #a0a0c0;
-            --accent-blue: #00d1ff;
-        }
-
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--bg-dark-ai);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 10px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 10px auto;
-            padding: 15px;
-        }
-        header {
-            text-align: center;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            color: var(--accent-blue);
-            font-size: 2.5em;
-            margin: 0;
-            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
-        }
-        header p {
-            color: var(--text-secondary);
-            font-size: 1em;
-            margin-top: 5px;
-        }
-
-        .search-container {
-            margin-bottom: 20px;
-        }
-        #searchInput {
-            width: 100%;
-            padding: 12px 20px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-card);
-            color: var(--text-primary);
-            font-size: 1em;
-            box-sizing: border-box;
-        }
-        #searchInput:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-        
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: var(--bg-card);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 800px; 
-        }
-        th, td {
-            padding: 15px 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-            white-space: nowrap; 
-        }
-        thead th {
-            background-color: rgba(42, 42, 74, 0.7);
-            color: var(--text-primary);
-            font-weight: 700;
-            cursor: pointer;
-            user-select: none;
-        }
-        thead th:hover {
-            background-color: rgba(60, 60, 90, 0.7);
-        }
-        
-        tbody tr:hover {
-            background-color: rgba(42, 42, 74, 0.5);
-        }
-        
-        .report-link {
-            display: inline-block;
-            margin-right: 8px;
-            padding: 5px 10px;
-            background-color: var(--border-color);
-            color: var(--text-primary);
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .report-link:hover {
-            background-color: var(--accent-blue);
-            color: var(--bg-dark-ai);
-        }
-
-        .home-link-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .home-link {
-            display: inline-block;
-            background-color: var(--accent-blue);
-            color: #ffffff;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-        .home-link:hover {
-            background-color: #2f81f7;
-            transform: translateY(-3px);
-        }
-    .site-footer {
-    text-align: center;
-    margin-top: 50px;
-    padding-top: 30px;
-    border-top: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    font-size: 0.9em;
-}
-.footer-links {
-    margin-bottom: 15px;
-}
-.footer-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    margin: 0 15px;
-    transition: color 0.3s;
-}
-.footer-links a:hover {
-    color: var(--accent-blue);
-}
-   
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; }
+        .container { max-width: 1000px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; text-shadow: 0 0 10px rgba(0, 209, 255, 0.5); }
+        header p { color: var(--text-secondary); font-size: 1em; margin-top: 5px; }
+        .search-container { margin-bottom: 20px; }
+        #searchInput { width: 100%; padding: 12px 20px; border-radius: 20px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-primary); font-size: 1em; box-sizing: border-box; }
+        #searchInput:focus { outline: none; border-color: var(--accent-blue); }
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 8px; background-color: var(--bg-card); }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th, td { padding: 15px 20px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { background-color: rgba(42, 42, 74, 0.7); color: var(--text-primary); font-weight: 700; cursor: pointer; user-select: none; }
+        thead th:hover { background-color: rgba(60, 60, 90, 0.7); }
+        tbody tr:hover { background-color: rgba(42, 42, 74, 0.5); }
+        td a { color: var(--accent-blue); text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+        .report-link { display: inline-block; margin-right: 8px; padding: 5px 10px; background-color: var(--border-color); color: var(--text-primary); border-radius: 5px; text-decoration: none; transition: background-color 0.3s; }
+        .report-link:hover { background-color: var(--accent-blue); color: var(--bg-dark-ai); }
+        .home-link-container { text-align: center; margin-top: 40px; }
+        .home-link { display: inline-block; background-color: var(--accent-blue); color: #ffffff; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+        .home-link:hover { background-color: #2f81f7; transform: translateY(-3px); }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1>🐍 靈蛇個股儀表板</h1>
             <p>所有歷史推薦個股的數據總覽</p>
         </header>
-
         <main>
-            <div class="search-container">
-                <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="在此搜尋股票代號或名稱...">
-            </div>
-
+            <div class="search-container"><input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="在此搜尋股票代號或名稱..."></div>
             <div class="table-responsive">
                 <table id="stockDashboard">
                     <thead>
@@ -178,87 +50,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-    <td>8086</td>
-    <td><a href="stocks/8086.html" style="color: var(--accent-blue); text-decoration: underline;">宏捷科</a></td>
-    <td>3</td>
-    <td>2025-07-19</td>
-    <td>
-        <a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a>
-        <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a>
-        <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a>
-    </td>
-</tr>
-                        <tr>
-                            <td>3037</td>
-                            <td>欣興</td>
-                            <td>2</td>
-                            <td>2025-07-26</td>
-                            <td>
-                                <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a>
-                                <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3376</td>
-                            <td>新日興</td>
-                            <td>1</td>
-                            <td>2025-07-19</td>
-                            <td>
-                                <a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6139</td>
-                            <td>亞翔</td>
-                            <td>1</td>
-                            <td>2025-07-19</td>
-                            <td>
-                                <a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8046</td>
-                            <td>南電</td>
-                            <td>1</td>
-                            <td>2025-07-26</td>
-                            <td>
-                                <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2317</td>
-                            <td>鴻海</td>
-                            <td>1</td>
-                            <td>2025-08-02</td>
-                            <td>
-                                <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a>
-                            </td>
-                        </tr>
+                        <tr><td>8086</td><td><a href="stocks/8086.html">宏捷科</a></td><td>3</td><td>2025-07-19</td><td><a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a> <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a> <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
+                        <tr><td>3037</td><td><a href="stocks/3037.html">欣興</a></td><td>2</td><td>2025-07-26</td><td><a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a> <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
+                        <tr><td>3376</td><td><a href="stocks/3376.html">新日興</a></td><td>1</td><td>2025-07-19</td><td><a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a></td></tr>
+                        <tr><td>6139</td><td><a href="stocks/6139.html">亞翔</a></td><td>1</td><td>2025-07-19</td><td><a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a></td></tr>
+                        <tr><td>8046</td><td><a href="stocks/8046.html">南電</a></td><td>1</td><td>2025-07-26</td><td><a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a></td></tr>
+                        <tr><td>2317</td><td><a href="stocks/2317.html">鴻海</a></td><td>1</td><td>2025-08-02</td><td><a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="home-link-container">
-                 <a href="index.html" class="home-link">&larr; 返回總目錄</a>
-            </div>
+            <div class="home-link-container"><a href="index.html" class="home-link">&larr; 返回總目錄</a></div>
         </main>
     </div>
-
 <script>
     function searchFunction() {
-        // Declare variables
         let input, filter, table, tbody, tr, td, i, txtValue;
         input = document.getElementById('searchInput');
         filter = input.value.toUpperCase();
         table = document.getElementById("stockDashboard");
         tbody = table.getElementsByTagName("tbody")[0];
         tr = tbody.getElementsByTagName('tr');
-
-        // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
             let found = false;
-            // Check first two columns (ticker and name)
             for (let j = 0; j < 2; j++) {
                 td = tr[i].getElementsByTagName("td")[j];
                 if (td) {
@@ -269,60 +82,28 @@
                     }
                 }
             }
-            if (found) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
+            if (found) { tr[i].style.display = ""; } else { tr[i].style.display = "none"; }
         }
     }
-
     const sortDirections = {};
-
     function sortTable(columnIndex) {
         const table = document.getElementById("stockDashboard");
         const tbody = table.getElementsByTagName('tbody')[0];
         const rows = Array.from(tbody.getElementsByTagName('tr'));
-
         const direction = sortDirections[columnIndex] === 'asc' ? 'desc' : 'asc';
         sortDirections[columnIndex] = direction;
-
-        // Reset directions for other columns
-        for(let key in sortDirections){
-            if(key != columnIndex){
-                sortDirections[key] = undefined;
-            }
-        }
-
+        for(let key in sortDirections){ if(key != columnIndex){ sortDirections[key] = undefined; } }
         rows.sort((a, b) => {
             const aText = a.getElementsByTagName('td')[columnIndex].innerText;
             const bText = b.getElementsByTagName('td')[columnIndex].innerText;
-
             let aValue = isNaN(parseFloat(aText)) ? aText.toLowerCase() : parseFloat(aText);
             let bValue = isNaN(parseFloat(bText)) ? bText.toLowerCase() : parseFloat(bText);
-
-            if (aValue < bValue) {
-                return direction === 'asc' ? -1 : 1;
-            }
-            if (aValue > bValue) {
-                return direction === 'asc' ? 1 : -1;
-            }
+            if (aValue < bValue) { return direction === 'asc' ? -1 : 1; }
+            if (aValue > bValue) { return direction === 'asc' ? 1 : -1; }
             return 0;
         });
-
-        // Re-append rows in sorted order
         rows.forEach(row => tbody.appendChild(row));
     }
 </script>
-<footer class="site-footer">
-    <div class="footer-links">
-        <a href="/SnakeStock/index.html">返回首頁</a>
-        <a href="/SnakeStock/about.html">關於我們</a>
-        <a href="/SnakeStock/dashboard.html">個股儀表板</a>
-        <a href="/SnakeStock/glossary.html">投資術語庫</a>
-        <a href="/SnakeStock/disclaimer.html">免責聲明</a>
-    </div>
-    <p>&copy; 2025 靈蛇研究團隊謹製</p>
-</footer>
 </body>
 </html>
