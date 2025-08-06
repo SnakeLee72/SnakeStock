@@ -30,22 +30,6 @@
         .footer-links { margin-bottom: 15px; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s; }
         .footer-links a:hover { color: var(--accent-blue); }
-        .chart-iframe-container {
-            position: relative;
-            width: 100%;
-            height: 500px; /* 調整高度 */
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .chart-iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
     </style>
 </head>
 <body>
@@ -54,8 +38,9 @@
         
         <section id="chart">
             <h2>即時股價K線圖</h2>
-            <div class="chart-iframe-container">
-                <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_b16a8&symbol=TWSE%3A3037&interval=D&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Asia%2FTaipei&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=zh_TW&utm_source=snakelee72.github.io&utm_medium=widget&utm_campaign=chart&utm_term=TWSE%3A3037"></iframe>
+            <div class="stock-card" style="text-align: center;">
+                <img src="https://finviz.com/chart.ashx?t=3037.TW" alt="3037 欣興 - K線圖" style="max-width: 100%; border-radius: 8px;">
+                <p style="color: var(--text-secondary); font-size: 0.8em; margin-top: 10px; margin-bottom: 0;">圖表由 Finviz 提供，每日更新。此為靜態圖表，無法互動。</p>
             </div>
         </section>
         <section id="rating">
