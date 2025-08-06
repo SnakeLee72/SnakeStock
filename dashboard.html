@@ -130,6 +130,27 @@
             background-color: #2f81f7;
             transform: translateY(-3px);
         }
+    .site-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+.footer-links {
+    margin-bottom: 15px;
+}
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: var(--accent-blue);
+}
+   
     </style>
 </head>
 <body>
@@ -293,6 +314,14 @@
         rows.forEach(row => tbody.appendChild(row));
     }
 </script>
-
+<footer class="site-footer">
+    <div class="footer-links">
+        <a href="/SnakeStock/index.html">返回首頁</a>
+        <a href="/SnakeStock/about.html">關於我們</a>
+        <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+        <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+    </div>
+    <p>&copy; 2025 靈蛇研究團隊謹製</p>
+</footer>
 </body>
 </html>
