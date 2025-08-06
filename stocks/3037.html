@@ -30,6 +30,21 @@
         .footer-links { margin-bottom: 15px; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s; }
         .footer-links a:hover { color: var(--accent-blue); }
+        .chart-button-container { text-align: center; }
+        .chart-button {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .chart-button:hover {
+            background-color: #2f81f7;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -38,9 +53,9 @@
         
         <section id="chart">
             <h2>即時股價K線圖</h2>
-            <div class="stock-card" style="text-align: center;">
-                <img src="https://just2.entrust.net.tw/z/zk/zk_3037.djjpg" alt="3037 欣興 - K線圖" style="max-width: 100%; border-radius: 8px;">
-                <p style="color: var(--text-secondary); font-size: 0.8em; margin-top: 10px; margin-bottom: 0;">圖表由 WantGoo 提供，每日更新。此為靜態圖表，無法互動。</p>
+            <div class="stock-card chart-button-container">
+                <p style="color: var(--text-secondary); margin-top: 0; margin-bottom: 20px;">為確保最佳瀏覽體驗與資訊準確性，請點擊下方按鈕，在新分頁中查看即時互動K線圖。</p>
+                <a href="https://goodinfo.tw/tw/StockChart.asp?STOCK_ID=3037" target="_blank" class="chart-button">前往 Goodinfo! 查看K線圖 &rarr;</a>
             </div>
         </section>
         <section id="rating">
