@@ -137,7 +137,22 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
         }
-
+.about-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.about-link:hover {
+    background-color: var(--accent-tech);
+    color: #fff;
+    border-color: var(--accent-tech);
+}
+        
     </style>
 </head>
 <body>
@@ -145,6 +160,7 @@
         <header>
             <h1><span class="snake-emoji">🐍</span> 靈蛇週報</h1>
             <p class="subtitle">AI-Powered Market Insights & Weekly Selections</p>
+        <a href="about.html" class="about-link">了解我們的選股理念 &rarr;</a>
         </header>
 
         <section class="mission-statement">
