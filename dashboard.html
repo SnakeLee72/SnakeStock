@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>靈蛇週報 - 個股儀表板</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-dark-ai: #0a0a1a;
+            --bg-card: #101024;
+            --border-color: #2a2a4a;
+            --text-primary: #e6e6fa;
+            --text-secondary: #a0a0c0;
+            --accent-blue: #00d1ff;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 10px auto;
+            padding: 15px;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: var(--accent-blue);
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-card);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px; 
+        }
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap; 
+        }
+        thead th {
+            background-color: rgba(42, 42, 74, 0.7);
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        
+        tbody tr:hover {
+            background-color: rgba(42, 42, 74, 0.5);
+        }
+        
+        .report-link {
+            display: inline-block;
+            margin-right: 8px;
+            padding: 5px 10px;
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .report-link:hover {
+            background-color: var(--accent-blue);
+            color: var(--bg-dark-ai);
+        }
+
+        .home-link-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .home-link {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .home-link:hover {
+            background-color: #2f81f7;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🐍 靈蛇個股儀表板</h1>
+            <p>所有歷史推薦個股的數據總覽</p>
+        </header>
+
+        <main>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>股票代號</th>
+                            <th>股票名稱</th>
+                            <th>總推薦次數</th>
+                            <th>首次推薦日期</th>
+                            <th>相關報告連結</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8086</td>
+                            <td>宏捷科</td>
+                            <td>3</td>
+                            <td>2025-07-19</td>
+                            <td>
+                                <a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a>
+                                <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a>
+                                <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3037</td>
+                            <td>欣興</td>
+                            <td>2</td>
+                            <td>2025-07-26</td>
+                            <td>
+                                <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a>
+                                <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3376</td>
+                            <td>新日興</td>
+                            <td>1</td>
+                            <td>2025-07-19</td>
+                            <td>
+                                <a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6139</td>
+                            <td>亞翔</td>
+                            <td>1</td>
+                            <td>2025-07-19</td>
+                            <td>
+                                <a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8046</td>
+                            <td>南電</td>
+                            <td>1</td>
+                            <td>2025-07-26</td>
+                            <td>
+                                <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2317</td>
+                            <td>鴻海</td>
+                            <td>1</td>
+                            <td>2025-08-02</td>
+                            <td>
+                                <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="home-link-container">
+                 <a href="index.html" class="home-link">&larr; 返回總目錄</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
