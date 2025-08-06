@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於靈蛇週報</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-dark-ai: #0a0a1a;
+            --bg-card: #101024;
+            --border-color: #2a2a4a;
+            --text-primary: #e6e6fa;
+            --text-secondary: #a0a0c0;
+            --accent-blue: #00d1ff;
+            --color-red: #ff5555;
+            --color-green: #50fa7b;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark-ai);
+            background-image: radial-gradient(circle at top left, rgba(0, 209, 255, 0.1), transparent 30%),
+                              radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 900px;
+            margin: 10px auto;
+            padding: 15px;
+            background-color: rgba(16, 16, 36, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: var(--accent-blue);
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+        }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.6em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        h2 .icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: var(--accent-blue);
+        }
+        
+        .content-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .content-card li {
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+            margin-bottom: 15px;
+        }
+        .content-card li::before {
+            content: "塔";
+            background-color: var(--accent-blue);
+            color: var(--bg-dark-ai);
+            font-weight: bold;
+            border-radius: 50%;
+            width: 1.2em;
+            height: 1.2em;
+            display: inline-block;
+            text-align: center;
+            line-height: 1.2em;
+            margin-right: 10px;
+        }
+        
+        .home-link-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .home-link {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .home-link:hover {
+            background-color: #2f81f7;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>關於「靈蛇週報」</h1>
+            <p>數據與智慧的交會點，您的每週投資領航</p>
+        </header>
+
+        <section id="mission">
+            <h2><span class="icon">🎯</span>我們的使命</h2>
+            <div class="content-card">
+                <p>在瞬息萬變的股市中，資訊過載是每位投資人最大的挑戰。我們的使命，就是利用系統化的分析方法，從眾多市場情報中，為您過濾噪音、識別訊號，每週精選出最值得關注的投資標的，成為您在投資路上的可靠夥伴。</p>
+            </div>
+        </section>
+
+        <section id="methodology">
+            <h2><span class="icon">🔬</span>獨家選股流程：靈蛇選股金字塔</h2>
+            <div class="content-card">
+                <p>每一份「靈蛇週報」的產出，都遵循我們獨創的「靈蛇選股金字塔」模型。這套模型結合了嚴格的量化數據篩選與精準的質化分析，層層把關，確保選股的品質與潛力：</p>
+                <ul>
+                    <li><strong>塔基（廣泛篩選）</strong>：自動化掃描市場情報，對數十檔潛力股進行初步的風險排除、基本面、籌碼面與技術面檢驗，剔除不符合硬性指標的個股。</li>
+                    <li><strong>塔身（精選分析）</strong>：從通過海選的候選名單中，進一步分析市場共識度（多少專家共同關注）與主流題材強度，找出市場的焦點所在。</li>
+                    <li><strong>塔尖（最終決策）</strong>：在精英名單中，考量投資組合的平衡性，最終決策出「一檔市場核心 + 一檔主流攻擊手 + 一位潛力奇兵」的本週精選組合。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="source">
+            <h2><span class="icon">📡</span>我們的情報來源</h2>
+            <div class="content-card">
+                <p>我們的分析起點，是基於對市場頂尖分析師觀點的彙整。我們長期追蹤來自「摩爾投顧」的四位資深分析師：<strong>郭榮哲、何基鼎、謝晨彥、林鈺凱</strong> 的公開見解，確保我們的選股池，永遠建立在專業的基礎之上。</p>
+            </div>
+        </section>
+        
+        <section id="team">
+            <h2><span class="icon">🤝</span>人類策略 x AI 引擎</h2>
+            <div class="content-card">
+                <p>「靈蛇週報」的核心，是一套獨一無二的人機協作模式：</p>
+                <ul>
+                    <li><strong>人類總監（您）</strong>：負責制定最高策略、搜集關鍵情報，並做出最終的投資決策。</li>
+                    <li><strong>AI 研究部隊（我）</strong>：負責執行龐大的數據處理、資訊抓取、模型篩選、績效回測與報告生成任務。</li>
+                </ul>
+                <p>這個模式結合了您的投資智慧與AI的運算效率，創造出傳統模式無法比擬的深度與廣度。</p>
+            </div>
+        </section>
+        
+        <div class="home-link-container">
+            <a href="index.html" class="home-link">&larr; 返回總目錄</a>
+        </div>
+
+        <footer>
+            <p>- 靈蛇研究團隊謹製 -</p>
+        </footer>
+    </div>
+
+</body>
+</html>
