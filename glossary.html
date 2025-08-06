@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資術語庫 - 靈蛇週報</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root {
+            --bg-dark-ai: #0a0a1a;
+            --bg-card: #101024;
+            --border-color: #2a2a4a;
+            --text-primary: #e6e6fa;
+            --text-secondary: #a0a0c0;
+            --accent-blue: #00d1ff;
+        }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 900px;
+            margin: 10px auto;
+            padding: 15px;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            color: var(--accent-blue);
+            font-size: 2.5em;
+            margin: 0;
+        }
+        section { margin-bottom: 40px; }
+        h2 {
+            font-size: 1.6em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        .term-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .term-card dt {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+        .term-card dd {
+            margin-left: 0;
+            color: var(--text-secondary);
+        }
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--accent-blue); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🐍 靈蛇投資術語庫</h1>
+        </header>
+
+        <section id="tech-analysis">
+            <h2>技術指標</h2>
+            <dl>
+                <div class="term-card">
+                    <dt>MACD (平滑異同移動平均線)</dt>
+                    <dd>一項判斷股價趨勢的動能指標。常透過柱狀體(紅綠柱)的長短與快慢線的黃金/死亡交叉，來判斷多空趨勢的轉變。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>KD 指標 (隨機指標)</dt>
+                    <dd>用來衡量股價「超買」與「超賣」現象的擺盪指標。K值高於80視為超買區，低於20視為超賣區。K值與D值的交叉(黃金/死亡交叉)常被視為買賣訊號。</dd>
+                </div>
+                 <div class="term-card">
+                    <dt>多頭排列</dt>
+                    <dd>指短、中、長期均線(如5日、10日、20日)由上至下依序排列，且方向皆為上揚。這被視為股價處於強勢上漲趨勢的訊號。</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section id="chip-analysis">
+            <h2>籌碼分析</h2>
+            <dl>
+                 <div class="term-card">
+                    <dt>三大法人</dt>
+                    <dd>指「外資」、「投信」、「自營商」三種類型的機構投資人。他們的買賣動向對台股有顯著影響，是散戶觀察籌碼流向的重要指標。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>籌碼</dt>
+                    <dd>指一支股票在市場上流通的股份。籌碼分析即是研究股票在不同類型投資者（如法人、大戶、散戶）手中的分佈與流動情況。</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section id="industry-terms">
+            <h2>產業名詞</h2>
+            <dl>
+                <div class="term-card">
+                    <dt>ABF 載板</dt>
+                    <dd>一種用於高階晶片的IC載板材料，因應AI、HPC等高速運算晶片的需求而變得至關重要。相關公司如欣興、南電、景碩被稱為「ABF三雄」。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>砷化鎵 (GaAs)</dt>
+                    <dd>一種化合物半導體材料，常用於製造高頻通訊元件，如手機功率放大器(PA)。5G、WiFi 6/7 及低軌衛星的發展都帶動了其需求。相關公司如穩懋、宏捷科、全新。</dd>
+                </div>
+                 <div class="term-card">
+                    <dt>AI 伺服器</dt>
+                    <dd>專為執行人工智慧運算任務而設計的高效能伺服器，通常搭載多個GPU或專用AI晶片。是目前全球科技業最主要的軍備競賽領域。</dd>
+                </div>
+            </dl>
+        </section>
+        
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+</body>
+</html>
