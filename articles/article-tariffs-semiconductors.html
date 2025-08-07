@@ -25,6 +25,39 @@
         .footer-links { margin-bottom: 15px; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s; }
         .footer-links a:hover { color: var(--accent-blue); }
+    /* --- 新增的社群分享按鈕樣式 --- */
+.share-container {
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+}
+.share-container p {
+    margin: 0 0 15px 0;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+.share-buttons a, .share-buttons button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.share-button-line { background-color: #06C755; }
+.share-button-fb { background-color: #1877F2; }
+.share-button-copy { background-color: #8b949e; }
+.share-buttons a:hover, .share-buttons button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
     </style>
 </head>
 <body>
@@ -32,7 +65,14 @@
         <header>
             <h1>全球貿易戰下的半導體與電動車產業：深度解析與未來展望</h1>
         </header>
-
+<section class="share-container">
+    <p>覺得這篇分析有幫助嗎？分享給您的朋友吧！</p>
+    <div class="share-buttons">
+        <a id="shareLine" href="#" target="_blank" class="share-button-line">分享到 Line</a>
+        <a id="shareFb" href="#" target="_blank" class="share-button-fb">分享到 Facebook</a>
+        <button id="copyLink" class="share-button-copy">複製連結</button>
+    </div>
+</section>
         <section class="content-card">
             <h2><span class="icon">🎧</span> 語音導讀</h2>
             <p>您也可以直接收聽本篇深度分析報告的語音版本。</p>
@@ -93,5 +133,38 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pageUrl = window.location.href;
+        const pageTitle = document.title;
+
+        // 設定 Line 分享連結
+        const shareLine = document.getElementById('shareLine');
+        if (shareLine) {
+            shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`;
+        }
+
+        // 設定 Facebook 分享連結
+        const shareFb = document.getElementById('shareFb');
+        if (shareFb) {
+            shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+        }
+
+        // 設定複製連結功能
+        const copyLink = document.getElementById('copyLink');
+        if (copyLink) {
+            copyLink.addEventListener('click', function() {
+                navigator.clipboard.writeText(pageUrl).then(function() {
+                    copyLink.textContent = '已複製！';
+                    setTimeout(function() {
+                        copyLink.textContent = '複製連結';
+                    }, 2000);
+                }, function(err) {
+                    console.error('無法複製連結: ', err);
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>
