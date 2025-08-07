@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>靈蛇週報 - AI 驅動的台股洞察</title>
     <meta name="description" content="靈蛇週報是一個結合AI分析與專家觀點的台股投資研究網站。每週提供精選潛力股、深度個股報告與市場趨勢分析，助您做出更精準的投資決策。">
-    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報, 郭哲榮, 何基鼎, 謝晨彥, 林鈺凱">
+    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #3036d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; }
+        /* --- 色碼已修正 --- */
+        :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #30363d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
         header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
         header h1 { font-size: 3em; color: var(--text-primary); margin-bottom: 10px; cursor: default; }
         
-        /* --- 結合版：靈蛇擺動 + AI 光暈 --- */
         header .snake-emoji {
             display: inline-block;
-            transition: text-shadow 0.3s ease-in-out; /* 光暈的漸變效果 */
+            transition: text-shadow 0.3s ease-in-out;
         }
         header h1:hover .snake-emoji {
-            animation: wiggle 0.5s ease-in-out; /* 觸發擺動動畫 */
-            text-shadow: 0 0 15px var(--accent-tech); /* 同時加上光暈 */
+            animation: wiggle 0.5s ease-in-out;
+            text-shadow: 0 0 15px var(--accent-tech);
         }
         @keyframes wiggle {
             0%, 100% { transform: rotate(0deg); }
