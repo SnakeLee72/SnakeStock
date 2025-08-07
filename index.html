@@ -14,7 +14,6 @@
         header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
         header h1 { font-size: 3em; color: var(--text-primary); margin-bottom: 10px; cursor: default; }
         
-        /* --- 新增的靈蛇 Logo 互動特效 --- */
         header .snake-emoji {
             display: inline-block;
             transition: transform 0.3s ease-in-out;
@@ -39,12 +38,14 @@
         .research-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
         .research-card h3 { font-size: 1.3em; color: var(--accent-tech); margin-top: 0; margin-bottom: 10px; }
         .research-card p { color: var(--text-secondary); flex-grow: 1; }
-        .research-card a.read-more { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; }
-        .report-list .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 25px; transition: transform 0.3s, box-shadow 0.3s; }
+        .research-card a.read-more, .report-list a.read-more { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; }
+        .research-card a.read-more:hover, .report-list a.read-more:hover { background-color: #2f81f7; }
+        .report-list .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 25px; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
         .report-list .report-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .card-header h3 { margin: 0; font-size: 1.5em; color: var(--text-primary); }
         .card-header .date { color: var(--text-secondary); font-size: 0.9em; }
+        .card-content { flex-grow: 1; }
         .card-content .teaser { margin: 0 0 20px 0; color: var(--text-secondary); }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
         .footer-links { margin-bottom: 15px; }
@@ -87,17 +88,38 @@
 
         <section class="report-list">
             <h2><span class="icon">📂</span> 週報歸檔</h2>
+            
             <article class="report-card">
                 <div class="card-header">
-                    <h3>靈蛇週報 0804</h3>
-                    <span class="date">2025-08-04</span>
+                    <h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span>
                 </div>
                 <div class="card-content">
-                    <p class="teaser"><strong>本期焦點：</strong>AI時代的航空母艦強勢領航，搭配逆勢而行的半導體奇兵，全面佈局市場熱點。<br><strong>精選個股：</strong>鴻海、緯穎、宏捷科</p>
-                    <a href="reports/2025-08-04.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    <p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p>
+                    <a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                 </div>
             </article>
-            </section>
+
+            <article class="report-card">
+                <div class="card-header">
+                    <h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span>
+                </div>
+                <div class="card-content">
+                    <p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p>
+                    <a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </div>
+            </article>
+
+            <article class="report-card">
+                <div class="card-header">
+                    <h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span>
+                </div>
+                <div class="card-content">
+                    <p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p>
+                    <a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </div>
+            </article>
+            
+        </section>
         
         <footer class="site-footer">
             <div class="footer-links">
@@ -113,6 +135,5 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
-
 </body>
 </html>
