@@ -25,9 +25,28 @@
         td a:hover { text-decoration: underline; }
         .report-link { display: inline-block; margin-right: 8px; padding: 5px 10px; background-color: var(--border-color); color: var(--text-primary); border-radius: 5px; text-decoration: none; transition: background-color 0.3s; }
         .report-link:hover { background-color: var(--accent-blue); color: var(--bg-dark-ai); }
-        .home-link-container { text-align: center; margin-top: 40px; }
-        .home-link { display: inline-block; background-color: var(--accent-blue); color: #ffffff; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
-        .home-link:hover { background-color: #2f81f7; transform: translateY(-3px); }
+        
+        /* --- 標準化頁腳 CSS --- */
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
     </style>
 </head>
 <body>
@@ -50,18 +69,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>8086</td><td><a href="stocks/8086.html">宏捷科</a></td><td>3</td><td>2025-07-19</td><td><a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a> <a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a> <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
-                        <tr><td>3037</td><td><a href="stocks/3037.html">欣興</a></td><td>2</td><td>2025-07-26</td><td><a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a> <a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
-                        <tr><td>3376</td><td><a href="stocks/3376.html">新日興</a></td><td>1</td><td>2025-07-19</td><td><a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a></td></tr>
-                        <tr><td>6139</td><td><a href="stocks/6139.html">亞翔</a></td><td>1</td><td>2025-07-19</td><td><a href="reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a></td></tr>
-                        <tr><td>8046</td><td><a href="stocks/8046.html">南電</a></td><td>1</td><td>2025-07-26</td><td><a href="reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a></td></tr>
-                        <tr><td>2317</td><td><a href="stocks/2317.html">鴻海</a></td><td>1</td><td>2025-08-02</td><td><a href="reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
+                        <tr><td>8086</td><td><a href="/SnakeStock/stocks/8086.html">宏捷科</a></td><td>3</td><td>2025-07-19</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a> <a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a> <a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
+                        <tr><td>3037</td><td><a href="/SnakeStock/stocks/3037.html">欣興</a></td><td>2</td><td>2025-07-26</td><td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a> <a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
+                        <tr><td>3376</td><td><a href="/SnakeStock/stocks/3376.html">新日興</a></td><td>1</td><td>2025-07-19</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a></td></tr>
+                        <tr><td>6139</td><td><a href="/SnakeStock/stocks/6139.html">亞翔</a></td><td>1</td><td>2025-07-19</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719報告</a></td></tr>
+                        <tr><td>8046</td><td><a href="/SnakeStock/stocks/8046.html">南電</a></td><td>1</td><td>2025-07-26</td><td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726報告</a></td></tr>
+                        <tr><td>2317</td><td><a href="/SnakeStock/stocks/2317.html">鴻海</a></td><td>1</td><td>2025-08-02</td><td><a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802報告</a></td></tr>
                     </tbody>
                 </table>
             </div>
-            <div class="home-link-container"><a href="index.html" class="home-link">&larr; 返回總目錄</a></div>
         </main>
-    </div>
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+        </div>
 <script>
     function searchFunction() {
         let input, filter, table, tbody, tr, td, i, txtValue;
