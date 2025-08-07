@@ -79,41 +79,6 @@
             transition: color 0.3s;
         }
         .footer-links a:hover { color: var(--accent-blue); }
-
-        /* --- 新增的社群分享按鈕樣式 --- */
-        .share-container {
-            padding: 20px;
-            margin-top: 40px;
-            margin-bottom: 30px;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            text-align: center;
-        }
-        .share-container p {
-            margin: 0 0 15px 0;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        .share-buttons a, .share-buttons button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .share-button-line { background-color: #06C755; }
-        .share-button-fb { background-color: #1877F2; }
-        .share-button-copy { background-color: #8b949e; }
-        .share-buttons a:hover, .share-buttons button:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
-        }
     </style>
 </head>
 <body>
@@ -126,7 +91,7 @@
             <h2><span class="icon">🎧</span> 語音導讀</h2>
             <p>忙碌嗎？您可以直接收聽本篇深度分析報告的語音版本。</p>
             <audio controls>
-                <source src="/audio/材料-KY_ 化工產業的投資前景與挑戰.wav" type="audio/wav">
+                <source src="audio/材料-KY_ 化工產業的投資前景與挑戰.wav" type="audio/wav">
                 您的瀏覽器不支援音訊播放。
             </audio>
         </section>
@@ -160,14 +125,6 @@
             <p>AI 眼鏡市場年複合成長率預計超過 70%。材料-KY 持續研發相關原料，並與義大利 Mazzucchelli 公司策略聯盟，被視為公司未來重要的成長動能之一。</p>
         </section>
         
-        <section class="share-container">
-            <p>覺得這篇分析有幫助嗎？分享給您的朋友吧！</p>
-            <div class="share-buttons">
-                <a id="shareLine" href="#" target="_blank" class="share-button-line">分享到 Line</a>
-                <a id="shareFb" href="#" target="_blank" class="share-button-fb">分享到 Facebook</a>
-                <button id="copyLink" class="share-button-copy">複製連結</button>
-            </div>
-        </section>
         <footer class="site-footer">
             <div class="footer-links">
                 <a href="/SnakeStock/index.html">返回首頁</a>
@@ -176,43 +133,8 @@
                 <a href="/SnakeStock/glossary.html">投資術語庫</a>
                 <a href="/SnakeStock/disclaimer.html">免責聲明</a>
             </div>
-            
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const pageUrl = window.location.href;
-            const pageTitle = document.title;
-    
-            // 設定 Line 分享連結
-            const shareLine = document.getElementById('shareLine');
-            if (shareLine) {
-                shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`;
-            }
-    
-            // 設定 Facebook 分享連結
-            const shareFb = document.getElementById('shareFb');
-            if (shareFb) {
-                shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
-            }
-    
-            // 設定複製連結功能
-            const copyLink = document.getElementById('copyLink');
-            if (copyLink) {
-                copyLink.addEventListener('click', function() {
-                    navigator.clipboard.writeText(pageUrl).then(function() {
-                        copyLink.textContent = '已複製！';
-                        setTimeout(function() {
-                            copyLink.textContent = '複製連結';
-                        }, 2000);
-                    }, function(err) {
-                        console.error('無法複製連結: ', err);
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
