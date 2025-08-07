@@ -169,6 +169,49 @@
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(255, 221, 0, 0.3);
 }    
+    /* --- 新增的深度研究專區樣式 --- */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+.research-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 209, 255, 0.1);
+}
+.research-card h3 {
+    font-size: 1.3em;
+    color: var(--accent-blue);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.research-card p {
+    color: var(--text-secondary);
+    flex-grow: 1; /* 讓p標籤填滿多餘空間，確保按鈕對齊底部 */
+}
+.research-card a.read-more {
+    display: inline-block;
+    background-color: var(--accent-tech);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 15px;
+    align-self: flex-start; /* 按鈕從頭部對齊 */
+}
+.research-card a.read-more:hover {
+    background-color: #2f81f7;
+}
     </style>
 </head>
 <body>
@@ -180,10 +223,23 @@
             <a href="dashboard.html" class="about-link">個股儀表板 &rarr;</a>
             <a href="review-2025-07.html" class="about-link">七月戰報 &rarr;</a>
         </header>
-<section style="background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 40px; border: 1px solid var(--accent-blue);">
-    <h2 style="margin-top: 0; font-size: 1.5em; color: var(--accent-blue);">🌟 最新時事分析</h2>
-    <p style="font-size: 1.1em; color: var(--text-primary);">【產業深度解析】全球貿易戰下的半導體與電動車產業：解析關稅政策對台積電、NVIDIA及全球供應鏈的衝擊與未來展望。</p>
-    <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more" style="display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700;">點此閱讀完整報告 &rarr;</a>
+<section class="special-reports">
+    <h2>🌟 深度研究</h2>
+    <div class="research-grid">
+
+        <article class="research-card">
+            <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
+            <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
+            <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+        </article>
+
+        <article class="research-card">
+            <h3>【個股解析】材料-KY (4763)</h3>
+            <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
+            <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+        </article>
+        
+        </div>
 </section>
         <section class="mission-statement">
             <p>結合數據科學與市場脈動，透過獨家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
