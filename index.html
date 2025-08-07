@@ -4,214 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>靈蛇週報 - AI 驅動的台股洞察</title>
+    <meta name="description" content="靈蛇週報是一個結合AI分析與專家觀點的台股投資研究網站。每週提供精選潛力股、深度個股報告與市場趨勢分析，助您做出更精準的投資決策。">
+    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報, 郭哲榮, 何基鼎, 謝晨彥, 林鈺凱">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #30363d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
+        header h1 { font-size: 3em; color: var(--text-primary); margin-bottom: 10px; cursor: default; }
         
-        :root {
-            --bg-dark: #0d1117;
-            --bg-light: #161b22;
-            --border-color: #30363d;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --accent-tech: #58a6ff;
-            --accent-profit: #a371f7; /* Changed from gold for better contrast */
-        }
-
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.7;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            font-size: 3em;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-
+        /* --- 新增的靈蛇 Logo 互動特效 --- */
         header .snake-emoji {
             display: inline-block;
             transition: transform 0.3s ease-in-out;
         }
-        header:hover .snake-emoji {
-            transform: rotate(10deg) scale(1.1);
+        header h1:hover .snake-emoji {
+            animation: wiggle 0.5s ease-in-out;
         }
-
-        header .subtitle {
-            font-size: 1.2em;
-            color: var(--accent-tech);
-            font-weight: 500;
-        }
-        
-        .mission-statement {
-            text-align: center;
-            font-size: 1.1em;
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto 50px auto;
-            border-left: 3px solid var(--accent-profit);
-            padding-left: 20px;
-        }
-
-        .report-list h2 {
-            font-size: 2em;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        .report-card {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-8deg); }
+            75% { transform: rotate(8deg); }
         }
         
-        .report-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .card-header h3 {
-            margin: 0;
-            font-size: 1.5em;
-            color: var(--text-primary);
-        }
-
-        .card-header .date {
-            color: var(--text-secondary);
-            font-size: 0.9em;
-        }
-
-        .card-content .teaser {
-            margin: 0 0 20px 0;
-            color: var(--text-secondary);
-        }
-        .card-content .teaser strong {
-            color: var(--text-primary);
-        }
-
-        .card-content .read-more {
-            display: inline-block;
-            background-color: var(--accent-tech);
-            color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: background-color 0.3s;
-        }
-
-        .card-content .read-more:hover {
-            background-color: #2f81f7;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-.about-link {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 8px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all 0.3s;
-}
-.about-link:hover {
-    background-color: var(--accent-tech);
-    color: #fff;
-    border-color: var(--accent-tech);
-}
-    .footer-support {
-    margin-bottom: 15px;
-}
-.footer-support a {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #FFDD00;
-    color: #000;
-    font-weight: bold;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-.footer-support a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.3);
-}    
-    /* --- 新增的深度研究專區樣式 --- */
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
-.research-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.research-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 209, 255, 0.1);
-}
-.research-card h3 {
-    font-size: 1.3em;
-    color: var(--accent-blue);
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-.research-card p {
-    color: var(--text-secondary);
-    flex-grow: 1; /* 讓p標籤填滿多餘空間，確保按鈕對齊底部 */
-}
-.research-card a.read-more {
-    display: inline-block;
-    background-color: var(--accent-tech);
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 700;
-    margin-top: 15px;
-    align-self: flex-start; /* 按鈕從頭部對齊 */
-}
-.research-card a.read-more:hover {
-    background-color: #2f81f7;
-}
+        header .subtitle { font-size: 1.2em; color: var(--accent-tech); font-weight: 500; }
+        .about-link { display: inline-block; margin-top: 20px; margin-left: 10px; margin-right: 10px; padding: 8px 15px; border: 1px solid var(--border-color); border-radius: 20px; color: var(--text-secondary); text-decoration: none; transition: all 0.3s; }
+        .about-link:hover { background-color: var(--accent-tech); color: #fff; border-color: var(--accent-tech); }
+        section { margin-bottom: 40px; }
+        h2 { font-size: 1.8em; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 30px; display: flex; align-items: center; }
+        .mission-statement { text-align: center; font-size: 1.1em; color: var(--text-secondary); max-width: 650px; margin: 0 auto 50px auto; border-left: 3px solid var(--accent-profit); padding-left: 20px; }
+        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .research-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+        .research-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+        .research-card h3 { font-size: 1.3em; color: var(--accent-tech); margin-top: 0; margin-bottom: 10px; }
+        .research-card p { color: var(--text-secondary); flex-grow: 1; }
+        .research-card a.read-more { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; }
+        .report-list .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 25px; transition: transform 0.3s, box-shadow 0.3s; }
+        .report-list .report-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .card-header h3 { margin: 0; font-size: 1.5em; color: var(--text-primary); }
+        .card-header .date { color: var(--text-secondary); font-size: 0.9em; }
+        .card-content .teaser { margin: 0 0 20px 0; color: var(--text-secondary); }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+        .footer-support { margin-bottom: 15px; }
+        .footer-support a { display: inline-block; padding: 8px 15px; background-color: #FFDD00; color: #000; font-weight: bold; border-radius: 20px; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -219,85 +58,61 @@
         <header>
             <h1><span class="snake-emoji">🐍</span> 靈蛇週報</h1>
             <p class="subtitle">AI-Powered Market Insights & Weekly Selections</p>
-        <a href="about.html" class="about-link">了解我們的選股理念 &rarr;</a>
-            <a href="dashboard.html" class="about-link">個股儀表板 &rarr;</a>
-            <a href="review-2025-07.html" class="about-link">七月戰報 &rarr;</a>
+            <div>
+                <a href="about.html" class="about-link">關於靈蛇週報 &rarr;</a>
+                <a href="dashboard.html" class="about-link">個股儀表板 &rarr;</a>
+                <a href="review-2025-07.html" class="about-link">七月戰報 &rarr;</a>
+            </div>
         </header>
-<section class="special-reports">
-    <h2>🌟 深度研究</h2>
-    <div class="research-grid">
 
-        <article class="research-card">
-            <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
-            <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
-            <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </article>
-
-        <article class="research-card">
-            <h3>【個股解析】材料-KY (4763)</h3>
-            <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
-            <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </article>
-        
-        </div>
-</section>
         <section class="mission-statement">
-            <p>結合數據科學與市場脈動，透過獨家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
+            <p>結合數據科學與市場脈動，透過独家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
         </section>
 
-        <main class="report-list">
-            <h2>週報歸檔</h2>
+        <section class="special-reports">
+            <h2><span class="icon">🌟</span> 深度研究</h2>
+            <div class="research-grid">
+                <article class="research-card">
+                    <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
+                    <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
+                    <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </article>
+                <article class="research-card">
+                    <h3>【個股解析】材料-KY (4763)</h3>
+                    <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
+                    <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </article>
+            </div>
+        </section>
 
-    <article class="report-card">
-        <div class="card-header">
-            <h3>靈蛇週報 0802</h3>
-            <span class="date">2025-08-02</span>
-        </div>
-        <div class="card-content">
-            <p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。
-                <br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p>
-            <a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </div>
-    </article>
-
-    <article class="report-card">
-        <div class="card-header">
-            <h3>靈蛇週報 0726</h3>
-            <span class="date">2025-07-26</span>
-        </div>
-        <div class="card-content">
-            <p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。
-                <br><strong>精選個股：</strong>南電、宏捷科、欣興</p>
-            <a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </div>
-    </article>
-
-    <article class="report-card">
-        <div class="card-header">
-            <h3>靈蛇週報 0719</h3>
-            <span class="date">2025-07-19</span>
-        </div>
-        <div class="card-content">
-            <p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。
-                <br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p>
-            <a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </div>
-    </article>
-        </main>
-
-     <footer class="site-footer">
-    <div class="footer-links">
-        <a href="/SnakeStock/index.html">返回首頁</a>
-        <a href="/SnakeStock/about.html">關於我們</a>
-        <a href="/SnakeStock/dashboard.html">個股儀表板</a>
-        <a href="/SnakeStock/glossary.html">投資術語庫</a>
-        <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+        <section class="report-list">
+            <h2><span class="icon">📂</span> 週報歸檔</h2>
+            <article class="report-card">
+                <div class="card-header">
+                    <h3>靈蛇週報 0804</h3>
+                    <span class="date">2025-08-04</span>
+                </div>
+                <div class="card-content">
+                    <p class="teaser"><strong>本期焦點：</strong>AI時代的航空母艦強勢領航，搭配逆勢而行的半導體奇兵，全面佈局市場熱點。<br><strong>精選個股：</strong>鴻海、緯穎、宏捷科</p>
+                    <a href="reports/2025-08-04.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </div>
+            </article>
+            </section>
+        
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <div class="footer-support" style="margin-bottom: 15px;">
+                <a href="https://buymeacoffee.com/snakelee72" target="_blank">☕ 贊助支持 (Buy Me a Coffee)</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
     </div>
-    <div class="footer-support">
-        <a href="https://buymeacoffee.com/snakelee72" target="_blank">☕ 贊助支持 (Buy Me a Coffee)</a>
-    </div>
-    <p>&copy; 2025 靈蛇研究團隊謹製</p>
-</footer>
-    </div>
+
 </body>
 </html>
