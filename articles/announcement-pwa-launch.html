@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【重磅升級】您的「靈蛇週報」App 來了！</title>
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+    <style>
+        /* CSS樣式與其他頁面相同 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
+        .content-card { background-color: var(--bg-card); border-radius: 8px; padding: 30px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .content-card h2 { font-size: 1.6em; color: var(--accent-blue); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .content-card h3 { font-size: 1.3em; color: var(--text-primary); }
+        .content-card p, .content-card li { color: var(--text-secondary); }
+        .install-steps { list-style-type: decimal; padding-left: 20px; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>【重磅升級】您的「靈蛇週報」App 來了！</h1>
+            <p style="color: var(--text-secondary);">發布日期：2025年8月8日</p>
+        </header>
+
+        <section class="content-card">
+            <p>為了提供所有忠實讀者更極致、更便捷的閱讀體驗，我們今天非常興奮地宣布，「靈蛇週報」網站正式支援 **新世代網頁 App (PWA)** 功能！</p>
+            <p>現在，您可以將我們的專業分析報告，像 App 一樣「安裝」到您的手機主畫面上，享受前所未有的便利性與沉浸感。</p>
+        </section>
+
+        <section class="content-card">
+            <h2>PWA 能帶來哪些好處？</h2>
+            <h3>🚀 一鍵快速啟動</h3>
+            <p>不再需要打開瀏覽器、輸入網址。只需在手機桌面上點擊「靈蛇週報」的專屬圖示，即可在數秒內直達我們的網站。</p>
+            <h3>📖 全螢幕沉浸式閱讀</h3>
+            <p>安裝後，網站將以全螢幕模式開啟，自動隱藏瀏覽器惱人的網址列與工具列，讓您能更專注地閱讀。</p>
+            <h3>✈️ 離線閱讀，隨時複盤</h3>
+            <p>您可以隨時打開 App，閱讀您**曾經瀏覽過**的歷史報告與個股追蹤頁面，即使在沒有網路的環境下也沒問題。</p>
+            <h3>🔄 永遠保持最新</h3>
+            <p>您不需要前往 App Store 更新。只要在有網路的環境下開啟它，App 就會自動更新到最新內容。</p>
+        </section>
+
+        <section class="content-card">
+            <h2>如何安裝至您的手機？</h2>
+            <h3>📱 Android 用戶 (Chrome 瀏覽器)</h3>
+            <ol class="install-steps">
+                <li>用 Chrome 瀏覽器打開我們的網站。</li>
+                <li>瀏覽器可能會**自動跳出「新增至主畫面」**的提示，請點擊「安裝」。</li>
+                <li>如果沒有提示，請點擊右上角的「選單」圖示 (三個點)，然後選擇「**安裝應用程式**」。</li>
+            </ol>
+            <h3>📱 iPhone 用戶 (Safari 瀏覽器)</h3>
+            <ol class="install-steps">
+                <li>用 Safari 瀏覽器打開我們的網站。</li>
+                <li>點擊下方工具列中間的「**分享**」按鈕 (圖示為 ⬆️)。</li>
+                <li>在跳出的選單中，向下滑動，找到並點擊「**加入主畫面**」。</li>
+                <li>確認名稱與圖示後，點擊右上角的「**新增**」。</li>
+            </ol>
+        </section>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+</body>
+</html>
