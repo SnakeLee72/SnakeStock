@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>靈蛇週報 - AI 驅動的台股洞察</title>
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, err => {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>
     <meta name="description" content="靈蛇週報是一個結合AI分析與專家觀點的台股投資研究網站。每週提供精選潛力股、深度個股報告與市場趨勢分析，助您做出更精準的投資決策。">
     <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報">
     <style>
