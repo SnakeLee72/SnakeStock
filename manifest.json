@@ -1,0 +1,16 @@
+{
+    "name": "靈蛇週報",
+    "short_name": "靈蛇週報",
+    "start_url": "/SnakeStock/index.html",
+    "display": "standalone",
+    "background_color": "#0d1117",
+    "theme_color": "#161b22",
+    "description": "一個結合AI分析與專家觀點的台股投資研究網站。",
+    "icons": [
+        {
+            "src": "/SnakeStock/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
