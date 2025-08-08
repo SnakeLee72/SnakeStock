@@ -5,43 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>靈蛇週報 - AI 驅動的台股洞察</title>
     <link rel="manifest" href="/SnakeStock/manifest.json">
-
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, err => {
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
-</script>
     <meta name="description" content="靈蛇週報是一個結合AI分析與專家觀點的台股投資研究網站。每週提供精選潛力股、深度個股報告與市場趨勢分析，助您做出更精準的投資決策。">
-    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報">
+    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報, 郭哲榮, 何基鼎, 謝晨彥, 林鈺凱">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        /* --- 色碼已修正 --- */
         :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #30363d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
         header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
         header h1 { font-size: 3em; color: var(--text-primary); margin-bottom: 10px; cursor: default; }
-        
-        header .snake-emoji {
-            display: inline-block;
-            transition: text-shadow 0.3s ease-in-out;
-        }
-        header h1:hover .snake-emoji {
-            animation: wiggle 0.5s ease-in-out;
-            text-shadow: 0 0 15px var(--accent-tech);
-        }
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-8deg); }
-            75% { transform: rotate(8deg); }
-        }
-        
+        header .snake-emoji { display: inline-block; transition: text-shadow 0.3s ease-in-out; }
+        header h1:hover .snake-emoji { animation: wiggle 0.5s ease-in-out; text-shadow: 0 0 15px var(--accent-tech); }
+        @keyframes wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
         header .subtitle { font-size: 1.2em; color: var(--accent-tech); font-weight: 500; }
         .about-link { display: inline-block; margin-top: 20px; margin-left: 10px; margin-right: 10px; padding: 8px 15px; border: 1px solid var(--border-color); border-radius: 20px; color: var(--text-secondary); text-decoration: none; transition: all 0.3s; }
         .about-link:hover { background-color: var(--accent-tech); color: #fff; border-color: var(--accent-tech); }
@@ -80,37 +66,37 @@
                 <a href="review-2025-07.html" class="about-link">七月戰報 &rarr;</a>
             </div>
         </header>
+
         <section class="mission-statement"><p>結合數據科學與市場脈動，透過独家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p></section>
+
         <section class="special-reports">
-    <h2><span class="icon">🌟</span> 深度研究 & 公告</h2>
-    <div class="research-grid">
+            <h2><span class="icon">🌟</span> 深度研究 & 公告</h2>
+            <div class="research-grid">
+                <article class="research-card">
+                    <h3>【重磅升級】您的「靈蛇週報」App 來了！</h3>
+                    <p>網站正式支援PWA功能！現在就將「靈蛇週報」安裝到您的手機桌面，體驗離線閱讀、全螢幕無干擾的極致感受。</p>
+                    <a href="articles/announcement-pwa-launch.html" target="_blank" class="read-more">了解如何安裝 &rarr;</a>
+                </article>
+                <article class="research-card">
+                    <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
+                    <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
+                    <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </article>
+                <article class="research-card">
+                    <h3>【個股解析】材料-KY (4763)</h3>
+                    <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
+                    <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </article>
+            </div>
+        </section>
 
-        <article class="research-card">
-            <h3>【重磅升級】您的「靈蛇週報」App 來了！</h3>
-            <p>網站正式支援PWA功能！現在就將「靈蛇週報」安裝到您的手機桌面，體驗離線閱讀、全螢幕無干擾的極致感受。</p>
-            <a href="articles/announcement-pwa-launch.html" target="_blank" class="read-more">了解如何安裝 &rarr;</a>
-        </article>
-
-        <article class="research-card">
-            <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
-            <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
-            <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </article>
-
-        <article class="research-card">
-            <h3>【個股解析】材料-KY (4763)</h3>
-            <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
-            <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-        </article>
-        
-    </div>
-</section>
         <section class="report-list">
             <h2><span class="icon">📂</span> 週報歸檔</h2>
             <article class="report-card"><div class="card-header"><h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p><a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
             <article class="report-card"><div class="card-header"><h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p><a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
             <article class="report-card"><div class="card-header"><h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p><a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
         </section>
+        
         <footer class="site-footer">
             <div class="footer-links"><a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/glossary.html">投資術語庫</a><a href="/SnakeStock/disclaimer.html">免責聲明</a></div>
             <div class="footer-support" style="margin-bottom: 15px;"><a href="https://buymeacoffee.com/snakelee72" target="_blank">☕ 贊助支持 (Buy Me a Coffee)</a></div>
