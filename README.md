@@ -12,9 +12,10 @@
 
 * **每週報告 (`/reports`)**: 發布最新的市場分析與個股精選。
 * **個股儀表板 (`/dashboard.html`)**: 一個可搜尋、排序的歷史推薦個股資料庫。
-* **個股追蹤頁 (`/stocks`)**: 為每一檔核心股票建立的獨立頁面，包含即時K線圖與完整推薦歷史。
+* **個股追蹤頁 (`/stocks`)**: 為每一檔核心股票建立的獨立頁面，提供連到專業網站的即時K線圖、靈蛇評等、法人持股與完整推薦歷史。
 * **月度戰報 (`/review-*.html`)**: 每月發布的視覺化績效總回顧。
 * **知識庫 (`/glossary.html`, `/about.html`)**: 提供投資術語解析與本專案的核心理念。
+* **投資工具 (`/calculator.html`, etc.)**: 提供如損益計算機等實用工具。
 
 ---
 
@@ -67,4 +68,4 @@
 * **版本控制與部署**: Git, GitHub Pages
 * **AI 協作**: Google AI Studio (Gemini)
 * **深度研究工具**: NotebookLM
-* **第三方工具**: TradingView, CrowdSignal, Buy Me a Coffee
+* **第三方工具**: Buy Me a Coffee
