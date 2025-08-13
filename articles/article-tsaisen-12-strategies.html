@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【技術分析】深入剖析：蔡森12招與波浪理論的實戰精髓 - 靈蛇週報</title>
-    <!-- PWA & SEO Meta Tags -->
     <link rel="manifest" href="/SnakeStock/manifest.json">
     <meta name="description" content="靈蛇週報獨家整理，深入探討台灣技術分析名家蔡森的12張圖戰法，結合波浪理論，掌握多空轉折的關鍵訊號，提升您的投資勝率。">
     <meta name="keywords" content="靈蛇週報, 蔡森12招, 技術分析, 波浪理論, W底, M頭, 破底翻, 假突破, 型態學">
     <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-green: #50fa7b; --color-red: #ff5555;}
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
         header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
@@ -20,45 +19,17 @@
         .content-card h2 { font-size: 1.6em; color: var(--accent-blue); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .content-card h3 { font-size: 1.3em; color: var(--text-primary); }
         .content-card p, .content-card li { color: var(--text-secondary); }
+        .content-card ul { list-style-type: square; padding-left: 20px; }
         audio { width: 100%; margin-top: 15px; }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
         .footer-links { margin-bottom: 15px; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
         .share-container { padding: 20px; margin-top: 40px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; text-align: center; }
         .share-container p { margin: 0 0 15px 0; font-weight: 500; }
-        .share-buttons a, .share-buttons button { display: inline-block; padding: 10px 20px; margin: 5px; border-radius: 20px; text-decoration: none; font-weight: bold; color: #fff; border: none; cursor: pointer; }
+        .share-buttons a, .share-buttons button { display: inline-block; padding: 10px 20px; margin: 5px; border-radius: 20px; text-decoration: none; font-weight: bold; color: #fff; border: none; cursor: pointer; transition: all 0.3s; }
         .share-button-line { background-color: #06C755; }
         .share-button-fb { background-color: #1877F2; }
         .share-button-copy { background-color: #8b949e; }
-        
-        /* --- 新增的圖文網格樣式 --- */
-        .pattern-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-        @media (min-width: 768px) {
-            .pattern-grid { grid-template-columns: 1fr 1fr; }
-        }
-        .pattern-item {
-            background-color: #191932;
-            border-radius: 8px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-        }
-        .pattern-item h4 {
-            margin-top: 0;
-            color: var(--accent-blue);
-            font-size: 1.2em;
-        }
-        .pattern-svg-container {
-            width: 100%;
-            background-color: var(--bg-dark-ai);
-            border-radius: 5px;
-            padding: 10px;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
@@ -70,7 +41,10 @@
 
         <section class="content-card">
             <h2><span class="icon">🎧</span> 語音導讀</h2>
-            <audio controls><source src="../audio/tsaisen-12-strategies.m4a" type="audio/mp4">您的瀏覽器不支援音訊播放。</audio>
+            <audio controls>
+                <source src="../audio/tsaisen-12-strategies.m4a" type="audio/mp4">
+                您的瀏覽器不支援音訊播放。
+            </audio>
         </section>
 
         <section class="content-card">
@@ -79,53 +53,44 @@
         </section>
         
         <section class="content-card">
+            <h2>蔡森12招：核心理念與目的</h2>
+            <ul>
+                <li><strong>核心理念</strong>：蔡森強調投資不需使用複雜的技術分析指標，只需專注於**「量」與「價」**這兩項最即時的訊號，並結合特定價格型態進行分析。他認為MACD、RSI、KD等指標都已延遲，參考意義不大。</li>
+                <li><strong>主要目標</strong>：旨在幫助投資人判斷多空轉折點，並精準掌握進出場的時機，實現穩健獲利。</li>
+                <li><strong>實用性</strong>：型態被設計成相對容易辨識的圖形，提供明確的操作依據，避免模糊空間。</li>
+            </ul>
+        </section>
+
+        <section class="content-card">
             <h2>多頭買進訊號 (Bullish Buy Signals)</h2>
-            <div class="pattern-grid">
-                <div class="pattern-item">
-                    <h4>1. W底 (雙重底)</h4>
-                    <div class="pattern-svg-container">
-                        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><polyline points="5,45 25,10 45,45 65,10 85,45" fill="none" stroke="#e6e6fa" stroke-width="1"/><line x1="20" y1="10" x2="70" y2="10" stroke-dasharray="2" stroke="var(--accent-blue)" stroke-width="0.5"/><text x="45" y="7" font-size="3" fill="var(--accent-blue)" text-anchor="middle">頸線</text><polyline points="65,10 75,5" fill="none" stroke="var(--color-green)" stroke-width="1"/><polyline points="75,5 72,7 75,5 72,3" fill="none" stroke="var(--color-green)" stroke-width="1"/><text x="80" y="5" font-size="3" fill="var(--color-green)">突破買進</text></svg>
-                    </div>
-                    <p>價格經過兩次探底後未能再創新低，成功帶量突破頸線，視為買進訊號。</p>
-                </div>
-                <div class="pattern-item">
-                    <h4>2. 頭肩底 (Inverse Head & Shoulders)</h4>
-                    <div class="pattern-svg-container">
-                        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 45 C 20 15, 30 15, 40 45 L 45 45 C 45 5, 55 5, 55 45 L 60 45 C 70 15, 80 15, 90 45" fill="none" stroke="#e6e6fa" stroke-width="1"/><line x1="35" y1="18" x2="75" y2="18" stroke-dasharray="2" stroke="var(--accent-blue)" stroke-width="0.5"/><text x="55" y="15" font-size="3" fill="var(--accent-blue)" text-anchor="middle">頸線</text><polyline points="70,18 80,13" fill="none" stroke="var(--color-green)" stroke-width="1"/><polyline points="80,13 77,15 80,13 77,11" fill="none" stroke="var(--color-green)" stroke-width="1"/><text x="85" y="13" font-size="3" fill="var(--color-green)">突破買進</text></svg>
-                    </div>
-                    <p>由一個底部（頭）和兩個較高的肩部組成，一旦突破頸線，是重要的底部反轉訊號。</p>
-                </div>
-            </div>
-             <p style="margin-top:20px;">其他多頭型態還包括：<strong>破底翻、下飄旗形、收斂三角形(底部)</strong>等，皆是判斷趨勢由空轉多的重要訊號。</p>
+            <ol>
+                <li><strong>W底</strong>：一種經典底部型態，價格經過兩次探底後未能再創新低，成功突破頸線視為買進訊號。</li>
+                <li><strong>破底翻</strong>：股價跌破前低後迅速反彈，顯示空方力竭、有資金進場承接的買點。</li>
+                <li><strong>破底翻（W底變形）</strong>：W底的第二隻腳跌破第一隻腳的低點，但隨後迅速翻揚，是更強烈的多頭訊號。</li>
+                <li><strong>下飄旗形</strong>：在一段強勁上漲後，股價呈現小幅向下傾斜的通道進行整理，一旦帶量向上突破旗形上緣，是多頭趨勢再起的訊號。</li>
+                <li><strong>頭肩底</strong>：由一個底部（最低點）和兩個較高的肩部組成，一旦突破頸線，是重要的底部反轉訊號。</li>
+                <li><strong>收斂三角形（底部）</strong>：價格波動幅度逐漸縮小，若在趨勢低檔向上突破三角形上緣壓力線，則為多方訊號。</li>
+            </ol>
         </section>
 
         <section class="content-card">
             <h2>空單進場訊號 (Bearish Entry Signals)</h2>
-            <div class="pattern-grid">
-                <div class="pattern-item">
-                    <h4>1. M頭 (雙重頂)</h4>
-                    <div class="pattern-svg-container">
-                        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><polyline points="5,5 25,40 45,5 65,40 85,5" fill="none" stroke="#e6e6fa" stroke-width="1"/><line x1="20" y1="40" x2="70" y2="40" stroke-dasharray="2" stroke="var(--accent-blue)" stroke-width="0.5"/><text x="45" y="45" font-size="3" fill="var(--accent-blue)" text-anchor="middle">頸線</text><polyline points="65,40 75,45" fill="none" stroke="var(--color-red)" stroke-width="1"/><polyline points="75,45 72,43 75,45 72,47" fill="none" stroke="var(--color-red)" stroke-width="1"/><text x="80" y="46" font-size="3" fill="var(--color-red)">跌破放空</text></svg>
-                    </div>
-                    <p>價格經過兩次登頂後未能再創新高，跌破頸線後，形成賣出或放空訊號。</p>
-                </div>
-                <div class="pattern-item">
-                    <h4>2. 頭肩頂 (Head & Shoulders)</h4>
-                    <div class="pattern-svg-container">
-                        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 5 C 20 35, 30 35, 40 5 L 45 5 C 45 45, 55 45, 55 5 L 60 5 C 70 35, 80 35, 90 5" fill="none" stroke="#e6e6fa" stroke-width="1"/><line x1="35" y1="32" x2="75" y2="32" stroke-dasharray="2" stroke="var(--accent-blue)" stroke-width="0.5"/><text x="55" y="37" font-size="3" fill="var(--accent-blue)" text-anchor="middle">頸線</text><polyline points="70,32 80,37" fill="none" stroke="var(--color-red)" stroke-width="1"/><polyline points="80,37 77,35 80,37 77,39" fill="none" stroke="var(--color-red)" stroke-width="1"/><text x="85" y="38" font-size="3" fill="var(--color-red)">跌破放空</text></svg>
-                    </div>
-                    <p>由一個頭部（最高點）和兩個較低的肩部組成，一旦跌破頸線，是重要的頭部反轉訊號。</p>
-                </div>
-            </div>
-            <p style="margin-top:20px;">其他空頭型態還包括：<strong>假突破、上飄旗形、收斂三角形(頭部)</strong>等，皆是判斷趨勢由多轉空的重要警訊。</p>
+            <ol>
+                <li><strong>上飄旗形</strong>：在一段急跌後，股價呈現小幅向上傾斜的通道進行反彈整理，一旦帶量向下跌破旗形下緣，是空頭趨勢再起的訊號。</li>
+                <li><strong>M頭</strong>：一種頭部反轉型態，價格經過兩次登頂後未能再創新高，並跌破頸線，形成賣出訊號。</li>
+                <li><strong>假突破</strong>：股價短暫突破阻力位後迅速回落，往往是波段結束的空頭訊號。</li>
+                <li><strong>假突破（頭肩頂變形）</strong>：頭肩頂的右肩高於頭部，但隨後快速跌破頸線，形成誘多的假象，是更強烈的空頭訊號。</li>
+                <li><strong>頭肩頂</strong>：由一個頭部（最高點）和兩個較低的肩部組成，一旦跌破頸線，是重要的頭部反轉訊號。</li>
+                <li><strong>收斂三角形（頭部）</strong>：價格波動幅度逐漸縮小，若在趨勢高檔向下跌破三角形下緣支撐線，則為空方訊號。</li>
+            </ol>
         </section>
 
         <section class="content-card">
             <h2>其他重要觀念與操作原則</h2>
             <ul>
-                <li><strong>判斷主力心態</strong>：形態學不僅能判斷趨勢，搭配量價關係，更能看出主力心態和市場氛圍。</li>
-                <li><strong>操作策略</strong>：蔡森的操作哲學是「只要看到轉弱就是做空，轉強我不會去做多」。</li>
-                <li><strong>風險管理</strong>：蔡森特別強調嚴設停損、資金控管的重要性。對於「假突破」的出現，他建議立即停損。</li>
+                <li><strong>判斷主力心態</strong>：形態學不僅能判斷趨勢，搭配量價關係，更能看出主力心態和市場氛圍。透過型態學可以洞察主力逢低進場佈局的意圖。</li>
+                <li><strong>操作策略</strong>：蔡森的操作哲學是「只要看到轉弱就是做空，轉強我不會去做多」。他強調高效操作是找到突破點和跌破點。</li>
+                <li><strong>風險管理</strong>：蔡森特別強調嚴設停損、資金控管的重要性。對於「假突破」的出現，他建議立即停損，避免資金被套牢。</li>
                 <li><strong>時間波理論</strong>：蔡森獨特的理論，認為當時間到達對稱時常會出現變盤，這對於行情判斷有相當大的助益。</li>
             </ul>
         </section>
