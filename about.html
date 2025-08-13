@@ -4,22 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>關於靈蛇週報</title>
-    <link rel="manifest" href="/SnakeStock/manifest.json">
-
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, err => {
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
-</script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        
         :root {
             --bg-dark-ai: #0a0a1a;
             --bg-card: #101024;
@@ -27,15 +13,10 @@
             --text-primary: #e6e6fa;
             --text-secondary: #a0a0c0;
             --accent-blue: #00d1ff;
-            --color-red: #ff5555;
-            --color-green: #50fa7b;
         }
-
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: var(--bg-dark-ai);
-            background-image: radial-gradient(circle at top left, rgba(0, 209, 255, 0.1), transparent 30%),
-                              radial-gradient(circle at bottom right, rgba(163, 113, 247, 0.1), transparent 30%);
             color: var(--text-primary);
             margin: 0;
             padding: 10px;
@@ -45,10 +26,6 @@
             max-width: 900px;
             margin: 10px auto;
             padding: 15px;
-            background-color: rgba(16, 16, 36, 0.8);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
         }
         header {
             text-align: center;
@@ -59,7 +36,6 @@
             color: var(--accent-blue);
             font-size: 2.5em;
             margin: 0;
-            text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
         }
         header p {
             color: var(--text-secondary);
@@ -133,17 +109,25 @@
             transform: translateY(-3px);
         }
 
-        footer {
+        .site-footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 50px;
+            padding-top: 30px;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1>關於「靈蛇週報」</h1>
@@ -172,7 +156,11 @@
         <section id="source">
             <h2><span class="icon">📡</span>我們的情報來源</h2>
             <div class="content-card">
-                <p>我們的分析起點，是基於對市場頂尖分析師觀點的彙整。確保我們的選股池，永遠建立在專業的基礎之上。</p>
+                <p>我們的分析起點，是基於對市場多元觀點的彙整。我們長期追蹤台灣主流的財經節目與頂尖分析師的公開見解，確保我們的選股池，永遠建立在宏觀與微觀兼具的專業基礎之上。目前的「5核心情報矩陣」包括：</p>
+                <ul>
+                    <li style="text-indent: 0; padding-left: 0;"><strong>綜合性財經節目</strong>：非凡電視-錢線百分百、鈔錢部署、理財達人秀</li>
+                    <li style="text-indent: 0; padding-left: 0;"><strong>精選分析師</strong>：郭哲榮分析師、林鈺凱分析師</li>
+                </ul>
             </div>
         </section>
         
@@ -181,10 +169,10 @@
             <div class="content-card">
                 <p>「靈蛇週報」的核心，是一套獨一無二的人機協作模式：</p>
                 <ul>
-                    <li><strong>人類總監 </strong>：負責制定最高策略、搜集關鍵情報，並做出最終的投資決策。</li>
-                    <li><strong>AI 研究部隊 </strong>：負責執行龐大的數據處理、資訊抓取、模型篩選、績效回測與報告生成任務。</li>
+                    <li style="text-indent: 0; padding-left: 0;"><strong>人類總監</strong>：負責制定最高策略、搜集關鍵情報，並做出最終的投資決策。</li>
+                    <li style="text-indent: 0; padding-left: 0;"><strong>AI 研究部隊</strong>：負責執行龐大的數據處理、資訊抓取、模型篩選、績效回測與報告生成任務。</li>
                 </ul>
-                <p>這個模式結合了投資智慧與AI的運算效率，創造出傳統模式無法比擬的深度與廣度。</p>
+                <p>這個模式結合了您的投資智慧與AI的運算效率，創造出傳統模式無法比擬的深度與廣度。</p>
             </div>
         </section>
         
@@ -193,16 +181,15 @@
         </div>
 
         <footer class="site-footer">
-    <div class="footer-links">
-        <a href="/SnakeStock/index.html">返回首頁</a>
-        <a href="/SnakeStock/about.html">關於我們</a>
-        <a href="/SnakeStock/dashboard.html">個股儀表板</a>
-        <a href="/SnakeStock/glossary.html">投資術語庫</a>
-        <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
     </div>
-    <p>&copy; 2025 靈蛇研究團隊謹製</p>
-</footer>
-    </div>
-
 </body>
 </html>
