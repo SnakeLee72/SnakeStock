@@ -20,7 +20,7 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #30363d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; }
+        :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #30363d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; --color-red: #ff5555; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
         header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
@@ -53,6 +53,8 @@
         .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
         .footer-support { margin-bottom: 15px; }
         .footer-support a { display: inline-block; padding: 8px 15px; background-color: #FFDD00; color: #000; font-weight: bold; border-radius: 20px; text-decoration: none; }
+        .new-badge { background-color: var(--color-red); color: white; font-size: 0.6em; padding: 3px 7px; border-radius: 5px; margin-left: 10px; vertical-align: middle; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 10px 10px rgba(255, 85, 85, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0); } }
     </style>
 </head>
 <body>
@@ -67,63 +69,58 @@
             </div>
         </header>
 
-        <section class="mission-statement"><p>結合數據科學與市場脈動，透過独家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p></section>
+        <section class="mission-statement">
+            <p>結合數據科學與市場脈動，透過独家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
+        </section>
 
         <section class="special-reports">
             <h2><span class="icon">🌟</span> 深度研究 & 公告</h2>
             <div class="research-grid">
-
                 <article class="research-card">
                     <h3>【重磅升級】您的「靈蛇週報」App 來了！</h3>
                     <p>網站正式支援PWA功能！現在就將「靈蛇週報」安裝到您的手機桌面，體驗離線閱讀、全螢幕無干擾的極致感受。</p>
                     <a href="articles/announcement-pwa-launch.html" target="_blank" class="read-more">了解如何安裝 &rarr;</a>
                 </article>
-
                 <article class="research-card">
-            <h3>【技術分析】深入剖析：蔡森12招與波浪理論</h3>
-            <p>獨家整理台灣技術分析名家蔡森的12張圖戰法，結合經典的波浪理論，掌握多空轉折的關鍵訊號，提升您的投資勝率。</p>
-            <a href="articles/article-tsaisen-12-strategies.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
-        </article>
-
-                <article class="research-card">
-            <h3>【投資心法】該買綠還是追紅？</h3>
-            <p>深度解析投資策略：逢低買入（買綠）的左側交易 vs. 順勢追高（追紅）的右側交易。了解兩者優劣，找到最適合您的投資心法。</p>
-            <a href="articles/article-trading-philosophy.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
-        </article>
-                
-                  <article class="research-card">
                     <h3>【靈蛇透視鏡】AI 獨強的派對結束了？</h3>
                     <p>深度解析台股在高檔震盪下的資金輪動劇本，探討資金如何從核心AI股流向補漲族群，並分析下週關鍵宏觀事件的影響。</p>
                     <a href="articles/article-market-rotation-0809.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                
                 <article class="research-card">
                     <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
                     <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
                     <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                 </article>
-                
                 <article class="research-card">
                     <h3>【個股解析】材料-KY (4763)</h3>
                     <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
                     <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </article>
+                 <article class="research-card">
+                    <h3>【技術分析】深入剖析：蔡森12招與波浪理論</h3>
+                    <p>獨家整理台灣技術分析名家蔡森的12張圖戰法，結合經典的波浪理論，掌握多空轉折的關鍵訊號，提升您的投資勝率。</p>
+                    <a href="articles/article-tsaisen-12-strategies.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
+                </article>
+                <article class="research-card">
+                    <h3>【投資心法】該買綠還是追紅？</h3>
+                    <p>深度解析投資策略：逢低買入（買綠）的左側交易 vs. 順勢追高（追紅）的右側交易。了解兩者優劣，找到最適合您的投資心法。</p>
+                    <a href="articles/article-trading-philosophy.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
             </div>
         </section>
 
         <section class="report-list">
             <h2><span class="icon">📂</span> 週報歸檔</h2>
-            
             <article class="report-card">
                 <div class="card-header">
-                    <h3>靈蛇週報 0809</h3><span class="date">2025-08-09</span>
+                    <h3>靈蛇週報 0816 <span class="new-badge">New!</span></h3><span class="date">2025-08-16</span>
                 </div>
                 <div class="card-content">
-                    <p class="teaser"><strong>本期焦點：</strong>高檔震盪下的資金輪動！本週聚焦價格門檻更親民的績優AI股，在守住核心持股的同時，尋找補漲新機會。<br><strong>精選個股：</strong>廣達、鴻海、光寶科</p>
-                    <a href="reports/2025-08-09.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    <p class="teaser"><strong>本期焦點：</strong>指數創高後的健康輪動！AI多頭格局未變，資金開始尋找半導體、蘋概等位階較低的補漲機會。<br><strong>精選個股：</strong>鴻海、日月光投控、光寶科</p>
+                    <a href="reports/2025-08-16.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                 </div>
             </article>
-            
+            <article class="report-card"><div class="card-header"><h3>靈蛇週報 0809</h3><span class="date">2025-08-09</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>高檔震盪下的資金輪動！本週聚焦價格門檻更親民的績優AI股，在守住核心持股的同時，尋找補漲新機會。<br><strong>精選個股：</strong>廣達、鴻海、光寶科</p><a href="reports/2025-08-09.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
             <article class="report-card"><div class="card-header"><h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p><a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
             <article class="report-card"><div class="card-header"><h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p><a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
             <article class="report-card"><div class="card-header"><h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p><a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
