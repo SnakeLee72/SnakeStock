@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0816 - 指數創高後的補漲行情</title>
+    <meta name="description" content="靈蛇週報0816期分析。本週精選個股為鴻海(2317)、日月光投控(3711)、光寶科(2301)，探討在指數創高後，如何佈局位階較低的補漲潛力股。">
+    <meta name="keywords" content="靈蛇週報, 0816, 鴻海, 日月光投控, 光寶科, AI股, 補漲">
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-red: #ff5555; --color-green: #50fa7b; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
+        header p { color: var(--text-secondary); }
+        section { margin-bottom: 40px; }
+        h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; display: flex; align-items: center; }
+        h2 .icon { margin-right: 15px; font-size: 1.2em; color: var(--accent-blue); }
+        .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { background-color: rgba(42, 42, 74, 0.5); }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .positive-return { color: var(--color-red); font-weight: bold; }
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
+        .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
+        blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0816</h1>
+            <p>靈蛇投資研究中心 | 2025年8月16日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (8/11-8/15)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高收盤(元)</th><th>平均報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>2382</td><td>廣達</td><td>285-292</td><td>290.0</td><td class="positive-return">+1.4%</td><td><span class="loss">是</span></td></tr>
+                        <tr><td>2317</td><td>鴻海</td><td>190-195</td><td>207.0</td><td class="positive-return">+7.4%</td><td>否</td></tr>
+                        <tr><td>2301</td><td>光寶科</td><td>135-140</td><td>140.5</td><td class="positive-return">+2.2%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>本週產業焦點</h2>
+            <div class="stock-card">
+                <h3>指數創高後的健康輪動</h3>
+                <p>本週台股在權王台積電的帶領下，成功突破歷史新高，市場情緒樂觀。從我們的「6核心情報矩陣」分析，市場共識認為AI多頭格局未變，但資金開始尋找位階較低的補漲機會。除了AI伺服器，半導體下游的「封測」族群，以及受惠蘋果新品的「蘋概股」，都開始獲得顯著關注。本週的策略，是在守住核心AI持股的同時，開始佈局剛從底部轉強的半導體與蘋概績優股。</p>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>最新收盤價</th><th>建議進場區間</th><th class="stop-loss">停損價</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2317</strong></td><td><strong>鴻海</strong></td><td>207.0元</td><td>204-208元</td><td class="stop-loss">200元</td><td class="target-price">230元</td></tr>
+                        <tr><td><strong>3711</strong></td><td><strong>日月光投控</strong></td><td>148.0元</td><td>146-150元</td><td class="stop-loss">142元</td><td class="target-price">165元</td></tr>
+                        <tr><td><strong>2301</strong></td><td><strong>光寶科</strong></td><td>134.0元</td><td>132-135元</td><td class="stop-loss">129元</td><td class="target-price">150元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股分析</h2>
+            <div class="stock-card">
+                 <h3>【2317 鴻海】</h3>
+                 <h4>價位規劃</h4>
+                 <ul>
+                    <li><strong>建議進場區間：</strong>204-208元 (沿5日線強勢整理區)</li>
+                    <li><strong>停損價：</strong>200元 (以失守關鍵的10日均線支撐為條件)</li>
+                    <li><strong>波段目標價：</strong>230元 (法人報告目標價)</li>
+                 </ul>
+                <h4>選股理由</h4>
+                <p>AI伺服器營收動能明確，股價維持強勢多頭，且具備EV與蘋果新品等多重題材，進可攻退可守。持續獲得分析師們的高度共識推薦，法人籌碼穩定。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【3711 日月光投控】</h3>
+                 <h4>價位規劃</h4>
+                 <ul>
+                    <li><strong>建議進場區間：</strong>146-150元 (突破長期整理平台頸線)</li>
+                    <li><strong>停損價：</strong>142元 (以跌破頸線支撐為停損條件)</li>
+                    <li><strong>波段目標價：</strong>165元 (挑戰今年前波高點壓力)</li>
+                 </ul>
+                <h4>選股理由</h4>
+                <p>全球半導體封測龍頭，直接受惠於AI與HPC晶片帶動的先進封裝(CoWoS)需求。股價經過長期整理後，近期帶量突破頸線，技術面剛轉強，法人開始回補，是價格門檻較低的半導體補漲首選。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【2301 光寶科】</h3>
+                 <h4>價位規劃</h4>
+                 <ul>
+                    <li><strong>建議進場區間：</strong>132-135元 (回測月線支撐區)</li>
+                    <li><strong>停損價：</strong>129元 (以失守關鍵的月線支撐為停損條件)</li>
+                    <li><strong>波段目標價：</strong>150元 (法人報告目標價)</li>
+                 </ul>
+                <h4>選股理由</h4>
+                <p>AI伺服器電源的關鍵供應商，股價位階相對較低。在市場尋求AI補漲股時，光寶科因其穩健的營運與明確的AI題材，持續吸引資金關注，適合作為投資組合中的衛星配置。</p>
+            </div>
+        </section>
+
+        <section id="macro">
+            <h2><span class="icon">🌐</span>宏觀總結與盤勢觀察重點</h2>
+            <div class="stock-card">
+                 <h4>觀察重點一：美國零售銷售數據</h4>
+                <p>下週將公布最新的美國零售銷售數據，可從中一窺美國消費力道的強弱，進而影響市場對經濟「軟著陸」或「硬著陸」的預期。</p>
+                <h4>觀察重點二：指數與個股的背離現象</h4>
+                <p>需留意指數創高，但部分個股卻無法跟上的「背離」現象。健康的盤勢，應該是類股輪動上漲；若只有少數權值股拉抬指數，則需提防盤勢過熱的風險。</p>
+                <h4>觀察重點三：新台幣匯率走勢</h4>
+                <p>近期新台幣走勢與外資買賣超高度相關。若台幣能維持強勢，代表外資持續匯入，有利台股資金行情延續。</p>
+            </div>
+        </section>
+        
+        <section>
+            <blockquote>
+            別人恐懼我加倍恐懼，別人貪婪我直接梭哈。
+            </blockquote>
+        </section>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart').getContext('2d');
+    new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['AI 伺服器', '半導體 (含封測)', 'AI 電源/零組件', '其他'],
+            datasets: [{
+                label: '本週產業聲量分佈',
+                data: [40, 30, 25, 5],
+                backgroundColor: ['rgba(0, 209, 255, 0.7)', 'rgba(163, 113, 247, 0.7)', 'rgba(80, 250, 123, 0.7)', 'rgba(255, 184, 108, 0.7)'],
+                borderColor: '#101024',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: '本週產業聲量分佈 (%)', color: '#e6e6fa', font: { size: 16 } },
+                legend: { position: 'bottom', labels: { color: '#a0a0c0', font: { size: 14 } } }
+            }
+        }
+    });
+</script>
+</body>
+</html>
