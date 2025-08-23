@@ -29,12 +29,15 @@
         .negative-return { color: var(--color-green); font-weight: bold; }
         .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
         .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
-        .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .stock-card h4 { font-size: 1.3em; color: var(--accent-blue); margin-top: 25px; margin-bottom: 15px; }
         .fact-tag { background-color: rgba(0, 209, 255, 0.1); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
         .analysis-tag { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
         .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
         blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .focus-list { list-style: none; padding-left: 0; }
+        .focus-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .focus-list li::before { content: '▪'; color: var(--accent-blue); position: absolute; left: 0; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -63,7 +66,27 @@
             <h2><span class="icon">🔍</span>本週產業焦點</h2>
             <div class="stock-card">
                 <h3>AI漲多拉回，資金輪動好戲登場</h3>
-                <p>本週台股在AI主流股漲多休息下，指數呈現高檔震盪。從我們的「6核心情報矩陣」分析，市場共識出現明顯轉變：資金正從過熱的AI伺服器族群流出，積極尋找下一波具備爆發力的題材。本週的市場關鍵字是「輪動」，焦點轉向了**蘋果新機拉貨**、**「傳產轉AI」的轉機故事**、以及**位階相對較低的CPO/矽光子**等族群。如何在資金輪動的浪潮中，汰弱留強，並提前卡位新主流，將是下週的操作重點。</p>
+                <p>NVIDIA的超預期財報，再次為AI的長期多頭格局定錨，然而市場的反應卻顯示出新的變化。本週台股在AI主流股漲多休息下，指數呈現高檔震盪。從我們的「6核心情報矩陣」分析，資金正上演一場精彩的輪動大戲，從過熱的核心族群，積極地向外尋找下一個價值窪地與爆發機會。本週的市場劇本，主要圍繞著以下三大主軸：</p>
+                
+                <h4>趨勢一：AI仍在核心，但資金開始擴散</h4>
+                <p>AI派對尚未結束，但主桌的賓客已開始向外圍移動。資金明顯從第一波的伺服器組裝廠，開始向更廣泛的供應鏈擴散：</p>
+                <ul class="focus-list">
+                    <li><strong>向上游擴散：</strong> 往技術門檻更高的 **PCB/CCL** (如 台光電、臻鼎-KY)、**半導體設備** (如 致茂、弘塑) 與 **CPO/矽光子** (如 光聖、上詮) 等領域移動。</li>
+                    <li><strong>向下游擴散：</strong> 往終端應用的 **AI PC** (如 宏碁、華碩)、**AI手機** 與 **AI 眼鏡** (如 宏達電、英濟) 等新戰場佈局。</li>
+                </ul>
+
+                <h4>趨勢二：「傳產變AI」，尋找低基期轉機股</h4>
+                <p>市場的聚光燈開始投向那些本業看似傳統，卻已成功切入AI供應鏈的「轉機股」。這些公司具備低本益比與高成長想像空間的雙重優勢，成為資金追逐的黑馬。</p>
+                <ul class="focus-list">
+                    <li><strong>代表案例：</strong> **南寶(4766)** (從樹脂年膠切入晶圓製程UV解離膠)、**台玻(1802)** (從傳統玻璃切入高階玻纖布)、**南亞(1303)** (從塑化切入銅箔基板)。</li>
+                </ul>
+
+                <h4>趨勢三：非電族群虎視眈眈，成為避風港</h4>
+                <p>在電子股漲多、大盤高檔震盪之際，部分資金轉進非電族群尋求避險與輪動機會，這些族群自身的產業利多也在此時被放大。 </p>
+                 <ul class="focus-list">
+                    <li><strong>代表案例：</strong> **航運股** (如 長榮、陽明) 因運價指數上漲而重獲關注；**軍工股** (如 雷虎、中光電) 因國防預算題材而持續吸引特定資金。</li>
+                </ul>
+
                 <div class="chart-container">
                     <canvas id="industryPieChart"></canvas>
                 </div>
@@ -146,10 +169,10 @@
     new Chart(pieCtx, {
         type: 'doughnut',
         data: {
-            labels: ['蘋果供應鏈', 'CPO/矽光子', '傳產轉AI', 'AI伺服器(整理)'],
+            labels: ['PCB/CCL', 'CPO/矽光子', '傳產轉AI', 'AI伺服器(整理)'],
             datasets: [{
                 label: '本週產業資金流向',
-                data: [40, 30, 20, 10],
+                data: [40, 25, 20, 15],
                 backgroundColor: ['rgba(0, 209, 255, 0.7)', 'rgba(163, 113, 247, 0.7)', 'rgba(80, 250, 123, 0.7)', 'rgba(255, 184, 108, 0.7)'],
                 borderColor: '#101024',
                 borderWidth: 3
