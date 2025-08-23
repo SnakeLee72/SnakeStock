@@ -95,5 +95,23 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pageUrl = window.location.href;
+        const shareLine = document.getElementById('shareLine');
+        if (shareLine) { shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`; }
+        const shareFb = document.getElementById('shareFb');
+        if (shareFb) { shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`; }
+        const copyLink = document.getElementById('copyLink');
+        if (copyLink) {
+            copyLink.addEventListener('click', function() {
+                navigator.clipboard.writeText(pageUrl).then(() => {
+                    copyLink.textContent = '已複製！';
+                    setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>
