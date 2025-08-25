@@ -37,24 +37,13 @@
         section { margin-bottom: 40px; }
         h2 { font-size: 1.8em; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 30px; display: flex; align-items: center; }
         
-        /* --- [升級] Animation Styles --- */
+        /* --- Animation Styles --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px); /* 增加滑動距離 */
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-on-scroll {
-            opacity: 0; /* 預設隱藏，等待觸發 */
-            will-change: opacity, transform; /* 預先告知瀏覽器以優化效能 */
-        }
-        .fade-in-on-scroll.is-visible {
-            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 使用更優雅的cubic-bezier曲線 */
-        }
+        .fade-in-on-scroll { opacity: 0; will-change: opacity, transform; }
+        .fade-in-on-scroll.is-visible { animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 
         .mission-statement { text-align: center; font-size: 1.1em; color: var(--text-secondary); max-width: 650px; margin: 0 auto 50px auto; border-left: 3px solid var(--accent-profit); padding-left: 20px; }
         .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
@@ -91,7 +80,7 @@
             <h1><span class="snake-emoji">🐍</span> 靈蛇週報</h1>
             <p class="subtitle">AI-Powered Market Insights & Weekly Selections</p>
             <div class="header-nav">
-                <a href="dashboard.html" class="cta-button secondary">📊 個股儀表板</a>
+                <a href="dashboard.html" class="cta-button">📊 個股儀表板</a>
                 <a href="articles/announcement-pwa-launch.html" class="cta-button">🚀 安裝 App</a>
             </div>
         </header>
@@ -193,9 +182,10 @@
             const setupToggler = (buttonId, containerId, itemSelector) => {
                 const toggleButton = document.getElementById(buttonId);
                 const container = document.getElementById(containerId);
+                if (!container) return;
                 const hiddenItems = container.querySelectorAll(itemSelector);
                 
-                if (toggleButton && container && hiddenItems.length > 0) {
+                if (toggleButton && hiddenItems.length > 0) {
                     toggleButton.addEventListener('click', function() {
                         const areItemsHidden = Array.from(hiddenItems).some(item => item.style.display === 'none' || item.style.display === '');
                         hiddenItems.forEach(card => {
@@ -211,12 +201,10 @@
             setupToggler('toggleArticles', 'researchGrid', '.research-card.hidden');
             setupToggler('toggleReports', 'reportListContainer', '.report-card.hidden');
 
-            // --- [升級] Logic for Staggered Fade-in Animation ---
+            // --- Logic for Staggered Fade-in Animation ---
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // 為每個可見的元素增加延遲
-                        entry.target.style.animationDelay = `${index * 100}ms`;
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
@@ -227,7 +215,11 @@
             });
 
             const elementsToAnimate = document.querySelectorAll('.fade-in-on-scroll');
-            elementsToAnimate.forEach(el => observer.observe(el));
+            elementsToAnimate.forEach((el, index) => {
+                 // 為每個元素增加不同的動畫延遲
+                el.style.animationDelay = `${index * 100}ms`;
+                observer.observe(el);
+            });
         });
     </script>
 </body>
