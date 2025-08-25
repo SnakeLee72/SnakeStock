@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,105 +21,313 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark: #0d1117; --bg-light: #161b22; --border-color: #30363d; --text-primary: #c9d1d9; --text-secondary: #8b949e; --accent-tech: #58a6ff; --accent-profit: #a371f7; --color-red: #ff5555; }
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
-        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
-        header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
-        header h1 { font-size: 3em; color: var(--text-primary); margin-bottom: 10px; cursor: default; }
-        header .snake-emoji { display: inline-block; transition: text-shadow 0.3s ease-in-out; }
-        header h1:hover .snake-emoji { animation: wiggle 0.5s ease-in-out; text-shadow: 0 0 15px var(--accent-tech); }
-        @keyframes wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
-        header .subtitle { font-size: 1.2em; color: var(--accent-tech); font-weight: 500; }
-        .header-nav { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
-        .cta-button { background-color: var(--accent-tech); color: #fff; padding: 8px 18px; border-radius: 20px; text-decoration: none; font-weight: 700; border: 1px solid var(--accent-tech); transition: all 0.3s; }
-        .cta-button:hover { background-color: #2f81f7; box-shadow: 0 0 10px rgba(88, 166, 255, 0.5); }
-        .cta-button.secondary { background-color: transparent; color: var(--accent-tech); border: 1px solid var(--accent-tech); }
-        .cta-button.secondary:hover { background-color: var(--accent-tech); color: #fff; }
-        
-        /* --- New Hero Section Styles --- */
-        .hero-section {
-            background: linear-gradient(145deg, rgba(22, 27, 34, 0.8), rgba(10, 10, 26, 0.8)), url('https://www.transparenttextures.com/patterns/carbon-fibre-v2.png');
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px 30px;
-            text-align: center;
-            margin-bottom: 50px;
+
+        :root {
+            --bg-dark: #0d1117;
+            --bg-light: #161b22;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-tech: #58a6ff;
+            --accent-profit: #a371f7;
+            --color-red: #ff5555;
         }
-        .hero-eyebrow {
-            color: var(--accent-profit);
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        .hero-title {
-            font-size: 2.5em;
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-primary);
-            font-weight: 700;
-            margin: 0 auto 20px auto;
-            max-width: 600px;
+            margin: 0;
+            padding: 0;
         }
-        .hero-stocks {
+
+        .container {
+            max-width: 900px;
+            margin: 10px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 30px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            cursor: default;
+        }
+
+        header .snake-emoji {
+            display: inline-block;
+            transition: text-shadow 0.3s ease-in-out;
+        }
+
+        header h1:hover .snake-emoji {
+            animation: wiggle 0.5s ease-in-out;
+            text-shadow: 0 0 15px var(--accent-tech);
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-8deg); }
+            75% { transform: rotate(8deg); }
+        }
+
+        header .subtitle {
+            font-size: 1.2em;
+            color: var(--accent-tech);
+            font-weight: 500;
+        }
+
+        .header-nav {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
+            align-items: center;
             flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
-        .hero-stock-tag {
-            background-color: var(--border-color);
-            color: var(--text-primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        .hero-cta-button {
-            display: inline-block;
+
+        .cta-button {
             background-color: var(--accent-tech);
             color: #fff;
-            padding: 15px 35px;
-            border-radius: 8px;
+            padding: 8px 18px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 700;
+            border: 1px solid var(--accent-tech);
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2f81f7;
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--accent-tech);
+            border: 1px solid var(--accent-tech);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--accent-tech);
+            color: #fff;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- Animation Styles --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-on-scroll {
+            opacity: 0;
+            will-change: opacity, transform;
+        }
+
+        .fade-in-on-scroll.is-visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .mission-statement {
+            text-align: center;
             font-size: 1.1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+            border-left: 3px solid var(--accent-profit);
+            padding-left: 20px;
         }
-        .hero-cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.4);
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
-        .hero-mission {
-            margin: 30px auto 0 auto;
-            max-width: 600px;
+
+        .research-card,
+        .report-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .research-card:hover,
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .research-card h3 {
+            font-size: 1.3em;
+            color: var(--accent-tech);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .research-card p {
+            color: var(--text-secondary);
+            flex-grow: 1;
+        }
+
+        .read-more,
+        .toggle-btn {
+            display: inline-block;
+            background-color: var(--accent-tech);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 15px;
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+        }
+
+        .read-more:hover,
+        .toggle-btn:hover {
+            background-color: #2f81f7;
+        }
+
+        .toggle-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: var(--text-primary);
+        }
+
+        .card-header .date {
             color: var(--text-secondary);
             font-size: 0.9em;
         }
 
-        section { margin-bottom: 40px; }
-        h2 { font-size: 1.8em; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 30px; display: flex; align-items: center; }
-        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .research-card, .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; margin-bottom: 20px; }
-        .research-card:hover, .report-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
-        .hidden { display: none; }
-        .research-card h3 { font-size: 1.3em; color: var(--accent-tech); margin-top: 0; margin-bottom: 10px; }
-        .research-card p { color: var(--text-secondary); flex-grow: 1; }
-        .read-more, .toggle-btn { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; border: none; cursor: pointer; }
-        .read-more:hover, .toggle-btn:hover { background-color: #2f81f7; }
-        .toggle-container { text-align: center; margin-top: 25px; }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .card-header h3 { margin: 0; font-size: 1.5em; color: var(--text-primary); }
-        .card-header .date { color: var(--text-secondary); font-size: 0.9em; }
-        .card-content { flex-grow: 1; }
-        .card-content .teaser { margin: 0 0 20px 0; color: var(--text-secondary); }
-        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
-        .footer-links { margin-bottom: 15px; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
-        .footer-support { margin-bottom: 15px; }
-        .footer-support a { display: inline-block; padding: 8px 15px; background-color: #FFDD00; color: #000; font-weight: bold; border-radius: 20px; text-decoration: none; }
-        .new-badge { background-color: var(--color-red); color: white; font-size: 0.6em; padding: 3px 7px; border-radius: 5px; margin-left: 10px; vertical-align: middle; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 10px 10px rgba(255, 85, 85, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0); } }
+        .card-content {
+            flex-grow: 1;
+        }
+
+        .card-content .teaser {
+            margin: 0 0 20px 0;
+            color: var(--text-secondary);
+        }
+
+        .quote-section {
+            text-align: center;
+            padding: 30px 20px;
+            margin: 50px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quote-section blockquote {
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--text-primary);
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .quote-section cite {
+            color: var(--text-secondary);
+            font-style: normal;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-support {
+            margin-bottom: 15px;
+        }
+
+        .footer-support a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #FFDD00;
+            color: #000;
+            font-weight: bold;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .new-badge {
+            background-color: var(--color-red);
+            color: white;
+            font-size: 0.6em;
+            padding: 3px 7px;
+            border-radius: 5px;
+            margin-left: 10px;
+            vertical-align: middle;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 10px 10px rgba(255, 85, 85, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0); }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -130,21 +339,23 @@
             </div>
         </header>
 
-        <section class="hero-section">
-            <div class="hero-eyebrow">最新發布：靈蛇週報 0822</div>
-            <h1 class="hero-title">AI漲多休息，資金輪動好戲登場！</h1>
-            <div class="hero-stocks">
-                <span class="hero-stock-tag">臻鼎-KY</span>
-                <span class="hero-stock-tag">南寶</span>
-                <span class="hero-stock-tag">華星光</span>
-            </div>
-            <a href="reports/2025-08-22.html" class="hero-cta-button">立即閱讀完整報告 &rarr;</a>
-            <p class="hero-mission">結合數據科學與市場脈動，透過獨家AI模型與深度分析，每週為您篩選最具潛力的投資標的。</p>
+        <section class="mission-statement fade-in-on-scroll">
+            <p>結合數據科學與市場脈動，透過獨家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
         </section>
+
         <section class="report-list">
-            <h2><span class="icon">📂</span> 歷史週報</h2>
+            <h2 class="fade-in-on-scroll"><span class="icon">📂</span> 最新週報</h2>
             <div id="reportListContainer">
-                 <article class="report-card">
+                <article class="report-card fade-in-on-scroll">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0822 <span class="new-badge">New!</span></h3><span class="date">2025-08-22</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>AI漲多休息，資金輪動好戲登場！本週聚焦法人資金重押的PCB巨擘、等待營收驗證的「傳產轉AI」黑馬，以及整理末端的CPO補位首選。<br><strong>精選個股：</strong>臻鼎-KY、南寶、華星光</p>
+                        <a href="reports/2025-08-22.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                <article class="report-card fade-in-on-scroll">
                     <div class="card-header">
                         <h3>靈蛇週報 0816</h3><span class="date">2025-08-16</span>
                     </div>
@@ -153,110 +364,144 @@
                         <a href="reports/2025-08-16.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                     </div>
                 </article>
-                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0809</h3><span class="date">2025-08-09</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>高檔震盪下的資金輪動！本週聚焦價格門檻更親民的績優AI股，在守住核心持股的同時，尋找補漲新機會。<br><strong>精選個股：</strong>廣達、鴻海、光寶科</p><a href="reports/2025-08-09.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
-                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p><a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
-                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p><a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
-                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p><a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
+                <article class="report-card hidden fade-in-on-scroll">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0809</h3><span class="date">2025-08-09</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>高檔震盪下的資金輪動！本週聚焦價格門檻更親民的績優AI股，在守住核心持股的同時，尋找補漲新機會。<br><strong>精選個股：</strong>廣達、鴻海、光寶科</p><a href="reports/2025-08-09.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                <article class="report-card hidden fade-in-on-scroll">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p><a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                <article class="report-card hidden fade-in-on-scroll">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p><a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                <article class="report-card hidden fade-in-on-scroll">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p><a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
             </div>
             <div class="toggle-container">
-                 <button id="toggleReports" class="toggle-btn">顯示所有歷史週報</button>
+                <button id="toggleReports" class="toggle-btn">顯示歷史週報</button>
             </div>
         </section>
 
         <section class="special-reports">
-            <h2><span class="icon">🌟</span> 深度研究 & 公告</h2>
+            <h2 class="fade-in-on-scroll"><span class="icon">🌟</span> 深度研究 & 公告</h2>
             <div class="research-grid" id="researchGrid">
-                <article class="research-card">
+                <article class="research-card fade-in-on-scroll">
                     <h3>【月度戰報】七月績效總回顧</h3>
                     <p>視覺化圖表呈現七月份推薦個股的整體績效、亮點與檢討，並對八月份的市場進行展望。</p>
                     <a href="review-2025-07.html" target="_blank" class="read-more">閱讀七月戰報 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card fade-in-on-scroll">
                     <h3>【個股解析】醣基生醫 (6586)</h3>
                     <p>深度剖析台灣醣科學巨擘的核心技術、新藥研發進度與投資風險，了解其在全球生技領域的獨特地位與未來潛力。</p>
                     <a href="articles/article-cho-pharma-6586.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card fade-in-on-scroll">
                     <h3>【投資心法】該買綠還是追紅？</h3>
                     <p>深度解析投資策略：逢低買入（買綠）的左側交易 vs. 順勢追高（追紅）的右側交易。了解兩者優劣，找到最適合您的投資心法。</p>
                     <a href="articles/article-trading-philosophy.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card hidden">
+                <article class="research-card hidden fade-in-on-scroll">
                     <h3>【技術分析】深入剖析：蔡森12招與波浪理論</h3>
                     <p>獨家整理台灣技術分析名家蔡森的12張圖戰法，結合經典的波浪理論，掌握多空轉折的關鍵訊號，提升您的投資勝率。</p>
                     <a href="articles/article-tsaisen-12-strategies.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card hidden">
+                <article class="research-card hidden fade-in-on-scroll">
                     <h3>【靈蛇透視鏡】AI 獨強的派對結束了？</h3>
                     <p>深度解析台股在高檔震盪下的資金輪動劇本，探討資金如何從核心AI股流向補漲族群，並分析下週關鍵宏觀事件的影響。</p>
                     <a href="articles/article-market-rotation-0809.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card hidden">
+                <article class="research-card hidden fade-in-on-scroll">
                     <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
                     <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
                     <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                 </article>
-                <article class="research-card hidden">
+                <article class="research-card hidden fade-in-on-scroll">
                     <h3>【個股解析】材料-KY (4763)</h3>
                     <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
                     <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-                </article>  
+                </article>
             </div>
             <div class="toggle-container">
                 <button id="toggleArticles" class="toggle-btn">顯示所有研究文章</button>
             </div>
         </section>
-        
+
+        <section class="quote-section fade-in-on-scroll">
+            <blockquote>行情總在絕望中誕生，在半信半疑中成長，在充滿希望中毀滅。</blockquote>
+            <cite>— 約翰·坦伯頓爵士 (Sir John Templeton)</cite>
+        </section>
+
         <footer class="site-footer">
             <div class="footer-links"><a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/glossary.html">投資術語庫</a><a href="/SnakeStock/disclaimer.html">免責聲明</a></div>
             <div class="footer-support" style="margin-bottom: 15px;"><a href="https://buymeacoffee.com/snakelee72" target="_blank">☕ 贊助支持 (Buy Me a Coffee)</a></div>
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Logic for Research Articles Toggle ---
-            const toggleArticlesButton = document.getElementById('toggleArticles');
-            const researchGrid = document.getElementById('researchGrid');
-            const hiddenArticles = researchGrid.querySelectorAll('.research-card.hidden');
+            // --- Logic for Toggles ---
+            const setupToggler = (buttonId, containerId, itemSelector) => {
+                const toggleButton = document.getElementById(buttonId);
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                const hiddenItems = container.querySelectorAll(itemSelector);
 
-            toggleArticlesButton.addEventListener('click', function() {
-                const areArticlesHidden = hiddenArticles[0].style.display === 'none' || hiddenArticles[0].style.display === '';
-                hiddenArticles.forEach(card => {
-                    card.style.display = areArticlesHidden ? 'flex' : 'none';
-                });
-                toggleArticlesButton.textContent = areArticlesHidden ? '收合研究文章' : '顯示所有研究文章';
-            });
-            hiddenArticles.forEach(card => { card.style.display = 'none'; });
-
-            // --- Logic for Weekly Reports Toggle ---
-            const toggleReportsButton = document.getElementById('toggleReports');
-            const reportListContainer = document.getElementById('reportListContainer');
-            // Note: The first report is the Hero section, so we don't hide it.
-            const hiddenReports = Array.from(reportListContainer.querySelectorAll('.report-card'));
-
-            toggleReportsButton.addEventListener('click', function() {
-                const areReportsHidden = hiddenReports.some(card => card.classList.contains('hidden'));
-                hiddenReports.forEach(card => {
-                    card.classList.toggle('hidden', !areReportsHidden);
-                });
-                toggleReportsButton.textContent = areReportsHidden ? '收合歷史週報' : '顯示所有歷史週報';
-            });
-            // Initially hide all but the first one (which is now in the Hero)
-            // This logic needs adjustment. Let's hide all in the list.
-             const reportsInList = document.querySelectorAll('#reportListContainer .report-card');
-             reportsInList.forEach((card, index) => {
-                // This logic is now simpler as the latest is in the hero.
-                // We can just hide them all by default and let the button show them.
-                // Let's refine this to show the second latest and hide the rest.
-                if (index > 0) { // Keep 0816 visible, hide the rest
-                    card.classList.add('hidden');
+                if (toggleButton && hiddenItems.length > 0) {
+                    toggleButton.addEventListener('click', function() {
+                        const areItemsHidden = Array.from(hiddenItems).some(item => item.style.display === 'none' || item.style.display === '');
+                        hiddenItems.forEach(card => {
+                            card.style.display = areItemsHidden ? 'flex' : 'none';
+                        });
+                        const buttonText = toggleButton.textContent;
+                        toggleButton.textContent = areItemsHidden ? buttonText.replace('顯示', '收合') : buttonText.replace('收合', '顯示');
+                    });
+                    hiddenItems.forEach(card => {
+                        card.style.display = 'none';
+                    });
                 }
-             });
-             // Re-selecting hidden reports after adding the class
-             const finalHiddenReports = reportListContainer.querySelectorAll('.report-card.hidden');
-             finalHiddenReports.forEach(card => card.style.display = 'none');
+            };
+
+            setupToggler('toggleArticles', 'researchGrid', '.research-card.hidden');
+            setupToggler('toggleReports', 'reportListContainer', '.report-card.hidden');
+
+            // --- [升級] Logic for Staggered Fade-in Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // 為每個可見的元素增加延遲
+                        entry.target.style.animationDelay = `${index * 100}ms`;
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.fade-in-on-scroll');
+            elementsToAnimate.forEach(el => observer.observe(el));
         });
     </script>
 </body>
