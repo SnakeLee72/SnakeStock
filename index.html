@@ -30,8 +30,6 @@
         @keyframes wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
         header .subtitle { font-size: 1.2em; color: var(--accent-tech); font-weight: 500; }
         .header-nav { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
-        .about-link { padding: 8px 15px; border: 1px solid var(--border-color); border-radius: 20px; color: var(--text-secondary); text-decoration: none; transition: all 0.3s; }
-        .about-link:hover { background-color: var(--accent-tech); color: #fff; border-color: var(--accent-tech); }
         .cta-button {
             background-color: var(--accent-tech);
             color: #fff;
@@ -45,6 +43,16 @@
         .cta-button:hover {
             background-color: #2f81f7;
             box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+        }
+        /* Secondary button style */
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--accent-tech);
+            border: 1px solid var(--accent-tech);
+        }
+        .cta-button.secondary:hover {
+            background-color: var(--accent-tech);
+            color: #fff;
         }
         section { margin-bottom: 40px; }
         h2 { font-size: 1.8em; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 30px; display: flex; align-items: center; }
@@ -78,8 +86,7 @@
             <h1><span class="snake-emoji">🐍</span> 靈蛇週報</h1>
             <p class="subtitle">AI-Powered Market Insights & Weekly Selections</p>
             <div class="header-nav">
-                <a href="dashboard.html" class="about-link">個股儀表板 &rarr;</a>
-                <a href="review-2025-07.html" class="about-link">七月戰報 &rarr;</a>
+                <a href="dashboard.html" class="cta-button secondary">📊 個股儀表板</a>
                 <a href="articles/announcement-pwa-launch.html" class="cta-button">🚀 安裝 App</a>
             </div>
         </header>
@@ -123,6 +130,11 @@
             <h2><span class="icon">🌟</span> 深度研究 & 公告</h2>
             <div class="research-grid" id="researchGrid">
                 <article class="research-card">
+                    <h3>【月度戰報】七月績效總回顧</h3>
+                    <p>視覺化圖表呈現七月份推薦個股的整體績效、亮點與檢討，並對八月份的市場進行展望。</p>
+                    <a href="review-2025-07.html" target="_blank" class="read-more">閱讀七月戰報 &rarr;</a>
+                </article>
+                <article class="research-card">
                     <h3>【個股解析】醣基生醫 (6586)</h3>
                     <p>深度剖析台灣醣科學巨擘的核心技術、新藥研發進度與投資風險，了解其在全球生技領域的獨特地位與未來潛力。</p>
                     <a href="articles/article-cho-pharma-6586.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
@@ -132,7 +144,7 @@
                     <p>深度解析投資策略：逢低買入（買綠）的左側交易 vs. 順勢追高（追紅）的右側交易。了解兩者優劣，找到最適合您的投資心法。</p>
                     <a href="articles/article-trading-philosophy.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card hidden">
                     <h3>【技術分析】深入剖析：蔡森12招與波浪理論</h3>
                     <p>獨家整理台灣技術分析名家蔡森的12張圖戰法，結合經典的波浪理論，掌握多空轉折的關鍵訊號，提升您的投資勝率。</p>
                     <a href="articles/article-tsaisen-12-strategies.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
