@@ -35,16 +35,14 @@
         h2 { font-size: 1.8em; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 30px; display: flex; align-items: center; }
         .mission-statement { text-align: center; font-size: 1.1em; color: var(--text-secondary); max-width: 650px; margin: 0 auto 50px auto; border-left: 3px solid var(--accent-profit); padding-left: 20px; }
         .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .research-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
-        .research-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
-        .research-card.hidden { display: none; } /* New class to hide extra cards */
+        .research-card, .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; margin-bottom: 20px; }
+        .research-card:hover, .report-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+        .hidden { display: none; } /* Class to hide extra cards */
         .research-card h3 { font-size: 1.3em; color: var(--accent-tech); margin-top: 0; margin-bottom: 10px; }
         .research-card p { color: var(--text-secondary); flex-grow: 1; }
-        .read-more, .toggle-articles-btn { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; border: none; cursor: pointer; }
-        .read-more:hover, .toggle-articles-btn:hover { background-color: #2f81f7; }
+        .read-more, .toggle-btn { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; border: none; cursor: pointer; }
+        .read-more:hover, .toggle-btn:hover { background-color: #2f81f7; }
         .toggle-container { text-align: center; margin-top: 25px; }
-        .report-list .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 25px; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
-        .report-list .report-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .card-header h3 { margin: 0; font-size: 1.5em; color: var(--text-primary); }
         .card-header .date { color: var(--text-secondary); font-size: 0.9em; }
@@ -77,26 +75,32 @@
 
         <section class="report-list">
             <h2><span class="icon">📂</span> 最新週報</h2>
-            <article class="report-card">
-                <div class="card-header">
-                    <h3>靈蛇週報 0822 <span class="new-badge">New!</span></h3><span class="date">2025-08-22</span>
-                </div>
-                <div class="card-content">
-                    <p class="teaser"><strong>本期焦點：</strong>AI漲多休息，資金輪動好戲登場！本週聚焦法人資金重押的PCB巨擘、等待營收驗證的「傳產轉AI」黑馬，以及整理末端的CPO補位首選。<br><strong>精選個股：</strong>臻鼎-KY、南寶、華星光</p>
-                    <a href="reports/2025-08-22.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-                </div>
-            </article>
-             <article class="report-card">
-                <div class="card-header">
-                    <h3>靈蛇週報 0816</h3><span class="date">2025-08-16</span>
-                </div>
-                <div class="card-content">
-                    <p class="teaser"><strong>本期焦點：</strong>指數創高後的健康輪動！AI多頭格局未變，資金開始尋找半導體、蘋概等位階較低的補漲機會。<br><strong>精選個股：</strong>鴻海、日月光投控、光寶科</p>
-                    <a href="reports/2025-08-16.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-                </div>
-            </article>
+            <div id="reportListContainer">
+                <article class="report-card">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0822 <span class="new-badge">New!</span></h3><span class="date">2025-08-22</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>AI漲多休息，資金輪動好戲登場！本週聚焦法人資金重押的PCB巨擘、等待營收驗證的「傳產轉AI」黑馬，以及整理末端的CPO補位首選。<br><strong>精選個股：</strong>臻鼎-KY、南寶、華星光</p>
+                        <a href="reports/2025-08-22.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                 <article class="report-card">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0816</h3><span class="date">2025-08-16</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>指數創高後的健康輪動！AI多頭格局未變，資金開始尋找半導體、蘋概等位階較低的補漲機會。<br><strong>精選個股：</strong>鴻海、日月光投控、光寶科</p>
+                        <a href="reports/2025-08-16.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0809</h3><span class="date">2025-08-09</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>高檔震盪下的資金輪動！本週聚焦價格門檻更親民的績優AI股，在守住核心持股的同時，尋找補漲新機會。<br><strong>精選個股：</strong>廣達、鴻海、光寶科</p><a href="reports/2025-08-09.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
+                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p><a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
+                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p><a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
+                <article class="report-card hidden"><div class="card-header"><h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p><a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
+            </div>
             <div class="toggle-container">
-                 <button class="toggle-articles-btn" onclick="window.location.href='archive.html'">查看所有歷史週報</button>
+                 <button id="toggleReports" class="toggle-btn">顯示歷史週報</button>
             </div>
         </section>
 
@@ -140,7 +144,7 @@
                 </article>  
             </div>
             <div class="toggle-container">
-                <button id="toggleArticles" class="toggle-articles-btn">顯示所有研究文章</button>
+                <button id="toggleArticles" class="toggle-btn">顯示所有研究文章</button>
             </div>
         </section>
         
@@ -153,25 +157,33 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.getElementById('toggleArticles');
+            // --- Logic for Research Articles Toggle ---
+            const toggleArticlesButton = document.getElementById('toggleArticles');
             const researchGrid = document.getElementById('researchGrid');
-            const hiddenCards = researchGrid.querySelectorAll('.research-card.hidden');
+            const hiddenArticles = researchGrid.querySelectorAll('.research-card.hidden');
 
-            toggleButton.addEventListener('click', function() {
-                const isHidden = hiddenCards[0].style.display === 'none' || hiddenCards[0].style.display === '';
-
-                hiddenCards.forEach(card => {
-                    // We use 'flex' because the parent is a grid which behaves like flex items
-                    card.style.display = isHidden ? 'flex' : 'none';
+            toggleArticlesButton.addEventListener('click', function() {
+                const areArticlesHidden = hiddenArticles[0].style.display === 'none' || hiddenArticles[0].style.display === '';
+                hiddenArticles.forEach(card => {
+                    card.style.display = areArticlesHidden ? 'flex' : 'none';
                 });
-
-                toggleButton.textContent = isHidden ? '收合部分文章' : '顯示所有研究文章';
+                toggleArticlesButton.textContent = areArticlesHidden ? '收合研究文章' : '顯示所有研究文章';
             });
+            hiddenArticles.forEach(card => { card.style.display = 'none'; });
 
-            // Initially hide the cards via script to ensure it works even if CSS is slow to load
-            hiddenCards.forEach(card => {
-                card.style.display = 'none';
+            // --- Logic for Weekly Reports Toggle ---
+            const toggleReportsButton = document.getElementById('toggleReports');
+            const reportListContainer = document.getElementById('reportListContainer');
+            const hiddenReports = reportListContainer.querySelectorAll('.report-card.hidden');
+
+            toggleReportsButton.addEventListener('click', function() {
+                const areReportsHidden = hiddenReports[0].style.display === 'none' || hiddenReports[0].style.display === '';
+                hiddenReports.forEach(card => {
+                    card.style.display = areReportsHidden ? 'flex' : 'none';
+                });
+                toggleReportsButton.textContent = areReportsHidden ? '收合歷史週報' : '顯示歷史週報';
             });
+            hiddenReports.forEach(card => { card.style.display = 'none'; });
         });
     </script>
 </body>
