@@ -29,7 +29,7 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --line-green: #06C755; --facebook-blue: #1877F2; }
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-green: #50fa7b; --line-green: #06C755; --facebook-blue: #1877F2; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
         header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
@@ -38,6 +38,23 @@
         .content-card h2 { font-size: 1.6em; color: var(--accent-blue); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .content-card h3 { font-size: 1.3em; color: var(--text-primary); }
         .content-card p, .content-card li { color: var(--text-secondary); }
+        /* --- New styles for install button --- */
+        .install-cta-card { text-align: center; }
+        .install-button {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #0a0a1a;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .install-button:hover { background-color: #fff; transform: scale(1.05); }
+        #installMessage { color: var(--color-green); font-weight: bold; margin-top: 15px; }
         .install-steps { list-style-type: decimal; padding-left: 20px; }
         .install-steps li { margin-bottom: 10px; }
         .share-container { text-align: center; padding: 20px; background-color: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-color); }
@@ -58,7 +75,13 @@
             <h1>【重磅升級】您的「靈蛇週報」App 來了！</h1>
             <p style="color: var(--text-secondary);">發布日期：2025年8月8日</p>
         </header>
-
+        
+        <section class="content-card install-cta-card">
+            <h2>一鍵安裝至桌面</h2>
+            <p>在支援的瀏覽器上，點擊下方按鈕，即可將「靈蛇週報」直接安裝至您的裝置！</p>
+            <button id="installPwaButton" class="install-button" style="display: none;">🚀 立即安裝 App</button>
+            <p id="installMessage"></p>
+        </section>
         <section class="content-card">
             <p>為了提供所有忠實讀者更極致、更便捷的閱讀體驗，我們今天非常興奮地宣布，「靈蛇週報」網站正式支援 **新世代網頁 App (PWA)** 功能！</p>
             <p>現在，您可以將我們的專業分析報告，像 App 一樣「安裝」到您的手機主畫面上，享受前所未有的便利性與沉浸感。</p>
@@ -77,7 +100,8 @@
         </section>
 
         <section class="content-card">
-            <h2>如何安裝至您的手機？</h2>
+            <h2>手動安裝教學</h2>
+            <p>如果上方未出現「立即安裝」按鈕，您也可以依照瀏覽器的指示手動安裝：</p>
             <h3>📱 Android 用戶 (Chrome 瀏覽器)</h3>
             <ol class="install-steps">
                 <li>用 Chrome 瀏覽器打開我們的網站。</li>
@@ -115,30 +139,68 @@
     </div>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 【請注意】請將 pageUrl 的值，更換為這篇文章的「最終發布網址」
+        // --- Share Button Logic ---
         const pageUrl = 'https://snakelee72.github.io/SnakeStock/articles/announcement-pwa-launch.html';
-        
         const shareLine = document.getElementById('shareLine');
-        if (shareLine) {
-            shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`;
-        }
-        
+        if (shareLine) { shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`; }
         const shareFb = document.getElementById('shareFb');
-        if (shareFb) {
-            shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
-        }
-        
+        if (shareFb) { shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`; }
         const copyLink = document.getElementById('copyLink');
         if (copyLink) {
             copyLink.addEventListener('click', function() {
                 navigator.clipboard.writeText(pageUrl).then(() => {
                     copyLink.textContent = '已複製！';
                     setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
-                }).catch(err => {
-                    console.error('複製失敗: ', err);
-                });
+                }).catch(err => { console.error('複製失敗: ', err); });
             });
         }
+
+        // --- PWA Installation Logic ---
+        let deferredPrompt;
+        const installButton = document.getElementById('installPwaButton');
+        const installMessage = document.getElementById('installMessage');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // 防止 Chrome 67 以下版本自動顯示安裝提示
+            e.preventDefault();
+            // 儲存事件，以便稍後觸發
+            deferredPrompt = e;
+            // 顯示我們自訂的安裝按鈕
+            if(installButton) {
+                installButton.style.display = 'inline-block';
+            }
+        });
+
+        if(installButton) {
+            installButton.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    // 觸發安裝提示
+                    deferredPrompt.prompt();
+                    // 等待使用者的回應
+                    const { outcome } = await deferredPrompt.userChoice;
+                    
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                        if(installMessage) {
+                            installMessage.textContent = '安裝成功！您現在可以從桌面啟動。';
+                        }
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    // 無論結果如何，都將 deferredPrompt 設為 null，因為它只能使用一次
+                    deferredPrompt = null;
+                    // 隱藏按鈕
+                    installButton.style.display = 'none';
+                }
+            });
+        }
+        
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('a2hs installed');
+            if(installMessage) {
+                installMessage.textContent = 'App 已成功安裝！';
+            }
+        });
     });
 </script>
 </body>
