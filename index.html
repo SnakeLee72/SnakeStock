@@ -37,10 +37,12 @@
         .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .research-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
         .research-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+        .research-card.hidden { display: none; } /* New class to hide extra cards */
         .research-card h3 { font-size: 1.3em; color: var(--accent-tech); margin-top: 0; margin-bottom: 10px; }
         .research-card p { color: var(--text-secondary); flex-grow: 1; }
-        .research-card a.read-more, .report-list a.read-more { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; }
-        .research-card a.read-more:hover, .report-list a.read-more:hover { background-color: #2f81f7; }
+        .read-more, .toggle-articles-btn { display: inline-block; background-color: var(--accent-tech); color: #ffffff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 15px; align-self: flex-start; border: none; cursor: pointer; }
+        .read-more:hover, .toggle-articles-btn:hover { background-color: #2f81f7; }
+        .toggle-container { text-align: center; margin-top: 25px; }
         .report-list .report-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 25px; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
         .report-list .report-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
@@ -73,9 +75,34 @@
             <p>結合數據科學與市場脈動，透過獨家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
         </section>
 
+        <section class="report-list">
+            <h2><span class="icon">📂</span> 最新週報</h2>
+            <article class="report-card">
+                <div class="card-header">
+                    <h3>靈蛇週報 0822 <span class="new-badge">New!</span></h3><span class="date">2025-08-22</span>
+                </div>
+                <div class="card-content">
+                    <p class="teaser"><strong>本期焦點：</strong>AI漲多休息，資金輪動好戲登場！本週聚焦法人資金重押的PCB巨擘、等待營收驗證的「傳產轉AI」黑馬，以及整理末端的CPO補位首選。<br><strong>精選個股：</strong>臻鼎-KY、南寶、華星光</p>
+                    <a href="reports/2025-08-22.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </div>
+            </article>
+             <article class="report-card">
+                <div class="card-header">
+                    <h3>靈蛇週報 0816</h3><span class="date">2025-08-16</span>
+                </div>
+                <div class="card-content">
+                    <p class="teaser"><strong>本期焦點：</strong>指數創高後的健康輪動！AI多頭格局未變，資金開始尋找半導體、蘋概等位階較低的補漲機會。<br><strong>精選個股：</strong>鴻海、日月光投控、光寶科</p>
+                    <a href="reports/2025-08-16.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                </div>
+            </article>
+            <div class="toggle-container">
+                 <button class="toggle-articles-btn" onclick="window.location.href='archive.html'">查看所有歷史週報</button>
+            </div>
+        </section>
+
         <section class="special-reports">
             <h2><span class="icon">🌟</span> 深度研究 & 公告</h2>
-            <div class="research-grid">
+            <div class="research-grid" id="researchGrid">
                 <article class="research-card">
                     <h3>【重磅升級】您的「靈蛇週報」App 來了！</h3>
                     <p>網站正式支援PWA功能！現在就將「靈蛇週報」安裝到您的手機桌面，體驗離線閱讀、全螢幕無干擾的極致感受。</p>
@@ -91,53 +118,30 @@
                     <p>深度解析投資策略：逢低買入（買綠）的左側交易 vs. 順勢追高（追紅）的右側交易。了解兩者優劣，找到最適合您的投資心法。</p>
                     <a href="articles/article-trading-philosophy.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card hidden">
                     <h3>【技術分析】深入剖析：蔡森12招與波浪理論</h3>
                     <p>獨家整理台灣技術分析名家蔡森的12張圖戰法，結合經典的波浪理論，掌握多空轉折的關鍵訊號，提升您的投資勝率。</p>
                     <a href="articles/article-tsaisen-12-strategies.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card hidden">
                     <h3>【靈蛇透視鏡】AI 獨強的派對結束了？</h3>
                     <p>深度解析台股在高檔震盪下的資金輪動劇本，探討資金如何從核心AI股流向補漲族群，並分析下週關鍵宏觀事件的影響。</p>
                     <a href="articles/article-market-rotation-0809.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card hidden">
                     <h3>【產業趨勢】全球貿易戰下的半導體與電動車產業</h3>
                     <p>深度解析最新關稅政策，對全球供應鏈、台積電、NVIDIA及電動車市場的全面衝擊與未來展望。</p>
                     <a href="articles/article-tariffs-semiconductors.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                 </article>
-                <article class="research-card">
+                <article class="research-card hidden">
                     <h3>【個股解析】材料-KY (4763)</h3>
                     <p>深入剖析公司在加熱菸(HNB)、AI眼鏡及新關稅政策下的機遇與挑戰。附語音導讀。</p>
                     <a href="special-report-4763.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                 </article>  
             </div>
-        </section>
-
-        <section class="report-list">
-            <h2><span class="icon">📂</span> 週報歸檔</h2>
-            <article class="report-card">
-                <div class="card-header">
-                    <h3>靈蛇週報 0822 <span class="new-badge">New!</span></h3><span class="date">2025-08-22</span>
-                </div>
-                <div class="card-content">
-                    <p class="teaser"><strong>本期焦點：</strong>AI漲多休息，資金輪動好戲登場！本週聚焦法人資金重押的PCB巨擘、等待營收驗證的「傳產轉AI」黑馬，以及整理末端的CPO補位首選。<br><strong>精選個股：</strong>臻鼎-KY、南寶、華星光</p>
-                    <a href="reports/2025-08-22.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-                </div>
-            </article>
-            <article class="report-card">
-                <div class="card-header">
-                    <h3>靈蛇週報 0816</h3><span class="date">2025-08-16</span>
-                </div>
-                <div class="card-content">
-                    <p class="teaser"><strong>本期焦點：</strong>指數創高後的健康輪動！AI多頭格局未變，資金開始尋找半導體、蘋概等位階較低的補漲機會。<br><strong>精選個股：</strong>鴻海、日月光投控、光寶科</p>
-                    <a href="reports/2025-08-16.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
-                </div>
-            </article>
-            <article class="report-card"><div class="card-header"><h3>靈蛇週報 0809</h3><span class="date">2025-08-09</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>高檔震盪下的資金輪動！本週聚焦價格門檻更親民的績優AI股，在守住核心持股的同時，尋找補漲新機會。<br><strong>精選個股：</strong>廣達、鴻海、光寶科</p><a href="reports/2025-08-09.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
-            <article class="report-card"><div class="card-header"><h3>靈蛇週報 0802</h3><span class="date">2025-08-02</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF補漲題材對決機器人概念股，搭配AI伺服器龍頭，穩中求勝的經典配置。<br><strong>精選個股：</strong>鴻海、欣興、宏捷科</p><a href="reports/2025-08-02.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
-            <article class="report-card"><div class="card-header"><h3>靈蛇週報 0726</h3><span class="date">2025-07-26</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>ABF載板族群全面轉強，搭配短線爆發的砷化鎵概念股，掌握技術面突破的契機。<br><strong>精選個股：</strong>南電、宏捷科、欣興</p><a href="reports/2025-07-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
-            <article class="report-card"><div class="card-header"><h3>靈蛇週報 0719</h3><span class="date">2025-07-19</span></div><div class="card-content"><p class="teaser"><strong>本期焦點：</strong>AI廠務擴建受惠股領銜，搭配蘋果摺疊機與機器人題材，全面卡位未來科技趨勢。<br><strong>精選個股：</strong>新日興、亞翔、宏捷科</p><a href="reports/2025-07-19.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a></div></article>
+            <div class="toggle-container">
+                <button id="toggleArticles" class="toggle-articles-btn">顯示所有研究文章</button>
+            </div>
         </section>
         
         <footer class="site-footer">
@@ -146,5 +150,29 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleArticles');
+            const researchGrid = document.getElementById('researchGrid');
+            const hiddenCards = researchGrid.querySelectorAll('.research-card.hidden');
+
+            toggleButton.addEventListener('click', function() {
+                const isHidden = hiddenCards[0].style.display === 'none' || hiddenCards[0].style.display === '';
+
+                hiddenCards.forEach(card => {
+                    // We use 'flex' because the parent is a grid which behaves like flex items
+                    card.style.display = isHidden ? 'flex' : 'none';
+                });
+
+                toggleButton.textContent = isHidden ? '收合部分文章' : '顯示所有研究文章';
+            });
+
+            // Initially hide the cards via script to ensure it works even if CSS is slow to load
+            hiddenCards.forEach(card => {
+                card.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
