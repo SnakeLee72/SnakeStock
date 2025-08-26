@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投資術語庫 - 靈蛇週報</title>
     <link rel="manifest" href="/SnakeStock/manifest.json">
-
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, err => {
-                console.log('ServiceWorker registration failed: ', err);
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
             });
-        });
-    }
-</script>
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
         :root {
@@ -110,9 +109,17 @@
                     <dt>KD 指標 (隨機指標)</dt>
                     <dd>用來衡量股價「超買」與「超賣」現象的擺盪指標。K值高於80視為超買區，低於20視為超賣區。K值與D值的交叉(黃金/死亡交叉)常被視為買賣訊號。</dd>
                 </div>
-                 <div class="term-card">
+                <div class="term-card">
                     <dt>多頭排列</dt>
                     <dd>指短、中、長期均線(如5日、10日、20日)由上至下依序排列，且方向皆為上揚。這被視為股價處於強勢上漲趨勢的訊號。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>RSI (相對強弱指標)</dt>
+                    <dd>透過比較一段時間內的平均漲幅和平均跌幅，來判斷市場買賣雙方的力道，衡量趨勢的強度。RSI值介於0到100之間，通常高於70視為超買，低於30視為超賣。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>量價關係</dt>
+                    <dd>指成交量與股價之間的相互關係。健康的市場趨勢通常是「價漲量增、價跌量縮」。若出現「價漲量縮」或「價跌量增」等背離情況，則需留意趨勢可能反轉的風險。</dd>
                 </div>
             </dl>
         </section>
@@ -120,13 +127,49 @@
         <section id="chip-analysis">
             <h2>籌碼分析</h2>
             <dl>
-                 <div class="term-card">
+                <div class="term-card">
                     <dt>三大法人</dt>
                     <dd>指「外資」、「投信」、「自營商」三種類型的機構投資人。他們的買賣動向對台股有顯著影響，是散戶觀察籌碼流向的重要指標。</dd>
                 </div>
                 <div class="term-card">
                     <dt>籌碼</dt>
                     <dd>指一支股票在市場上流通的股份。籌碼分析即是研究股票在不同類型投資者（如法人、大戶、散戶）手中的分佈與流動情況。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>融資融券</dt>
+                    <dd>一種信用交易工具。融資是投資人向券商借錢買股，看多；融券是向券商借股票來賣出，看空。這兩項指標常被視為散戶人氣的風向球。「券資比」過高時，常有「軋空」行情發生的可能。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>大戶與散戶</dt>
+                    <dd>大戶指持有大量股份的投資人，常為千張以上。散戶指持有少量股份的一般投資人。透過觀察大戶持股比例的變化，可以判斷籌碼的集中或分散程度。</dd>
+                </div>
+            </dl>
+        </section>
+        
+        <section id="fundamental-analysis">
+            <h2>基本面分析</h2>
+            <dl>
+                <div class="term-card">
+                    <dt>EPS (每股盈餘)</dt>
+                    <dd>衡量公司獲利能力的指標，指公司每發行一股股票所能賺取的稅後淨利。EPS越高，代表公司的賺錢能力越強。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>本益比 (P/E Ratio)</dt>
+                    <dd>用來評估股價是高估還是低估的指標，計算方式為「股價 ÷ 每股盈餘」。本益比代表投資人願意為公司每1元的獲利，支付多少元的價格。</dd>
+                </div>
+            </dl>
+        </section>
+        
+        <section id="risk-management">
+            <h2>風險管理</h2>
+            <dl>
+                <div class="term-card">
+                    <dt>停損點</dt>
+                    <dd>指投資人在進場前預先設定的賣出價格。當股價下跌至此價位時，無論虧損多少都執行賣出，以避免損失持續擴大。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>資金管理</dt>
+                    <dd>一套有系統地分配和控制投資資金的原則。核心概念是「只用能承受損失的資金」進行交易，並透過分散投資與部位控制來降低單一股票的風險。</dd>
                 </div>
             </dl>
         </section>
@@ -142,9 +185,17 @@
                     <dt>砷化鎵 (GaAs)</dt>
                     <dd>一種化合物半導體材料，常用於製造高頻通訊元件，如手機功率放大器(PA)。5G、WiFi 6/7 及低軌衛星的發展都帶動了其需求。相關公司如穩懋、宏捷科、全新。</dd>
                 </div>
-                 <div class="term-card">
+                <div class="term-card">
                     <dt>AI 伺服器</dt>
                     <dd>專為執行人工智慧運算任務而設計的高效能伺服器，通常搭載多個GPU或專用AI晶片。是目前全球科技業最主要的軍備競賽領域。</dd>
+                </div>
+                 <div class="term-card">
+                    <dt>HPC (高效能運算)</dt>
+                    <dd>指能執行大量數據處理與複雜運算的高性能計算系統。廣泛應用於AI、雲端運算、大數據分析等領域，是未來科技發展的核心動能。</dd>
+                </div>
+                <div class="term-card">
+                    <dt>半導體產業鏈</dt>
+                    <dd>從上游IC設計、中游晶圓製造與封測、到下游的IC應用與銷售，形成一個完整的產業分工。台灣在此產業鏈中扮演關鍵角色，涵蓋了各環節的領導廠商。</dd>
                 </div>
             </dl>
         </section>
@@ -154,6 +205,7 @@
                 <a href="/SnakeStock/index.html">返回首頁</a>
                 <a href="/SnakeStock/about.html">關於我們</a>
                 <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
                 <a href="/SnakeStock/disclaimer.html">免責聲明</a>
             </div>
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
