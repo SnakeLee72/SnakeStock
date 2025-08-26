@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>除權息參考價計算機 - 靈蛇週報工具箱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .content-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .calculator-form .form-group {
+            margin-bottom: 20px;
+        }
+        .calculator-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .calculator-form .calc-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            font-size: 1.1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .calculator-form .calc-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        .calc-button {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: #0a0a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .calc-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .result-display {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .result-display .label {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        .result-display .value {
+            font-size: 3.5em;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--accent-blue);
+        }
+        #errorMessage {
+            color: var(--color-red);
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+        .explanation {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .site-footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-secondary); 
+            font-size: 0.9em; 
+        }
+        .footer-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin: 0 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>除權息參考價計算機</h1>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label for="closePrice">除權息前一日收盤價 (元)</label>
+                        <input type="number" id="closePrice" class="calc-input" placeholder="例如：110">
+                    </div>
+                    <div class="form-group">
+                        <label for="cashDividend">現金股利 (元/股)</label>
+                        <input type="number" id="cashDividend" class="calc-input" placeholder="例如：2.5 (若無請填0)">
+                    </div>
+                    <div class="form-group">
+                        <label for="stockDividend">股票股利 (元/股)</label>
+                        <input type="number" id="stockDividend" class="calc-input" placeholder="例如：0.5 (若無請填0)">
+                    </div>
+                    <button id="calculateBtn" class="calc-button">計算參考價</button>
+                    <div id="errorMessage"></div>
+                </div>
+
+                <div id="result" class="result-display" style="display: none;">
+                    <div class="label">除權息後開盤參考價</div>
+                    <div id="resultValue" class="value"></div>
+                </div>
+            </section>
+
+            <section class="content-card explanation">
+                <h2>計算說明</h2>
+                <p><strong>計算公式：</strong> ( 除權息前收盤價 - 現金股利 ) / ( 1 + ( 股票股利 / 10 ) )</p>
+                <p>這個公式會計算出公司在配發股利後，為了維持總市值不變，股價應調整為多少。股價在除權息後能否漲回除權息前的價格，這個過程稱為「填權息」。</p>
+                <p>註：股票股利的面額為10元，因此配0.5元股票股利，相當於每張股票(1000股)會增加50股。</p>
+            </section>
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultDiv = document.getElementById('result');
+            const resultValue = document.getElementById('resultValue');
+            const errorMessage = document.getElementById('errorMessage');
+
+            const closePriceInput = document.getElementById('closePrice');
+            const cashDividendInput = document.getElementById('cashDividend');
+            const stockDividendInput = document.getElementById('stockDividend');
+
+            calculateBtn.addEventListener('click', function() {
+                const closePrice = parseFloat(closePriceInput.value);
+                // Treat empty inputs as 0
+                const cashDividend = parseFloat(cashDividendInput.value) || 0;
+                const stockDividend = parseFloat(stockDividendInput.value) || 0;
+
+                // --- Input Validation ---
+                if (isNaN(closePrice) || closePrice <= 0) {
+                    errorMessage.textContent = '請輸入有效的除權息前收盤價。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                 if (cashDividend < 0 || stockDividend < 0) {
+                    errorMessage.textContent = '股利不能為負數。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                 if (closePrice < cashDividend) {
+                    errorMessage.textContent = '錯誤：現金股利不能高於股價。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                errorMessage.textContent = '';
+
+                // --- Calculation ---
+                const numerator = closePrice - cashDividend;
+                const denominator = 1 + (stockDividend / 10);
+                const referencePrice = numerator / denominator;
+
+                // --- Display Result ---
+                resultValue.textContent = `NT$ ${referencePrice.toFixed(2)}`;
+                resultDiv.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
