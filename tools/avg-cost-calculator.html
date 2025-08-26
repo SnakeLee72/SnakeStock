@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加碼/攤平試算計算機 - 靈蛇週報工具箱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .content-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .calculator-form h3 {
+            font-size: 1.2em;
+            color: var(--accent-blue);
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .calc-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            font-size: 1.1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        .calc-button {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: #0a0a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .calc-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .result-display {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            text-align: center;
+        }
+        .result-item .label {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .result-item .value {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .result-item .value.main-result {
+            font-size: 3.5em;
+            color: var(--accent-blue);
+        }
+        #errorMessage {
+            color: var(--color-red);
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+        .site-footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-secondary); 
+            font-size: 0.9em; 
+        }
+        .footer-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin: 0 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>加碼/攤平試算計算機</h1>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <div class="calculator-form">
+                    <h3>原有部位</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="originalShares">持有股數 (股)</label>
+                            <input type="number" id="originalShares" class="calc-input" placeholder="例如：1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="originalPrice">持有均價 (元)</label>
+                            <input type="number" id="originalPrice" class="calc-input" placeholder="例如：120">
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 20px;">計畫加碼</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="additionalShares">加碼股數 (股)</label>
+                            <input type="number" id="additionalShares" class="calc-input" placeholder="例如：1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalPrice">加碼價格 (元)</label>
+                            <input type="number" id="additionalPrice" class="calc-input" placeholder="例如：100">
+                        </div>
+                    </div>
+                    
+                    <button id="calculateBtn" class="calc-button">計算新成本</button>
+                    <div id="errorMessage"></div>
+                </div>
+
+                <div id="result" class="result-display" style="display: none;">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <div class="label">攤平/加碼後均價</div>
+                            <div class="value main-result" id="newAveragePrice"></div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">加碼後總股數</div>
+                            <div class="value" id="totalShares"></div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">加碼後總成本</div>
+                            <div class="value" id="totalCost"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultDiv = document.getElementById('result');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // --- Input Elements ---
+            const originalSharesInput = document.getElementById('originalShares');
+            const originalPriceInput = document.getElementById('originalPrice');
+            const additionalSharesInput = document.getElementById('additionalShares');
+            const additionalPriceInput = document.getElementById('additionalPrice');
+
+            // --- Result Elements ---
+            const newAveragePriceEl = document.getElementById('newAveragePrice');
+            const totalSharesEl = document.getElementById('totalShares');
+            const totalCostEl = document.getElementById('totalCost');
+
+            calculateBtn.addEventListener('click', function() {
+                const originalShares = parseInt(originalSharesInput.value, 10);
+                const originalPrice = parseFloat(originalPriceInput.value);
+                const additionalShares = parseInt(additionalSharesInput.value, 10);
+                const additionalPrice = parseFloat(additionalPriceInput.value);
+
+                // --- Input Validation ---
+                if (isNaN(originalShares) || isNaN(originalPrice) || isNaN(additionalShares) || isNaN(additionalPrice) ||
+                    originalShares <= 0 || originalPrice <= 0 || additionalShares < 0 || additionalPrice < 0) {
+                    errorMessage.textContent = '請輸入所有有效的正數值。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                errorMessage.textContent = '';
+
+                // --- Calculation ---
+                const originalCost = originalShares * originalPrice;
+                const additionalCost = additionalShares * additionalPrice;
+                const totalCost = originalCost + additionalCost;
+                const totalShares = originalShares + additionalShares;
+                
+                let newAveragePrice = 0;
+                if (totalShares > 0) {
+                    newAveragePrice = totalCost / totalShares;
+                }
+                
+                // --- Display Result ---
+                newAveragePriceEl.textContent = `NT$ ${newAveragePrice.toFixed(2)}`;
+                totalSharesEl.textContent = `${totalShares.toLocaleString()} 股`;
+                totalCostEl.textContent = `NT$ ${Math.round(totalCost).toLocaleString()}`;
+                
+                resultDiv.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
