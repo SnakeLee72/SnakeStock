@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部位規模計算機 - 靈蛇週報工具箱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .content-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .calculator-form .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .calc-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            font-size: 1.1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        .calc-button {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: #0a0a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .calc-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .result-display {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .result-main {
+            margin-bottom: 30px;
+        }
+        .result-main .label {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .result-main .value {
+            font-size: 3.5em;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--accent-blue);
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .summary-item .label {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+        .summary-item .value {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        #errorMessage {
+            color: var(--color-red);
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+        .explanation {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .site-footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-secondary); 
+            font-size: 0.9em; 
+        }
+        .footer-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin: 0 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>部位規模計算機</h1>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <div class="calculator-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="totalCapital">總投資資金 (元)</label>
+                            <input type="number" id="totalCapital" class="calc-input" placeholder="例如：1000000">
+                        </div>
+                        <div class="form-group">
+                            <label for="riskPercent">單筆交易最大風險 (%)</label>
+                            <input type="number" id="riskPercent" class="calc-input" value="2" placeholder="建議 1-3%">
+                        </div>
+                        <div class="form-group">
+                            <label for="entryPrice">預計進場價 (元)</label>
+                            <input type="number" id="entryPrice" class="calc-input" placeholder="例如：170">
+                        </div>
+                        <div class="form-group">
+                            <label for="stopLossPrice">預計停損價 (元)</label>
+                            <input type="number" id="stopLossPrice" class="calc-input" placeholder="例如：155">
+                        </div>
+                    </div>
+                    <button id="calculateBtn" class="calc-button">計算建議部位</button>
+                    <div id="errorMessage"></div>
+                </div>
+
+                <div id="result" class="result-display" style="display: none;">
+                    <div class="result-main">
+                        <div class="label">建議最大購買股數</div>
+                        <div class="value" id="maxShares"></div>
+                    </div>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="label">投入資金</div>
+                            <div class="value" id="positionValue"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="label">最大可能虧損</div>
+                            <div class="value" id="maxLoss"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="label">佔總資金比例</div>
+                            <div class="value" id="capitalAllocation"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card explanation">
+                <h2>工具說明</h2>
+                <p><strong>部位規模 (Position Size)</strong> 是專業投資中最重要的風險管理環節。它解決的核心問題是：「在既定的停損點下，我應該買多少股，才能確保這次交易的最大虧損，不超過我能承受的範圍？」</p>
+                <p>這個工具能幫助您將「感覺」的決策，轉化為「紀律」的數學，讓您的每一筆交易，都在計劃之內。</p>
+            </section>
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultDiv = document.getElementById('result');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // --- Input Elements ---
+            const totalCapitalInput = document.getElementById('totalCapital');
+            const riskPercentInput = document.getElementById('riskPercent');
+            const entryPriceInput = document.getElementById('entryPrice');
+            const stopLossPriceInput = document.getElementById('stopLossPrice');
+
+            // --- Result Elements ---
+            const maxSharesEl = document.getElementById('maxShares');
+            const positionValueEl = document.getElementById('positionValue');
+            const maxLossEl = document.getElementById('maxLoss');
+            const capitalAllocationEl = document.getElementById('capitalAllocation');
+
+            calculateBtn.addEventListener('click', function() {
+                const totalCapital = parseFloat(totalCapitalInput.value);
+                const riskPercent = parseFloat(riskPercentInput.value);
+                const entryPrice = parseFloat(entryPriceInput.value);
+                const stopLossPrice = parseFloat(stopLossPriceInput.value);
+
+                // --- Input Validation ---
+                if (isNaN(totalCapital) || isNaN(riskPercent) || isNaN(entryPrice) || isNaN(stopLossPrice) ||
+                    totalCapital <= 0 || riskPercent <= 0 || entryPrice <= 0 || stopLossPrice <= 0) {
+                    errorMessage.textContent = '請輸入所有有效的正數值。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                if (entryPrice <= stopLossPrice) {
+                    errorMessage.textContent = '錯誤：進場價必須高於停損價。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                errorMessage.textContent = '';
+
+                // --- Calculation ---
+                const riskAmount = totalCapital * (riskPercent / 100);
+                const riskPerShare = entryPrice - stopLossPrice;
+                const maxShares = Math.floor(riskAmount / riskPerShare);
+                const positionValue = maxShares * entryPrice;
+                const capitalAllocation = (positionValue / totalCapital) * 100;
+                
+                // --- Display Result ---
+                maxSharesEl.textContent = `${maxShares.toLocaleString()} 股`;
+                positionValueEl.textContent = `NT$ ${Math.round(positionValue).toLocaleString()}`;
+                maxLossEl.textContent = `≈ NT$ ${Math.round(riskAmount).toLocaleString()}`;
+                capitalAllocationEl.textContent = `${capitalAllocation.toFixed(2)}%`;
+                
+                resultDiv.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
