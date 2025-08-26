@@ -46,6 +46,15 @@
         section { 
             margin-bottom: 40px; 
         }
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
         .tools-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
@@ -115,26 +124,12 @@
         </header>
 
         <section class="tools-section">
+            <h2>交易計算工具</h2>
             <div class="tools-grid">
-                <article class="tool-card">
-                    <h3>融資維持率計算機</h3>
-                    <p>輸入您的買入股價與現價，立即算出融資維持率，有效監控個人風控水位，避免被無預警追繳。</p>
-                    <a href="margin-calculator.html" class="cta-button">開始計算 &rarr;</a>
-                </article>
                 <article class="tool-card">
                     <h3>股票損益計算機</h3>
                     <p>精確計算單筆交易的淨損益與報酬率，自動計入手續費與證交稅，讓您的投資覆盤更加科學化。</p>
                     <a href="profit-calculator.html" class="cta-button">開始計算 &rarr;</a>
-                </article>
-                <article class="tool-card">
-                    <h3>目標價報酬率計算機</h3>
-                    <p>在進場前，量化評估一筆交易的潛在賺賠比。輸入目標價與停損價，立刻得知風險報酬是否值得您出手。</p>
-                    <a href="rr-calculator.html" class="cta-button">開始評估 &rarr;</a>
-                </article>
-                <article class="tool-card">
-                    <h3>部位規模計算機</h3>
-                    <p>將專業的風險管理模型化為簡單工具，根據您的總資金與風險偏好，計算出最適合的進場股數。</p>
-                    <a href="position-sizer.html" class="cta-button">開始規劃 &rarr;</a>
                 </article>
                 <article class="tool-card">
                     <h3>加碼/攤平試算器</h3>
@@ -148,9 +143,49 @@
                 </article>
             </div>
         </section>
+
+        <section class="tools-section">
+            <h2>策略與流程工具</h2>
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <h3>部位規模計算機</h3>
+                    <p>將專業的風險管理模型化為簡單工具，根據您的總資金與風險偏好，計算出最適合的進場股數。</p>
+                    <a href="position-sizer.html" class="cta-button">開始規劃 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>目標價報酬率計算機</h3>
+                    <p>在進場前，量化評估一筆交易的潛在賺賠比。輸入目標價與停損價，立刻得知風險報酬是否值得您出手。</p>
+                    <a href="rr-calculator.html" class="cta-button">開始評估 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>融資維持率計算機</h3>
+                    <p>輸入您的買入股價與現價，立即算出融資維持率，有效監控個人風控水位，避免被無預警追繳。</p>
+                    <a href="margin-calculator.html" class="cta-button">開始計算 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>個股趨勢量化儀</h3>
+                    <p>將主觀的技術面盤感，轉化為客觀的數據分數。輸入關鍵指標，立即評估個股的趨勢強度。</p>
+                    <a href="trend-quantifier.html" class="cta-button">開始評估 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>交易紀律檢查清單</h3>
+                    <p>在下單前，依循專業的檢查流程，確保您的每一筆交易都經過深思熟慮，而非衝動行事。</p>
+                    <a href="checklist.html" class="cta-button">開始檢查 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>投資組合年度體檢</h3>
+                    <p>引導您以專業、有條理的流程，全面檢視並優化您的投資組合，實現汰弱留強。</p>
+                    <a href="portfolio-review.html" class="cta-button">開始體檢 &rarr;</a>
+                </article>
+            </div>
+        </section>
         
         <footer class="site-footer">
-            <div class="footer-links"><a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/tools/index.html">投資工具箱</a><a href="/SnakeStock/glossary.html">投資術語庫</a><a href="/SnakeStock/disclaimer.html">免責聲明</a></div>
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+            </div>
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
