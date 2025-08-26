@@ -177,9 +177,8 @@ document.addEventListener('DOMContentLoaded', function() {
     addHoldingRow('2330', '1000', '600', '950'); // Example row
     addHoldingRow('2317', '2000', '150', '210'); // Example row
 
-    // --- Step 1 to 2 ---
-    document.getElementById('processStep1Btn').addEventListener('click', function() {
-        holdings = [];
+    function getHoldingsData() {
+        const currentHoldings = [];
         let isValid = true;
         holdingsList.querySelectorAll('.input-grid').forEach(row => {
             const ticker = row.querySelector('.ticker').value;
@@ -189,16 +188,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (ticker && !isNaN(shares) && !isNaN(cost) && !isNaN(price) && shares > 0 && cost > 0 && price > 0) {
                 const costValue = cost * shares;
                 const currentValue = price * shares;
-                holdings.push({ ticker, shares, cost, price, costValue, currentValue });
+                currentHoldings.push({ ticker, shares, cost, price, costValue, currentValue });
             } else {
                 isValid = false;
             }
         });
+        return isValid && currentHoldings.length > 0 ? currentHoldings : null;
+    }
 
-        if (!isValid || holdings.length === 0) {
+    // --- Step 1 to 2 ---
+    document.getElementById('processStep1Btn').addEventListener('click', function() {
+        const currentHoldings = getHoldingsData();
+        if (!currentHoldings) {
             alert('請檢查所有欄位是否已正確填寫。');
             return;
         }
+        holdings = currentHoldings;
 
         const totalCost = holdings.reduce((sum, h) => sum + h.costValue, 0);
         const totalValue = holdings.reduce((sum, h) => sum + h.currentValue, 0);
@@ -219,19 +224,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const ctx = document.getElementById('portfolioChart').getContext('2d');
         portfolioChart = new Chart(ctx, {
             type: 'doughnut',
-            data: {
-                labels: chartLabels,
-                datasets: [{
-                    data: chartData,
-                    backgroundColor: ['#00d1ff', '#a371f7', '#50fa7b', '#ffb86c', '#ff79c6', '#8be9fd', '#f1fa8c'],
-                    borderColor: 'var(--bg-card)',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { position: 'right', labels: { color: 'var(--text-primary)' } } }
-            }
+            data: { labels: chartLabels, datasets: [{ data: chartData, backgroundColor: ['#00d1ff', '#a371f7', '#50fa7b', '#ffb86c', '#ff79c6', '#8be9fd', '#f1fa8c'], borderColor: 'var(--bg-card)' }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: 'var(--text-primary)' } } } }
         });
 
         document.getElementById('step1').style.display = 'none';
@@ -263,16 +257,28 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('step3').style.display = 'block';
     });
 
-    // --- Step 3 to Report ---
+    // --- Step 3 to Report [FIXED LOGIC] ---
     document.getElementById('generateReportBtn').addEventListener('click', function() {
+        // [FIX] Re-fetch data from Step 1 to ensure consistency
+        const currentHoldings = getHoldingsData();
+        if (!currentHoldings) {
+            alert('持股資料有誤，無法生成報告。');
+            return;
+        }
+        holdings = currentHoldings;
+
         holdings.forEach(h => {
             const decision = document.querySelector(`input[name="decision-${h.ticker}"]:checked`);
             h.decision = decision ? decision.value : '未決定';
         });
 
+        const totalCost = holdings.reduce((sum, h) => sum + h.costValue, 0);
         const totalValue = holdings.reduce((sum, h) => sum + h.currentValue, 0);
-        const totalReturn = parseFloat(document.getElementById('totalReturn').textContent);
-        const concentration = parseFloat(document.getElementById('concentration').textContent);
+        const totalReturn = ((totalValue - totalCost) / totalCost) * 100;
+        
+        holdings.sort((a, b) => b.currentValue - a.currentValue);
+        const top3Value = holdings.slice(0, 3).reduce((sum, h) => sum + h.currentValue, 0);
+        const concentration = (top3Value / totalValue) * 100;
         
         document.getElementById('reportSummary').textContent = `您的投資組合總市值約 NT$ ${Math.round(totalValue).toLocaleString()}，整體報酬率為 ${totalReturn.toFixed(2)}%，前三大持股集中度為 ${concentration.toFixed(2)}%。`;
 
@@ -284,16 +290,24 @@ document.addEventListener('DOMContentLoaded', function() {
             reportDecisionList.appendChild(li);
         });
 
+        const chartLabels = holdings.map(h => `${h.ticker} (${((h.currentValue/totalValue)*100).toFixed(1)}%)`);
+        const chartData = holdings.map(h => h.currentValue);
+
         if (reportChart) reportChart.destroy();
         const reportCtx = document.getElementById('reportChart').getContext('2d');
+        const reportChartData = {
+            labels: chartLabels,
+            datasets: [{ data: chartData, backgroundColor: ['#00d1ff', '#a371f7', '#50fa7b', '#ffb86c', '#ff79c6', '#8be9fd', '#f1fa8c'], borderColor: 'var(--bg-card)' }]
+        };
         reportChart = new Chart(reportCtx, {
             type: 'doughnut',
-            data: portfolioChart.data, // Reuse data from previous chart
-            options: portfolioChart.options
+            data: reportChartData,
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: 'var(--text-primary)' } } } }
         });
 
         document.getElementById('step3').style.display = 'none';
         document.getElementById('reportSection').style.display = 'block';
+        reportSection.scrollIntoView({ behavior: 'smooth' });
     });
 });
 </script>
