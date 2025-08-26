@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個股趨勢量化儀 - 靈蛇週報工具箱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-green: #50fa7b; 
+            --color-yellow: #f1fa8c; 
+            --color-orange: #ffb86c;
+            --color-red: #ff5555;
+            --color-grey: #6272a4;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .content-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: var(--text-secondary); }
+        .calc-input, .calc-select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+        .calc-button {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: #0a0a1a;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .result-display {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .score-panel {
+            text-align: center;
+        }
+        .score-panel .label { font-size: 1.2em; color: var(--text-secondary); }
+        .score-panel .score { font-size: 4em; font-weight: 700; line-height: 1.2; }
+        .score-panel .rating { font-size: 1.5em; font-weight: bold; }
+        
+        .rating-green { color: var(--color-green); }
+        .rating-yellow { color: var(--color-yellow); }
+        .rating-grey { color: var(--text-secondary); }
+        .rating-orange { color: var(--color-orange); }
+        .rating-red { color: var(--color-red); }
+        
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 8px 0; border-bottom: 1px solid var(--border-color); }
+        .details-table td:last-child { text-align: right; font-weight: 700; font-size: 1.2em; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>個股趨勢量化儀</h1>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>股價 vs 月線(20MA)</label>
+                        <select id="priceVs20ma" class="calc-select">
+                            <option value="2">站上</option>
+                            <option value="-2">跌破</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>股價 vs 季線(60MA)</label>
+                        <select id="priceVs60ma" class="calc-select">
+                            <option value="3">站上</option>
+                            <option value="-3">跌破</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>均線排列</label>
+                        <select id="maOrder" class="calc-select">
+                            <option value="2">多頭排列 (月線>季線)</option>
+                            <option value="-2">空頭排列 (月線<季線)</option>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label>KD 指標</label>
+                        <select id="kdCross" class="calc-select">
+                            <option value="2">黃金交叉</option>
+                            <option value="-2">死亡交叉</option>
+                             <option value="0">無明確交叉</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>MACD 指標</label>
+                        <select id="macd" class="calc-select">
+                            <option value="2">紅柱 ( > 0 )</option>
+                            <option value="-2">綠柱 ( < 0 )</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>K值 / RSI值</label>
+                        <input type="number" id="kValue" class="calc-input" placeholder="輸入 K 或 RSI 值">
+                    </div>
+                </div>
+                <button id="calculateBtn" class="calc-button">量化趨勢強度</button>
+            </section>
+            
+            <section id="result" class="content-card" style="display: none;">
+                 <div class="result-display">
+                    <div class="score-panel">
+                        <div class="label">綜合強度總分</div>
+                        <div class="score" id="totalScore"></div>
+                        <div class="rating" id="trendRating"></div>
+                    </div>
+                    <div class="details-panel">
+                        <table class="details-table">
+                            <tbody id="scoreDetails"></tbody>
+                        </table>
+                    </div>
+                 </div>
+            </section>
+
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const calculateBtn = document.getElementById('calculateBtn');
+    const resultDiv = document.getElementById('result');
+    const totalScoreEl = document.getElementById('totalScore');
+    const trendRatingEl = document.getElementById('trendRating');
+    const scoreDetailsEl = document.getElementById('scoreDetails');
+
+    const inputs = {
+        priceVs20ma: document.getElementById('priceVs20ma'),
+        priceVs60ma: document.getElementById('priceVs60ma'),
+        maOrder: document.getElementById('maOrder'),
+        kdCross: document.getElementById('kdCross'),
+        macd: document.getElementById('macd'),
+        kValue: document.getElementById('kValue'),
+    };
+
+    calculateBtn.addEventListener('click', function() {
+        let totalScore = 0;
+        let scoreHtml = '';
+        
+        // 1. Trend Indicators
+        const priceVs20maScore = parseInt(inputs.priceVs20ma.value);
+        totalScore += priceVs20maScore;
+        scoreHtml += `<tr><td>股價 vs 月線</td><td class="${priceVs20maScore > 0 ? 'rating-green' : 'rating-red'}">${priceVs20maScore}分</td></tr>`;
+
+        const priceVs60maScore = parseInt(inputs.priceVs60ma.value);
+        totalScore += priceVs60maScore;
+        scoreHtml += `<tr><td>股價 vs 季線 (權重x1.5)</td><td class="${priceVs60maScore > 0 ? 'rating-green' : 'rating-red'}">${priceVs60maScore}分</td></tr>`;
+
+        const maOrderScore = parseInt(inputs.maOrder.value);
+        totalScore += maOrderScore;
+        scoreHtml += `<tr><td>均線排列</td><td class="${maOrderScore > 0 ? 'rating-green' : 'rating-red'}">${maOrderScore}分</td></tr>`;
+
+        // 2. Momentum Indicators
+        const kdCrossScore = parseInt(inputs.kdCross.value);
+        totalScore += kdCrossScore;
+        scoreHtml += `<tr><td>KD 指標交叉</td><td class="${kdCrossScore > 0 ? 'rating-green' : (kdCrossScore < 0 ? 'rating-red' : 'rating-grey')}">${kdCrossScore}分</td></tr>`;
+        
+        const macdScore = parseInt(inputs.macd.value);
+        totalScore += macdScore;
+        scoreHtml += `<tr><td>MACD 柱狀體</td><td class="${macdScore > 0 ? 'rating-green' : 'rating-red'}">${macdScore}分</td></tr>`;
+
+        // 3. Pressure Indicators from K/RSI value
+        const kVal = parseFloat(inputs.kValue.value);
+        let kScore = 0;
+        let kLabel = 'K值/RSI值';
+        if (!isNaN(kVal)) {
+            if (kVal > 80 || kVal > 70) kScore = 1;
+            if (kVal < 20 || kVal < 30) kScore = -1;
+        }
+        totalScore += kScore;
+        scoreHtml += `<tr><td>${kLabel}</td><td class="${kScore > 0 ? 'rating-green' : (kScore < 0 ? 'rating-red' : 'rating-grey')}">${kScore}分</td></tr>`;
+
+        // --- Final Display ---
+        totalScoreEl.textContent = totalScore > 0 ? `+${totalScore}` : totalScore;
+        totalScoreEl.className = 'score';
+        trendRatingEl.className = 'rating';
+
+        if (totalScore >= 10) {
+            totalScoreEl.classList.add('rating-green');
+            trendRatingEl.textContent = '🟢 極度強勢';
+            trendRatingEl.classList.add('rating-green');
+        } else if (totalScore >= 4) {
+            totalScoreEl.classList.add('rating-yellow');
+            trendRatingEl.textContent = '🟡 偏多格局';
+            trendRatingEl.classList.add('rating-yellow');
+        } else if (totalScore >= -3) {
+            totalScoreEl.classList.add('rating-grey');
+            trendRatingEl.textContent = '⚪️ 盤整觀望';
+            trendRatingEl.classList.add('rating-grey');
+        } else if (totalScore >= -9) {
+            totalScoreEl.classList.add('rating-orange');
+            trendRatingEl.textContent = '🟠 偏空格局';
+            trendRatingEl.classList.add('rating-orange');
+        } else {
+            totalScoreEl.classList.add('rating-red');
+            trendRatingEl.textContent = '🔴 極度弱勢';
+            trendRatingEl.classList.add('rating-red');
+        }
+
+        scoreDetailsEl.innerHTML = scoreHtml;
+        resultDiv.style.display = 'block';
+    });
+});
+</script>
+</body>
+</html>
