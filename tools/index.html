@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資工具箱 - 靈蛇週報</title>
+    <meta name="description" content="靈蛇週報提供的實用投資小工具，包含融資維持率、股票損益、目標價報酬率計算機，輔助您的投資決策。">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark: #0d1117; 
+            --bg-light: #161b22; 
+            --border-color: #30363d; 
+            --text-primary: #c9d1d9; 
+            --text-secondary: #8b949e; 
+            --accent-tech: #58a6ff; 
+            --accent-profit: #a371f7;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 0; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 10px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            margin-top: 30px; 
+        }
+        header h1 { 
+            font-size: 2.8em; 
+            color: var(--text-primary); 
+            margin-bottom: 10px; 
+        }
+        header .subtitle { 
+            font-size: 1.2em; 
+            color: var(--accent-tech); 
+            font-weight: 500; 
+        }
+        section { 
+            margin-bottom: 40px; 
+        }
+        .tools-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
+        .tool-card { 
+            background-color: var(--bg-light); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            padding: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+        .tool-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); 
+        }
+        .tool-card h3 { 
+            font-size: 1.5em; 
+            color: var(--accent-tech); 
+            margin-top: 0; 
+            margin-bottom: 15px; 
+        }
+        .tool-card p { 
+            color: var(--text-secondary); 
+            flex-grow: 1; 
+            margin-bottom: 20px;
+        }
+        .tool-card a.cta-button { 
+            display: inline-block; 
+            background-color: var(--accent-tech); 
+            color: #ffffff; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            margin-top: 15px; 
+            align-self: flex-start; 
+            border: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s;
+        }
+        .tool-card a.cta-button:hover { 
+            background-color: #2f81f7; 
+        }
+        .site-footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-secondary); 
+            font-size: 0.9em; 
+        }
+        .footer-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin: 0 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛠️ 靈蛇投資工具箱</h1>
+            <p class="subtitle">輔助您做出更精準決策的實用小工具</p>
+        </header>
+
+        <section class="tools-section">
+            <div class="tools-grid">
+                <article class="tool-card">
+                    <h3>融資維持率計算機</h3>
+                    <p>輸入您的買入股價與現價，立即算出融資維持率，有效監控個人風控水位，避免被無預警追繳。</p>
+                    <a href="margin-calculator.html" class="cta-button">開始計算 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>股票損益計算機</h3>
+                    <p>精確計算單筆交易的淨損益與報酬率，自動計入手續費與證交稅，讓您的投資覆盤更加科學化。</p>
+                    <a href="profit-calculator.html" class="cta-button">開始計算 &rarr;</a>
+                </article>
+                <article class="tool-card">
+                    <h3>目標價報酬率計算機</h3>
+                    <p>在進場前，量化評估一筆交易的潛在賺賠比。輸入目標價與停損價，立刻得知風險報酬是否值得您出手。</p>
+                    <a href="rr-calculator.html" class="cta-button">開始評估 &rarr;</a>
+                </article>
+            </div>
+        </section>
+        
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+</body>
+</html>
