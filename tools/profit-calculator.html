@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票損益計算機 - 靈蛇週報工具箱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555; /* Profit in TW */
+            --color-green: #50fa7b; /* Loss in TW */
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .content-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .calculator-form .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .calc-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            font-size: 1.1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        .calc-button {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: #0a0a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .calc-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .result-display {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 15px 25px;
+            font-size: 1.1em;
+        }
+        .summary-label {
+            color: var(--text-secondary);
+            text-align: right;
+        }
+        .summary-value {
+            font-weight: 700;
+            text-align: left;
+        }
+        .final-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .final-result .label {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+        }
+        .final-result .value {
+            font-size: 2.5em;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .profit {
+            background-color: rgba(255, 85, 85, 0.1);
+            color: var(--color-red);
+        }
+        .loss {
+            background-color: rgba(80, 250, 123, 0.1);
+            color: var(--color-green);
+        }
+        #errorMessage {
+            color: var(--color-red);
+            text-align: center;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+        .explanation {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .site-footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-secondary); 
+            font-size: 0.9em; 
+        }
+        .footer-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin: 0 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>股票損益計算機</h1>
+        </header>
+
+        <main>
+            <section class="content-card">
+                <div class="calculator-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="buyPrice">買進價格 (元)</label>
+                            <input type="number" id="buyPrice" class="calc-input" placeholder="例如：100">
+                        </div>
+                        <div class="form-group">
+                            <label for="sellPrice">賣出價格 (元)</label>
+                            <input type="number" id="sellPrice" class="calc-input" placeholder="例如：120">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="shares">交易股數 (股)</label>
+                            <input type="number" id="shares" class="calc-input" placeholder="例如：1000 (等於 1 張)">
+                        </div>
+                         <div class="form-group full-width">
+                            <label for="feeDiscount">手續費折扣 (預設28折)</label>
+                            <input type="number" id="feeDiscount" class="calc-input" placeholder="例如：28折請輸入0.28">
+                        </div>
+                    </div>
+                    <button id="calculateBtn" class="calc-button">計算損益</button>
+                    <div id="errorMessage"></div>
+                </div>
+
+                <div id="result" class="result-display" style="display: none;">
+                    <div class="summary-grid">
+                        <div class="summary-label">買進成本：</div>
+                        <div class="summary-value" id="buyAmount"></div>
+                        
+                        <div class="summary-label">賣出金額：</div>
+                        <div class="summary-value" id="sellAmount"></div>
+
+                        <div class="summary-label">總手續費：</div>
+                        <div class="summary-value" id="totalFees"></div>
+
+                        <div class="summary-label">證券交易稅：</div>
+                        <div class="summary-value" id="taxAmount"></div>
+                    </div>
+
+                    <div id="finalResult" class="final-result">
+                        <div class="label">淨損益</div>
+                        <div class="value" id="netProfitLoss"></div>
+                        <div class="value" id="returnPercentage" style="font-size: 1.5em;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card explanation">
+                <h2>計算說明</h2>
+                <p><strong>手續費：</strong>買進與賣出時，各收取一次成交金額之 <strong>0.1425%</strong> 作為手續費。本計算機已將您的折扣計入。</p>
+                <p><strong>證券交易稅：</strong>僅於賣出時，收取成交金額之 <strong>0.3%</strong> 作為證交稅。</p>
+                <p>註：計算結果僅供參考，實際金額請以券商對帳單為準。單筆手續費不足20元者，部分券商仍以20元計收。</p>
+            </section>
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultDiv = document.getElementById('result');
+            const errorMessage = document.getElementById('errorMessage');
+
+            const buyPriceInput = document.getElementById('buyPrice');
+            const sellPriceInput = document.getElementById('sellPrice');
+            const sharesInput = document.getElementById('shares');
+            const feeDiscountInput = document.getElementById('feeDiscount');
+
+            // --- Result Elements ---
+            const buyAmountEl = document.getElementById('buyAmount');
+            const sellAmountEl = document.getElementById('sellAmount');
+            const totalFeesEl = document.getElementById('totalFees');
+            const taxAmountEl = document.getElementById('taxAmount');
+            const finalResultEl = document.getElementById('finalResult');
+            const netProfitLossEl = document.getElementById('netProfitLoss');
+            const returnPercentageEl = document.getElementById('returnPercentage');
+
+            const FEE_RATE = 0.001425;
+            const TAX_RATE = 0.003;
+
+            calculateBtn.addEventListener('click', function() {
+                const buyPrice = parseFloat(buyPriceInput.value);
+                const sellPrice = parseFloat(sellPriceInput.value);
+                const shares = parseInt(sharesInput.value, 10);
+                let feeDiscount = parseFloat(feeDiscountInput.value);
+
+                // --- Input Validation ---
+                if (isNaN(buyPrice) || isNaN(sellPrice) || isNaN(shares) || buyPrice <= 0 || sellPrice <= 0 || shares <= 0) {
+                    errorMessage.textContent = '請輸入所有有效的正數值。';
+                    resultDiv.style.display = 'none';
+                    return;
+                }
+                if (isNaN(feeDiscount) || feeDiscount <= 0) {
+                    feeDiscount = 0.28; // Default to 28折 if empty or invalid
+                    feeDiscountInput.value = '0.28';
+                }
+                errorMessage.textContent = '';
+
+                // --- Calculation ---
+                const buyTotal = buyPrice * shares;
+                const buyFee = Math.round(buyTotal * FEE_RATE * feeDiscount);
+                const totalCost = buyTotal + buyFee;
+
+                const sellTotal = sellPrice * shares;
+                const sellFee = Math.round(sellTotal * FEE_RATE * feeDiscount);
+                const sellTax = Math.floor(sellTotal * TAX_RATE);
+                const totalProceeds = sellTotal - sellFee - sellTax;
+                
+                const netProfit = Math.round(totalProceeds - totalCost);
+                const returnRate = (netProfit / totalCost) * 100;
+
+                // --- Display Result ---
+                buyAmountEl.textContent = `NT$ ${totalCost.toLocaleString()}`;
+                sellAmountEl.textContent = `NT$ ${totalProceeds.toLocaleString()}`;
+                totalFeesEl.textContent = `NT$ ${(buyFee + sellFee).toLocaleString()}`;
+                taxAmountEl.textContent = `NT$ ${sellTax.toLocaleString()}`;
+                
+                netProfitLossEl.textContent = `NT$ ${netProfit.toLocaleString()}`;
+                returnPercentageEl.textContent = `( ${returnRate.toFixed(2)}% )`;
+
+                // --- Update Status Color ---
+                finalResultEl.classList.remove('profit', 'loss');
+                if (netProfit > 0) {
+                    finalResultEl.classList.add('profit');
+                } else if (netProfit < 0) {
+                    finalResultEl.classList.add('loss');
+                }
+                
+                resultDiv.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
