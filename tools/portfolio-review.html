@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資組合年度體檢 - 靈蛇週報工具箱</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555;
+            --color-green: #50fa7b;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .step-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 20px 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .step-card h2 {
+            font-size: 1.6em;
+            color: var(--accent-blue);
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 8px; color: var(--text-secondary); }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 10px; align-items: flex-end; }
+        .calc-input { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-dark-ai); color: var(--text-primary); font-size: 1em; box-sizing: border-box; }
+        .btn { padding: 10px 15px; border-radius: 6px; border: none; cursor: pointer; font-weight: 700; transition: all 0.3s; }
+        .btn-add { background-color: var(--accent-blue); color: var(--bg-dark-ai); }
+        .btn-delete { background-color: var(--color-red); color: white; }
+        #holdingsList .input-grid { margin-bottom: 10px; }
+        .btn-process { width: 100%; background-color: var(--accent-blue); color: #0a0a1a; padding: 15px; font-size: 1.2em; margin-top: 20px; }
+        .decision-group { margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        .decision-group:last-child { border-bottom: none; padding-bottom: 0; }
+        .decision-group strong { color: var(--text-primary); font-size: 1.2em; }
+        .radio-group input { display: none; }
+        .radio-group label { display: inline-block; padding: 8px 15px; border-radius: 20px; background-color: var(--border-color); margin-right: 10px; cursor: pointer; }
+        .radio-group input:checked+label { background-color: var(--accent-blue); color: var(--bg-dark-ai); font-weight: 700; }
+        #reportSection { display: none; }
+        .chart-container { height: 300px; margin-bottom: 30px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .summary-item .label { color: var(--text-secondary); }
+        .summary-item .value { font-size: 2em; font-weight: 700; color: var(--accent-blue); }
+        .profit { color: var(--color-red) !important; }
+        .loss { color: var(--color-green) !important; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>投資組合年度體檢</h1>
+        </header>
+
+        <main>
+            <section id="step1" class="step-card">
+                <h2>步驟一：資產盤點</h2>
+                <div id="holdingsForm">
+                    <div class="input-grid">
+                        <label>股票代號</label>
+                        <label>持有股數</label>
+                        <label>平均成本</label>
+                        <label>目前市價</label>
+                        <span></span>
+                    </div>
+                    <div id="holdingsList">
+                        </div>
+                    <div class="form-group">
+                         <button id="addHoldingBtn" class="btn btn-add">＋ 新增一筆持股</button>
+                    </div>
+                </div>
+                <button id="processStep1Btn" class="btn btn-process">下一步：績效與集中度分析 &rarr;</button>
+            </section>
+
+            <section id="step2" class="step-card" style="display: none;">
+                <h2>步驟二：績效與集中度分析</h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="label">投資組合總報酬率</div>
+                        <div class="value" id="totalReturn"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">前三大持股集中度</div>
+                        <div class="value" id="concentration"></div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="portfolioChart"></canvas>
+                </div>
+                <button id="processStep2Btn" class="btn btn-process">下一步：汰弱留強決策 &rarr;</button>
+            </section>
+            
+            <section id="step3" class="step-card" style="display: none;">
+                <h2>步驟三：汰弱留強決策</h2>
+                <div id="decisionList">
+                    </div>
+                <button id="generateReportBtn" class="btn btn-process">完成體檢，生成最終報告 &rarr;</button>
+            </section>
+
+            <section id="reportSection" class="step-card" style="display: none;">
+                 <h2>您的投資組合體檢報告</h2>
+                 <p id="reportSummary" style="color:var(--text-secondary);"></p>
+                 <div class="chart-container">
+                    <canvas id="reportChart"></canvas>
+                </div>
+                 <h3>決策總覽</h3>
+                 <ul id="reportDecisionList" style="list-style-type: none; padding-left: 0;"></ul>
+            </section>
+
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let holdings = [];
+    let portfolioChart = null;
+    let reportChart = null;
+
+    const addHoldingBtn = document.getElementById('addHoldingBtn');
+    const holdingsList = document.getElementById('holdingsList');
+    
+    function addHoldingRow(ticker = '', shares = '', cost = '', price = '') {
+        const div = document.createElement('div');
+        div.className = 'input-grid';
+        div.innerHTML = `
+            <input type="text" class="calc-input ticker" placeholder="代號" value="${ticker}">
+            <input type="number" class="calc-input shares" placeholder="股數" value="${shares}">
+            <input type="number" class="calc-input cost" placeholder="成本" value="${cost}">
+            <input type="number" class="calc-input price" placeholder="市價" value="${price}">
+            <button class="btn btn-delete">✕</button>
+        `;
+        holdingsList.appendChild(div);
+        div.querySelector('.btn-delete').addEventListener('click', () => div.remove());
+    }
+    
+    addHoldingBtn.addEventListener('click', () => addHoldingRow());
+    addHoldingRow('2330', '1000', '600', '950'); // Example row
+    addHoldingRow('2317', '2000', '150', '210'); // Example row
+
+    // --- Step 1 to 2 ---
+    document.getElementById('processStep1Btn').addEventListener('click', function() {
+        holdings = [];
+        let isValid = true;
+        holdingsList.querySelectorAll('.input-grid').forEach(row => {
+            const ticker = row.querySelector('.ticker').value;
+            const shares = parseFloat(row.querySelector('.shares').value);
+            const cost = parseFloat(row.querySelector('.cost').value);
+            const price = parseFloat(row.querySelector('.price').value);
+            if (ticker && !isNaN(shares) && !isNaN(cost) && !isNaN(price) && shares > 0 && cost > 0 && price > 0) {
+                const costValue = cost * shares;
+                const currentValue = price * shares;
+                holdings.push({ ticker, shares, cost, price, costValue, currentValue });
+            } else {
+                isValid = false;
+            }
+        });
+
+        if (!isValid || holdings.length === 0) {
+            alert('請檢查所有欄位是否已正確填寫。');
+            return;
+        }
+
+        const totalCost = holdings.reduce((sum, h) => sum + h.costValue, 0);
+        const totalValue = holdings.reduce((sum, h) => sum + h.currentValue, 0);
+        const totalReturn = ((totalValue - totalCost) / totalCost) * 100;
+        
+        holdings.sort((a, b) => b.currentValue - a.currentValue);
+        const top3Value = holdings.slice(0, 3).reduce((sum, h) => sum + h.currentValue, 0);
+        const concentration = (top3Value / totalValue) * 100;
+
+        document.getElementById('totalReturn').textContent = `${totalReturn.toFixed(2)}%`;
+        document.getElementById('totalReturn').className = totalReturn >= 0 ? 'value profit' : 'value loss';
+        document.getElementById('concentration').textContent = `${concentration.toFixed(2)}%`;
+
+        const chartLabels = holdings.map(h => `${h.ticker} (${((h.currentValue/totalValue)*100).toFixed(1)}%)`);
+        const chartData = holdings.map(h => h.currentValue);
+        
+        if (portfolioChart) portfolioChart.destroy();
+        const ctx = document.getElementById('portfolioChart').getContext('2d');
+        portfolioChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    data: chartData,
+                    backgroundColor: ['#00d1ff', '#a371f7', '#50fa7b', '#ffb86c', '#ff79c6', '#8be9fd', '#f1fa8c'],
+                    borderColor: 'var(--bg-card)',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'right', labels: { color: 'var(--text-primary)' } } }
+            }
+        });
+
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+    });
+
+    // --- Step 2 to 3 ---
+    document.getElementById('processStep2Btn').addEventListener('click', function() {
+        const decisionList = document.getElementById('decisionList');
+        decisionList.innerHTML = '';
+        holdings.forEach(h => {
+            const div = document.createElement('div');
+            div.className = 'decision-group';
+            const returnPct = ((h.price - h.cost) / h.cost) * 100;
+            const returnClass = returnPct >= 0 ? 'profit' : 'loss';
+            div.innerHTML = `
+                <strong>${h.ticker} (報酬率 <span class="${returnClass}">${returnPct.toFixed(2)}%</span>)</strong>
+                <p>當初買進它的理由，現在還存在嗎？</p>
+                <div class="radio-group">
+                    <input type="radio" id="keep-${h.ticker}" name="decision-${h.ticker}" value="保留"><label for="keep-${h.ticker}">保留</label>
+                    <input type="radio" id="watch-${h.ticker}" name="decision-${h.ticker}" value="觀察"><label for="watch-${h.ticker}">觀察</label>
+                    <input type="radio" id="adjust-${h.ticker}" name="decision-${h.ticker}" value="考慮調整"><label for="adjust-${h.ticker}">考慮調整</label>
+                </div>
+            `;
+            decisionList.appendChild(div);
+        });
+
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+    });
+
+    // --- Step 3 to Report ---
+    document.getElementById('generateReportBtn').addEventListener('click', function() {
+        holdings.forEach(h => {
+            const decision = document.querySelector(`input[name="decision-${h.ticker}"]:checked`);
+            h.decision = decision ? decision.value : '未決定';
+        });
+
+        const totalValue = holdings.reduce((sum, h) => sum + h.currentValue, 0);
+        const totalReturn = parseFloat(document.getElementById('totalReturn').textContent);
+        const concentration = parseFloat(document.getElementById('concentration').textContent);
+        
+        document.getElementById('reportSummary').textContent = `您的投資組合總市值約 NT$ ${Math.round(totalValue).toLocaleString()}，整體報酬率為 ${totalReturn.toFixed(2)}%，前三大持股集中度為 ${concentration.toFixed(2)}%。`;
+
+        const reportDecisionList = document.getElementById('reportDecisionList');
+        reportDecisionList.innerHTML = '';
+        holdings.forEach(h => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${h.ticker}:</strong> 您決定 <strong>${h.decision}</strong>`;
+            reportDecisionList.appendChild(li);
+        });
+
+        if (reportChart) reportChart.destroy();
+        const reportCtx = document.getElementById('reportChart').getContext('2d');
+        reportChart = new Chart(reportCtx, {
+            type: 'doughnut',
+            data: portfolioChart.data, // Reuse data from previous chart
+            options: portfolioChart.options
+        });
+
+        document.getElementById('step3').style.display = 'none';
+        document.getElementById('reportSection').style.display = 'block';
+    });
+});
+</script>
+</body>
+</html>
