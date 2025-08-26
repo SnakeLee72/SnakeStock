@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交易紀律檢查清單 - 靈蛇週報工具箱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-green: #50fa7b; 
+            --color-yellow: #f1fa8c;
+            --color-orange: #ffb86c;
+            --color-red: #ff5555;
+        }
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark-ai); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 10px; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 20px auto; 
+            padding: 15px; 
+        }
+        header { 
+            text-align: center; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        header h1 { 
+            color: var(--accent-blue); 
+            font-size: 2.5em; 
+            margin: 0; 
+        }
+        .step-card { 
+            background-color: var(--bg-card); 
+            border-radius: 8px; 
+            padding: 20px 30px; 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
+        }
+        .step-card h2 {
+            font-size: 1.6em;
+            color: var(--accent-blue);
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-weight: 500; }
+        .calc-input { width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-dark-ai); color: var(--text-primary); font-size: 1.1em; box-sizing: border-box; }
+        .radio-group label, .checkbox-group label { display: block; background-color: var(--border-color); padding: 12px 15px; border-radius: 6px; cursor: pointer; transition: all 0.3s; border: 1px solid var(--border-color); margin-bottom:10px; }
+        .radio-group input, .checkbox-group input { display: none; }
+        .radio-group input:checked+label, .checkbox-group input:checked+label { background-color: var(--accent-blue); color: var(--bg-dark-ai); font-weight: 700; border-color: var(--accent-blue); }
+        .sub-calc-result { margin-top: 15px; padding: 15px; background-color: #0d1117; border-radius: 6px; text-align: center; }
+        .sub-calc-result .label { color: var(--text-secondary); font-size: 0.9em; }
+        .sub-calc-result .value { font-size: 1.4em; font-weight: 700; color: var(--accent-blue); }
+        .final-confirmation { display: flex; align-items: center; gap: 10px; }
+        .calc-button { width: 100%; background-color: var(--accent-blue); color: #0a0a1a; padding: 15px; border-radius: 8px; font-weight: 700; font-size: 1.2em; border: none; cursor: pointer; transition: all 0.3s ease; margin-top: 10px; }
+        .calc-button:hover { opacity: 0.85; }
+        .calc-button:disabled { background-color: var(--border-color); color: var(--text-secondary); cursor: not-allowed; }
+        .report-card { border: 2px solid var(--accent-profit); margin-top: 40px; }
+        .report-card h2 { border-bottom: 2px solid var(--accent-profit); }
+        .report-summary-grid { display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; }
+        .report-summary-grid .label { color: var(--text-secondary); text-align: right; font-weight: 700; }
+        .report-summary-grid .value { font-weight: 500; }
+        .report-verdict { text-align: center; font-size: 1.5em; font-weight: bold; margin-top: 20px; padding: 15px; border-radius: 6px;}
+        .verdict-good { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); }
+        .verdict-warn { background-color: rgba(255, 85, 85, 0.1); color: var(--color-red); }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>交易紀律檢查清單</h1>
+        </header>
+
+        <main id="checklistForm">
+            <section class="step-card">
+                <h2>步驟一：選擇交易策略</h2>
+                <div class="form-group radio-group">
+                    <input type="radio" id="strategySwing" name="strategy" value="波段交易" checked>
+                    <label for="strategySwing">📈 波段交易 (持有數週至數月)</label>
+                    <input type="radio" id="strategyValue" name="strategy" value="價值存股">
+                    <label for="strategyValue">🏦 價值存股 (持有數月至數年)</label>
+                    <input type="radio" id="strategyDay" name="strategy" value="當沖/短線">
+                    <label for="strategyDay">⚡️ 當沖/短線 (持有數小時至數日)</label>
+                </div>
+            </section>
+
+            <section class="step-card">
+                <h2>步驟二：規劃進出場價位</h2>
+                <div class="form-group">
+                    <label for="entryPrice">預計進場價 (元)</label>
+                    <input type="number" id="entryPrice" class="calc-input" placeholder="例如：170">
+                </div>
+                <div class="form-group">
+                    <label for="targetPrice">預計目標價 (元)</label>
+                    <input type="number" id="targetPrice" class="calc-input" placeholder="預期上漲的目標價格">
+                </div>
+                <div class="form-group">
+                    <label for="stopLossPrice">預計停損價 (元)</label>
+                    <input type="number" id="stopLossPrice" class="calc-input" placeholder="願意承受虧損的出場價格">
+                </div>
+                <div id="rrResult" class="sub-calc-result" style="display: none;">
+                    <div class="label">預估賺賠比</div>
+                    <div class="value" id="rrValue"></div>
+                </div>
+            </section>
+            
+            <section class="step-card">
+                <h2>步驟三：設定風險與部位</h2>
+                <div class="form-group">
+                    <label for="totalCapital">總投資資金 (元)</label>
+                    <input type="number" id="totalCapital" class="calc-input" placeholder="例如：1000000">
+                </div>
+                <div class="form-group">
+                    <label for="riskPercent">單筆交易最大風險 (%)</label>
+                    <input type="number" id="riskPercent" class="calc-input" value="2" placeholder="建議 1-3%">
+                </div>
+                <div id="psResult" class="sub-calc-result" style="display: none;">
+                    <div class="label">建議最大購買股數</div>
+                    <div class="value" id="psValue"></div>
+                    <div class="label" style="margin-top:10px;">最大可能虧損將控制在</div>
+                    <div class="value" id="psLossValue" style="font-size: 1.2em; color: var(--text-primary);"></div>
+                </div>
+            </section>
+
+            <section class="step-card">
+                <h2>步驟四：確認進場理由</h2>
+                <div class="form-group checkbox-group" id="reasonsGroup">
+                    <input type="checkbox" id="reasonSOP" value="符合靈蛇週報選股標準"><label for="reasonSOP">符合靈蛇週報選股標準</label>
+                    <input type="checkbox" id="reasonTech" value="技術面出現訊號"><label for="reasonTech">技術面出現訊號</label>
+                    <input type="checkbox" id="reasonChip" value="籌碼面出現訊號"><label for="reasonChip">籌碼面出現訊號</label>
+                    <input type="checkbox" id="reasonFunda" value="基本面出現利多"><label for="reasonFunda">基本面出現利多</label>
+                    <input type="checkbox" id="reasonFomo" value="FOMO (害怕錯過)"><label for="reasonFomo" style="background-color: #2e1c1c;">😭 我只是 FOMO (害怕錯過)</label>
+                </div>
+            </section>
+            
+            <section class="step-card">
+                <h2>步驟五：最終確認</h2>
+                <div class="form-group final-confirmation">
+                    <input type="checkbox" id="confirmCheck" style="width: 20px; height: 20px;">
+                    <label for="confirmCheck" style="margin: 0;">我已了解本次交易的最大風險，並願意遵守計畫。</label>
+                </div>
+                 <button id="generateReportBtn" class="calc-button" disabled>生成我的交易計畫書</button>
+            </section>
+            
+            <section id="report" class="step-card report-card" style="display: none;"></section>
+
+        </main>
+        
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+             </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Element Refs ---
+    const entryPriceInput = document.getElementById('entryPrice');
+    const targetPriceInput = document.getElementById('targetPrice');
+    const stopLossPriceInput = document.getElementById('stopLossPrice');
+    const rrResultDiv = document.getElementById('rrResult');
+    const rrValueEl = document.getElementById('rrValue');
+    
+    const totalCapitalInput = document.getElementById('totalCapital');
+    const riskPercentInput = document.getElementById('riskPercent');
+    const psResultDiv = document.getElementById('psResult');
+    const psValueEl = document.getElementById('psValue');
+    const psLossValueEl = document.getElementById('psLossValue');
+
+    const confirmCheck = document.getElementById('confirmCheck');
+    const generateReportBtn = document.getElementById('generateReportBtn');
+    const reportDiv = document.getElementById('report');
+
+    // --- Sub-calculation Logic ---
+    function calculateRR() {
+        const entry = parseFloat(entryPriceInput.value);
+        const target = parseFloat(targetPriceInput.value);
+        const stop = parseFloat(stopLossPriceInput.value);
+
+        if (entry > 0 && target > entry && stop < entry && stop > 0) {
+            const potentialProfit = target - entry;
+            const potentialLoss = entry - stop;
+            const ratio = potentialProfit / potentialLoss;
+            rrValueEl.textContent = `${ratio.toFixed(1)} : 1`;
+            rrResultDiv.style.display = 'block';
+            return ratio;
+        } else {
+            rrResultDiv.style.display = 'none';
+            return null;
+        }
+    }
+
+    function calculatePositionSize() {
+        const capital = parseFloat(totalCapitalInput.value);
+        const risk = parseFloat(riskPercentInput.value);
+        const entry = parseFloat(entryPriceInput.value);
+        const stop = parseFloat(stopLossPriceInput.value);
+
+        if (capital > 0 && risk > 0 && entry > 0 && stop > 0 && entry > stop) {
+            const riskAmount = capital * (risk / 100);
+            const riskPerShare = entry - stop;
+            const maxShares = Math.floor(riskAmount / riskPerShare);
+            psValueEl.textContent = `${maxShares.toLocaleString()} 股`;
+            psLossValueEl.textContent = `NT$ ${Math.round(riskAmount).toLocaleString()}`;
+            psResultDiv.style.display = 'block';
+        } else {
+            psResultDiv.style.display = 'none';
+        }
+    }
+
+    // --- Event Listeners for sub-calculations ---
+    [entryPriceInput, targetPriceInput, stopLossPriceInput].forEach(input => {
+        input.addEventListener('input', calculateRR);
+    });
+    [totalCapitalInput, riskPercentInput, entryPriceInput, stopLossPriceInput].forEach(input => {
+        input.addEventListener('input', calculatePositionSize);
+    });
+    
+    // --- Final Confirmation Logic ---
+    confirmCheck.addEventListener('change', function() {
+        generateReportBtn.disabled = !this.checked;
+    });
+
+    // --- Report Generation Logic ---
+    generateReportBtn.addEventListener('click', function() {
+        const strategy = document.querySelector('input[name="strategy"]:checked').value;
+        const entry = entryPriceInput.value;
+        const target = targetPriceInput.value;
+        const stop = stopLossPriceInput.value;
+        const rr = calculateRR();
+        const capital = parseFloat(totalCapitalInput.value);
+        const risk = parseFloat(riskPercentInput.value);
+        
+        const reasons = [];
+        document.querySelectorAll('#reasonsGroup input:checked').forEach(cb => {
+            reasons.push(cb.value);
+        });
+        const isFomo = reasons.includes('FOMO (害怕錯過)');
+
+        let verdictClass = 'verdict-good';
+        let verdictText = '✅ 您的交易計畫完整！';
+        
+        if (isFomo) {
+            verdictClass = 'verdict-warn';
+            verdictText = '⚠️ 計畫有風險：請注意您的進場理由包含 FOMO 情緒。';
+        } else if (rr !== null && rr < 2) {
+            verdictClass = 'verdict-warn';
+            verdictText = `⚠️ 計畫有風險：賺賠比(${rr.toFixed(1)}:1)偏低，建議尋找 > 2:1 的機會。`;
+        }
+
+        const reportHTML = `
+            <h2>您的交易計畫書</h2>
+            <div class="report-summary-grid">
+                <div class="label">交易策略：</div><div class="value">${strategy}</div>
+                <div class="label">進場價：</div><div class="value">${entry} 元</div>
+                <div class="label">目標價：</div><div class="value">${target} 元</div>
+                <div class="label">停損價：</div><div class="value">${stop} 元</div>
+                <div class="label">總資金：</div><div class="value">${capital.toLocaleString()} 元</div>
+                <div class="label">單筆風險：</div><div class="value">${risk}%</div>
+                <div class="label">進場理由：</div><div class="value">${reasons.join(', ') || '未選擇'}</div>
+            </div>
+            <div class="report-verdict ${verdictClass}">${verdictText}</div>
+        `;
+
+        reportDiv.innerHTML = reportHTML;
+        reportDiv.style.display = 'block';
+        reportDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+</body>
+</html>
