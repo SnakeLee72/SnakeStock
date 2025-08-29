@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0829 - 投信作帳行情啟動，AI資金輪動加速</title>
+    <meta name="description" content="靈蛇週報0829期分析。本週探討八月底投信作帳行情，精選個股為南電(8046)、漢翔(2634)、神達(3706)，卡位新主流。">
+    <meta name="keywords" content="靈蛇週報, 0829, 南電, 漢翔, 神達, 投信作帳, AI股, 軍工股">
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-red: #ff5555; --color-green: #50fa7b; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
+        header p { color: var(--text-secondary); }
+        section { margin-bottom: 40px; }
+        h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; display: flex; align-items: center; }
+        h2 .icon { margin-right: 15px; font-size: 1.2em; color: var(--accent-blue); }
+        .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { background-color: rgba(42, 42, 74, 0.5); }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .positive-return { color: var(--color-red); font-weight: bold; }
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
+        .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .fact-tag { background-color: rgba(0, 209, 255, 0.1); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        .analysis-tag { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
+        blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0829</h1>
+            <p>靈蛇投資研究中心 | 2025年8月29日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (8/25-8/29)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高收盤(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>4958</td><td>臻鼎-KY</td><td>165-170</td><td>196.5</td><td class="positive-return">+17.31%</td><td>否</td></tr>
+                        <tr><td>4766</td><td>南寶</td><td>325-335</td><td>406.5</td><td class="positive-return">+23.18%</td><td>否</td></tr>
+                        <tr><td>4979</td><td>華星光</td><td>188-192</td><td>205.0</td><td class="positive-return">+7.89%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: right; font-size: 1.2em;"><strong>本週投組平均報酬率：<span class="positive-return">+16.13%</span></strong></p>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>本週產業焦點</h2>
+            <div class="stock-card">
+                <h3>季底作帳行情鳴槍！AI資金輪動，非電族群崛起</h3>
+                <p>時序進入八月底，NVIDIA財報利多不漲，確立了AI核心股進入高檔整理的格局。從我們的「6核心情報矩陣」分析，市場資金出現了明確的「蹺蹺板」效應。一方面，資金在AI內部，從大型股流向位階較低的ABF載板、IC設計；另一方面，更顯著的趨勢是資金轉進具備明確題材的「非電族群」。**「投信季底作帳」**成為本週盤面的絕對關鍵字，法人著墨深的個股表現尤其強勢，同時，**「軍工股」**的政策題材持續發酵，成為市場最火熱的焦點。</p>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>8046</strong></td><td><strong>南電</strong></td><td>市場核心</td><td>205-215元</td><td class="stop-loss">帶量跌破200元</td><td class="target-price">280-300元</td></tr>
+                        <tr><td><strong>2634</strong></td><td><strong>漢翔</strong></td><td>政策動能</td><td>55.5-58.5元</td><td class="stop-loss">跌破52.0元</td><td class="target-price">70-75元</td></tr>
+                        <tr><td><strong>3706</strong></td><td><strong>神達</strong></td><td>法人鎖碼</td><td>92.5-95.5元</td><td class="stop-loss">帶量跌破月線</td><td class="target-price">115-120元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【8046 南電】多重題材共振的市場核心</h3>
+                 <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 最新公布的7月營收為36.21億元，年增率(YoY)為 +15.8%，創下近兩年三個月新高。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 營收年增率不僅由負轉正，更繳出雙位數強勁增長，明確證實產業復甦的趨勢已是「現在進行式」，為股價提供最穩固的基本面支撐。</p>
+                 <p><span class="fact-tag">[FACT]</span> 近一個月外資轉為大幅買超，投信法人也開始回補持股。情報指出，此股為「投信作帳」與「台塑集團作帳」的雙重潛在目標。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 籌碼面呈現「內外資同步作多」的健康型態。多重作帳題材的共振，使其成為市場所有資金都無法忽視的核心，具備強大的「易漲難跌」體質。</p>
+                 <p><span class="fact-tag">[FACT]</span> 股價近期以「帶量長紅」的方式，強勢突破了長達一年的大型底部頸線（約200-210元）。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 這是標準的「底部突破」攻擊型態。在長時間的震盪打底後，籌碼已充分沉澱，新一輪的多頭趨勢正式啟動。</p>
+            </div>
+            <div class="stock-card">
+                 <h3>【2634 漢翔】政策驅動的盤面最強動能</h3>
+                 <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 最新收盤價62.40元，所有均線呈完美多頭排列，股價處於帶量突破長期整理平台後的噴出階段。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 這是教科書等級的「VCP型態突破」，動能極為強勁。目前的缺點是短線乖離過大，市場情緒過熱，不宜追高。</p>
+                 <p><span class="fact-tag">[FACT]</span> 近期漲勢由「外資」作為主導買盤，近一個月買超逾6,684張，其中美林、大小摩等國際一線券商著墨最深。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 國際級法人的大力買進，代表漢翔的長期價值正被國際資金所認可。其「國防自主」的政策護城河，使其成為規避國際景氣循環的獨特選擇。</p>
+                 <p><span class="fact-tag">[FACT]</span> 公司最新公布的7月營收年增率(YoY)為 -8.3%。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 市場完全忽略當前滯後的財報，正在對其「未來的龐大訂單」（如勇鷹高教機）進行定價，是典型的「未來預期驅動型」股票。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【3706 神達】法人鎖碼的AI黑馬</h3>
+                <h4>飆股DNA評估</h4>
+                <p><span class="fact-tag">[FACT]</span> 最新公布的7月營收為85.71億元，年增率(YoY)高達 +78.3%；Q2營收年增率更是達到了驚人的 +103.1%。</p>
+                <p><span class="analysis-tag">[ANALYSIS]</span> 數據極為強勁，是典型的「成長爆發期」訊號。代表公司的AI伺服器訂單（甲骨文等）已進入大量出貨階段，營收暴衝是股價最強大的後盾。</p>
+                <p><span class="fact-tag">[FACT]</span> 近一個月外資與投信法人呈現「同步買超」的完美型態，是股價上漲的主要推手。</p>
+                <p><span class="analysis-tag">[ANALYSIS]</span> 籌碼面呈現「法人鎖碼、合力上攻」的健康格局。與靠散戶融資推升的股票不同，神達的漲勢背後有著長線法人的共同認可，有利於走出波段行情。</p>
+                 <p><span class="fact-tag">[FACT]</span> 所有均線呈完美多頭排列，股價沿著10日線與20日線構成的上升通道，穩健地向上墊高。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 這是標準的「強勢多頭，沿線上攻」走勢。股價並未失控噴出，而是每一步都走得非常扎實，這種有紀律的漲勢，通常能維持更長的時間。</p>
+            </div>
+        </section>
+
+        <section id="macro">
+            <h2><span class="icon">🌐</span>宏觀總結與下週觀察重點</h2>
+            <div class="stock-card">
+                 <h4>觀察重點一：九月行情開局</h4>
+                <p>時序進入九月，新的月份開始，法人與集團將重新進行資金佈局。觀察開局的資金流向，是流回AI，還是繼續停留在非電族群，將是判斷盤勢風格的關鍵。</p>
+                <h4>觀察重點二：投信作帳延續性</h4>
+                <p>八月底的投信作帳行情又急又猛，下週需觀察這股力道是否能延續。若投信鎖碼股能持續創高，代表人氣未散，反之則需提防結帳賣壓。</p>
+                <h4>觀察重點三：蘋果發表會預熱</h4>
+                <p>隨著九月蘋果發表會的日期逐漸明朗，相關供應鏈的拉貨消息將持續釋出，蘋概股仍是盤面上值得留意的潛在輪動族群。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+            投資成功的秘訣，不在於預測市場，而在於為市場的各種可能性做好準備。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart').getContext('2d');
+    new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['投信作帳', '軍工/政策', 'AI/半導體(輪動)', '其他'],
+            datasets: [{
+                label: '本週產業資金流向',
+                data: [45, 30, 20, 5],
+                backgroundColor: ['rgba(0, 209, 255, 0.7)', 'rgba(163, 113, 247, 0.7)', 'rgba(80, 250, 123, 0.7)', 'rgba(255, 184, 108, 0.7)'],
+                borderColor: '#101024',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: '本週產業資金流向 (%)', color: '#e6e6fa', font: { size: 16 } },
+                legend: { position: 'bottom', labels: { color: '#a0a0c0', font: { size: 14 } } }
+            }
+        }
+    });
+</script>
+</body>
+</html>
