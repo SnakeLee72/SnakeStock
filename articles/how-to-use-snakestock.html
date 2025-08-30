@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專欄：靈蛇週報的正確使用說明書 - 靈蛇週報</title>
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+    <meta name="description" content="如何正確利用靈蛇週報的內容進行投資？本專欄將引導您從單純的接收資訊，進化到建立一套屬於自己的、有紀律的交易流程。">
+    <meta name="keywords" content="靈蛇週報, 投資教學, 使用說明, 風險管理, 部位規模, 交易計畫">
+    
+    <meta property="og:title" content="專欄：靈蛇週報的正確使用說明書" />
+    <meta property="og:description" content="如何正確利用靈蛇週報的內容進行投資？本專欄將引導您從單純的接收資訊，進化到建立一套屬於自己的、有紀律的交易流程。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://snakelee72.github.io/SnakeStock/articles/how-to-use-snakestock.html" />
+    <meta property="og:image" content="https://snakelee72.github.io/SnakeStock/images/og-image-how-to-use.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --accent-profit: #a371f7; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        .container { max-width: 800px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
+        header .subtitle { color: var(--text-secondary); }
+        .content-card { background-color: var(--bg-card); border-radius: 8px; padding: 30px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .content-card h2 { font-size: 1.8em; color: var(--accent-blue); border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-top:0; }
+        .content-card h3 { font-size: 1.4em; color: var(--text-primary); margin-top: 30px; }
+        .content-card p, .content-card li { color: var(--text-secondary); font-size: 1.1em; }
+        blockquote { font-size: 1.2em; font-style: italic; border-left: 5px solid var(--accent-profit); padding-left: 20px; margin: 30px 20px; color: var(--text-primary); font-weight: 500; }
+        .step-list { list-style-type: none; padding-left: 0; counter-reset: step-counter; }
+        .step-list li { margin-bottom: 25px; padding-left: 45px; position: relative; }
+        .step-list li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-blue);
+            color: var(--bg-dark-ai);
+            border-radius: 50%;
+            text-align: center;
+            font-weight: 700;
+            line-height: 30px;
+        }
+        .tool-mention {
+            background-color: rgba(0, 209, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .tool-mention a {
+            color: var(--accent-blue);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .tool-mention a:hover { text-decoration: underline; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>你不只該抄牌，更要學會出牌</h1>
+            <p class="subtitle">靈蛇週報的正確使用說明書</p>
+        </header>
+
+        <article class="content-card">
+            <h2>前言：從資訊接收者，到策略執行者</h2>
+            <p>每一週，我們都致力於透過AI與專家觀點，為您從紛亂的市場中，篩選出最具潛力的投資標的。然而，我們深知，一份再好的選股名單，如果沒有搭配正確的操作策略與風險管理，最終都可能淪為紙上富貴。</p>
+            <p>這篇文章的目的，就是希望能引導您，將「靈蛇週報」從一份單純的「資訊」，轉化為一套能幫助您建立紀律、有效執行的**「交易計畫」**。</p>
+        </article>
+        
+        <article class="content-card">
+            <h2>核心理念：靈蛇週報不是「報明牌」</h2>
+            <p>在開始之前，請務必建立一個最重要的心態：我們提供的內容，是一份高品質的**「交易候選名單」**，以及背後的**「策略思路參考」**，但它並非讓您無腦跟單的「明牌」。</p>
+            <blockquote>
+                我們的目標，是將專業的分析框架提供給您，幫助您做出更優質的「個人決策」。
+            </blockquote>
+            <p>真正的成功，來自於您將我們的分析，與您自身的投資風格、風險承受度相結合，並建立起一套屬於您自己的攻防計畫。</p>
+        </article>
+
+        <article class="content-card">
+            <h2>四步驟，將週報轉化為您的交易計畫</h2>
+            <p>我們建議您在看到每週的精選股後，不要急著下單，而是先花十分鐘，走完以下的「靈蛇操作流」四步驟：</p>
+            <ol class="step-list">
+                <li>
+                    <h3>策略對焦：這檔股票適合現在的我嗎？</h3>
+                    <p>我們的選股有時是「市場核心」(如南電)，有時是「政策動能」(如漢翔)，有時則是「轉機黑馬」(如南寶)。在投入資金前，請先問自己：「這檔股票的『風格』，符合我目前的投資偏好與風險承受度嗎？」如果您是一位穩健的投資人，或許就該選擇核心股，而不是高風險的轉機股。</p>
+                </li>
+                <li>
+                    <h3>價位規劃：在「對的價格」進場</h3>
+                    <p>週報中會提供**「建議進場區間」**。這個區間通常是我們根據技術分析，判斷出相對安全的「拉回支撐區」，**它不一定是當下的市價**。學會「等待」，等待價格進入我們規劃好的獵捕範圍，是避免追高殺低的第一步。</p>
+                </li>
+                <li>
+                    <h3>風險控管：我該買多少？最多會賠多少？</h3>
+                    <p>這是整個流程中最重要的一步。在確定好「進場價」與週報提供的**「停損參考點」**後，您就擁有了一筆交易的「單股風險」。</p>
+                    <div class="tool-mention">
+                        <p><strong>強烈建議：</strong>在進場前，打開我們的<a href="/SnakeStock/tools/position-sizer.html" target="_blank">「部位規模計算機」</a>，輸入您的總資金、風險偏好(例如2%)、以及週報提供的進場與停損價。它會精準地告訴您，為了控制風險，這次您最多該買多少股。</p>
+                    </div>
+                </li>
+                <li>
+                    <h3>執行與追蹤：讓計畫引導行動</h3>
+                    <p>完成上述計畫後，剩下的就是嚴格執行。您可以設定條件單，在價格進入您的區間時買進，並嚴格遵守您的停損點。週報提供的**「波段目標價」**可作為您分批獲利了結的參考。同時，也別忘了到<a href="/SnakeStock/dashboard.html" target="_blank">「個股儀表板」</a>，追蹤我們對這些股票後續的「目前狀態」評等。</p>
+                </li>
+            </ol>
+        </article>
+
+        <article class="content-card">
+            <h2>一個關鍵問題：「如果我看錯了怎麼辦？」</h2>
+            <p>市場沒有100%的勝率，虧損是交易的一部分。但專業與業餘的差別在於，專業投資者的每一次虧損，都是**「可控的」**、**「可預期的」**。</p>
+            <p>如果您確實執行了步驟三的風險控管（設定停損並計算好部位規模），那麼單筆的虧損，將永遠在您可承受的範圍內，絕不會對您的總資金造成重傷害。這就是紀律的價值。</p>
+        </article>
+        
+         <article class="content-card">
+            <h2>結語：成為自己的交易總監</h2>
+            <p>我們由衷地希望，「靈蛇週報」對您而言，不只是一份每週更新的選股清單，而是一套能幫助您養成專業交易習慣的工具與框架。</p>
+            <blockquote>
+                我們的目標，是讓您最終不再需要我們。因為您已經學會了如何為自己的每一筆交易，建立一套完整的攻防計畫。
+            </blockquote>
+        </article>
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/tools/index.html">前往投資工具箱</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+</body>
+</html>
