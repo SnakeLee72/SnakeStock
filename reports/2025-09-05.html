@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0905 - AI趨勢深化，CoWoS與軍工成雙主軸</title>
+    <meta name="description" content="靈蛇週報0905期分析。本週市場焦點轉向AI硬體核心瓶頸(CoWoS)，政策驅動的軍工股續強，精選個股為萬潤(6187)、漢翔(2634)、廣達(2382)。">
+    <meta name="keywords" content="靈蛇週報, 0905, 萬潤, 漢翔, 廣達, CoWoS, AI伺服器, 軍工股">
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-red: #ff5555; --color-green: #50fa7b; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
+        header p { color: var(--text-secondary); }
+        section { margin-bottom: 40px; }
+        h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; display: flex; align-items: center; }
+        h2 .icon { margin-right: 15px; font-size: 1.2em; color: var(--accent-blue); }
+        .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { background-color: rgba(42, 42, 74, 0.5); }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .positive-return { color: var(--color-red); font-weight: bold; }
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
+        .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .fact-tag { background-color: rgba(0, 209, 255, 0.1); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        .analysis-tag { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
+        blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0905</h1>
+            <p>靈蛇投資研究中心 | 2025年9月5日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (9/1-9/5)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高收盤(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>8046</td><td>南電</td><td>205-215</td><td>201.0</td><td class="negative-return">-4.29%</td><td>是</td></tr>
+                        <tr><td>2634</td><td>漢翔</td><td>55.5-58.5</td><td>67.1</td><td class="positive-return">+17.72%</td><td>否</td></tr>
+                        <tr><td>3706</td><td>神達</td><td>92.5-95.5</td><td>92.0</td><td class="negative-return">-2.13%</td><td>是</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: right; font-size: 1.2em;"><strong>本週投組平均報酬率：<span class="positive-return">+3.77%</span></strong></p>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>本週產業焦點</h2>
+            <div class="stock-card">
+                <h3>九月行情開局！AI趨勢深化，資金聚焦「真硬體」</h3>
+                <p>告別八月投信作帳的煙火，九月行情開局，市場資金進行了更深層次的「汰弱留強」。我們的「6核心情報矩陣」顯示，市場對AI的狂熱並未消退，而是從「雨露均霑」轉為向「核心瓶頸」集中。**CoWoS先進封裝**的產能缺口，成為左右半導體供應鏈的關鍵，相關設備與材料商獲得市場最高度的關注。同時，具備政策護城河的**「軍工股」**持續獲得資金青睞，與AI股形成健康的輪動。而部分經歷修正的AI龍頭股，也出現了「王者歸來」的契機。</p>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2634</strong></td><td><strong>漢翔</strong></td><td>事件驅動型態突破</td><td>61.0 - 64.0元</td><td class="stop-loss">跌破 59.5元</td><td class="target-price">71.5 → 80.0元</td></tr>
+                        <tr><td><strong>6187</strong></td><td><strong>萬潤</strong></td><td>產業趨勢成長股</td><td>375 - 390元</td><td class="stop-loss">跌破 365元</td><td class="target-price">430 → 540元</td></tr>
+                        <tr><td><strong>2382</strong></td><td><strong>廣達</strong></td><td>王者波段回歸</td><td>252.5 - 258元</td><td class="stop-loss">有效跌破 250元</td><td class="target-price">270 → 290元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【2634 漢翔】事件驅動的趨勢先鋒</h3>
+                 <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 週K線顯示，股價於八月底帶量突破長達一年多的大型盤整平台，正式扭轉為長多格局。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 這是標準的型態突破，累積的能量巨大。目前股價在急漲後進行量縮整理，屬於強勢的多頭中繼站，等待再次攻擊的號角。</p>
+                 <p><span class="fact-tag">[FACT]</span> 籌碼面呈現「外資調節、內資承接」的換手狀態。外資J.P. Morgan近期大賣，但國內主力與法人買盤積極承接。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 內資主力對「國防自主」的長期趨勢認同度更高。成功的換手將洗去浮額，有利於後續更穩定的上攻。觀察內資的承接力道是後續關鍵。</p>
+                 <p><span class="fact-tag">[FACT]</span> 7月營收年減-8.3%，當前基本面數據並未跟上股價漲幅。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 市場正在交易對「勇鷹號」高教機量產、F-16V升級案等未來訂單的強烈預期。這是一檔由「夢想」驅動的股票，操作重點在於趨勢與籌碼，而非當下財報。</p>
+            </div>
+            <div class="stock-card">
+                 <h3>【6187 萬潤】高確定性的產業核心</h3>
+                 <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 公司為CoWoS先進封裝製程的關鍵設備商，直接受惠於台積電等大廠的瘋狂擴產潮。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 位處AI硬體產業鏈最核心的瓶頸位置，訂單能見度與成長確定性極高，是市場「真主流」的代表。</p>
+                 <p><span class="fact-tag">[FACT]</span> 營收自2023年底以來，呈現爆炸性階梯式成長，12個月移動平均線陡峭向上。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 基本面數據完美印證了公司正處於強勁的成長循環，為股價提供了最堅實的支撐。這不是題材炒作，而是真實的營運爆發。</p>
+                 <p><span class="fact-tag">[FACT]</span> 9月5日股價帶量突破近一個月的盤整平台，外資由賣轉買，內外盤比懸殊，攻擊訊號明確。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 這是基本面、技術面、籌碼面「三位一體」的完美共振。整理結束後的再次啟動，通常預示著新一輪波段行情的展開。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【2382 廣達】等待號角的AI王者</h3>
+                <h4>飆股DNA評估</h4>
+                <p><span class="fact-tag">[FACT]</span> 2025年Q2營收與EPS均呈現強勁的雙位數年增長，AI伺服器龍頭的獲利能力無庸置疑。</p>
+                <p><span class="analysis-tag">[ANALYSIS]</span> 「王者」的基本面根基穩固。股價的整理並非因為公司不好，而是漲多後的正常籌碼換手與技術修正。</p>
+                <p><span class="fact-tag">[FACT]</span> 股價從8月高點294元回檔至252.5元附近獲得初步支撐，並於本週五收腳。</p>
+                <p><span class="analysis-tag">[ANALYSIS]</span> 技術面上，週線級別的多頭結構未被破壞，回檔可視為健康整理。在關鍵支撐區出現止跌訊號，是左側佈局的良好時機。</p>
+                 <p><span class="fact-tag">[FACT]</span> 近期股價修正主因為外資連續賣超，但賣壓已出現趨緩跡象，而低檔有融資買盤進場承接。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 籌碼正在換手。後續的關鍵訊號是「外資何時停止賣壓並轉為回補」。一旦外資歸隊，搭配內資買盤，將形成「王者歸來」的強勁上攻力道。</p>
+            </div>
+        </section>
+
+        <section id="macro">
+            <h2><span class="icon">🌐</span>宏觀總結與下週觀察重點</h2>
+            <div class="stock-card">
+                 <h4>觀察重點一：CoWoS 產能與訂單追蹤</h4>
+                <p>先進封裝是當前半導體產業的最強風口。下週需密切關注台積電法說會、相關設備廠的訂單消息，任何關於擴產進度的風吹草動，都將直接牽動整個AI供應鏈的股價表現。</p>
+                <h4>觀察重點二：外資籌碼動向</h4>
+                <p>外資在八月下旬對大型AI股的調節是造成盤面震盪的主因。下週需觀察外資是否結束賣超、轉為回補，特別是在廣達、緯創等指標股的動向，將是判斷AI權值股能否重啟攻勢的關鍵訊號。</p>
+                <h4>觀察重點三：軍工題材延續性</h4>
+                <p>政策驅動的軍工股熱度能否延續？觀察指標在於漢翔等龍頭股是否能維持強勢，以及是否有新的國防訂單或地緣政治事件作為催化劑，都將影響此族群的續航力。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+            在別人貪婪時恐懼，在別人恐懼時貪婪。真正的機會，往往誕生於整理與修正之中。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart').getContext('2d');
+    new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['AI/半導體(CoWoS)', '軍工/政策', 'AI龍頭(整理後)', '其他'],
+            datasets: [{
+                label: '本週產業資金流向',
+                data: [40, 30, 25, 5],
+                backgroundColor: ['rgba(0, 209, 255, 0.7)', 'rgba(163, 113, 247, 0.7)', 'rgba(80, 250, 123, 0.7)', 'rgba(255, 184, 108, 0.7)'],
+                borderColor: '#101024',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: '本週產業資金流向 (%)', color: '#e6e6fa', font: { size: 16 } },
+                legend: { position: 'bottom', labels: { color: '#a0a0c0', font: { size: 14 } } }
+            }
+        }
+    });
+</script>
+</body>
+</html>
