@@ -3,28 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO & Sharing Meta Tags -->
     <title>【個股解析】南俊國際(6584) - AI機櫃中的隱形冠軍 - 靈蛇週報</title>
-    <meta name="description" content="深度剖析伺服器導軌大廠南俊國際(6584)，如何從傳統滑軌製造商，成功轉型為NVIDIA GB200供應鏈的關鍵成員，並探討其技術面與籌碼面的投資潛力。">
-    <meta name="keywords" content="南俊國際, 6584, AI伺服器, 伺服器導軌, GB200, NVIDIA, 川湖, 隱形冠軍">
+    <meta name="description" content="深度剖析伺服器導軌大廠南俊國際(6584)，如何從傳統滑軌製造商，成功轉型為NVIDIA GB200供應鏈的關鍵成員，並與川湖(King Slide)進行對比分析。">
+    <meta name="keywords" content="南俊國際, 6584, AI伺服器, 伺服器導軌, GB200, NVIDIA, 川湖, 隱形冠軍, 靈蛇週報">
+    <meta property="og:title" content="【個股解析】南俊國際(6584) - AI機櫃中的隱形冠軍 - 靈蛇週報">
+    <meta property="og:description" content="深度剖析南俊國際如何從平凡的抽屜滑軌廠，轉身成為AI革命心臟地帶的關鍵角色。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://snakelee72.github.io/SnakeStock/articles/article-nanjun-international-6584.html">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; }
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --accent-green: #50fa7b;
+        }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.9; }
         .container { max-width: 800px; margin: 10px auto; padding: 15px; }
         header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); }
         header h1 { color: var(--accent-blue); font-size: 2.2em; margin: 0; }
         header p { color: var(--text-secondary); }
-        article h2 { font-size: 1.6em; color: var(--text-primary); border-left: 4px solid var(--accent-blue); padding-left: 15px; margin-top: 40px; }
+        article h2 { font-size: 1.6em; color: var(--text-primary); border-left: 4px solid var(--accent-blue); padding-left: 15px; margin-top: 40px; display: flex; align-items: center; gap: 10px; }
         article p, article li { font-size: 1.1em; color: var(--text-secondary); }
-        article ul { list-style-type: '🐍'; padding-left: 30px; }
+        article ul { list-style-type: none; padding-left: 20px; }
+        article li::before {
+            content: '🐍';
+            color: var(--accent-blue);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1.2em;
+        }
         article strong { color: var(--accent-blue); font-weight: 500; }
         blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1em 20px; font-size: 1.1em; font-style: italic; border-radius: 0 8px 8px 0; }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
         .footer-links { margin-bottom: 15px; }
         .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
-        table { width: 100%; border-collapse: collapse; margin: 25px 0; }
-        th, td { padding: 12px; text-align: left; border: 1px solid var(--border-color); }
+        .chart-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin: 25px 0;}
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
         thead th { background-color: var(--bg-card); color: var(--accent-blue); }
+        tbody tr:hover { background-color: rgba(42, 42, 74, 0.5); }
+        /* Share Button Styles */
+        .share-section {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+        .share-section h3 {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .share-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        .line-btn { background-color: #06C755; color: white; }
+        .line-btn:hover { background-color: #05a544; }
+        .fb-btn { background-color: #1877F2; color: white; }
+        .fb-btn:hover { background-color: #166fe5; }
+        .copy-btn { background-color: var(--bg-card); color: var(--accent-blue); border-color: var(--accent-blue); }
+        .copy-btn:hover { background-color: var(--accent-blue); color: var(--bg-dark-ai); }
+
     </style>
 </head>
 <body>
@@ -38,9 +113,14 @@
             <p>在價值數兆美元、由龐大資料中心驅動的數位經濟中，一個價值數百萬美元的伺服器機櫃，其穩定運作的命脈，可能懸於一個多數人從未聽說過的零件：**鋼珠滑軌**。南俊國際，一家成立於1984年的台灣專業製造商，正是這個領域的隱形冠軍。</p>
             <p>過去三十年，南俊致力於精通這些高精度機械裝置，讓辦公室的抽屜、家中的烤箱，乃至資料中心裡沉重的伺服器，都能順暢、安全、可靠地滑動。然而，一場由AI引爆的革命，正將這家默默無聞的公司，從幕後推向了舞台的中央。</p>
 
-            <h2>戰略轉型：從「多元」到「聚焦」的精準打擊</h2>
+            <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>戰略轉型：從「多元」到「聚焦」的精準打擊</h2>
             <p>南俊的成功，源於一次教科書等級的企業轉型。公司過往的產品線橫跨家具、家電、工具櫃等多個領域，但管理層敏銳地意識到，**伺服器導軌**才是未來價值最高的戰場。</p>
             <blockquote>這不是一次被動的演化，而是一場精心策畫、由「利潤」與「機遇」驅動的戰略轉移。</blockquote>
+            
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+
             <ul>
                 <li><strong>營收佔比的逆轉：</strong> 伺服器導軌業務，已從過去僅佔12%營收的次要角色，躍升為2025年上半年佔比高達 **51%** 的核心成長引擎。</li>
                 <li><strong>利潤率的誘因：</strong> 這次轉型的背後是驚人的財務回報。伺服器導軌的平均毛利率**超過40%**，遠高於其他應用領域，是公司獲利的金雞母。</li>
@@ -48,41 +128,98 @@
             </ul>
             <p>這次成功的轉型，讓南俊完美地卡位在AI革命浪潮的第一排，準備迎接史上最大的商機。</p>
 
-            <h2>乘上AI浪潮：通往NVIDIA心臟的門票</h2>
+            <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.3.05-3.05-.65-.75-2.2-.71-3.05-.05z"/><path d="m12 15-3-3a2.5 2.5 0 0 0-3.54 3.54l3 3"/><path d="M9 18l3 3a2.5 2.5 0 0 0 3.54-3.54l-3-3"/><path d="m19.5 8.5c1.5-1.26 2-5 2-5s-3.74.5-5 2c-.71.84-.7 2.3-.05 3.05.65.75 2.2.71 3.05.05z"/><path d="m12 9 3 3a2.5 2.5 0 0 0 3.54-3.54l-3-3"/><path d="m15 6-3-3a2.5 2.5 0 0 0-3.54 3.54l3 3"/></svg>乘上AI浪潮：通往NVIDIA心臟的門票</h2>
             <p>AI的爆發，創造了對更強大、更重、更複雜的專用伺服器的空前需求。這對南俊而言，是千載難逢的機遇，因為AI革命的實體基礎設施，正是建立在南俊的導軌之上。</p>
             <ul>
-                <li><strong>取得NVIDIA的官方認證：</strong> 南俊已成功取得NVIDIA次世代 **GB200** 與 **GB300** 系統的官方參考設計清單 (RVL) 資格。這張認證，是進入AI伺服器供應鏈的黃金門票，代表南俊的產品完全符合業界最高標準。</li>
+                <li><strong>取得NVIDIA官方認證：</strong> 南俊已成功取得NVIDIA次世代 **GB200** 與 **GB300** 系統的官方參考設計清單 (RVL) 資格。這張認證，是進入AI伺服器供應鏈的黃金門票。</li>
                 <li><strong>全球唯二的關鍵地位：</strong> 至關重要的是，南俊是全球**唯二**取得 **GB300 交換器托盤 (Switch Tray)** 認證的供應商，從一開始就與產業龍頭**川湖 (King Slide)** 平起平坐，確立了其在寡占市場中的菁英地位。</li>
                 <li><strong>更高的技術門檻 = 更高的價值：</strong> AI伺服器比傳統伺服器重得多。例如，GB300系統對導軌的**承重要求提升了超過30%**。更高的技術要求，直接轉化為更高價、更高毛利的產品，大幅提升了南俊的平均銷售單價 (ASP)。</li>
             </ul>
+            
+            <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M18 9l-6 6-6-6"/></svg>寡占市場的挑戰者：南俊 vs. 川湖</h2>
+            <p>伺服器導軌是一個技術門檻極高的寡占市場，長期由產業龍頭川湖(King Slide)主導。然而，南俊國際憑藉其核心競爭力，成功打破壟斷，成為市場上不容忽視的挑戰者。</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>屬性</th>
+                            <th>川湖 (產業龍頭)</th>
+                            <th>南俊國際 (挑戰者)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>市場地位</strong></td>
+                            <td>長期領導者，市佔率高</td>
+                            <td>快速崛起的挑戰者，市佔率持續提升</td>
+                        </tr>
+                        <tr>
+                            <td><strong>專利組合</strong></td>
+                            <td>超過 3,000 項專利，護城河極深</td>
+                            <td>超過 300 項專利，並在積極擴展</td>
+                        </tr>
+                         <tr>
+                            <td><strong>關鍵AI資格</strong></td>
+                            <td>NVIDIA GB300 交換器托盤 RVL 資格</td>
+                            <td>同樣取得 GB300 交換器托盤 RVL 資格，技術實力並駕齊驅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>競爭策略</strong></td>
+                            <td>利用長期關係與龐大專利維持主導地位</td>
+                            <td>利用生產彈性與「第二供應商」策略切入關鍵客戶</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+             <p>南俊的「第二供應商(Second Source)」策略，完美切中了雲端大廠在疫情後分散供應鏈風險的策略需求，使其不僅是備援，更在部分新案中，憑藉技術實力搶下「主要供應商(First Source)」的地位，證明其已從市場的跟隨者，進化為能與龍頭並駕齊驅的競爭者。</p>
 
-            <h2>技術面與籌碼面：攻擊訊號浮現</h2>
+
+            <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20V16"/></svg>技術面與籌碼面：攻擊訊號浮現</h2>
             <p>從投資的角度來看，南俊國際不僅基本面發生了質變，其技術與籌碼結構也呈現出非常有利的攻擊型態。</p>
             <ul>
                 <li><strong>完美的「旗型整理」：</strong> 股價在經歷一波急漲、突破$250的平台後，近一週在高檔進行**「量縮、橫盤」**的整理。這在技術分析中是典型的**「高檔旗型整理」**，被視為多頭趨勢中非常強勁的「中繼再漲」訊號，代表主力正在清洗浮額，醞釀下一波攻擊。</li>
                 <li><strong>外資鎖碼 + 軋空燃料：</strong> 近期**外資**是推動行情的主要買家，呈現連續買超的鎖碼態勢。最關鍵的是，在股價強勢整理的同時，**融券（空單）**卻異常暴增，為未來的軋空行情提供了充足的燃料。</li>
             </ul>
 
-            <h2>結論：一個清晰的成長路徑</h2>
+            <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>結論：一個清晰的成長路徑</h2>
             <p>南俊國際成功地完成了一次非凡的轉型，從一家多元化的傳統製造商，進化為AI伺服器產業鏈中，一個高價值、高利潤的關鍵參與者。藉由精準地聚焦伺服器市場，公司將自身的成長與我們這個時代最強大的科技趨勢緊密地綁定在一起。</p>
             <p>其深厚的技術實力、穩固的客戶關係、難以跨越的專利護城河，以及當前完美的技術與籌碼型態，使其不僅僅是AI革命的參與者，更有潛力成為其硬體基礎設施中，一個不可或缺的隱形冠軍。</p>
 
         </article>
+        
+        <section class="share-section">
+            <h3>分享這篇文章</h3>
+            <div class="share-buttons">
+                <a id="shareLine" class="share-btn line-btn" href="#" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 32 32"><path fill="currentColor" d="M22.085 12.831h-2.122c-.28 0-.506.226-.506.506v1.366c0 .28.226.506.506.506h1.616v5.462h-1.616c-.28 0-.506.226-.506.506v1.366c0 .28.226.506.506.506h2.122c.866 0 1.57-.703 1.57-1.57v-6.996c0-.866-.704-1.57-1.57-1.57zm-5.83-2.663c0-.866-.704-1.57-1.57-1.57h-1.06c-.866 0-1.57.704-1.57 1.57v11.33c0 .866.704 1.57 1.57 1.57h1.06c.866 0 1.57-.704 1.57-1.57v-11.33zm-4.71 4.295h-2.122c-.28 0-.506.226-.506.506v1.366c0 .28.226.506.506.506h1.616v3.826H9.545c-.28 0-.506.226-.506.506v1.366c0 .28.226.506.506.506h2.122c.866 0 1.57-.704 1.57-1.57v-5.462c0-.866-.704-1.57-1.57-1.57zM16 0C7.164 0 0 7.164 0 16s7.164 16 16 16 16-7.164 16-16S24.836 0 16 0z"></path></svg>
+                    <span>LINE</span>
+                </a>
+                <a id="shareFb" class="share-btn fb-btn" href="#" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm2.24 10.38h-1.57v5.54h-2.43v-5.54h-1.24v-2.13h1.24v-1.4c0-1.03.52-2.61 2.61-2.61h1.81v2.13h-1.1c-.21 0-.52.1-.52.58v1.3h1.68l-.23 2.13z"></path></svg>
+                    <span>Facebook</span>
+                </a>
+                <button id="copyLink" class="share-btn copy-btn">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                    <span id="copyLinkText">複製連結</span>
+                </button>
+            </div>
+        </section>
 
         <footer class="site-footer">
             <div class="footer-links"><a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/disclaimer.html">免責聲明</a></div>
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 【請注意】請將 pageUrl 的值，更換為這篇文章的「最終發布網址」
-        const pageUrl = 'https://snakelee72.github.io/SnakeStock/articles/article-cho-pharma-6586.html';
-        const pageTitle = document.title;
+        // --- 修正分享連結功能 ---
+        const pageUrl = 'https://snakelee72.github.io/SnakeStock/articles/article-nanjun-international-6584.html';
+        const pageTitle = encodeURIComponent(document.title);
         
         const shareLine = document.getElementById('shareLine');
         if (shareLine) {
-            shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`;
+            shareLine.href = `https://line.me/R/msg/text/?${pageTitle}%0A${encodeURIComponent(pageUrl)}`;
         }
         
         const shareFb = document.getElementById('shareFb');
@@ -91,17 +228,72 @@
         }
         
         const copyLink = document.getElementById('copyLink');
+        const copyLinkText = document.getElementById('copyLinkText');
         if (copyLink) {
             copyLink.addEventListener('click', function() {
-                navigator.clipboard.writeText(pageUrl).then(() => {
-                    copyLink.textContent = '已複製！';
-                    setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
-                }).catch(err => {
-                    console.error('複製失敗: ', err);
-                });
+                const textArea = document.createElement('textarea');
+                textArea.value = pageUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyLinkText.textContent = '已複製！';
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                    copyLinkText.textContent = '複製失敗';
+                }
+                document.body.removeChild(textArea);
+
+                setTimeout(() => { copyLinkText.textContent = '複製連結'; }, 2000);
+            });
+        }
+
+        // --- 新增並美化圖表 ---
+        const revenueCtx = document.getElementById('revenueChart');
+        if (revenueCtx) {
+            // [修正] 設定 Chart.js 全域文字顏色以適應深色主題
+            Chart.defaults.color = 'var(--text-secondary)';
+            Chart.defaults.font.family = "'Noto Sans TC', sans-serif";
+
+            new Chart(revenueCtx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['伺服器導軌', '其他傳統應用'],
+                    datasets: [{
+                        label: '營收佔比 (2025 H1)',
+                        data: [51, 49],
+                        backgroundColor: [
+                            'rgba(0, 209, 255, 0.7)',
+                            'rgba(42, 42, 74, 0.9)'
+                        ],
+                        borderColor: 'var(--bg-card)',
+                        borderWidth: 3,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: 'var(--text-primary)',
+                                font: { size: 14 }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '南俊國際營收結構轉型 (2025 H1)',
+                            color: 'var(--text-primary)',
+                            font: { size: 16 },
+                            padding: { top: 10, bottom: 20 }
+                        }
+                    }
+                }
             });
         }
     });
 </script>
 </body>
 </html>
+
