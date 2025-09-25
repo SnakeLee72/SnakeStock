@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO & Sharing Meta Tags -->
     <title>【個股解析】南俊國際(6584) - AI機櫃中的隱形冠軍 - 靈蛇週報</title>
     <meta name="description" content="深度剖析伺服器導軌大廠南俊國際(6584)，如何從傳統滑軌製造商，成功轉型為NVIDIA GB200供應鏈的關鍵成員，並與川湖(King Slide)進行對比分析。">
     <meta name="keywords" content="南俊國際, 6584, AI伺服器, 伺服器導軌, GB200, NVIDIA, 川湖, 隱形冠軍, 靈蛇週報">
@@ -251,8 +250,8 @@
         // --- 新增並美化圖表 ---
         const revenueCtx = document.getElementById('revenueChart');
         if (revenueCtx) {
-            // [修正] 設定 Chart.js 全域文字顏色以適應深色主題
-            Chart.defaults.color = 'var(--text-secondary)';
+            // [修正] 設定 Chart.js 全域文字顏色為白色
+            Chart.defaults.color = '#FFFFFF'; // <-- 修改點 1
             Chart.defaults.font.family = "'Noto Sans TC', sans-serif";
 
             new Chart(revenueCtx.getContext('2d'), {
@@ -277,14 +276,14 @@
                         legend: {
                             position: 'top',
                             labels: {
-                                color: 'var(--text-primary)',
+                                color: '#FFFFFF', // <-- 修改點 2
                                 font: { size: 14 }
                             }
                         },
                         title: {
                             display: true,
                             text: '南俊國際營收結構轉型 (2025 H1)',
-                            color: 'var(--text-primary)',
+                            color: '#FFFFFF', // <-- 修改點 3
                             font: { size: 16 },
                             padding: { top: 10, bottom: 20 }
                         }
@@ -296,4 +295,3 @@
 </script>
 </body>
 </html>
-
