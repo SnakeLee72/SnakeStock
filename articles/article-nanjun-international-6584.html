@@ -74,5 +74,34 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 【請注意】請將 pageUrl 的值，更換為這篇文章的「最終發布網址」
+        const pageUrl = 'https://snakelee72.github.io/SnakeStock/articles/article-cho-pharma-6586.html';
+        const pageTitle = document.title;
+        
+        const shareLine = document.getElementById('shareLine');
+        if (shareLine) {
+            shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`;
+        }
+        
+        const shareFb = document.getElementById('shareFb');
+        if (shareFb) {
+            shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+        }
+        
+        const copyLink = document.getElementById('copyLink');
+        if (copyLink) {
+            copyLink.addEventListener('click', function() {
+                navigator.clipboard.writeText(pageUrl).then(() => {
+                    copyLink.textContent = '已複製！';
+                    setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
+                }).catch(err => {
+                    console.error('複製失敗: ', err);
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>
