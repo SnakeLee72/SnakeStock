@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0926 - AI王者歸來，鎖定法人鎖碼股</title>
+    <meta name="description" content="靈蛇週報0926期分析。本週探討降息循環下的AI股投資策略，在震盪中尋找機會。精選個股為鴻海(2317)、廣達(2382)、聯鈞(3450)。">
+    <meta name="keywords" content="靈蛇週報, 0926, 鴻海, 廣達, 聯鈞, AI伺服器, CPO, 法人鎖碼, 資金輪動">
+    <link rel="manifest" href="../manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-red: #ff5555; --color-green: #50fa7b; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
+        header p { color: var(--text-secondary); }
+        section { margin-bottom: 40px; }
+        h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; display: flex; align-items: center; }
+        h2 .icon { margin-right: 15px; font-size: 1.2em; color: var(--accent-blue); }
+        .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { background-color: rgba(42, 42, 74, 0.5); }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .positive-return { color: var(--color-red); font-weight: bold; }
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
+        .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .fact-tag { background-color: rgba(0, 209, 255, 0.1); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        .analysis-tag { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
+        blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0926</h1>
+            <p>靈蛇投資研究中心 | 2025年9月26日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (9/22-9/26)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高價(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>2327</td><td>國巨</td><td>163</td><td>180.0</td><td class="positive-return">+10.43%</td><td>否</td></tr>
+                        <tr><td>3037</td><td>欣興</td><td>153</td><td>159.0</td><td class="positive-return">+3.92%</td><td>否</td></tr>
+                        <tr><td>2317</td><td>鴻海</td><td>210-215</td><td>230.0</td><td class="positive-return">+6.98%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: right; font-size: 1.2em;"><strong>本週投組平均報酬率：<span class="positive-return">+7.11%</span></strong></p>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>本週產業焦點</h2>
+            <div class="stock-card">
+                <h3>降息循環下的AI劇本：震盪中尋找真金</h3>
+                <p>本週聯準會降息，確立了資金寬鬆的基調，然而台股卻在高檔出現劇烈震盪。從我們的「6核心情報矩陣」分析，市場正在進行一場**「去偽存真」**的洗盤。前期雞犬升天的全面普漲行情告一段落，資金開始嚴格檢視個股的**真實營收、法人籌碼安定度、以及在AI供應鏈中的核心地位**。市場的焦點，已從「題材的廣度」轉向「獲利的深度」。</p>
+                <p>本週的拉回，不僅不是危機，反而是絕佳的檢視機會。我們發現，儘管盤勢震盪，但資金對於具備**「強勁基本面」**與**「長線法人鎖碼」**的AI核心股，依然是逢低承接。這代表AI的長多格局未變，只是市場變得更為挑剔。本週的策略核心，就是利用震盪，汰弱留強，佈局真正的王者。</p>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2317</strong></td><td><strong>鴻海</strong></td><td>漲多拉回，內資承接股</td><td>210 - 215 元</td><td class="stop-loss">跌破 207 元</td><td class="target-price">231 → 250 元</td></tr>
+                        <tr><td><strong>2382</strong></td><td><strong>廣達</strong></td><td>V轉強勢，外資主導股</td><td>280 - 285 元</td><td class="stop-loss">跌破 268 元</td><td class="target-price">294 → 320 元</td></tr>
+                        <tr><td><strong>3450</strong></td><td><strong>聯鈞</strong></td><td>CPO題材，內外資鎖碼股</td><td>265 - 272 元</td><td class="stop-loss">跌破 240 元</td><td class="target-price">288 → 320 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【2317 鴻海】健康修正，提供第二次上車機會</h3>
+                 <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 8月營收年增率(YoY)達+10.6%，Q2營收年增率高達+15.8%，AI伺服器與電動車的成長故事依然是市場共識。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 穩固的基本面為股價提供了堅實的下檔支撐，讓每一次的拉回都顯得有價值。</p>
+                 <p><span class="fact-tag">[FACT]</span> 股價在本週創高後出現帶量長黑K棒，回測下方短期均線支撐，為突破後的首次像樣拉回。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 這並非反轉訊號，而是「漲多後的健康修正」，技術面上的整理有助於清洗浮額，讓趨勢走得更長久。</p>
+                 <p><span class="fact-tag">[FACT]</span> 近期籌碼呈現「短線外資賣，長線內資買」的格局。今日外資調節，但代表內資的投信仍在持續買超。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 只要代表長線趨勢的內資投信與被動型基金沒有轉賣，短線的震盪反而為錯過前一波的投資人，提供了絕佳的第二次上車機會。</p>
+            </div>
+            <div class="stock-card">
+                 <h3>【2382 廣達】V轉確立，外資強力主導的多頭列車</h3>
+                 <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 2025年Q1及Q2的營收年增率(YoY)分別高達+87.6%及+62.6%，成長力道無可挑剔。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 爆發性的成長，直接印證了公司在AI伺服器市場的領導地位與強勁的出貨動能，是AI純度最高的權值股之一。</p>
+                 <p><span class="fact-tag">[FACT]</span> 股價在9月中旬打出底部後，以「V型反轉」的姿態，重新放量站回所有均線之上，技術面重返多頭。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> V型反轉確認了底部支撐的有效性，均線重新呈現多頭排列，技術面非常強勢。</p>
+                 <p><span class="fact-tag">[FACT]</span> 外資是近期推升股價的最主要力量，連續大買，今日再度狂掃逾3萬張，完全壓過了投信的調節賣壓。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 籌碼面呈現「外資強力作多」的格局。在國際資金的強力主導下，股價易漲難跌，是趨勢明確的核心持股。</p>
+            </div>
+            <div class="stock-card">
+                <h3>【3450 聯鈞】CPO黑馬，內外資聯手鎖碼</h3>
+                <h4>飆股DNA評估</h4>
+                 <p><span class="fact-tag">[FACT]</span> 市場預期AI相關的CPO(光學共封裝)產品將在明年開始大量貢獻營收，帶動公司重返高成長軌道。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 股價反映的是對未來的強烈預期。聯鈞作為全球雷射二極體封裝的領導者，是此趨勢的核心受惠者，具備黑馬潛力。</p>
+                 <p><span class="fact-tag">[FACT]</span> 股價在經歷急殺後，本週以「V型反轉」收復失土，重新站回所有短期均線之上，多方承接力道極強。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 強勢的V轉是主力洗盤的經典訊號，在清洗浮額後，技術面再度轉為強勢，有利於再攻前高。</p>
+                 <p><span class="fact-tag">[FACT]</span> 外資與投信在過去一個月，呈現「同步、連續」的大買超，且在股價急殺的過程中，不但沒有賣出，反而還在逆勢加碼。</p>
+                 <p><span class="analysis-tag">[ANALYSIS]</span> 法人「漲也買、跌也買」的行為，是長線最值得信賴的籌碼訊號。這次的V型反轉，提供了絕佳的第二次進場機會。</p>
+            </div>
+        </section>
+
+        <section id="macro">
+            <h2><span class="icon">🌐</span>宏觀總結與下週觀察重點</h2>
+            <div class="stock-card">
+                 <h4>觀察重點一：拉回修正的健康度</h4>
+                <p>本週台股創高後拉回，下週需密切觀察關鍵權值股能否守住月線等重要支撐。健康的修正是為了走更長遠的路，但若重要支撐失守，則需提防波段行情結束的風險。</p>
+                <h4>觀察重點二：法人籌碼的流向</h4>
+                <p>在震盪盤勢中，法人的動向是重要的風向球。下週應持續關注外資與投信是否持續加碼鴻海、廣達等AI核心股。籌碼的穩定性，將是決定反彈力道的關鍵。</p>
+                <h4>觀察重點三：CPO等新題材的擴散</h4>
+                <p>聯鈞的強勢，代表市場開始將目光投向下世代的AI技術。下週可觀察資金是否持續流入CPO、矽光子等相關族群，這將是判斷AI行情能否深化、擴散的重要指標。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+            一次健康的修正，是勇敢的投資者最好的朋友。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../glossary.html">投資術語庫</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart').getContext('2d');
+    new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['AI 權值股 (整理)', 'AI 補漲股 (CPO)', '傳產/原物料(休息)', '其他'],
+            datasets: [{
+                label: '本週產業資金流向',
+                data: [50, 25, 15, 10],
+                backgroundColor: ['rgba(0, 209, 255, 0.7)', 'rgba(80, 250, 123, 0.7)', 'rgba(255, 184, 108, 0.7)', 'rgba(255, 85, 85, 0.7)'],
+                borderColor: '#101024',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: '本週產業資金流向 (%)', color: '#e6e6fa', font: { size: 16 } },
+                legend: { position: 'bottom', labels: { color: '#a0a0c0', font: { size: 14 } } }
+            }
+        }
+    });
+</script>
+</body>
+</html>
+
