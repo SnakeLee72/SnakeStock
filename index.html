@@ -7,7 +7,7 @@
     <title>靈蛇週報 - AI 驅動的台股洞察</title>
     <link rel="manifest" href="/SnakeStock/manifest.json">
     <meta name="description" content="靈蛇週報是一個結合AI分析與專家觀點的台股投資研究網站。每週提供精選潛力股、深度個股報告與市場趨勢分析，助您做出更精準的投資決策。">
-    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報, 國巨, 欣興, 鴻海, 被動元件, ABF載板, 南俊國際">
+    <meta name="keywords" content="靈蛇週報, 台股分析, 股票推薦, AI選股, 投資週報, 台積電, 聯發科, 華邦電, 國巨, 欣興, 鴻海, 被動元件, ABF載板, 南俊國際">
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -349,7 +349,16 @@
             <div id="reportListContainer">
                 <article class="report-card fade-in-on-scroll">
                     <div class="card-header">
-                        <h3>靈蛇週報 0919 <span class="new-badge">New!</span></h3><span class="date">2025-09-19</span>
+                        <h3>靈蛇週報 0926 <span class="new-badge">New!</span></h3><span class="date">2025-09-26</span>
+                    </div>
+                    <div class="card-content">
+                        <p class="teaser"><strong>本期焦點：</strong>財報季前哨戰！市場觀望氣氛濃厚，資金轉進防禦性與低基期族群。本週聚焦車用電子需求復甦、記憶體報價回溫，以及AI應用的邊緣擴散。<br><strong>精選個股：</strong>台積電、聯發科、華邦電</p>
+                        <a href="reports/2025-09-26.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
+                    </div>
+                </article>
+                <article class="report-card fade-in-on-scroll">
+                    <div class="card-header">
+                        <h3>靈蛇週報 0919</h3><span class="date">2025-09-19</span>
                     </div>
                     <div class="card-content">
                         <p class="teaser"><strong>本期焦點：</strong>聯準會降息，資金輪動加速！高低位階轉換成盤面主軸。本週聚焦景氣復甦的被動元件龍頭、供應鏈瓶頸的ABF載板、以及法人鎖碼的AI補漲巨獸。<br><strong>精選個股：</strong>國巨、欣興、鴻海</p>
@@ -365,7 +374,7 @@
                         <a href="reports/2025-09-12.html" target="_blank" class="read-more">閱讀完整報告 &rarr;</a>
                     </div>
                 </article>
-                <article class="report-card fade-in-on-scroll">
+                <article class="report-card hidden fade-in-on-scroll">
                     <div class="card-header">
                         <h3>靈蛇週報 0905</h3><span class="date">2025-09-05</span>
                     </div>
@@ -443,6 +452,11 @@
             <h2 class="fade-in-on-scroll"><span class="icon">🌟</span> 深度研究 & 公告</h2>
             <div class="research-grid" id="researchGrid">
                 <article class="research-card fade-in-on-scroll">
+                    <h3>【趨勢展望】Q3 財報季前瞻：佈局三大關鍵產業</h3>
+                    <p>第三季財報季即將拉開序幕！本文深度分析市場預期，並點出在 AI、車用電子、消費性產品復甦三大主軸下，最值得關注的潛力族群與財報亮點。</p>
+                    <a href="articles/article-q3-earnings-preview-2025.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
+                </article>
+                <article class="research-card fade-in-on-scroll">
                     <h3>【個股解析】南俊國際 (6584)</h3>
                     <p>深度剖析伺服器導軌大廠南俊國際(6584)，如何從傳統滑軌製造商，成功轉型為NVIDIA GB200供應鏈的關鍵成員。</p>
                     <a href="articles/article-nanjun-international-6584.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
@@ -457,7 +471,7 @@
                     <p>視覺化圖表呈現七月份推薦個股的整體績效、亮點與檢討，並對八月份的市場進行展望。</p>
                     <a href="review-2025-07.html" target="_blank" class="read-more">閱讀七月戰報 &rarr;</a>
                 </article>
-                <article class="research-card fade-in-on-scroll">
+                <article class="research-card hidden fade-in-on-scroll">
                     <h3>【個股解析】醣基生醫 (6586)</h3>
                     <p>深度剖析台灣醣科學巨擘的核心技術、新藥研發進度與投資風險，了解其在全球生技領域的獨特地位與未來潛力。</p>
                     <a href="articles/article-cho-pharma-6586.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
@@ -514,17 +528,19 @@
                 if (!container) return;
                 const hiddenItems = container.querySelectorAll(itemSelector);
 
+                // 修正：初始隱藏邏輯
                 if (toggleButton && hiddenItems.length > 0) {
-                    toggleButton.addEventListener('click', function() {
-                        const areItemsHidden = Array.from(hiddenItems).some(item => item.style.display === 'none' || item.style.display === '');
-                        hiddenItems.forEach(card => {
-                            card.style.display = areItemsHidden ? 'flex' : 'none';
-                        });
-                        const buttonText = toggleButton.textContent;
-                        toggleButton.textContent = areItemsHidden ? buttonText.replace('顯示', '收合') : buttonText.replace('收合', '顯示');
-                    });
-                    hiddenItems.forEach(card => {
+                     hiddenItems.forEach(card => {
                         card.style.display = 'none';
+                    });
+                    
+                    toggleButton.addEventListener('click', function() {
+                        const isHidden = this.textContent.includes('顯示');
+                        hiddenItems.forEach(card => {
+                            // 修正：使用flex確保佈局一致
+                            card.style.display = isHidden ? 'flex' : 'none';
+                        });
+                        this.textContent = isHidden ? this.textContent.replace('顯示', '收合') : this.textContent.replace('收合', '顯示');
                     });
                 }
             };
@@ -534,10 +550,11 @@
 
             // --- [升級] Logic for Staggered Fade-in Animation ---
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // 為每個可見的元素增加延遲
-                        entry.target.style.animationDelay = `${index * 100}ms`;
+                        // 使用 dataset 來避免重複計算延遲
+                        let delay = (entry.target.dataset.index || 0) * 100;
+                        entry.target.style.animationDelay = `${delay}ms`;
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
@@ -548,7 +565,11 @@
             });
 
             const elementsToAnimate = document.querySelectorAll('.fade-in-on-scroll');
-            elementsToAnimate.forEach(el => observer.observe(el));
+            // 為每個元素分配一個索引以用於交錯動畫
+            elementsToAnimate.forEach((el, index) => {
+                el.dataset.index = index;
+                observer.observe(el);
+            });
         });
     </script>
 </body>
