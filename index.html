@@ -553,7 +553,7 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         // 使用 dataset 來避免重複計算延遲
-                        let delay = (entry.target.dataset.index || 0) * 100;
+                        let delay = (entry.target.dataset.index || 0) * 90;
                         entry.target.style.animationDelay = `${delay}ms`;
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
