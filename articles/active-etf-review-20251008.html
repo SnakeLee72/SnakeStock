@@ -24,6 +24,8 @@
             --color-red: #ff5555; 
             --color-green: #50fa7b; 
             --color-yellow: #f1fa8c;
+            --line-green: #06C755;
+            --facebook-blue: #1877F2;
         }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
@@ -49,6 +51,14 @@
         tbody td:first-child { font-weight: bold; color: var(--text-primary); }
         
         .disclaimer { font-size: 0.9em; color: var(--text-secondary); text-align: center; margin-top: 20px; padding: 15px; background-color: var(--bg-card); border-radius: 8px; }
+
+        .share-container { text-align: center; padding: 20px; background-color: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-color); }
+        .share-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
+        .share-button { display: inline-block; padding: 10px 20px; border-radius: 20px; text-decoration: none; color: white; font-weight: bold; transition: opacity 0.3s; border: none; cursor: pointer; font-size: 1em;}
+        .share-button.line { background-color: var(--line-green); }
+        .share-button.fb { background-color: var(--facebook-blue); }
+        .share-button.copy { background-color: var(--text-secondary); }
+        .share-button:hover { opacity: 0.8; }
 
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
         .footer-links { margin-bottom: 15px; }
@@ -196,6 +206,15 @@
                 </div>
             </section>
         </article>
+
+        <section class="share-container">
+            <p>覺得這篇分析有幫助嗎？分享給您的朋友吧！</p>
+            <div class="share-buttons">
+                <a id="shareLine" href="#" target="_blank" class="share-button line">分享到 Line</a>
+                <a id="shareFb" href="#" target="_blank" class="share-button fb">分享到 Facebook</a>
+                <button id="copyLink" class="share-button copy">複製連結</button>
+            </div>
+        </section>
         
         <footer class="site-footer">
              <div class="footer-links">
@@ -207,6 +226,70 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pageUrl = 'https://snakelee72.github.io/SnakeStock/articles/active-etf-review-20251008.html';
+        const pageTitle = document.title;
+        
+        const shareLine = document.getElementById('shareLine');
+        if (shareLine) {
+            shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`;
+        }
+        
+        const shareFb = document.getElementById('shareFb');
+        if (shareFb) {
+            shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+        }
+        
+        const copyLink = document.getElementById('copyLink');
+        if (copyLink) {
+            copyLink.addEventListener('click', function() {
+                // 使用 navigator.clipboard API，這是現代且安全的方法
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(pageUrl).then(() => {
+                        copyLink.textContent = '已複製！';
+                        setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
+                    }).catch(err => {
+                        console.error('非同步複製失敗: ', err);
+                        fallbackCopyTextToClipboard(pageUrl, copyLink);
+                    });
+                } else {
+                    // 針對舊版瀏覽器的備用方法
+                    fallbackCopyTextToClipboard(pageUrl, copyLink);
+                }
+            });
+        }
+
+        function fallbackCopyTextToClipboard(text, buttonElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            
+            // 避免在行動裝置上滾動到頁面底部
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    buttonElement.textContent = '已複製！';
+                    setTimeout(() => { buttonElement.textContent = '複製連結'; }, 2000);
+                } else {
+                    buttonElement.textContent = '複製失敗';
+                }
+            } catch (err) {
+                console.error('備用複製方法失敗', err);
+                buttonElement.textContent = '複製失敗';
+            }
+
+            document.body.removeChild(textArea);
+        }
+    });
+    </script>
 </body>
 </html>
 
