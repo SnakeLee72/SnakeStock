@@ -3,75 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>靈蛇週報 1017 - 法說會後見真章，鎖定三大價值成長股</title>
+    <title>靈蛇週報 1017 - 風格三：技術藍圖風</title>
     <meta name="description" content="靈蛇週報1017期分析。台積電法說會後，市場回歸基本面檢視。本週聚焦價值重估的AI權值龍頭、受惠GB300的ABF載板、以及底部轉強的被動元件巨擘。精選個股為鴻海(2317)、景碩(3189)、國巨(2327)。">
     <meta name="keywords" content="靈蛇週報, 1017, 鴻海, 景碩, 國巨, AI伺服器, ABF載板, 被動元件, 台積電法說會">
-    <link rel="manifest" href="/SnakeStock/manifest.json">
-    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-red: #ff5555; --color-green: #50fa7b; }
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
-        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
-        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
-        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
-        header p { color: var(--text-secondary); }
-        section { margin-bottom: 40px; }
-        h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; display: flex; align-items: center; }
-        h2 .icon { margin-right: 15px; font-size: 1.2em; color: var(--accent-blue); }
-        .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
-        thead th { background-color: rgba(42, 42, 74, 0.5); }
-        .target-price { color: var(--color-red); font-weight: bold; }
-        .stop-loss { color: var(--color-green); font-weight: bold; }
-        .positive-return { color: var(--color-red); font-weight: bold; }
-        .negative-return { color: var(--color-green); font-weight: bold; }
-        .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
-        .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
-        .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
         
-        /* 整合分析的列表樣式 */
+        /* 風格三：技術藍圖風 */
+        :root {
+            --bg-main: #0d1b2a;         /* 深藍背景 */
+            --bg-card: #1b263b;         /* 卡片藍灰色背景 */
+            --border-color: #415a77;      /* 藍圖線條顏色 */
+            --text-primary: #e0e1dd;      /* 主要文字 - 米白 */
+            --text-secondary: #778da9;    /* 次要文字 - 灰藍 */
+            --accent-cyan: #00ffff;       /* 亮青色 */
+            --highlight-yellow: #ffd60a;  /* 高亮黃 */
+            --color-red: #ff5c5c;         /* 風險紅 */
+            --color-green: #5cff5c;       /* 機會綠 */
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            /* 添加網格背景 */
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--highlight-yellow);
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--accent-cyan);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 .icon {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); /* 半透明背景 */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        thead th {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        td {
+            font-weight: 500;
+        }
+
+        .target-price { color: var(--color-red); font-weight: 500; }
+        .stop-loss { color: var(--color-green); font-weight: 500; }
+        .positive-return { color: var(--color-red); font-weight: 500; }
+        .negative-return { color: var(--color-green); font-weight: 500; }
+
+        .stock-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        /* 卡片直角設計 */
+        .stock-card { border-radius: 0; }
+        .table-responsive { border-radius: 0; }
+
+        .stock-card h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 0;
+            color: var(--highlight-yellow);
+        }
+
+        .stock-card h4 {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color); /* 虛線 */
+        }
+
         .stock-card ul {
             list-style-type: none;
             padding-left: 0;
             margin-top: 20px;
         }
+
         .stock-card ul li {
             position: relative;
-            padding-left: 25px; /* 預留圖標空間 */
+            padding-left: 30px;
             margin-bottom: 18px;
             font-size: 1.05em;
         }
+
         .stock-card ul li::before {
-            content: '🔹'; /* 使用圖標作為項目符號 */
+            content: '>>';
             position: absolute;
             left: 0;
-            top: 2px;
-            color: var(--accent-blue);
+            top: 0px;
+            color: var(--accent-cyan);
             font-size: 1em;
+            font-weight: 700;
         }
+
         .stock-card ul li b {
-            color: var(--color-red); /* 將小標題顏色改為紅色 */
-            display: block; /* 讓標題單獨一行 */
-            margin-bottom: 4px; /* 標題和內文的間距 */
+            color: var(--accent-cyan);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
             font-size: 1.05em;
         }
 
-        .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
-        blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
-        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        .chart-container {
+            max-width: 400px;
+            margin: 20px auto 0 auto;
+        }
+
+        blockquote {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--highlight-yellow);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>靈蛇週報 1017</h1>
-            <p>靈蛇投資研究中心 | 2025年10月17日</p>
+            <p>靈蛇投資研究中心 // 2025年10月17日</p>
         </header>
 
         <section id="review">
-            <h2><span class="icon">📈</span>上週績效回測 (10/13-10/17)</h2>
+            <h2><span class="icon">📈</span>// 上週績效回測 (10/13-10/17)</h2>
             <div class="table-responsive">
                 <table>
                     <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高價(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
@@ -82,13 +224,12 @@
                     </tbody>
                 </table>
             </div>
-            <p>本週市場震盪加劇，部分強勢股面臨修正壓力，導致上週選股表現不如預期。鴻海在回測支撐過程中，短暫觸及停損點，再次提醒我們嚴守紀律的重要性。其餘兩檔個股雖有小幅拉回，但仍守在關鍵支撐之上，趨勢尚未破壞。</p>
         </section>
 
         <section id="industry-focus">
-            <h2><span class="icon">🔍</span>本週產業焦點</h2>
+            <h2><span class="icon">🔍</span>// 本週產業焦點</h2>
             <div class="stock-card">
-                <h3>台積電法說會後，AI劇本進入第二章：價值重估</h3>
+                <h3>AI劇本進入第二章：價值重估</h3>
                 <p>本週市場的目光，全數聚焦於台積電的法說會。會中釋出的正向展望，不僅穩定了市場信心，更確立了AI的長多趨勢不變。從我們的「6核心情報矩陣」分析，市場劇本已進入第二章：資金開始從「純題材炒作」轉向**「尋找具備真實獲利、且價值被低估」**的績優股。</p>
                 <p>市場的焦點，正從AI終端組裝，進一步擴散至上游更具技術護城河的關鍵零組件。本週，**ABF載板**與**被動元件**兩大族群，因其在AI新平台中的關鍵地位與明確的產業復甦訊號，成為市場共識最強的接棒者。同時，先前經歷健康整理的**AI權值龍頭**，也浮現了絕佳的第二次佈局機會。</p>
                 <div class="chart-container">
@@ -98,7 +239,7 @@
         </section>
 
         <section id="selections">
-            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <h2><span class="icon">🎯</span>// 下週靈蛇精選股 (可布局)</h2>
             <div class="table-responsive">
                 <table>
                      <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
@@ -111,12 +252,11 @@
             </div>
         </section>
 
-        <!-- 修改後的分析區塊 -->
         <section id="analysis">
-            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <h2><span class="icon">🔬</span>// 本週精選股深度分析</h2>
             <div class="stock-card">
                  <h3>【2317 鴻海】AI五年計畫啟動，回測頸線提供安全買點</h3>
-                 <h4>飆股DNA評估</h4>
+                 <h4>// 飆股DNA評估</h4>
                  <ul>
                     <li><b>基本面強勁：</b>9月營收創2年4個月新高，雙位數強力成長證實AI伺服器與消費電子旺季動能。強勁基本面是股價最強底氣，加上公司宣布未來五年主軸圍繞AI生態系，與NVIDIA、OpenAI的合作更打開長線想像空間。</li>
                     <li><b>技術面健康：</b>股價創高後，精準回測 $210-$215 頸線區獲得有效支撐，為標準「強勢整理」型態。這次健康回測清洗了浮動籌碼，在頸線之上整理，提供了比突破時更安全的第二次進場機會。</li>
@@ -125,7 +265,7 @@
             </div>
             <div class="stock-card">
                  <h3>【3189 景碩】GB300關鍵受惠者，ABF族群補漲核心</h3>
-                 <h4>飆股DNA評估</h4>
+                 <h4>// 飆股DNA評估</h4>
                  <ul>
                     <li><b>GB300受惠：</b>公司已正式打入NVIDIA GB300供應鏈。AI伺服器對高階封裝載板的需求是結構性增長，隨著GB300導入液冷散熱與高速封裝，景碩的技術價值將進一步凸顯。</li>
                     <li><b>產業族群共振：</b>與南電、欣興形成「ABF三雄」共振。法人指出Q4 ABF載板需求回升，AI及記憶體同步發酵。景碩屬於趨勢明確的產業族群，被視為成長性最高的個股之一。</li>
@@ -134,7 +274,7 @@
             </div>
             <div class="stock-card">
                 <h3>【2327 國巨】價值龍頭底部轉折，外資強力回補</h3>
-                <h4>飆股DNA評估</h4>
+                <h4>// 飆股DNA評估</h4>
                 <ul>
                     <li><b>基本面落底：</b>9月營收創24個月新高 (年增+12.2%)，顯示產業需求穩定回溫。AI與車用電子的雙引擎，為公司未來營運提供清晰的成長動能。</li>
                     <li><b>技術面轉強：</b>股價近期站上所有短期均線，呈現初步黃金交叉，正處於底部挑戰的初期。位階相對安全，屬於「低位階補漲」的典型代表，符合當前資金流向。</li>
@@ -142,10 +282,9 @@
                 </ul>
             </div>
         </section>
-        <!-- 分析區塊結束 -->
 
         <section id="macro">
-            <h2><span class="icon">🌐</span>宏觀總結與下週觀察重點</h2>
+            <h2><span class="icon">🌐</span>// 宏觀總結與下週觀察重點</h2>
             <div class="stock-card">
                  <h4>觀察重點一：台積電法說會的漣漪效應</h4>
                 <p>台積電法說會為AI前景定調，下週市場將持續消化其釋出的訊息。觀察資金是否從台積電擴散至其供應鏈，特別是CoWoS、設備與材料等次族群，將是判斷行情能否擴散的關鍵。</p>
@@ -163,13 +302,6 @@
         </section>
 
         <footer class="site-footer">
-             <div class="footer-links">
-                <a href="/SnakeStock/index.html">返回首頁</a>
-                <a href="/SnakeStock/about.html">關於我們</a>
-                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
-                <a href="/SnakeStock/glossary.html">投資術語庫</a>
-                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
-            </div>
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
@@ -183,16 +315,29 @@
             datasets: [{
                 label: '本週產業資金流向',
                 data: [35, 30, 25, 10],
-                backgroundColor: ['rgba(0, 209, 255, 0.7)', 'rgba(80, 250, 123, 0.7)', 'rgba(255, 184, 108, 0.7)', 'rgba(255, 85, 85, 0.7)'],
-                borderColor: '#101024',
-                borderWidth: 3
+                backgroundColor: ['#00ffff', '#415a77', '#ffd60a', '#778da9'],
+                borderColor: '#1b263b',
+                borderWidth: 4,
+                hoverOffset: 4
             }]
         },
         options: {
             responsive: true,
+            cutout: '70%',
             plugins: {
-                title: { display: true, text: '本週產業資金流向 (%)', color: '#e6e6fa', font: { size: 16 } },
-                legend: { position: 'bottom', labels: { color: '#a0a0c0', font: { size: 14 } } }
+                title: { 
+                    display: true, 
+                    text: '本週產業資金流向 (%)', 
+                    color: '#e0e1dd', 
+                    font: { size: 16, family: 'Fira Code', weight: '500' } 
+                },
+                legend: { 
+                    position: 'bottom', 
+                    labels: { 
+                        color: '#778da9', 
+                        font: { size: 14, family: 'Fira Code' }
+                    } 
+                }
             }
         }
     });
