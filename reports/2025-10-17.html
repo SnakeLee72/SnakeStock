@@ -30,8 +30,34 @@
         .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); }
         .stock-card h3 { font-size: 1.6em; margin-top: 0; color: var(--accent-blue); }
         .stock-card h4 { font-size: 1.2em; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
-        .fact-tag { background-color: rgba(0, 209, 255, 0.1); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
-        .analysis-tag { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; }
+        
+        /* 整合分析的列表樣式 */
+        .stock-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        .stock-card ul li {
+            position: relative;
+            padding-left: 25px; /* 預留圖標空間 */
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+        .stock-card ul li::before {
+            content: '🔹'; /* 使用圖標作為項目符號 */
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-blue);
+            font-size: 1em;
+        }
+        .stock-card ul li b {
+            color: var(--color-green); /* 類別標題的顏色 */
+            display: block; /* 讓標題單獨一行 */
+            margin-bottom: 4px; /* 標題和內文的間距 */
+            font-size: 1.05em;
+        }
+
         .chart-container { max-width: 450px; margin: 20px auto 0 auto; }
         blockquote { background: var(--bg-card); border-left: 10px solid var(--accent-blue); margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.3em; font-style: italic; font-weight: bold; text-align: center; border-radius: 0 8px 8px 0; }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
@@ -90,35 +116,31 @@
             <div class="stock-card">
                  <h3>【2317 鴻海】AI五年計畫啟動，回測頸線提供安全買點</h3>
                  <h4>飆股DNA評估</h4>
-                 <p><span class="fact-tag">[FACT]</span> 9月營收創2年4個月新高，雙位數強力成長證實AI伺服器與消費電子旺季動能強勁。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 強勁基本面是股價最強底氣。劉揚偉董事長宣布未來五年主軸圍繞AI生態系，與NVIDIA、OpenAI的合作更打開長線想像空間。</p>
-                 <p><span class="fact-tag">[FACT]</span> 股價在創高後，精準回測先前突破的$210-$215頸線區獲得有效支撐，為標準的「強勢整理」型態。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 突破後的健康回測，清洗了浮動籌碼。目前股價在頸線之上整理，正是醞釀第二波攻勢的階段，提供了比突破時更安全的進場機會。</p>
-                 <p><span class="fact-tag">[FACT]</span> 外資賣壓趨緩，代表內資的投信與官股仍在買方，且融資呈現「價跌資減」的健康狀態。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 籌碼結構穩固，長線買盤仍在。這次教科書級別的回測，是所有看好鴻海轉型投資人的第二次上車機會。</p>
+                 <ul>
+                    <li><b>基本面強勁：</b>9月營收創2年4個月新高，雙位數強力成長證實AI伺服器與消費電子旺季動能。強勁基本面是股價最強底氣，加上公司宣布未來五年主軸圍繞AI生態系，與NVIDIA、OpenAI的合作更打開長線想像空間。</li>
+                    <li><b>技術面健康：</b>股價創高後，精準回測 $210-$215 頸線區獲得有效支撐，為標準「強勢整理」型態。這次健康回測清洗了浮動籌碼，在頸線之上整理，提供了比突破時更安全的第二次進場機會。</li>
+                    <li><b>籌碼面穩固：</b>外資賣壓趨緩，投信與官股仍在買方，且融資呈現「價跌資減」的健康狀態。籌碼結構穩固，長線買盤仍在，這次教科書級別的回測是第二次上車機會。</li>
+                 </ul>
             </div>
             <div class="stock-card">
                  <h3>【3189 景碩】GB300關鍵受惠者，ABF族群補漲核心</h3>
                  <h4>飆股DNA評估</h4>
-                 <p><span class="fact-tag">[FACT]</span> 公司已正式打入NVIDIA最新AI平台GB300供應鏈，是關鍵載板廠之一。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> AI伺服器對高階封裝載板的需求是結構性增長。隨著GB300導入液冷散熱與高速封裝，景碩的技術價值將進一步凸顯。</p>
-                 <p><span class="fact-tag">[FACT]</span> 與南電、欣興形成「ABF三雄」共振效應，法人指出第四季ABF載板需求回升，AI及記憶體同步發酵。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 屬於趨勢明確的產業族群，具備「打群架」的優勢。在族群中，景碩被視為成長性最高的個股之一。</p>
-                 <p><span class="fact-tag">[FACT]</span> 技術面呈現「回檔後再上攻」的健康型態，股價位階尚未創歷史新高，具補漲空間。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 短線的拉回提供了中期布局的絕佳切入點，風險報酬比較佳。</p>
+                 <ul>
+                    <li><b>GB300受惠：</b>公司已正式打入NVIDIA GB300供應鏈。AI伺服器對高階封裝載板的需求是結構性增長，隨著GB300導入液冷散熱與高速封裝，景碩的技術價值將進一步凸顯。</li>
+                    <li><b>產業族群共振：</b>與南電、欣興形成「ABF三雄」共振。法人指出Q4 ABF載板需求回升，AI及記憶體同步發酵。景碩屬於趨勢明確的產業族群，被視為成長性最高的個股之一。</li>
+                    <li><b>技術面補漲空間：</b>股價呈現「回檔後再上攻」的健康型態，位階尚未創歷史新高，具補漲空間。短線的拉回提供了中期布局的絕佳切入點，風險報酬比較佳。</li>
+                 </ul>
             </div>
             <div class="stock-card">
                 <h3>【2327 國巨】價值龍頭底部轉折，外資強力回補</h3>
                 <h4>飆股DNA評估</h4>
-                 <p><span class="fact-tag">[FACT]</span> 9月營收創24個月新高，年增+12.2%，顯示產業需求穩定回溫。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 基本面落底回升，AI與車用電子的雙引擎，為公司未來營運提供清晰的成長動能。</p>
-                 <p><span class="fact-tag">[FACT]</span> 股價近期站上所有短期均線，呈現初步的黃金交叉多頭訊號，正處於從底部向上挑戰的初期階段。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 技術面位階相對安全，屬於「低位階補漲」的典型代表，符合當前市場的資金流向。</p>
-                 <p><span class="fact-tag">[FACT]</span> 10/17外資單日大舉買超11,741張，是推動股價上漲的最主要力量，呈現由賣轉買的趨勢。</p>
-                 <p><span class="analysis-tag">[ANALYSIS]</span> 長線資金可能開始重新佈局。在外資強力回補的初期跟進，是勝率較高的策略。</p>
+                <ul>
+                    <li><b>基本面落底：</b>9月營收創24個月新高 (年增+12.2%)，顯示產業需求穩定回溫。AI與車用電子的雙引擎，為公司未來營運提供清晰的成長動能。</li>
+                    <li><b>技術面轉強：</b>股價近期站上所有短期均線，呈現初步黃金交叉，正處於底部挑戰的初期。位階相對安全，屬於「低位階補漲」的典型代表，符合當前資金流向。</li>
+                    <li><b>籌碼面翻多：</b>10/17外資單日大舉買超11,741張，由賣轉買，是推動股價的主力。長線資金可能已開始重新佈局，在初期跟進是勝率較高的策略。</li>
+                </ul>
             </div>
         </section>
-
         <section id="macro">
             <h2><span class="icon">🌐</span>宏觀總結與下週觀察重點</h2>
             <div class="stock-card">
