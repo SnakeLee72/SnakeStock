@@ -1,14 +1,222 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>靈蛇週報 - 個股儀表板</title><style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');:root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-green: #50fa7b; --color-yellow: #f1fa8c; --color-red: #ff5555;} body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; } .container { max-width: 1100px; margin: 10px auto; padding: 15px; } header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; } header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; text-shadow: 0 0 10px rgba(0, 209, 255, 0.5); } header p { color: var(--text-secondary); font-size: 1em; margin-top: 5px; } section { margin-bottom: 40px; } h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; } .search-container { margin-bottom: 20px; } #searchInput { width: 100%; padding: 12px 20px; border-radius: 20px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-primary); font-size: 1em; box-sizing: border-box; } #searchInput:focus { outline: none; border-color: var(--accent-blue); } .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 8px; background-color: var(--bg-card); } table { width: 100%; border-collapse: collapse; min-width: 900px; } th, td { padding: 15px 20px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; } thead th { background-color: rgba(42, 42, 74, 0.7); color: var(--text-primary); font-weight: 700; cursor: pointer; user-select: none; } thead th:hover { background-color: rgba(60, 60, 90, 0.7); } tbody tr:hover { background-color: rgba(42, 42, 74, 0.5); } td a { color: var(--accent-blue); text-decoration: none; } td a:hover { text-decoration: underline; } .report-link { display: inline-block; margin-right: 8px; padding: 5px 10px; background-color: var(--border-color); color: var(--text-primary); border-radius: 5px; text-decoration: none; transition: background-color 0.3s; } .report-link:hover { background-color: var(--accent-blue); color: var(--bg-dark-ai); } .status-tag { padding: 5px 10px; border-radius: 15px; font-weight: bold; font-size: 0.9em; } .status-green { background-color: rgba(80, 250, 123, 0.1); color: var(--color-green); } .status-yellow { background-color: rgba(241, 250, 140, 0.1); color: var(--color-yellow); } .status-red { background-color: rgba(255, 85, 85, 0.1); color: var(--color-red); } .perf-positive { color: var(--color-red); font-weight: bold; } .perf-negative { color: var(--color-green); font-weight: bold; } .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; } .footer-links { margin-bottom: 15px; } .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }</style></head>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 - 個股儀表板 (技術藍圖風)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        /* 風格三：技術藍圖風 */
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+            --color-yellow: #ffd60a;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            background-image:
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 10px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--highlight-yellow);
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 0 0 8px rgba(255, 214, 10, 0.5);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin-top: 5px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--accent-cyan);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 0;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 1em;
+            box-sizing: border-box;
+            font-family: 'Fira Code', monospace;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th,
+        td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        thead th {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-secondary);
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        thead th:hover {
+            color: var(--accent-cyan);
+        }
+
+        tbody tr:hover {
+            background-color: rgba(65, 90, 119, 0.3);
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        td a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        .report-link {
+            display: inline-block;
+            margin-right: 8px;
+            padding: 5px 10px;
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            border-radius: 0;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.9em;
+        }
+
+        .report-link:hover {
+            background-color: var(--accent-cyan);
+            color: var(--bg-main);
+        }
+        
+        /* 狀態標籤更新 (紅漲綠跌) */
+        .status-tag {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .status-green { color: var(--color-red); } /* 趨勢強勁 (正向) -> 紅色 */
+        .status-yellow { color: var(--color-yellow); }
+        .status-red { color: var(--color-green); } /* 拉回修正 (負向) -> 綠色 */
+
+        .perf-positive {
+            color: var(--color-red); /* 正報酬 -> 紅色 */
+            font-weight: bold;
+        }
+
+        .perf-negative {
+            color: var(--color-green); /* 負報酬 -> 綠色 */
+            font-weight: bold;
+        }
+
+        .perf-observing {
+            color: var(--color-yellow); /* 觀察中 -> 黃色 */
+            font-weight: bold;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+    </style>
+</head>
+
 <body>
     <div class="container">
         <header>
             <h1>🐍 靈蛇個股儀表板</h1>
-            <p>所有歷史推薦個股的績效與動態追蹤</p>
+            <p>// 所有歷史推薦個股的績效與動態追蹤</p>
         </header>
         <main>
             <section id="data-table">
-                <h2>詳細數據列表</h2>
+                <h2>// 詳細數據列表</h2>
                 <div class="search-container"><input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="在此搜尋股票代號或名稱..."></div>
                 <div class="table-responsive">
                     <table id="stockDashboard">
@@ -24,29 +232,213 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>2317</td><td><a href="/SnakeStock/stocks/2317.html">鴻海</a></td><td>7</td><td class="perf-positive">+6.98%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-10-17</td><td><a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802</a> <a href="/SnakeStock/reports/2025-08-09.html" target="_blank" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816</a> <a href="/SnakeStock/reports/2025-09-19.html" target="_blank" class="report-link">0919</a> <a href="/SnakeStock/reports/2025-09-26.html" target="_blank" class="report-link">0926</a> <a href="/SnakeStock/reports/2025-10-11.html" target="_blank" class="report-link">1011</a> <a href="/SnakeStock/reports/2025-10-17.html" target="_blank" class="report-link">1017</a></td></tr>
-                            <tr><td>3189</td><td><a href="/SnakeStock/stocks/3189.html">景碩</a></td><td>1</td><td class="perf-positive">觀察中...</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-10-17</td><td><a href="/SnakeStock/reports/2025-10-17.html" target="_blank" class="report-link">1017</a></td></tr>
-                            <tr><td>2327</td><td><a href="/SnakeStock/stocks/2327.html">國巨</a></td><td>2</td><td class="perf-positive">+10.43%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-10-17</td><td><a href="/SnakeStock/reports/2025-09-19.html" target="_blank" class="report-link">0919</a> <a href="/SnakeStock/reports/2025-10-17.html" target="_blank" class="report-link">1017</a></td></tr>
-                            <tr><td>6285</td><td><a href="/SnakeStock/stocks/6285.html">啟碁</a></td><td>1</td><td class="perf-negative">-2.03%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-10-11</td><td><a href="/SnakeStock/reports/2025-10-11.html" target="_blank" class="report-link">1011</a></td></tr>
-                            <tr><td>3413</td><td><a href="/SnakeStock/stocks/3413.html">京鼎</a></td><td>1</td><td class="perf-negative">-0.91%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-10-11</td><td><a href="/SnakeStock/reports/2025-10-11.html" target="_blank" class="report-link">1011</a></td></tr>
-                            <tr><td>2408</td><td><a href="/SnakeStock/stocks/2408.html">南亞科</a></td><td>2</td><td class="perf-positive">+39.13%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-10-04</td><td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912</a> <a href="/SnakeStock/reports/2025-10-04.html" target="_blank" class="report-link">1004</a></td></tr>
-                            <tr><td>8046</td><td><a href="/SnakeStock/stocks/8046.html">南電</a></td><td>3</td><td class="perf-positive">+8.16%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-10-04</td><td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-08-29.html" target="_blank" class="report-link">0829</a> <a href="/SnakeStock/reports/2025-10-04.html" target="_blank" class="report-link">1004</a></td></tr>
-                            <tr><td>3131</td><td><a href="/SnakeStock/stocks/3131.html">弘塑</a></td><td>1</td><td class="perf-positive">+12.90%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-10-04</td><td><a href="/SnakeStock/reports/2025-10-04.html" target="_blank" class="report-link">1004</a></td></tr>
-                            <tr><td>2382</td><td><a href="/SnakeStock/stocks/2382.html">廣達</a></td><td>3</td><td class="perf-positive">+7.28%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-09-26</td><td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-09-05.html" target="_blank" class="report-link">0905</a> <a href="/SnakeStock/reports/2025-09-26.html" target="_blank" class="report-link">0926</a></td></tr>
-                            <tr><td>3450</td><td><a href="/SnakeStock/stocks/3450.html">聯鈞</a></td><td>1</td><td class="perf-positive">+10.48%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-09-26</td><td><a href="/SnakeStock/reports/2025-09-26.html" target="_blank" class="report-link">0926</a></td></tr>
-                            <tr><td>3037</td><td><a href="/SnakeStock/stocks/3037.html">欣興</a></td><td>3</td><td class="perf-positive">+8.5%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-09-19</td><td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802</a> <a href="/SnakeStock/reports/2025-09-19.html" target="_blank" class="report-link">0919</a></td></tr>
-                            <tr><td>3711</td><td><a href="/SnakeStock/stocks/3711.html">日月光投控</a></td><td>2</td><td class="perf-positive">+17.33%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-09-12</td><td><a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816</a> <a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912</a></td></tr>
-                            <tr><td>2313</td><td><a href="/SnakeStock/stocks/2313.html">華通</a></td><td>1</td><td class="perf-negative">-0.52%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-09-12</td><td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912</a></td></tr>
-                            <tr><td>6187</td><td><a href="/SnakeStock/stocks/6187.html">萬潤</a></td><td>1</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-red">🔴 拉回修正</span></td><td>2025-09-05</td><td><a href="/SnakeStock/reports/2025-09-05.html" target="_blank" class="report-link">0905</a></td></tr>
-                            <tr><td>2634</td><td><a href="/SnakeStock/stocks/2634.html">漢翔</a></td><td>2</td><td class="perf-positive">+17.72%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-09-05</td><td><a href="/SnakeStock/reports/2025-08-29.html" target="_blank" class="report-link">0829</a> <a href="/SnakeStock/reports/2025-09-05.html" target="_blank" class="report-link">0905</a></td></tr>
-                            <tr><td>3706</td><td><a href="/SnakeStock/stocks/3706.html">神達</a></td><td>1</td><td class="perf-negative">-2.13%</td><td><span class="status-tag status-red">🔴 拉回修正</span></td><td>2025-08-29</td><td><a href="/SnakeStock/reports/2025-08-29.html" target="_blank" class="report-link">0829</a></td></tr>
-                            <tr><td>4958</td><td><a href="/SnakeStock/stocks/4958.html">臻鼎-KY</a></td><td>1</td><td class="perf-positive">+17.31%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-08-22</td><td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" class="report-link">0822</a></td></tr>
-                            <tr><td>4766</td><td><a href="/SnakeStock/stocks/4766.html">南寶</a></td><td>1</td><td class="perf-positive">+23.18%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-08-22</td><td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" class="report-link">0822</a></td></tr>
-                            <tr><td>4979</td><td><a href="/SnakeStock/stocks/4979.html">華星光</a></td><td>1</td><td class="perf-positive">+7.89%</td><td><span class="status-tag status-yellow">🟡 盤整蓄勢</span></td><td>2025-08-22</td><td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" class="report-link">0822</a></td></tr>
-                            <tr><td>2301</td><td><a href="/SnakeStock/stocks/2301.html">光寶科</a></td><td>2</td><td class="perf-positive">+2.2%</td><td><span class="status-tag status-red">🔴 拉回修正</span></td><td>2025-08-16</td><td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816</a></td></tr>
-                            <tr><td>8086</td><td><a href="/SnakeStock/stocks/8086.html">宏捷科</a></td><td>3</td><td class="perf-positive">+15.2%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-08-02</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719</a> <a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802</a></td></tr>
-                            <tr><td>3376</td><td><a href="/SnakeStock/stocks/3376.html">新日興</a></td><td>1</td><td class="perf-positive">+12.1%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-07-19</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719</a></td></tr>
-                            <tr><td>6139</td><td><a href="/SnakeStock/stocks/6139.html">亞翔</a></td><td>1</td><td class="perf-positive">+18.3%</td><td><span class="status-tag status-green">🟢 趨勢強勁</span></td><td>2025-07-19</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719</a></td></tr>
+                            <tr>
+                                <td>2317</td>
+                                <td><a href="/SnakeStock/stocks/2317.html">鴻海</a></td>
+                                <td>7</td>
+                                <td class="perf-positive">+6.98%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-10-17</td>
+                                <td><a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816</a> <a href="/SnakeStock/reports/2025-09-19.html" target="_blank" class="report-link">0919</a> <a href="/SnakeStock/reports/2025-09-26.html" target="_blank" class="report-link">0926</a> <a href="/SnakeStock/reports/2025-10-11.html" target="_blank" class="report-link">1011</a> <a href="/SnakeStock/reports/2025-10-17.html" target="_blank" class="report-link">1017</a></td>
+                            </tr>
+                            <tr>
+                                <td>3189</td>
+                                <td><a href="/SnakeStock/stocks/3189.html">景碩</a></td>
+                                <td>1</td>
+                                <td class="perf-observing">觀察中...</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-10-17</td>
+                                <td><a href="/SnakeStock/reports/2025-10-17.html" target="_blank" class="report-link">1017</a></td>
+                            </tr>
+                            <tr>
+                                <td>2327</td>
+                                <td><a href="/SnakeStock/stocks/2327.html">國巨</a></td>
+                                <td>2</td>
+                                <td class="perf-positive">+10.43%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-10-17</td>
+                                <td><a href="/SnakeStock/reports/2025-09-19.html" target="_blank" class="report-link">0919</a> <a href="/SnakeStock/reports/2025-10-17.html" target="_blank" class="report-link">1017</a></td>
+                            </tr>
+                            <tr>
+                                <td>6285</td>
+                                <td><a href="/SnakeStock/stocks/6285.html">啟碁</a></td>
+                                <td>1</td>
+                                <td class="perf-negative">-2.03%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-10-11</td>
+                                <td><a href="/SnakeStock/reports/2025-10-11.html" target="_blank" class="report-link">1011</a></td>
+                            </tr>
+                            <tr>
+                                <td>3413</td>
+                                <td><a href="/SnakeStock/stocks/3413.html">京鼎</a></td>
+                                <td>1</td>
+                                <td class="perf-negative">-0.91%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-10-11</td>
+                                <td><a href="/SnakeStock/reports/2025-10-11.html" target="_blank" class="report-link">1011</a></td>
+                            </tr>
+                            <tr>
+                                <td>2408</td>
+                                <td><a href="/SnakeStock/stocks/2408.html">南亞科</a></td>
+                                <td>2</td>
+                                <td class="perf-positive">+39.13%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-10-04</td>
+                                <td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912</a> <a href="/SnakeStock/reports/2025-10-04.html" target="_blank" class="report-link">1004</a></td>
+                            </tr>
+                            <tr>
+                                <td>8046</td>
+                                <td><a href="/SnakeStock/stocks/8046.html">南電</a></td>
+                                <td>3</td>
+                                <td class="perf-positive">+8.16%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-10-04</td>
+                                <td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-08-29.html" target="_blank" class="report-link">0829</a> <a href="/SnakeStock/reports/2025-10-04.html" target="_blank" class="report-link">1004</a></td>
+                            </tr>
+                            <tr>
+                                <td>3131</td>
+                                <td><a href="/SnakeStock/stocks/3131.html">弘塑</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+12.90%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-10-04</td>
+                                <td><a href="/SnakeStock/reports/2025-10-04.html" target="_blank" class="report-link">1004</a></td>
+                            </tr>
+                            <tr>
+                                <td>2382</td>
+                                <td><a href="/SnakeStock/stocks/2382.html">廣達</a></td>
+                                <td>3</td>
+                                <td class="perf-positive">+7.28%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-09-26</td>
+                                <td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-09-05.html" target="_blank" class="report-link">0905</a> <a href="/SnakeStock/reports/2025-09-26.html" target="_blank" class="report-link">0926</a></td>
+                            </tr>
+                            <tr>
+                                <td>3450</td>
+                                <td><a href="/SnakeStock/stocks/3450.html">聯鈞</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+10.48%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-09-26</td>
+                                <td><a href="/SnakeStock/reports/2025-09-26.html" target="_blank" class="report-link">0926</a></td>
+                            </tr>
+                            <tr>
+                                <td>3037</td>
+                                <td><a href="/SnakeStock/stocks/3037.html">欣興</a></td>
+                                <td>3</td>
+                                <td class="perf-positive">+8.5%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-09-19</td>
+                                <td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802</a> <a href="/SnakeStock/reports/2025-09-19.html" target="_blank" class="report-link">0919</a></td>
+                            </tr>
+                            <tr>
+                                <td>3711</td>
+                                <td><a href="/SnakeStock/stocks/3711.html">日月光投控</a></td>
+                                <td>2</td>
+                                <td class="perf-positive">+17.33%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-09-12</td>
+                                <td><a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816</a> <a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912</a></td>
+                            </tr>
+                            <tr>
+                                <td>2313</td>
+                                <td><a href="/SnakeStock/stocks/2313.html">華通</a></td>
+                                <td>1</td>
+                                <td class="perf-negative">-0.52%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-09-12</td>
+                                <td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912</a></td>
+                            </tr>
+                            <tr>
+                                <td>6187</td>
+                                <td><a href="/SnakeStock/stocks/6187.html">萬潤</a></td>
+                                <td>1</td>
+                                <td class="perf-negative">(觸及停損)</td>
+                                <td><span class="status-tag status-red">拉回修正</span></td>
+                                <td>2025-09-05</td>
+                                <td><a href="/SnakeStock/reports/2025-09-05.html" target="_blank" class="report-link">0905</a></td>
+                            </tr>
+                            <tr>
+                                <td>2634</td>
+                                <td><a href="/SnakeStock/stocks/2634.html">漢翔</a></td>
+                                <td>2</td>
+                                <td class="perf-positive">+17.72%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-09-05</td>
+                                <td><a href="/SnakeStock/reports/2025-08-29.html" target="_blank" class="report-link">0829</a> <a href="/SnakeStock/reports/2025-09-05.html" target="_blank" class="report-link">0905</a></td>
+                            </tr>
+                            <tr>
+                                <td>3706</td>
+                                <td><a href="/SnakeStock/stocks/3706.html">神達</a></td>
+                                <td>1</td>
+                                <td class="perf-negative">-2.13%</td>
+                                <td><span class="status-tag status-red">拉回修正</span></td>
+                                <td>2025-08-29</td>
+                                <td><a href="/SnakeStock/reports/2025-08-29.html" target="_blank" class="report-link">0829</a></td>
+                            </tr>
+                            <tr>
+                                <td>4958</td>
+                                <td><a href="/SnakeStock/stocks/4958.html">臻鼎-KY</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+17.31%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-08-22</td>
+                                <td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" class="report-link">0822</a></td>
+                            </tr>
+                            <tr>
+                                <td>4766</td>
+                                <td><a href="/SnakeStock/stocks/4766.html">南寶</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+23.18%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-08-22</td>
+                                <td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" class="report-link">0822</a></td>
+                            </tr>
+                            <tr>
+                                <td>4979</td>
+                                <td><a href="/SnakeStock/stocks/4979.html">華星光</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+7.89%</td>
+                                <td><span class="status-tag status-yellow">盤整蓄勢</span></td>
+                                <td>2025-08-22</td>
+                                <td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" class="report-link">0822</a></td>
+                            </tr>
+                            <tr>
+                                <td>2301</td>
+                                <td><a href="/SnakeStock/stocks/2301.html">光寶科</a></td>
+                                <td>2</td>
+                                <td class="perf-positive">+2.2%</td>
+                                <td><span class="status-tag status-red">拉回修正</span></td>
+                                <td>2025-08-16</td>
+                                <td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816</a></td>
+                            </tr>
+                            <tr>
+                                <td>8086</td>
+                                <td><a href="/SnakeStock/stocks/8086.html">宏捷科</a></td>
+                                <td>3</td>
+                                <td class="perf-positive">+15.2%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-08-02</td>
+                                <td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719</a> <a href="/SnakeStock/reports/2025-07-26.html" target="_blank" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-08-02.html" target="_blank" class="report-link">0802</a></td>
+                            </tr>
+                            <tr>
+                                <td>3376</td>
+                                <td><a href="/SnakeStock/stocks/3376.html">新日興</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+12.1%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-07-19</td>
+                                <td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719</a></td>
+                            </tr>
+                            <tr>
+                                <td>6139</td>
+                                <td><a href="/SnakeStock/stocks/6139.html">亞翔</a></td>
+                                <td>1</td>
+                                <td class="perf-positive">+18.3%</td>
+                                <td><span class="status-tag status-green">趨勢強勁</span></td>
+                                <td>2025-07-19</td>
+                                <td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" class="report-link">0719</a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -57,12 +449,13 @@
             <p>&copy; 2025 靈蛇研究團隊謹製</p>
         </footer>
     </div>
-<script>
-    function searchFunction() { let input, filter, table, tbody, tr, td, i, txtValue; input = document.getElementById('searchInput'); filter = input.value.toUpperCase(); table = document.getElementById("stockDashboard"); tbody = table.getElementsByTagName("tbody")[0]; tr = tbody.getElementsByTagName('tr'); for (i = 0; i < tr.length; i++) { let found = false; for (let j = 0; j < 2; j++) { td = tr[i].getElementsByTagName("td")[j]; if (td) { txtValue = td.textContent || td.innerText; if (txtValue.toUpperCase().indexOf(filter) > -1) { found = true; break; } } } if (found) { tr[i].style.display = ""; } else { tr[i].style.display = "none"; } } }
-    
-    const sortDirections = {};
-    function sortTable(columnIndex) { const table = document.getElementById("stockDashboard"); const tbody = table.getElementsByTagName('tbody')[0]; const rows = Array.from(tbody.getElementsByTagName('tr')); const direction = sortDirections[columnIndex] === 'asc' ? 'desc' : 'asc'; for(let key in sortDirections){ if(key != columnIndex){ sortDirections[key] = 'none'; } } sortDirections[columnIndex] = direction; rows.sort((a, b) => { const aText = a.getElementsByTagName('td')[columnIndex].innerText; const bText = b.getElementsByTagName('td')[columnIndex].innerText; let aValue = aText; let bValue = bText; if(columnIndex === 3){ aValue = parseFloat(aText.replace('%','')) || -Infinity; bValue = parseFloat(bText.replace('%','')) || -Infinity; } else if (!isNaN(parseFloat(aText)) && isFinite(aText)) { aValue = parseFloat(aText); bValue = parseFloat(bText); } else { aValue = aText.toLowerCase(); bValue = bText.toLowerCase(); } if (aValue < bValue) return direction === 'asc' ? -1 : 1; if (aValue > bValue) return direction === 'asc' ? 1 : -1; return 0; }); tbody.innerHTML = ""; rows.forEach(row => tbody.appendChild(row)); }
-</script>
+    <script>
+        function searchFunction() { let input, filter, table, tbody, tr, td, i, txtValue; input = document.getElementById('searchInput'); filter = input.value.toUpperCase(); table = document.getElementById("stockDashboard"); tbody = table.getElementsByTagName("tbody")[0]; tr = tbody.getElementsByTagName('tr'); for (i = 0; i < tr.length; i++) { let found = false; for (let j = 0; j < 2; j++) { td = tr[i].getElementsByTagName("td")[j]; if (td) { txtValue = td.textContent || td.innerText; if (txtValue.toUpperCase().indexOf(filter) > -1) { found = true; break; } } } if (found) { tr[i].style.display = ""; } else { tr[i].style.display = "none"; } } }
+
+        const sortDirections = {};
+        function sortTable(columnIndex) { const table = document.getElementById("stockDashboard"); const tbody = table.getElementsByTagName('tbody')[0]; const rows = Array.from(tbody.getElementsByTagName('tr')); const direction = sortDirections[columnIndex] === 'asc' ? 'desc' : 'asc'; for (let key in sortDirections) { if (key != columnIndex) { sortDirections[key] = 'none'; } } sortDirections[columnIndex] = direction; rows.sort((a, b) => { const aText = a.getElementsByTagName('td')[columnIndex].innerText; const bText = b.getElementsByTagName('td')[columnIndex].innerText; let aValue = aText; let bValue = bText; if (columnIndex === 3) { aValue = parseFloat(aText.replace('%', '')) || -Infinity; bValue = parseFloat(bText.replace('%', '')) || -Infinity; } else if (!isNaN(parseFloat(aText)) && isFinite(aText)) { aValue = parseFloat(aText); bValue = parseFloat(bText); } else { aValue = aText.toLowerCase(); bValue = bText.toLowerCase(); } if (aValue < bValue) return direction === 'asc' ? -1 : 1; if (aValue > bValue) return direction === 'asc' ? 1 : -1; return 0; }); tbody.innerHTML = ""; rows.forEach(row => tbody.appendChild(row)); }
+    </script>
 </body>
+
 </html>
 
