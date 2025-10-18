@@ -3,145 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投資工具箱 - 靈蛇週報 (技術藍圖風)</title>
+    <title>投資工具箱 - 靈蛇週報</title>
     <meta name="description" content="靈蛇週報提供的實用投資小工具，包含融資維持率、股票損益、目標價報酬率、部位規模、除權息參考價計算機，輔助您的投資決策。">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
-        
-        /* 風格三：技術藍圖風 */
-        :root {
-            --bg-main: #0d1b2a;
-            --bg-card: #1b263b;
-            --border-color: #415a77;
-            --text-primary: #e0e1dd;
-            --text-secondary: #778da9;
-            --accent-cyan: #00ffff;
-            --highlight-yellow: #ffd60a;
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        :root { 
+            --bg-dark: #0d1117; 
+            --bg-light: #161b22; 
+            --border-color: #30363d; 
+            --text-primary: #c9d1d9; 
+            --text-secondary: #8b949e; 
+            --accent-tech: #58a6ff; 
+            --accent-profit: #a371f7;
         }
-
-        body {
-            font-family: 'Fira Code', 'Noto Sans TC', monospace;
-            background-color: var(--bg-main);
-            background-image:
-                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--text-primary); 
+            margin: 0; 
+            padding: 0; 
         }
-
-        .container {
-            max-width: 900px;
-            margin: 10px auto;
-            padding: 15px;
+        .container { 
+            max-width: 900px; 
+            margin: 10px auto; 
+            padding: 15px; 
         }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            margin-top: 30px;
+        header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            margin-top: 30px; 
         }
-
-        header h1 {
-            font-size: 2.8em;
-            color: var(--highlight-yellow);
-            margin-bottom: 10px;
-            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        header h1 { 
+            font-size: 2.8em; 
+            color: var(--text-primary); 
+            margin-bottom: 10px; 
         }
-
-        header .subtitle {
-            font-size: 1.2em;
-            color: var(--accent-cyan);
-            font-weight: 500;
+        header .subtitle { 
+            font-size: 1.2em; 
+            color: var(--accent-tech); 
+            font-weight: 500; 
         }
-
-        section {
-            margin-bottom: 40px;
+        section { 
+            margin-bottom: 40px; 
         }
-
         h2 {
             font-size: 1.8em;
-            color: var(--accent-cyan);
+            color: var(--text-primary);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
             margin-bottom: 30px;
             display: flex;
             align-items: center;
-            font-weight: 700;
         }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+        .tools-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
         }
-
-        .tool-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 0;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.3s;
+        .tool-card { 
+            background-color: var(--bg-light); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            padding: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            transition: transform 0.3s, box-shadow 0.3s; 
         }
-
-        .tool-card:hover {
-            border-color: var(--accent-cyan);
+        .tool-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); 
         }
-
-        .tool-card h3 {
-            font-size: 1.5em;
-            color: var(--accent-cyan);
-            margin-top: 0;
-            margin-bottom: 15px;
+        .tool-card h3 { 
+            font-size: 1.5em; 
+            color: var(--accent-tech); 
+            margin-top: 0; 
+            margin-bottom: 15px; 
         }
-
-        .tool-card p {
-            color: var(--text-secondary);
-            flex-grow: 1;
+        .tool-card p { 
+            color: var(--text-secondary); 
+            flex-grow: 1; 
             margin-bottom: 20px;
         }
-
-        .tool-card a.cta-button {
-            display: inline-block;
-            background-color: var(--border-color);
-            color: var(--text-primary);
-            padding: 10px 20px;
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 15px;
-            align-self: flex-start;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+        .tool-card a.cta-button { 
+            display: inline-block; 
+            background-color: var(--accent-tech); 
+            color: #ffffff; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            margin-top: 15px; 
+            align-self: flex-start; 
+            border: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s;
         }
-
-        .tool-card a.cta-button:hover {
-            background-color: var(--accent-cyan);
-            color: var(--bg-main);
+        .tool-card a.cta-button:hover { 
+            background-color: #2f81f7; 
         }
-
-        .site-footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            font-size: 0.9em;
+        .site-footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-secondary); 
+            font-size: 0.9em; 
         }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-cyan);
+        .footer-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin: 0 15px; 
         }
     </style>
 </head>
@@ -149,11 +120,11 @@
     <div class="container">
         <header>
             <h1>🛠️ 靈蛇投資工具箱</h1>
-            <p class="subtitle">// 輔助您做出更精準決策的實用小工具</p>
+            <p class="subtitle">輔助您做出更精準決策的實用小工具</p>
         </header>
 
         <section class="tools-section">
-            <h2>// 交易計算工具</h2>
+            <h2>交易計算工具</h2>
             <div class="tools-grid">
                 <article class="tool-card">
                     <h3>股票損益計算機</h3>
@@ -174,7 +145,7 @@
         </section>
 
         <section class="tools-section">
-            <h2>// 策略與流程工具</h2>
+            <h2>策略與流程工具</h2>
             <div class="tools-grid">
                 <article class="tool-card">
                     <h3>部位規模計算機</h3>
