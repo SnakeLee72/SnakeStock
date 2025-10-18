@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【重磅升級】您的「靈蛇週報」App 來了！</title>
+    <title>【重磅升級】您的「靈蛇週報」App 來了！(技術藍圖風)</title>
     <link rel="manifest" href="/SnakeStock/manifest.json">
     
     <meta name="description" content="了解如何將靈蛇週報網站「安裝」至您的手機桌面，享受如App般的快速啟動、全螢幕沉浸式閱讀與離線複盤體驗。">
@@ -28,56 +28,94 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        :root { --bg-dark-ai: #0a0a1a; --bg-card: #101024; --border-color: #2a2a4a; --text-primary: #e6e6fa; --text-secondary: #a0a0c0; --accent-blue: #00d1ff; --color-green: #50fa7b; --line-green: #06C755; --facebook-blue: #1877F2; }
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; }
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        /* 風格三：技術藍圖風 */
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-green: #5cff5c;
+            --line-green: #06C755;
+            --facebook-blue: #1877F2;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            background-image:
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.8;
+        }
         .container { max-width: 900px; margin: 10px auto; padding: 15px; }
         header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; }
-        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; }
-        .content-card { background-color: var(--bg-card); border-radius: 8px; padding: 30px; margin-bottom: 25px; border: 1px solid var(--border-color); }
-        .content-card h2 { font-size: 1.6em; color: var(--accent-blue); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-        .content-card h3 { font-size: 1.3em; color: var(--text-primary); }
+        header h1 { color: var(--highlight-yellow); font-size: 2.5em; margin: 0; text-shadow: 0 0 5px rgba(255, 214, 10, 0.5); }
+        .content-card { background-color: var(--bg-card); border-radius: 0; padding: 30px; margin-bottom: 25px; border: 1px solid var(--border-color); }
+        .content-card h2 { font-size: 1.6em; color: var(--accent-cyan); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; font-weight: 700; }
+        .content-card h3 { font-size: 1.3em; color: var(--accent-cyan); font-weight: 700; }
         .content-card p, .content-card li { color: var(--text-secondary); }
-        /* --- New styles for install button --- */
         .install-cta-card { text-align: center; }
         .install-button {
             display: inline-block;
-            background-color: var(--accent-blue);
-            color: #0a0a1a;
+            background-color: var(--highlight-yellow);
+            color: var(--bg-main);
             padding: 15px 35px;
-            border-radius: 30px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.2em;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            font-family: 'Fira Code', monospace;
         }
         .install-button:hover { background-color: #fff; transform: scale(1.05); }
         #installMessage { color: var(--color-green); font-weight: bold; margin-top: 15px; }
         .install-steps { list-style-type: decimal; padding-left: 20px; }
         .install-steps li { margin-bottom: 10px; }
-        .share-container { text-align: center; padding: 20px; background-color: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-color); }
+        .share-container { text-align: center; padding: 20px; background-color: var(--bg-card); border-radius: 0; border: 1px solid var(--border-color); }
         .share-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 15px; flex-wrap: wrap; }
-        .share-button-line, .share-button-fb, .share-button-copy { display: inline-block; padding: 10px 20px; border-radius: 20px; text-decoration: none; color: white; font-weight: bold; transition: opacity 0.3s; border: none; cursor: pointer; font-size: 1em;}
-        .share-button-line { background-color: var(--line-green); }
-        .share-button-fb { background-color: var(--facebook-blue); }
-        .share-button-copy { background-color: var(--text-secondary); }
-        .share-button-line:hover, .share-button-fb:hover, .share-button-copy:hover { opacity: 0.8; }
+        .share-button { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            border-radius: 0; 
+            text-decoration: none; 
+            color: white; 
+            font-weight: bold; 
+            transition: opacity 0.3s; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 1em;
+            font-family: 'Fira Code', monospace;
+        }
+        .share-button.line { background-color: var(--line-green); }
+        .share-button.fb { background-color: var(--facebook-blue); }
+        .share-button.copy { background-color: var(--text-secondary); }
+        .share-button:hover { opacity: 0.8; }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
         .footer-links { margin-bottom: 15px; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--accent-cyan); }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>【重磅升級】您的「靈蛇週報」App 來了！</h1>
-            <p style="color: var(--text-secondary);">發布日期：2025年8月8日</p>
+            <p style="color: var(--text-secondary);">// 發布日期：2025年8月8日</p>
         </header>
         
         <section class="content-card install-cta-card">
-            <h2>一鍵安裝至桌面</h2>
+            <h2>// 一鍵安裝至桌面</h2>
             <p>在支援的瀏覽器上，點擊下方按鈕，即可將「靈蛇週報」直接安裝至您的裝置！</p>
             <button id="installPwaButton" class="install-button" style="display: none;">🚀 立即安裝 App</button>
             <p id="installMessage"></p>
@@ -88,7 +126,7 @@
         </section>
 
         <section class="content-card">
-            <h2>PWA 能帶來哪些好處？</h2>
+            <h2>// PWA 能帶來哪些好處？</h2>
             <h3>🚀 一鍵快速啟動</h3>
             <p>不再需要打開瀏覽器、輸入網址。只需在手機桌面上點擊「靈蛇週報」的專屬圖示，即可在數秒內直達我們的網站。</p>
             <h3>📖 全螢幕沉浸式閱讀</h3>
@@ -100,7 +138,7 @@
         </section>
 
         <section class="content-card">
-            <h2>手動安裝教學</h2>
+            <h2>// 手動安裝教學</h2>
             <p>如果上方未出現「立即安裝」按鈕，您也可以依照瀏覽器的指示手動安裝：</p>
             <h3>📱 Android 用戶 (Chrome 瀏覽器)</h3>
             <ol class="install-steps">
@@ -120,9 +158,9 @@
         <section class="share-container">
             <p>喜歡這個新功能嗎？分享給您的朋友吧！</p>
             <div class="share-buttons">
-                <a id="shareLine" href="#" target="_blank" class="share-button-line">分享到 Line</a>
-                <a id="shareFb" href="#" target="_blank" class="share-button-fb">分享到 Facebook</a>
-                <button id="copyLink" class="share-button-copy">複製連結</button>
+                <a id="shareLine" href="#" target="_blank" class="share-button line">分享到 Line</a>
+                <a id="shareFb" href="#" target="_blank" class="share-button fb">分享到 Facebook</a>
+                <button id="copyLink" class="share-button copy">複製連結</button>
             </div>
         </section>
         
@@ -148,10 +186,23 @@
         const copyLink = document.getElementById('copyLink');
         if (copyLink) {
             copyLink.addEventListener('click', function() {
-                navigator.clipboard.writeText(pageUrl).then(() => {
+                // For security reasons, clipboard API is often restricted. Using execCommand as a fallback.
+                try {
+                    navigator.clipboard.writeText(pageUrl).then(() => {
+                        copyLink.textContent = '已複製！';
+                        setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
+                    });
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = pageUrl;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
                     copyLink.textContent = '已複製！';
                     setTimeout(() => { copyLink.textContent = '複製連結'; }, 2000);
-                }).catch(err => { console.error('複製失敗: ', err); });
+                }
             });
         }
 
@@ -161,11 +212,8 @@
         const installMessage = document.getElementById('installMessage');
 
         window.addEventListener('beforeinstallprompt', (e) => {
-            // 防止 Chrome 67 以下版本自動顯示安裝提示
             e.preventDefault();
-            // 儲存事件，以便稍後觸發
             deferredPrompt = e;
-            // 顯示我們自訂的安裝按鈕
             if(installButton) {
                 installButton.style.display = 'inline-block';
             }
@@ -174,9 +222,7 @@
         if(installButton) {
             installButton.addEventListener('click', async () => {
                 if (deferredPrompt) {
-                    // 觸發安裝提示
                     deferredPrompt.prompt();
-                    // 等待使用者的回應
                     const { outcome } = await deferredPrompt.userChoice;
                     
                     if (outcome === 'accepted') {
@@ -187,9 +233,7 @@
                     } else {
                         console.log('User dismissed the A2HS prompt');
                     }
-                    // 無論結果如何，都將 deferredPrompt 設為 null，因為它只能使用一次
                     deferredPrompt = null;
-                    // 隱藏按鈕
                     installButton.style.display = 'none';
                 }
             });
