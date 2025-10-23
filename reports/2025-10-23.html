@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>靈蛇週報 1023 - 財報季開跑，鎖定法人抬轎股</title>
     <meta name="description" content="靈蛇週報1023期分析。財報季正式開跑，市場回歸基本面檢視。本週聚焦法人強力回補的AI伺服器龍頭、底部轉強的被動元件巨擘，以及營運迎來轉機的車用電子股。精選個股為廣達(2382)、國巨(2327)、系統電(5309)。">
-    <meta name="keywords" content="靈蛇週報, 1023, 廣達, 國巨, 系統電, AI伺服器, 被動元件, TPMS, 財報季, 法人籌碼">
+    <meta name="keywords" content="靈蛇週報, 1023, 廣達, 國巨, 系統電, AI伺服器, 被動元件, TPMS, 財報季, 法人籌碼, 還原權值">
     <link rel="manifest" href="../manifest.json">
     <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../sw.js') }); } </script>
     <style>
@@ -88,6 +88,7 @@
             margin-bottom: 20px;
             border: 1px solid var(--border-color);
             background-color: rgba(27, 38, 59, 0.8); /* 半透明背景 */
+             border-radius: 0; /* 卡片直角設計 */
         }
         
         table {
@@ -174,7 +175,7 @@
         .stock-card ul li b {
             color: var(--accent-cyan);
             font-weight: 700;
-            display: block;
+            display: block; /* 讓粗體標題換行 */
             margin-bottom: 4px;
             font-size: 1.05em;
         }
@@ -242,7 +243,8 @@
                      <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
                     <tbody>
                         <tr><td><strong>2382</strong></td><td><strong>廣達</strong></td><td>強勢績優股之拉回均線支撐</td><td>285 - 295 元</td><td class="stop-loss">跌破 280 元</td><td class="target-price">345 元</td></tr>
-                        <tr><td><strong>2327</strong></td><td><strong>國巨</strong></td><td>價值型龍頭股之底部轉折</td><td>205 - 215 元</td><td class="stop-loss">跌破 195 元</td><td class="target-price">240 元</td></tr>
+                        <!-- 更新國巨策略 -->
+                        <tr><td><strong>2327</strong></td><td><strong>國巨</strong></td><td>法人主導之動能突破策略 (還原權值)</td><td>210 - 220 元</td><td class="stop-loss">跌破 200 元</td><td class="target-price">258 元</td></tr>
                         <tr><td><strong>5309</strong></td><td><strong>系統電</strong></td><td>轉機股之突破拉回</td><td>61.0 - 65.0 元</td><td class="stop-loss">跌破 59.0 元</td><td class="target-price">82.0 元</td></tr>
                     </tbody>
                 </table>
@@ -261,12 +263,12 @@
                  </ul>
             </div>
             <div class="stock-card">
-                 <h3>【2327 國巨】被動元件龍頭底部轉折，法人強力回補</h3>
+                 <h3>【2327 國巨】被動元件龍頭底部轉折，法人強力回補 (還原權值)</h3>
                  <h4>飆股DNA評估</h4>
                   <ul>
-                    <li><span class="fact-tag">[基本面]</span> 營運穩健，9月營收創24個月新高，年增+12.2%，產業需求回溫。併購日本Chip One Stop拓展電動車與機器人市場，被視為新成長起點。</li>
-                    <li><span class="analysis-tag">[技術面]</span> 長線落底後V型強彈，近期帶量突破所有均線，日K大漲8.65%，均線多頭排列，攻擊動能強勁。上方$240附近為缺口壓力。</li>
-                    <li><span class="fact-tag">[籌碼面]</span> 法人強力回補，三大法人單日大買21,230張，外資狂買逾1.5萬張，投信同步買超。富邦、美林等主力券商進場，籌碼高度集中。</li>
+                    <li><span class="fact-tag">[基本面]</span> 營運穩健，9月營收創24個月新高，年增+12.2%，產業需求回溫。公司為全球被動元件龍頭，具強大競爭力與定價能力。</li>
+                    <li><span class="analysis-tag">[技術面(還原權值)]</span> 長線W底($49.9)後V型強彈，近期帶量突破2024年高點壓力($228.5)創波段新高。均線多頭排列，攻擊動能強勁。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 法人強力回補是核心動能，三大法人單日大買21,230張 (外資狂買1.5萬張)，富邦、美林等主力進場，籌碼高度集中。</li>
                  </ul>
             </div>
             <div class="stock-card">
@@ -354,3 +356,4 @@
 </script>
 </body>
 </html>
+
