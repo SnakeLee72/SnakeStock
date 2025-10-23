@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1023 - 財報季開跑，鎖定法人抬轎股</title>
+    <meta name="description" content="靈蛇週報1023期分析。財報季正式開跑，市場回歸基本面檢視。本週聚焦法人強力回補的AI伺服器龍頭、底部轉強的被動元件巨擘，以及營運迎來轉機的車用電子股。精選個股為廣達(2382)、國巨(2327)、系統電(5309)。">
+    <meta name="keywords" content="靈蛇週報, 1023, 廣達, 國巨, 系統電, AI伺服器, 被動元件, TPMS, 財報季, 法人籌碼">
+    <link rel="manifest" href="../manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        /* 風格三：技術藍圖風 */
+        :root {
+            --bg-main: #0d1b2a;         /* 深藍背景 */
+            --bg-card: #1b263b;         /* 卡片藍灰色背景 */
+            --border-color: #415a77;      /* 藍圖線條顏色 */
+            --text-primary: #e0e1dd;      /* 主要文字 - 米白 */
+            --text-secondary: #778da9;    /* 次要文字 - 灰藍 */
+            --accent-cyan: #00ffff;       /* 亮青色 */
+            --highlight-yellow: #ffd60a;  /* 高亮黃 */
+            --color-red: #ff5c5c;         /* 風險紅 */
+            --color-green: #5cff5c;       /* 機會綠 */
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            /* 添加網格背景 */
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--highlight-yellow);
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--accent-cyan);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 .icon {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); /* 半透明背景 */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        thead th {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        td {
+            font-weight: 500;
+        }
+
+        .target-price { color: var(--color-red); font-weight: 500; }
+        .stop-loss { color: var(--color-green); font-weight: 500; }
+        .positive-return { color: var(--color-red); font-weight: 500; }
+        .negative-return { color: var(--color-green); font-weight: 500; }
+
+        .stock-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            position: relative;
+             border-radius: 0; /* 卡片直角設計 */
+        }
+
+        .stock-card h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 0;
+            color: var(--highlight-yellow);
+        }
+
+        .stock-card h4 {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color); /* 虛線 */
+        }
+
+        .stock-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .stock-card ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+
+        .stock-card ul li::before {
+            content: '>>';
+            position: absolute;
+            left: 0;
+            top: 0px;
+            color: var(--accent-cyan);
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .stock-card ul li b {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05em;
+        }
+         .fact-tag { background-color: rgba(0, 255, 255, 0.1); color: var(--accent-cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+
+
+        blockquote {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--highlight-yellow);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1023</h1>
+            <p>靈蛇投資研究中心 // 2025年10月23日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (10/18-10/22)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高價(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>2317</td><td>鴻海</td><td>215-220</td><td>242.5</td><td class="positive-return">+10.23%</td><td>否</td></tr>
+                        <tr><td>3189</td><td>景碩</td><td>138-142</td><td>151.0</td><td class="positive-return">+6.34%</td><td>否</td></tr>
+                        <tr><td>2327</td><td>國巨</td><td>175-182</td><td>226.0</td><td class="positive-return">+24.18%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+             <p style="text-align: right; font-size: 1.2em;"><strong>本週投組平均報酬率：<span class="positive-return">+13.58%</span></strong></p>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>本週市場焦點：財報季開跑，回歸基本面與籌碼</h2>
+            <div class="stock-card">
+                <h3>多頭氛圍延續，利空反應鈍化</h3>
+                <p>本週市場整體氛圍偏多，分析師普遍認為拉回即是買點。BofA經理人調查顯示市場情緒樂觀，現金部位降低。儘管有利空消息（如美中軟體禁令），但台股反應鈍化，顯示多頭抵抗力強勁。國安基金擬擴大銀彈至兆元、外銷訂單創歷史新高（連八紅）等利多消息，也為市場注入信心。</p>
+                <p>資金流向上，**被動元件**成為新主流，國巨併購題材帶動族群輪動補漲。**AI伺服器**仍是核心，鴻海、廣達等受惠GB200/300題材，營收動能看好。**記憶體**則因資金排擠短線轉弱。**BBU（電池備援模組）**、**機器人概念**受惠GTC大會題材，出現跌深反彈。年底**集團作帳**行情也值得留意。</p>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2382</strong></td><td><strong>廣達</strong></td><td>強勢績優股之拉回均線支撐</td><td>285 - 295 元</td><td class="stop-loss">跌破 280 元</td><td class="target-price">345 元</td></tr>
+                        <tr><td><strong>2327</strong></td><td><strong>國巨</strong></td><td>價值型龍頭股之底部轉折</td><td>205 - 215 元</td><td class="stop-loss">跌破 195 元</td><td class="target-price">240 元</td></tr>
+                        <tr><td><strong>5309</strong></td><td><strong>系統電</strong></td><td>轉機股之突破拉回</td><td>61.0 - 65.0 元</td><td class="stop-loss">跌破 59.0 元</td><td class="target-price">82.0 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【2382 廣達】AI伺服器龍頭，拉回均線尋找買點</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 營運爆發性成長，9月營收年增+18.7%，AI伺服器訂單與出貨動能極強。Q2 EPS年增高達41.4%，高毛利AI伺服器帶動獲利躍升。GB300預計年底放量，營收動能看好。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 強勢多頭格局，近期創高後健康拉回，於月線($291.3)與季線($281.1)附近獲得支撐，多頭格局未破壞。成交量在拉回時萎縮，籌碼穩定。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 外資近期由賣轉買，單日大買9,086張，成為股價止跌關鍵。投信持股穩定，美林、摩根大通等主力券商積極回補。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                 <h3>【2327 國巨】被動元件龍頭底部轉折，法人強力回補</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 營運穩健，9月營收創24個月新高，年增+12.2%，產業需求回溫。併購日本Chip One Stop拓展電動車與機器人市場，被視為新成長起點。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 長線落底後V型強彈，近期帶量突破所有均線，日K大漲8.65%，均線多頭排列，攻擊動能強勁。上方$240附近為缺口壓力。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 法人強力回補，三大法人單日大買21,230張，外資狂買逾1.5萬張，投信同步買超。富邦、美林等主力券商進場，籌碼高度集中。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                <h3>【5309 系統電】營運強力轉機，突破拉回尋找機會</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 營運迎來顯著轉機，9月營收創1年9個月新高，年增率高達+34.1%，TPMS及車用電子出貨順暢。市場關注營收強勁成長趨勢能否帶動未來獲利改善。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價強力突破長年底部盤整區後，近期進入量縮的下降旗形整理，回測$61-$65頸線支撐。守穩季線($66.0)則多頭格局未破。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 外資在創高後出現獲利了結賣壓。但拉回過程中融資減少，籌碼沉澱健康。券資比8.3%仍具軋空題材。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="macro-summary">
+            <h2><span class="icon">🌐</span>宏觀總結與下週觀察重點</h2>
+            <div class="stock-card">
+                 <h4>觀察重點一：財報季的實際考驗</h4>
+                <p>財報季正式開跑，市場將嚴格檢驗各家公司的獲利數字。留意財報不佳個股的風險，同時聚焦那些營收獲利雙成長、法人積極作帳的公司，這些將是第四季行情的主角。</p>
+                <h4>觀察重點二：技術面關鍵支撐</h4>
+                <p>大盤指數的5日線與10日線為短線強弱關鍵。強勢股（如廣達、國巨）能否守住月線、季線等重要支撐？突破股（如系統電）能否守穩頸線？技術面的防守力將是判斷趨勢是否延續的重要指標。</p>
+                <h4>觀察重點三：熱門族群的輪動</h4>
+                <p>被動元件能否接棒成為新主流？AI伺服器在整理後能否再攻？記憶體是否持續弱勢？BBU、機器人等題材能否延續熱度？觀察資金在不同族群間的流動，是掌握盤面節奏的關鍵。</p>
+                 <h4>潛在風險提醒</h4>
+                <p>融資水位增加、經理人對AI泡沫的擔憂、以及美中科技管制的後續影響，都是市場潛在的風險因子，需保持警惕。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+            多頭市場，拉回就是買點。關鍵在於辨識真偽，鎖定那些具備真實獲利與法人關愛的績優股。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // 注意：實際的圖表數據應根據當週真實情況調整
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) { // 確保元素存在
+        const pieChart = new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AI 伺服器 (整理)', '被動元件 (轉強)', '車用/TPMS (轉機)', '其他'],
+                datasets: [{
+                    label: '本週產業資金流向',
+                    data: [35, 30, 20, 15], // 示例數據，應更新
+                    backgroundColor: ['#00ffff', '#ffd60a', '#5cff5c', '#778da9'], // 調整顏色以匹配風格
+                    borderColor: '#1b263b', // 卡片背景色
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週產業資金流向 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Fira Code', weight: '500' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 14, family: 'Fira Code' }
+                        } 
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("無法找到 ID 為 'industryPieChart' 的 canvas 元素。");
+    }
+</script>
+</body>
+</html>
