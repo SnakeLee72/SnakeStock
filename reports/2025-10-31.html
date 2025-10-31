@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1031 - 萬聖節特輯：三檔「魔法噴出股」現形</title>
+    <meta name="description" content="靈蛇週報1031期萬聖節特輯。本週聚焦基本面、技術面、籌碼面三強鼎立的噴出股。精選個股為良維(6290)、神達(3706)、欣興(3037)。">
+    <meta name="keywords" content="靈蛇週報, 1031, 萬聖節, 良維, 神達, 欣興, AI伺服器, ABF載板, 法人籌碼, 營收成長">
+    <link rel="manifest" href="../manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        /* 風格四：萬聖節主題風 */
+        :root {
+            --bg-main: #0d0d0d;         /* 漆黑背景 */
+            --bg-card: #1f1f1f;         /* 深灰卡片 */
+            --border-color: #444;       /* 邊框顏色 */
+            --text-primary: #e0e0e0;      /* 主要文字 - 亮灰 */
+            --text-secondary: #999;       /* 次要文字 - 灰 */
+            --accent-orange: #ff6600;    /* 南瓜橘 */
+            --highlight-purple: #9933ff;  /* 神秘紫 */
+            --color-red: #ff4d4d;         /* 風險紅 */
+            --color-green: #00ff7f;       /* 螢光綠 */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+            /* subtle spooky background */
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: 'Creepster', 'Noto Sans TC', sans-serif;
+            color: var(--accent-orange);
+            font-size: 3.5em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-family: 'Creepster', 'Noto Sans TC', sans-serif;
+            font-size: 2.5em;
+            color: var(--highlight-purple);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        h2 .icon {
+            margin-right: 12px;
+            font-size: 1em;
+            transform: translateY(4px);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(31, 31, 31, 0.8); /* 半透明背景 */
+            border-radius: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        thead th {
+            font-weight: 700;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        td {
+            font-weight: 500;
+        }
+
+        .target-price { color: var(--color-red); font-weight: 700; }
+        .stop-loss { color: var(--color-green); font-weight: 700; }
+        .positive-return { color: var(--color-red); font-weight: 700; }
+        .negative-return { color: var(--color-green); font-weight: 700; }
+
+        .stock-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(153, 51, 255, 0.1);
+        }
+
+        .stock-card h3 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 0;
+            color: var(--accent-orange);
+            font-family: 'Creepster', 'Noto Sans TC', sans-serif;
+        }
+
+        .stock-card h4 {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color); /* 虛線 */
+        }
+
+        .stock-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .stock-card ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+
+        .stock-card ul li::before {
+            content: '👻';
+            position: absolute;
+            left: 0;
+            top: 0px;
+            font-size: 1em;
+        }
+
+        .stock-card ul li b {
+            color: var(--accent-orange);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.05em;
+        }
+         .fact-tag { background-color: rgba(153, 51, 255, 0.1); color: var(--highlight-purple); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .analysis-tag { background-color: rgba(0, 255, 127, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .chart-container { max-width: 400px; margin: 20px auto 0 auto; }
+
+
+        blockquote {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-orange);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1031 🎃</h1>
+            <p>靈蛇投資研究中心 // 2025年10月31日 (萬聖節特輯)</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">👻</span> 上週績效回測 (10/27-10/31)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高價(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>2382</td><td>廣達</td><td>285-295</td><td>309.5</td><td class="positive-return">+4.92%</td><td>否</td></tr>
+                        <tr><td>2327</td><td>國巨</td><td>210-220</td><td>249.0</td><td class="positive-return">+13.18%</td><td>否</td></tr>
+                        <tr><td>5309</td><td>系統電</td><td>61-65</td><td>64.7</td><td class="negative-return">-0.46%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+             <p style="text-align: right; font-size: 1.2em;"><strong>本週投組平均報酬率：<span class="positive-return">+5.88%</span></strong></p>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🦇</span> 本週產業焦點：AI大循環啟動，資金輪動加速</h2>
+            <div class="stock-card">
+                <h3>AI 仍是主旋律，資金健康輪動</h3>
+                <p>本週台股創高後進入高檔震盪，10月大漲逾2400點，顯示多頭氣焰強勁。市場焦點清晰，**AI** 仍是「破壞性重建」的產業主軸，NVIDIA 宣布的 Blackwell + Rubin 超級大循環，為伺服器、電源、散熱、連接器等族群提供了長期動能。</p>
+                <p>資金流向方面，**記憶體族群** 在景氣循環底部確立、報價上漲的利多下，成為本週主攻部隊之一。同時，**電源供應器** 受惠於AI伺服器瓦數暴增 (3KW→30KW)，成長趨勢明確。NVIDIA 投資 Nokia 亦帶動 **Open RAN** 概念股。年底將至，**集團作帳**行情（如鴻海、國巨、台塑等）也已悄然啟動。</p>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span> 下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>6290</strong></td><td><strong>良維</strong></td><td>基本面加速，外資鎖碼噴出股</td><td>180 - 185 元</td><td class="stop-loss">跌破 178 元</td><td class="target-price">193.5 元</td></tr>
+                        <tr><td><strong>3706</strong></td><td><strong>神達</strong></td><td>基本面爆發，法人主導突破股</td><td>96.0 - 100 元</td><td class="stop-loss">跌破 92.5 元</td><td class="target-price">101 元 (突破)</td></tr>
+                        <tr><td><strong>3037</strong></td><td><strong>欣興</strong></td><td>營收轉機，外資鎖碼突破股</td><td>160 - 164 元</td><td class="stop-loss">跌破 158 元</td><td class="target-price">215 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span> 本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【6290 良維】三強鼎立的完美多頭格局</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 營運進入「加速成長期」，9月營收年增+17.7%，Q3營收年增擴大至+20.9%，成長動能強勁。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 教科書等級的主升段行情，股價沿5日線陡峭上攻，均線完美多頭排列，週K線已突破長年整理區。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 外資是此波絕對主力，近期連日巨額買超，籌碼高度集中。股價上漲過程中更出現「價漲資減」的健康籌碼清洗。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                 <h3>【3706 神達】基本面核彈級爆發，突破頸線</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 9月營收年增率達恐怖的 +90.4%！公司證實為「超大規模雲端資料中心」業務帶動，正式切入AI高價值鏈，Q3財報可期。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價帶量突破長達數月的 $94.6 頸線壓力區，並站上$100整數關卡，正式確立新一波上漲趨勢。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 摩根士丹利 (MS) 單一分點強力買超，顯示為國際級法人佈局。同時出現「價漲資減、融券增加」的完美軋空籌碼結構。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                <h3>【3037 欣興】教科書級別的W底突破行情</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 營運谷底反轉，9月及Q3營收均重返「年增長」，證實ABF載板產業景氣復甦訊號。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價帶量突破 $160 附近的關鍵頸線壓力區，週K線亦完成大型底部型態，開啟新的上漲空間。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 外資主力(摩根士丹利)在突破關鍵點重金買超，籌碼集中。同時伴隨「價漲資減、融券增加」的健康籌碼結構，具備軋空潛力。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="macro-summary">
+            <h2><span class="icon">🕸️</span> 宏觀總結與下週觀察重點</h2>
+            <div class="stock-card">
+                 <h4>主軸布局：AI基建鏈 + 記憶體復甦</h4>
+                <p>市場焦點清晰，聚焦於「AI 基礎建設鏈」（伺服器、電源、載板）與「記憶體復甦」雙主軸。NVIDIA 投資 Nokia 亦為網通與 Open RAN 帶來新題材。</p>
+                <h4>資金輪動策略</h4>
+                <p>資金呈現 AI → 電源 → 載板 → 記憶體 → 被動元件的健康輪動。現階段判斷為「記憶體 + 電源」的主攻期，而ABF載板與AI伺服器（如神達、欣興）則剛發動突破。</p>
+                <h4>操作節奏</h4>
+                <p>大盤短線量爆易震盪，但量縮拉回即是買點。強勢股（如良維）可沿5日線操作；剛突破的個股（如神達、欣興）則可等待拉回月線或十日線時分批進場。</p>
+                 <h4>風控重點</h4>
+                <p>只要大盤未跌破月線（約 28000 點）關鍵支撐，皆屬多頭格局，持股比重可維持 70%。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+            Happy Halloween! 🎃 在群魔亂舞的行情中，更要抓緊那些基本面、籌碼面、技術面三強鼎立的真正強股。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AI 伺服器 (轉強)', '記憶體 (主攻)', '電源供應 (主攻)', '被動元件 (輪動)'],
+                datasets: [{
+                    label: '本週產業資金流向',
+                    data: [30, 25, 25, 20], // 根據本週熱門族群調整
+                    backgroundColor: [
+                        '#ff6600', // 南瓜橘
+                        '#9933ff', // 神秘紫
+                        '#00ff7f', // 螢光綠
+                        '#777'     // 陰森灰
+                    ],
+                    borderColor: '#1f1f1f',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週產業資金流向 (%)', 
+                        color: '#e0e0e0', 
+                        font: { size: 18, family: 'Creepster', weight: '700' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#999', 
+                            font: { size: 14, family: 'Noto Sans TC' }
+                        } 
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("找不到 ID 為 'industryPieChart' 的 canvas 元素。");
+    }
+</script>
+</body>
+</html>
