@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1107 - 財報季見真章，鎖定法人鎖碼股</title>
+    <meta name="description" content="靈蛇週報1107期分析。財報季成照妖鏡，市場聚焦EPS上修個股。本週精選法人鎖碼、籌碼乾淨的愛普(6531)、宜鼎(5289)，以及完美突破的建準(2421)。">
+    <meta name="keywords" content="靈蛇週報, 1107, 愛普, 宜鼎, 建準, 財報季, 法人鎖碼, AI, 記憶體, 散熱">
+    <link rel="manifest" href="../manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/SnakeStock/sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        /* 風格三：技術藍圖風 */
+        :root {
+            --bg-main: #0d1b2a;         /* 深藍背景 */
+            --bg-card: #1b263b;         /* 卡片藍灰色背景 */
+            --border-color: #415a77;      /* 藍圖線條顏色 */
+            --text-primary: #e0e1dd;      /* 主要文字 - 米白 */
+            --text-secondary: #778da9;    /* 次要文字 - 灰藍 */
+            --accent-cyan: #00ffff;       /* 亮青色 */
+            --highlight-yellow: #ffd60a;  /* 高亮黃 */
+            --color-red: #ff5c5c;         /* 風險紅 */
+            --color-green: #5cff5c;       /* 機會綠 */
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            /* 添加網格背景 */
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--highlight-yellow);
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--accent-cyan);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 .icon {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); /* 半透明背景 */
+            border-radius: 0; /* 卡片直角設計 */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        thead th {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        td {
+            font-weight: 500;
+        }
+
+        .target-price { color: var(--color-red); font-weight: 500; }
+        .stop-loss { color: var(--color-green); font-weight: 500; }
+        .positive-return { color: var(--color-red); font-weight: 500; }
+        .negative-return { color: var(--color-green); font-weight: 500; }
+
+        .stock-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            border-radius: 0; /* 卡片直角設計 */
+        }
+
+        .stock-card h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 0;
+            color: var(--highlight-yellow);
+        }
+
+        .stock-card h4 {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color); /* 虛線 */
+        }
+
+        .stock-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .stock-card ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+
+        .stock-card ul li::before {
+            content: '>>';
+            position: absolute;
+            left: 0;
+            top: 0px;
+            color: var(--accent-cyan);
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .stock-card ul li b {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            display: block; /* 讓粗體標題換行 */
+            margin-bottom: 4px;
+            font-size: 1.05em;
+        }
+         .fact-tag { background-color: rgba(0, 255, 255, 0.1); color: var(--accent-cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        
+        .chart-container { 
+            max-width: 400px; 
+            margin: 20px auto 0 auto; 
+        }
+
+        blockquote {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--highlight-yellow);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1107</h1>
+            <p>靈蛇投資研究中心 // 2025年11月7日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (10/27-10/31)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高價(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>6290</td><td>良維</td><td>180-185</td><td>198.5</td><td class="positive-return">+8.77%</td><td>否</td></tr>
+                        <tr><td>3706</td><td>神達</td><td>96-100</td><td>107.0</td><td class="negative-return">(觸及停損)</td><td style="color:var(--color-red)">是</td></tr>
+                        <tr><td>3037</td><td>欣興</td><td>160-164</td><td>178.5</td><td class="positive-return">+10.19%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stock-card">
+                <h4>績效評語</h4>
+                <p>上週投組表現穩健，良維(6290)與欣興(3037)均繳出亮眼的正報酬，驗證了法人鎖碼與基本面轉強的選股邏輯。神達(3706)在突破後遭遇大盤技術性回檔，觸及92.5元的停損點。此為必要之風險控管，紀律停損能讓我們保留資金，轉進本週更具確定性的標的。</p>
+            </div>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>本週產業焦點：財報季成照妖鏡，聚焦EPS上修股</h2>
+            <div class="stock-card">
+                <h3>盤勢觀察：高檔震盪，拉回即是買點</h3>
+                <p>本週大盤在10月大漲後，進入高檔震盪整理。分析師普遍認為，技術指標（如周線RSI）過熱，指數拉回6%至10%進行修正是健康走勢，下方支撐可觀察 27500 點附近。然而，市場中長線依舊樂觀，法人喊出明年(2026)第一季挑戰三萬點的目標。</p>
+                <p>台經院上修2025年GDP至5.94%，主因AI與半導體貢獻強勁，基本面提供了堅實的下檔支撐。目前的操作策略是尋找(1) 基期低 且 (2) **獲利預估(EPS)被市場不斷「上修」**的個股。財報季正是「照妖鏡」，應優先關注財報亮眼或獲利優於預期的公司。</p>
+                
+                <h3>熱門族群：記憶體與AI鏈強勢輪動</h3>
+                <ul>
+                    <li><b>AI 基礎建設：</b> 仍是長線趨勢，GB200/GB300 是趨勢列車。受惠族群包含伺服器、電源、散熱、連接器。</li>
+                    <li><b>記憶體 (本週最強)：</b> 正處於「超級循環」中，終端通路已出現搶貨情況，景氣看好至2026年。</li>
+                    <li><b>PCB / CCL：</b> 受惠AI伺服器三大升級（M8/M9材料、硬/厚度增加），景氣同樣看好至2026年。</li>
+                    <li><b>CPO (細光子)：</b> 美股相關個股已創高，台股族群尚在休息，被視為可留意的潛在輪動板塊。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>6531</strong></td><td><strong>愛普*</strong></td><td>Q3財報亮眼，法人鎖碼股</td><td>395 - 405 元</td><td class="stop-loss">跌破 380 元</td><td class="target-price">420 元</td></tr>
+                        <tr><td><strong>5289</strong></td><td><strong>宜鼎</strong></td><td>營收/獲利雙強，法人鎖碼股</td><td>440 - 450 元</td><td class="stop-loss">跌破 420 元</td><td class="target-price">477.5 元</td></tr>
+                        <tr><td><strong>2421</strong></td><td><strong>建準</strong></td><td>基本面噴發，主力軋空突破股</td><td>160 - 165 元</td><td class="stop-loss">跌破 157 元</td><td class="target-price">185 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【6531 愛普*】Q3財報亮眼，法人鎖碼籌碼乾淨</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> Q3營收年增+17.3%，單季EPS 4.43元，獲利動能強勁。10月營收雖月減，但年增率仍達+14.0%，長期成長趨勢不變。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 均線呈現完美「多頭排列」，股價沿5日線穩健上攻，是標準的主升段行情。創高$420.0後的小幅拉回屬強勢整理。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 外資是推動創高的絕對主力。最關鍵的是11/5出現「價漲資減」，融資大減1704張，顯示籌碼已高度集中在法人手中，浮額清洗完畢。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                 <h3>【5289 宜鼎】營收/獲利雙噴發，法人鎖碼</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> Q3財報、10月營收雙喜臨門。Q3營收年增+64.0%，單季EPS高達7.24元；10月營收年增+86.8%，基本面動能極為強勁。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 均線完美「多頭排列」，股價沿5日線強勢上攻，創下$477.5新高，標準主升段。</li>
+                    <li><chttps://storage.googleapis.com/project-veda-styleguide/static/images/Gemini/gemini_light_20240430.svgass="fact-tag">[籌碼面]</span> 法人11/4、11/5連續大買，是創高主力。11/5同樣出現「價漲資減」的教科書級洗盤訊號，籌碼安定。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                <h3>【2421 建準】三強共振，完美多頭突破</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> AI散熱需求爆發，10月營收年增+35.5%，Q3營收年增+22.4%，營運進入高速成長軌道。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 11/7以一根+9.77%的巨量長紅K棒，強勢突破所有前高，創下$168.5新高，正式進入「價格發現」的主升段。</li>
+                    <li><span class="fact-tag">[籌碼面]</span> 外資單日狂買+5,377張，「凱基-台北」單一分點買超萬張，主力心態堅決。同時「融資未增、融券增加」，具備強力軋空題材。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="macro-summary">
+            <h2><span class="icon">🌐</span>靈蛇觀點：財報季汰弱留強，聚焦EPS上修股</h2>
+            <div class="stock-card">
+                 <h4>主軸布局：AI基建鏈 + 記憶體復甦</h4>
+                <p>市場焦點清晰，聚焦於「AI 基礎建設鏈」（伺服器、電源、載板）與「記憶體復甦」雙主軸。NVIDIA 投資 Nokia 亦為網通與 Open RAN 帶來新題材。</p>
+                <h4>資金輪動策略</h4>
+                <p>資金呈現 AI → 電源 → 載板 → 記憶體 → 被動元件的健康輪動。現階段判斷為「記憶體 + 電源」的主攻期，而ABF載板與AI伺服器（如神達、欣興）則剛發動突破。</p>
+                <h4>操作節奏</h4>
+                <p>大盤短線量爆易震盪，但量縮拉回即是買點。強勢股（如良維）可沿5日線操作；剛突破的個股（如神達、欣興）則可等待拉回月線或十日線時分批進場。</p>
+                 <h4>風控重點</h4>
+                <p>只要大盤未跌破月線（約 28000 點）關鍵支撐，皆屬多頭格局，持股比重可維持 70%。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+                市場在財報季中汰弱留強。真正的贏家，是那些獲利(EPS)不斷被上修的成長股。拉回，正是檢視黃金的時刻。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AI 基礎建設', '記憶體 (超級循環)', 'PCB/CCL', 'CPO (潛在輪動)'],
+                datasets: [{
+                    label: '本週產業資金流向',
+                    data: [35, 30, 20, 15],
+                    backgroundColor: ['#00ffff', '#ffd60a', '#5cff5c', '#778da9'],
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週產業資金流向 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Fira Code', weight: '500' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 14, family: 'Fira Code' }
+                        } 
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("找不到 ID 為 'industryPieChart' 的 canvas 元素。");
+    }
+</script>
+</body>
+</html>
