@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1114 - 漲多回檔，精選「主力鎖碼」與「谷底反轉」股</title>
+    <meta name="description" content="靈蛇週報1114期分析。台股漲多回檔，汰弱留強。本週精選強勢股拉回的愛普(6531)、營收噴發主力鎖碼的蜜望實(8043)，以及景氣谷底反轉的慧洋-KY(2637)。">
+    <meta name="keywords" content="靈蛇週報, 1114, 愛普, 蜜望實, 慧洋-KY, 漲多回檔, 主力鎖碼, 軋空, 被動元件, 航運, 谷底反轉">
+    <link rel="manifest" href="../manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;         /* 紅色 (用於上漲) */
+            --color-green: #5cff5c;       /* 綠色 (用於下跌) */
+            --color-yellow: #f1fa8c;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--highlight-yellow);
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--accent-cyan);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 .icon {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8);
+            border-radius: 0; 
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        thead th {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            background-color: rgba(0,0,0,0.2);
+        }
+        
+        td {
+            font-weight: 500;
+        }
+
+        /* [修改] 停損點 (下跌) 改為綠色 */
+        .stop-loss { color: var(--color-green); font-weight: 500; }
+        
+        /* [修改] 目標價 (上漲) 改為紅色 */
+        .target-price { color: var(--color-red); font-weight: 500; }
+        
+        /* [修改] 正報酬改為紅色 */
+        .positive-return { color: var(--color-red); font-weight: 500; }
+        
+        /* [修改] 負報酬改為綠色 */
+        .negative-return { color: var(--color-green); font-weight: 500; }
+
+        .stock-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            border-radius: 0; 
+        }
+
+        .stock-card h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 0;
+            color: var(--highlight-yellow);
+        }
+
+        .stock-card h4 {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color); /* 虛線 */
+        }
+
+        .stock-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .stock-card ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+
+        .stock-card ul li::before {
+            content: '>>';
+            position: absolute;
+            left: 0;
+            top: 0px;
+            color: var(--accent-cyan);
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        .stock-card ul li b {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            display: block; 
+            margin-bottom: 4px;
+            font-size: 1.05em;
+        }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.1); color: var(--accent-cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.1); color: var(--color-yellow); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        
+        .chart-container { 
+            max-width: 400px; 
+            margin: 20px auto 0 auto; 
+        }
+
+        blockquote {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--highlight-yellow);
+            margin: 1.5em 0;
+            padding: 1.5em 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1114</h1>
+            <p>靈蛇投資研究中心 // 2025年11月14日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (11/10-11/14)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高收盤(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>6531</td><td>愛普*</td><td>395-405</td><td>415</td><td class="positive-return">+2.47%</td><td>否</td></tr>
+                        <tr><td>5289</td><td>宜鼎</td><td>440-450</td><td>558</td><td class="positive-return">+24.00%</td><td>否</td></tr>
+                        <tr><td>2421</td><td>建準</td><td>160-165</td><td>185.5</td><td class="positive-return">+12.42%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- [修改] 平均報酬率改為紅色 -->
+            <p style="text-align: right; font-size: 1.2em; color: var(--color-red); margin-right: 10px;"><strong>本週投組平均報酬率：+12.96%</strong></p>
+            
+            <div class="stock-card">
+                <h4>績效評語</h4>
+                <p>上週投組表現完美，<strong>三戰全勝</strong>，繳出 <strong style="color:var(--color-red)">+12.96%</strong> 的平均報酬率。這再次驗證了我們上週的「三強共振」選股邏輯——鎖定「基本面噴發、法人鎖碼、技術面突破」的個股，是應對當前強勢多頭盤的最佳策略。</p>
+                <p><span class="analysis-tag" style="background-color:rgba(255, 92, 92, 0.1); color:var(--color-red);">[巨大獲利]</span> <strong>宜鼎(5289) / 建準(2421)</strong>：<br>
+                    這兩檔個股均在進場後，完美噴出，分別貢獻 <strong style="color:var(--color-red)">+24.00%</strong> 與 <strong style="color:var(--color-red)">+12.42%</strong> 的驚人漲幅。宜鼎受惠於記憶體超級循環；建準則在 AI 散熱與軋空題材下衝高。兩者均為教科書等級的主升段行情。</p>
+                <p><span class="analysis-tag" style="background-color:rgba(255, 92, 92, 0.1); color:var(--color-red);">[穩健續強]</span> <strong>愛普*(6531)</strong>：<br>
+                    愛普在本週創下新高 (貢獻 <strong style="color:var(--color-red)">+2.47%</strong> 報酬) 後，受 10 月營收利空影響而拉回。但正如我們所料，股價在月線附近有強勁支撐，且未觸及停損點 (389元)，法人籌碼安定。本週我們將其**再次選入**，是拉回佈局的絕佳標的。</p>
+            </div>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：漲多正常回檔，主流股健康輪動</h2>
+            <div class="stock-card">
+                <h3>盤勢觀察：守住 27500 點，拉回即是買點</h3>
+                <p>本週台股大跌 400–500 點，多位分析師均表示，這屬於多頭行情中「漲多後的正常回檔」。目前市場的關鍵防守點位在 <strong>27500 點</strong>附近，只要能守住此關卡，多頭格局不變。若能迅速站回月線，整理後將再度轉攻。</p>
+                <p>國際面上，由於多位 FED 官員對降息保留，12 月降S機率已跌破 50%，加上台幣貶值創半年新低，導致外資短線匯出，是造成台股回檔的主因。輝達(NVIDIA)的回檔也引發 AI 泡沫疑慮，但分析師普遍認為僅是「漲多整理」，並非趨勢反轉。</p>
+                
+                <h3>熱門族群：AI/ABF 休息，資金轉進被動元件</h3>
+                <ul>
+                    <li><b>記憶體 (Memory)：</b> 本週大幅震盪，主因國際大廠領跌。但產業趨勢不變，仍屬多頭格局中的漲多修正。</li>
+                    <li><b>被動元件 (新主流)：</b> <span class="highlight-yellow">資金接手，族群全面轉強</span>。本週精選的**蜜望實(8043)**即是此族群的領頭羊，鈞寶、凱美等亦有表現。</li>
+                    <li><b>AI 伺服器 / ABF：</b> 廣達、緯創法說會展望佳，訂單能見度強。南電、欣興等 ABF 族群在創高回測後，仍有轉攻空間。</li>
+                    <li><b>航運 (Shipping)：</b> 具備部分資金避險流向，但並非當前盤面主流。本週精選的**慧洋-KY(2637)**是景氣谷底反轉的訊號。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>6531</strong></td><td><strong>愛普*</strong></td><td>強勢股拉回，法人逢低承接</td><td>395 - 405 元</td><td class="stop-loss">跌破 375 元</td><td class="target-price">442 元</td></tr>
+                        <tr><td><strong>8043</strong></td><td><strong>蜜望實</strong></td><td>營收噴發，主力鎖碼軋空股</td><td>61 - 63 元</td><td class="stop-loss">跌破 57.5 元</td><td class="target-price">70 - 72 元</td></tr>
+                        <tr><td><strong>2637</strong></td><td><strong>慧洋-KY</strong></td><td>景氣谷底反轉，法人多空對決</td><td>61.5 - 63 元</td><td class="stop-loss">跌破 59 元</td><td class="target-price">68 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            <div class="stock-card">
+                 <h3>【6531 愛普*】強勢股拉回，法人逢低承接 (再次入選)</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> Q3 EPS 4.43元，年增強勁。短線利空：10月營收月減-18.8%，是股價從$442高點拉回的主因。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價拉回測試20日均線(月線, $394.3)的關鍵支撐區，週K線仍是強勁多頭軌道。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 關鍵訊號：「價跌法人買」。11/14股價下跌，外資(+575張)與投信(+130張)同步轉買，顯示法人視拉回為買點。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                 <h3>【8043 蜜望實】營收噴發，主力鎖碼軋空股</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 10月營收6.42億，創3年9個月新高，年增率(YoY)高達 +59.1%。公司稱為「客戶急單效應」，動能強勁。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 11/14「漲停鎖死」($64.2)，帶量突破所有歷史高點，正式進入「價格發現」的主升段。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 特定主力「富邦」單點狂掃 8,959張，是主力作價。同時券資比高達 28.8%，具備強力「軋空」題材。</li>
+                 </ul>
+            </div>
+            <div class="stock-card">
+                <h3>【2637 慧洋-KY】景氣谷底反轉，法人多空對決</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 10月營收17.18億，創1年新高，年增率(YoY) +1.7%。這是自2024年底以來「首次轉正」，景氣谷底反轉訊號浮現。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價在 $60-$68 大箱型區間整理，目前多空均線糾結，標準的「壓縮待表態」型態。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 「內外資激烈對作」。11/14 外資(美商高盛) 大買 +2,483張，內資投信則大賣 -1,295張。我們選擇押注外資方。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：拉回是試金石，汰弱留強</h2>
+            <div class="stock-card">
+                 <h4>拉回不是壞事，是汰弱留強的機會</h4>
+                <p>本週大盤的急跌回檔 (大跌 400-500 點) 不是壞事，反而是「汰弱留強」的試金石。主流股 (AI, 記憶體) 僅是健康整理，籌碼清洗浮額後將更安定；同時，資金輪動至新族群 (被動元件)，顯示多頭人氣未散。</p>
+                <h4>本週選股策略：強勢拉回 + 趨勢反轉</h4>
+                <p>本週選股策略有三：<br>
+                1. <strong>承接強勢股拉回</strong>：愛普(6531) 上週大漲後，本週受利空(10月營收)拉回，但「價跌法人買」訊號明確，是佈局點。<br>
+                2. <strong>佈局新噴發股</strong>：蜜望實(8043) 營收核彈級噴發，主力鎖碼+高券資比軋空，是盤面最強勢的飆股。<br>
+                3. <strong>潛伏谷底反轉</strong>：慧洋-KY(2637) 營收首度轉正，外資(高盛)大舉佈局，是左側交易的景氣循環股。
+                </p>
+                <p>操作上，大盤守住 <strong>27500 點</strong>關鍵支撐前，多頭格局不變，拉回皆是買點。應嚴控資金，分批佈局，並嚴守停損點。</p>
+            </div>
+        </section>
+
+        <section>
+            <blockquote>
+                多頭市場的拉回，是為了清洗浮額。<br>
+                敢在利空時買進的法人，才是真趨勢。
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AI / ABF (休息)', '被動元件 (新主流)', '記憶體 (整理)', '航運/避險'],
+                datasets: [{
+                    label: '本週產業資金流向',
+                    data: [30, 25, 25, 20],
+                    backgroundColor: ['#00ffff', '#ffd60a', '#5cff5c', '#778da9'], // 青色(AI), 黃色(被動), 綠色(記憶體), 灰色(航運)
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週產業資金流向 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Fira Code', weight: '500' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 14, family: 'Fira Code' }
+                        } 
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("找不到 ID 為 'industryPieChart' 的 canvas 元素。");
+    }
+</script>
+</body>
+</html>
