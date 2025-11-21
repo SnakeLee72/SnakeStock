@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1121 - 資金輪動低基期，鎖定「跌深反彈」與「底部轉機」股</title>
+    <meta name="description" content="靈蛇週報1121期分析。資金高低位階切換，鎖定基本面強勁的跌深反彈股廣達(2382)、底部轉強的中興電(1513)，以及景氣循環反轉的南亞(1303)。">
+    <meta name="keywords" content="靈蛇週報, 1121, 廣達, 中興電, 南亞, 跌深反彈, 低基期, AI伺服器, 重電, 塑化">
+    <link rel="manifest" href="../manifest.json">
+    <script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('../sw.js') }); } </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        /* 技術藍圖風格 (Tech Blueprint Style) */
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;         /* 紅色 (上漲) */
+            --color-green: #5cff5c;       /* 綠色 (下跌) */
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.8em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 0;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        .target-price { color: var(--color-red); font-weight: 500; }
+        .stop-loss { color: var(--color-green); font-weight: 500; }
+        .positive-return { color: var(--color-red); font-weight: 500; }
+        .negative-return { color: var(--color-green); font-weight: 500; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 0;
+        }
+        .stock-card h3 { font-size: 1.5em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 30px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before {
+            content: '>>'; position: absolute; left: 0; top: 0px;
+            color: var(--accent-cyan); font-size: 1em; font-weight: 700;
+        }
+        .stock-card ul li b { color: var(--accent-cyan); font-weight: 700; display: block; margin-bottom: 4px; font-size: 1.05em; }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.1); color: var(--accent-cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.1); color: var(--highlight-yellow); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        
+        .chart-container { max-width: 400px; margin: 20px auto 0 auto; }
+
+        blockquote {
+            background: transparent; border: 1px solid var(--border-color); border-left: 5px solid var(--highlight-yellow);
+            margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.2em; text-align: center;
+        }
+
+        .site-footer {
+            text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);
+            color: var(--text-secondary); font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1121</h1>
+            <p>靈蛇投資研究中心 // 2025年11月21日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (11/14-11/21)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高收盤(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>6531</td><td>愛普*</td><td>395-405</td><td>419</td><td class="positive-return">+3.46%</td><td>否</td></tr>
+                        <tr><td>8043</td><td>蜜望實</td><td>61-63</td><td>80.5</td><td class="positive-return">+27.78%</td><td>否</td></tr>
+                        <tr><td>2637</td><td>慧洋-KY</td><td>61.5-63</td><td>65.2</td><td class="positive-return">+3.49%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: right; font-size: 1.2em; color: var(--color-red); margin-right: 10px;"><strong>本週投組平均報酬率：+11.57%</strong></p>
+            <div class="stock-card">
+                <h4>績效評語</h4>
+                <p>上週市場震盪，但我們的投資組合展現了驚人的爆發力。
+                <strong>蜜望實 (8043)</strong> 是本週的 MVP，在營收噴發與主力軋空的雙重引擎下，單週報酬率高達 <strong class="positive-return">+27.78%</strong>，完美驗證了「飆股DNA」模型的選股威力。</p>
+                <p><strong>愛普* (6531)</strong> 與 <strong>慧洋-KY (2637)</strong> 也穩健上漲，全數獲利。這顯示在震盪盤勢中，鎖定「籌碼安定」與「底部轉機」的策略是正確的。</p>
+            </div>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：高位階修正，資金流向低基期</h2>
+            <div class="stock-card">
+                <h3>盤勢重點：NVIDIA 財報後的資金大挪移</h3>
+                <p>本週市場焦點在於 NVIDIA 財報，雖數據優於預期且黃仁勳強調 Blackwall 需求強勁，但市場出現「雞蛋裡挑骨頭」現象，導致 AI 權值股（如台積電、鴻海）陷入整理。然而，外資在財報後回補空單，顯示長線並未看空，僅是「漲多修正」。</p>
+                <p>隨著美國 12 月降息機率下降及美元強勢，資金開始從漲多的科技股流出，轉進<strong>「低位階、漲價題材、政策受惠」</strong>的族群。操作策略上，建議採取「三部曲」：先觀察國安護盤股（權值股）止穩，再佈局熱門題材，最後轉進業績成長股。</p>
+                
+                <h3>熱門族群與資金流向</h3>
+                <ul>
+                    <li><b>AI 權值股 (跌深反彈)：</b> 廣達、鴻海等經歷修正後，來到季線/年線附近的長線買點，適合做為護盤反彈的首選。</li>
+                    <li><b>漲價題材 (擴散效應)：</b> 資金由記憶體擴散至<strong>被動元件</strong>及<strong>重電設備</strong>。變壓器缺貨題材重啟，有利重電族群。</li>
+                    <li><b>傳產原物料 (底部轉機)：</b> 塑化族群受惠中國刺激政策預期與股價低基期，出現底部出量反彈訊號。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2382</strong></td><td><strong>廣達</strong></td><td>AI營收強勁，季線止跌反彈</td><td>270 - 275 元</td><td class="stop-loss">跌破 265 元</td><td class="target-price">300 元</td></tr>
+                        <tr><td><strong>1513</strong></td><td><strong>中興電</strong></td><td>利空鈍化，投信鎖碼築底</td><td>148 - 152 元</td><td class="stop-loss">跌破 145 元</td><td class="target-price">165 元</td></tr>
+                        <tr><td><strong>1303</strong></td><td><strong>南亞</strong></td><td>十年大底，爆量長紅反轉</td><td>48 - 51 元</td><td class="stop-loss">跌破 44.5 元</td><td class="target-price">60 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            
+            <div class="stock-card">
+                 <h3>【2382 廣達】跌深反彈，內資積極回補</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 10月營收年增+27.4%，Q3季增+46.2%，AI伺服器需求強勁，基本面成長趨勢無虞。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價回測季線($265)獲得強力支撐，11/21拉出長紅K棒站回5日線，短線止跌訊號明確。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資雖賣超，但投信連續買超護盤，且融資未隨反彈大增，籌碼沉澱有利反彈。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                 <h3>【1513 中興電】基本面利空鈍化，技術面打底</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 10月營收雖年減，但月增+2.1%，顯示最壞情況已過。受惠變壓器缺貨題材，長線剛性需求仍在。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價在$140-$150區間橫盤築底，11/21收紅站上短均線，均線糾結向上，醞釀轉強。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 典型的「土洋對作」。外資持續賣超，但投信大買+2,202張，內資作價意圖明顯，下檔有撐。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                <h3>【1303 南亞】十年大底，電子材料成亮點</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 塑化景氣雖在低檔，但電子材料(CCL)受惠AI需求增長。近12個月營收年增轉正，築底跡象浮現。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 週K線在$44.6附近築出大底，近期出現帶量長紅反彈。短線雖遇均線反壓，但回測有撐。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資近期雖有調節，但整體買盤仍大於賣盤。此為左側交易策略，佈局長線谷底反轉。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：高低切換，防禦與攻擊兼備</h2>
+            <div class="stock-card">
+                 <h4>市場風向轉變：從「追高」轉為「抄底」</h4>
+                <p>本週的選股邏輯出現重大轉變。面對大盤高檔震盪，我們不再單純追逐創新高的強勢股，而是轉向<strong>「低基期、有業績支撐、籌碼安定」</strong>的標的。</p>
+                <h4>本週三大策略主軸</h4>
+                <p>
+                1. <strong>AI 權值護盤</strong>：廣達(2382) 回測季線是長線買點，具備進可攻退可守的特性。<br>
+                2. <strong>政策與剛性需求</strong>：中興電(1513) 有投信護體，且重電缺貨題材重啟，是防禦型首選。<br>
+                3. <strong>物極必反</strong>：南亞(1303) 股價腰斬後出現底部爆量，電子材料業務搭上AI列車，是風險報酬比極佳的轉機股。
+                </p>
+                <p>操作建議：資金應分散佈局。對於跌深反彈股（廣達、南亞），採取拉回量縮時分批承接，切勿追價；對於底部轉強股（中興電），則可沿均線操作。</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['AI 權值 (跌深反彈)', '重電/漲價題材', '傳產/原物料', '其他'],
+                datasets: [{
+                    label: '本週產業資金流向',
+                    data: [35, 30, 25, 10],
+                    backgroundColor: ['#00ffff', '#ffd60a', '#ff5c5c', '#778da9'],
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週產業資金流向 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Fira Code', weight: '500' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 14, family: 'Fira Code' }
+                        } 
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("找不到 ID 為 'industryPieChart' 的 canvas 元素。");
+    }
+</script>
+</body>
+</html>
