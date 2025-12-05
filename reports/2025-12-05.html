@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1205 - 營收創高大閱兵，鎖定「ABF、BBU、先進製程」</title>
+    <meta name="description" content="靈蛇週報1205期分析。11月營收公布，鎖定業績創高的強勢股。本週精選ABF龍頭景碩(3189)、BBU黑馬新盛力(4931)，以及台積電供應鏈中砂(1560)。">
+    <meta name="keywords" content="靈蛇週報, 1205, 景碩, 新盛力, 中砂, ABF載板, BBU, 台積電, 營收創高, 軋空">
+    <link rel="manifest" href="../manifest.json">
+    <!-- Service Worker script removed -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        
+        /* 技術藍圖風格 (Tech Blueprint Style) */
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;         /* 紅色 (上漲) */
+            --color-green: #5cff5c;       /* 綠色 (下跌) */
+        }
+
+        body {
+            font-family: 'Fira Code', 'Noto Sans TC', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.8em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 0;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        .target-price { color: var(--color-red); font-weight: 500; }
+        .stop-loss { color: var(--color-green); font-weight: 500; }
+        .positive-return { color: var(--color-red); font-weight: 500; }
+        .negative-return { color: var(--color-green); font-weight: 500; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 0;
+        }
+        .stock-card h3 { font-size: 1.5em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 30px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before {
+            content: '>>'; position: absolute; left: 0; top: 0px;
+            color: var(--accent-cyan); font-size: 1em; font-weight: 700;
+        }
+        .stock-card ul li b { color: var(--accent-cyan); font-weight: 700; display: block; margin-bottom: 4px; font-size: 1.05em; }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.1); color: var(--accent-cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.1); color: var(--color-green); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.1); color: var(--highlight-yellow); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        .highlight-tag { background-color: rgba(255, 92, 92, 0.1); color: var(--color-red); padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 8px; display: inline-block; margin-bottom: 5px;}
+        
+        .chart-container { max-width: 400px; margin: 20px auto 0 auto; }
+
+        blockquote {
+            background: transparent; border: 1px solid var(--border-color); border-left: 5px solid var(--highlight-yellow);
+            margin: 1.5em 0; padding: 1.5em 20px; font-size: 1.2em; text-align: center;
+        }
+
+        .site-footer {
+            text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);
+            color: var(--text-secondary); font-size: 0.9em;
+        }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1205</h1>
+            <p>靈蛇投資研究中心 // 2025年12月5日</p>
+        </header>
+
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效回測 (11/28-12/05)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高收盤(元)</th><th>報酬率</th><th>是否觸及停損價</th></tr></thead>
+                    <tbody>
+                        <tr><td>2316</td><td>楠梓電</td><td>115-118</td><td>121</td><td class="positive-return">+2.54%</td><td>否</td></tr>
+                        <tr><td>8155</td><td>博智</td><td>172-176</td><td>175</td><td class="positive-return">-0.56%</td><td>否</td></tr>
+                        <tr><td>4979</td><td>華星光</td><td>228-236</td><td>239.5</td><td class="positive-return">+1.48%</td><td>否</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: right; font-size: 1.2em; color: var(--color-red); margin-right: 10px;"><strong>本週投組平均報酬率：+1.15%</strong></p>
+            <div class="stock-card">
+                <h4>績效評語</h4>
+                <p>上週市場進入高檔震盪，我們的選股策略表現穩健。
+                <strong>楠梓電 (2316)</strong> 最高收盤達 121 元，維持強勢整理格局，未觸及停損，獲利續抱。</p>
+                <p><strong>華星光 (4979)</strong> 亦創下 239.5 元高點，顯示 CPO 題材熱度不減。<strong>博智 (8155)</strong> 則在進場區間附近震盪，技術面仍守穩支撐。整體而言，在量縮輪動的盤勢中，投組展現了良好的防禦力與攻擊潛力。</p>
+            </div>
+        </section>
+
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：降息預期重啟，營收創高股出列</h2>
+            <div class="stock-card">
+                <h3>盤勢重點：12月上漲機率高，鎖定「有基之彈」</h3>
+                <p>本週台股量能維持在 4000 億以下，呈現快速輪動格局。然而，隨著美國 ADP 就業數據爆冷，市場篤定聯準會 (Fed) 12 月降息機率高達 90%，資金行情有望重啟。加上歷史數據顯示 12 月台股上漲機率高，配合年底集團作帳與國安基金護盤預期，下檔支撐強勁。</p>
+                <p>目前的最佳策略是<strong>「低接不追高」</strong>，並利用 12/10 前公布營收的時機，鎖定<strong>「營收創歷史新高」</strong>的強勢股。</p>
+                
+                <h3>熱門族群與資金流向</h3>
+                <ul>
+                    <li><b>AI 伺服器 & BBU：</b> 輝達 GB200 出貨在即，伺服器代工 (鴻海/廣達) 與備援電池 (BBU) 族群 (AES/新盛力) 持續吸金。</li>
+                    <li><b>ABF 載板：</b> 受惠 AI 晶片面積變大與層數增加，產能吃緊傳漲價聲浪，景碩、欣興領軍上攻。</li>
+                    <li><b>半導體耗材：</b> 先進製程 (2nm/3nm) 稼動率滿載，帶動鑽石碟 (中砂) 等耗材需求創高。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場區間</th><th class="stop-loss">停損參考點</th><th class="target-price">波段目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>3189</strong></td><td><strong>景碩</strong></td><td>營收創3年新高，法人瘋狂掃貨</td><td>152 - 156 元</td><td class="stop-loss">跌破 145 元</td><td class="target-price">180 元</td></tr>
+                        <tr><td><strong>4931</strong></td><td><strong>新盛力</strong></td><td>BBU題材+營收爆發，軋空行情</td><td>155 - 162 元</td><td class="stop-loss">跌破 148 元</td><td class="target-price">200 元</td></tr>
+                        <tr><td><strong>1560</strong></td><td><strong>中砂</strong></td><td>營收歷史新高，先進製程龍頭</td><td>330 - 338 元</td><td class="stop-loss">跌破 314 元</td><td class="target-price">380 元</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            
+            <div class="stock-card">
+                 <h3>【3189 景碩】營收創3年新高，法人萬張買盤鎖碼</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 10月營收36.01億，年增+39.8%，創3年新高。受惠AI伺服器與HBM載板需求，營運進入擴張期。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 12/05爆量長紅突破整理區，均線多頭排列。週線大W底成型，蓄勢挑戰前高$162。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資與投信單日聯手狂買1.2萬張，籌碼高度集中。融資穩定，有利股價推升。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> NVIDIA GB200放量在即，ABF產能吃緊。景碩股價基期相對低，成為法人年底作帳首選，技術面突破後爆發力強。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                 <h3>【4931 新盛力】月增70%大爆發，BBU軋空指標</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 10月營收月增+70.0%、年增+61.9%，創近兩年新高。證實BBU從選配變標配的題材已轉化為實質業績。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價創高後回測支撐，下方月線與前波平台($153)支撐強勁，多頭架構未變。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 券資比逼近20%，具備強烈軋空條件。外資近期偏多操作，是推升股價主力。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> AI伺服器高功率需求帶動BBU商機。營收跳增確認成長動能，配合高券資比，易形成「越關越貴」的軋空走勢。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                <h3>【1560 中砂】營收歷史新高，台積電2nm獨家供應</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 11月營收7.27億，年增+19.2%，創歷史新高。主要受惠台積電先進製程鑽石碟需求暢旺。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 帶量突破盤整區，均線完美多頭排列。5日線與月線向上發散，處於主升段攻擊點。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資單日大買2,206張，投信同步加碼，呈現「土洋合力」的偏多格局。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 市場傳出在台積電2nm製程鑽石碟市佔將進一步提升。營收創高證實半導體耗材熱度，法人調升目標價將吸引買盤。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：強者恆強，鎖定營收創高股</h2>
+            <div class="stock-card">
+                 <h4>操作策略：基本面為盾，籌碼面為矛</h4>
+                <p>本週進入營收公布密集期，股價將回歸基本面檢驗。我們的策略非常明確：<strong>「鎖定營收創歷史新高或大幅成長的個股」</strong>。</p>
+                <h4>本週選股邏輯</h4>
+                <p>
+                1. <strong>業績掛帥</strong>：景碩(3189) 與 中砂(1560) 皆繳出亮眼營收單，分別創下3年與歷史新高，是股價最堅實的後盾。<br>
+                2. <strong>題材爆發</strong>：新盛力(4931) 的 BBU 題材配合營收月增 70% 的實績，加上高券資比軋空，最具爆發力。
+                </p>
+                <p>操作建議：大盤量縮輪動快，切勿在爆量長紅當天追價。建議採取<strong>「拉回均線支撐」</strong>（如5日或10日線）時佈局，並嚴格執行停損，等待營收利多發酵帶動的波段行情。</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+             <div class="footer-links">
+                <a href="../index.html">返回首頁</a>
+                <a href="../about.html">關於我們</a>
+                <a href="../dashboard.html">個股儀表板</a>
+                <a href="../disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2025 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['ABF 載板', 'BBU / 電池', '半導體耗材', '其他'],
+                datasets: [{
+                    label: '本週產業資金流向',
+                    data: [35, 30, 25, 10],
+                    backgroundColor: ['#00ffff', '#ff5c5c', '#ffd60a', '#778da9'],
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週產業資金流向 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Fira Code', weight: '500' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 14, family: 'Fira Code' }
+                        } 
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("找不到 ID 為 'industryPieChart' 的 canvas 元素。");
+    }
+</script>
+</body>
+</html>
