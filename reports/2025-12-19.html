@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1219 - 汰弱留強，佈局「AI 網通」與「記憶體」主升段</title>
+    <meta name="description" content="靈蛇週報1219期分析。面對盤勢震盪，嚴格執行停損紀律。本週鎖定營收爆發的智邦(2345)、記憶體復甦華邦電(2344)，以及先進封裝龍頭日月光投控(3711)。">
+    <meta name="keywords" content="靈蛇週報, 1219, 智邦, 華邦電, 日月光投控, AI, 記憶體, CoWoS, 停損紀律">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        /* 技術藍圖風格 (Tech Blueprint Style) */
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;         /* 紅色 (上漲/獲利) */
+            --color-green: #5cff5c;       /* 綠色 (下跌/停損) */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fira Code', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.5em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        /* 個股連結樣式 */
+        .stock-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-cyan);
+            transition: all 0.3s ease;
+        }
+        .stock-link:hover {
+            color: var(--highlight-yellow);
+            border-bottom: 1px solid var(--highlight-yellow);
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.3);
+        }
+
+        .target-price { color: var(--color-red); font-weight: 700; }
+        .stop-loss { color: var(--color-green); font-weight: 700; }
+        .positive-return { color: var(--color-red); font-weight: 700; }
+        .negative-return { color: var(--color-green); font-weight: 700; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); display: flex; align-items: center; }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 25px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before {
+            content: '>'; position: absolute; left: 0; top: 0px;
+            color: var(--accent-cyan); font-weight: 700;
+        }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.15); color: var(--color-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.15); color: var(--highlight-yellow); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .highlight-tag { background-color: rgba(255, 92, 92, 0.15); color: var(--color-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        
+        .chart-container { position: relative; height: 300px; width: 100%; margin: 20px auto; }
+
+        .site-footer {
+            text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);
+            color: var(--text-secondary); font-size: 0.9em;
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            .stock-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1219</h1>
+            <p>靈蛇投資研究中心 // 2025年12月19日</p>
+        </header>
+
+        <!-- 1. 績效回測區塊 -->
+        <section id="review">
+            <h2><span class="icon">📉</span>上週績效驗證 (12/12-12/19)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高(元)</th><th>停損參考</th><th>狀態</th></tr></thead>
+                    <tbody>
+                        <tr><td>3189</td><td><a href="../stocks/3189.html" class="stock-link">景碩</a></td><td>144-148</td><td>146.0</td><td>139</td><td class="negative-return">觸及停損</td></tr>
+                        <tr><td>6187</td><td><a href="../stocks/6187.html" class="stock-link">萬潤</a></td><td>348-355</td><td>351.0</td><td>338</td><td class="negative-return">觸及停損</td></tr>
+                        <tr><td>3680</td><td><a href="../stocks/3680.html" class="stock-link">家登</a></td><td>342-346</td><td>352.5</td><td>330</td><td class="negative-return">觸及停損</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stock-card">
+                <h4>績效評語：紀律至上，保存戰果</h4>
+                <p>上週市場經歷了劇烈的技術性修正，我們推薦的三檔設備與載板股雖然基本面不變，但技術面皆跌破關鍵支撐。<strong>投資最重要的不是預測，而是修正</strong>。既然<strong><a href="../stocks/3189.html" class="stock-link">景碩</a></strong>、<strong><a href="../stocks/6187.html" class="stock-link">萬潤</a></strong>、<strong><a href="../stocks/3680.html" class="stock-link">家登</a></strong>皆觸及停損價，請務必嚴格執行停損，回收資金等待落底訊號。</p>
+            </div>
+        </section>
+
+        <!-- 2. 產業觀察區塊 -->
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：總經數據捎喜訊，資金轉向防禦與主升段</h2>
+            <div class="stock-card">
+                <h3>盤勢重點：CPI 降溫，AI 實質業績破除泡沫</h3>
+                <p>本週總經面傳來佳音，美國 CPI 降至 2.7%，遠低於預期，Fed 明年降息空間可望擴大至 3-4 碼。台灣央行大幅上調今年 GDP 至 7.31%，基本面底氣十足。美光 (Micron) 財報與「產能被訂光」的聲明，有力地粉碎了 AI 泡沫論。</p>
+                <p>隨著時序進入聖誕假期前夕，加上 12/19-12/23 費波南希轉折窗口，市場資金開始出現防禦性移動，同時佈局 2026 年展望明確的記憶體與網通族群。</p>
+                
+                <h3>本週熱門族群與資金流向</h3>
+                <ul>
+                    <li><b>記憶體：</b> 美光效應擴散，南亞科入選 0050，預期下週一將有被動買盤點火，族群熱度升溫。</li>
+                    <li><b>BBU (電池備援)：</b> 從投機炒作轉向正規軍（AES-KY、順達），顯示趨勢逐步穩固。</li>
+                    <li><b>PCB / 載板：</b> 2026 產值衝 1.3 兆，高層板與 ABF 仍是長線剛需。</li>
+                    <li><b>金融股：</b> 具備低 P/B 與高殖利率優勢，成為年底資金避風港。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 本週精選個股清單 -->
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場</th><th class="stop-loss">停損參考</th><th class="target-price">目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2345</strong></td><td><strong><a href="../stocks/2345.html" class="stock-link">智邦</a></strong></td><td>AI網通龍頭，營收創高拉回</td><td>1,120 - 1,140</td><td class="stop-loss">1,090</td><td class="target-price">1,350 - 1,400</td></tr>
+                        <tr><td><strong>2344</strong></td><td><strong><a href="../stocks/2344.html" class="stock-link">華邦電</a></strong></td><td>動能突破，營收成長雙箭頭</td><td>73.0 - 75.5</td><td class="stop-loss">68.0</td><td class="target-price">85.0 - 90.0</td></tr>
+                        <tr><td><strong>3711</strong></td><td><strong><a href="../stocks/3711.html" class="stock-link">日月光投控</a></strong></td><td>AI封裝領頭羊，趨勢主升段</td><td>215.0 - 218.0</td><td class="stop-loss">205.0</td><td class="target-price">240.0 - 250.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. 個股深度分析 -->
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            
+            <div class="stock-card">
+                 <h3>【2345 智邦】AI 網通龍頭，高檔換手再攻</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 11 月營收年增近 80%，前 11 月營收突破 2,000 億大關，創網通廠紀錄。AI 加速器佔比逾 60%，加上 20 億擴產計畫啟動，2026 年訂單無虞。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 12/10 帶量漲停突破季線後，股價在 1,150-1,200 元區間進行強勢整理，季線翻揚向上，多頭架構穩固。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資目標價喊至 1,600 元以上，投信近期回補，籌碼安定。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 短線漲多不宜追高，建議採取「低接不追」策略。若回測 1,120-1,140 元且量縮止穩，是極佳的佈局點。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                 <h3>【2344 華邦電】外資暴力買超，挑戰數年大底</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 11 月營收創 41 個月新高 (YoY +38.7%)，證實記憶體復甦趨勢明確。受惠 AI 邊緣運算裝置需求倍增，報價持續看漲。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 12/12 爆出歷史巨量長紅，均線多頭發散。目前正挑戰 75.2 元的大頸線壓力，若站穩將完成長線大底，開啟主升段。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資單日狂買近 10 萬張，屬於「真外資」進場，籌碼集中度極高。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 趨勢極強，建議順勢沿 5 日線操作。若能有效突破 75.2 元，上方壓力真空，波段目標可看 90 元。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                <h3>【3711 日月光投控】AI 封裝軍火庫，穩健攀升</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> CoWoS 產能吃緊導致訂單外溢，加上 FOPLP 新技術預計 2026 年放量，營收動能強勁。本益比約 15-18 倍，評價相對合理。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 均線全數向上發散，呈現「大漲小回」的階梯式多頭排列。下檔季線快速扣抵低值，支撐力道強。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 獲得外資連續買超，且為高股息 ETF 核心成分股，年底作帳買盤有撐。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 權值股股性較牛，勿追漲。把握量縮回測 10 日線 (約 215 元) 的機會佈局，波段目標看 250 元。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <!-- 5. 靈蛇觀點總結 -->
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：留得青山在，不怕沒柴燒</h2>
+            <div class="stock-card">
+                 <h4>市場主旋律：汰弱留強，鎖定主升段</h4>
+                <p>上週的停損是為了保護本金，這是投資長久生存的鐵律。面對即將到來的聖誕假期與費波南希轉折，我們調整策略，將資金移往<strong>「籌碼更集中、趨勢更明確」</strong>的主升段個股。</p>
+                <p><strong><a href="../stocks/2345.html" class="stock-link">智邦</a></strong>與<strong><a href="../stocks/2344.html" class="stock-link">華邦電</a></strong>皆有營收創高與法人大買的雙重優勢，是攻守兼備的首選。而<strong><a href="../stocks/3711.html" class="stock-link">日月光投控</a></strong>則提供了相對穩健的 AI 曝險部位。</p>
+                <p><strong>操作心法：</strong>本週建議採取<strong>「右側順勢」</strong>交易。確認股價突破關鍵壓力或回測支撐有守後再進場，切勿在跌勢未止時貿然接刀。預祝各位投資人操作順利！</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+        </footer>
+    </div>
+
+<!-- Chart.js for Visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['記憶體', 'AI 網通/CPO', 'BBU/電池', '金融/防禦'],
+                datasets: [{
+                    label: '資金流向權重',
+                    data: [35, 30, 20, 15],
+                    backgroundColor: ['#00ffff', '#ff5c5c', '#ffd60a', '#778da9'],
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週主力資金流向預估 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Noto Sans TC', weight: '700' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 12, family: 'Noto Sans TC' },
+                            padding: 20
+                        } 
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
