@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>靈蛇週報 1219 - 汰弱留強，佈局「AI 網通」與「記憶體」主升段</title>
-    <meta name="description" content="靈蛇週報1219期分析。面對盤勢震盪，嚴格執行停損紀律。本週鎖定營收爆發的智邦(2345)、記憶體復甦華邦電(2344)，以及先進封裝龍頭日月光投控(3711)。">
-    <meta name="keywords" content="靈蛇週報, 1219, 智邦, 華邦電, 日月光投控, AI, 記憶體, CoWoS, 停損紀律">
+    <title>靈蛇週報 1219 - 冬至一陽生，佈局「AI 網通」與「記憶體」主升段</title>
+    <meta name="description" content="靈蛇週報1219冬至特刊。面對盤勢震盪，嚴格執行停損紀律。本週鎖定營收爆發的智邦(2345)、記憶體復甦華邦電(2344)，以及先進封裝龍頭日月光投控(3711)。">
+    <meta name="keywords" content="靈蛇週報, 1219, 冬至, 智邦, 華邦電, 日月光投控, AI, 記憶體, CoWoS, 停損紀律">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
         
-        /* 技術藍圖風格 (Tech Blueprint Style) */
+        /* 技術藍圖風格 (Tech Blueprint Style) - 冬至特別版 */
         :root {
             --bg-main: #0d1b2a;
             --bg-card: #1b263b;
@@ -19,8 +19,10 @@
             --text-secondary: #778da9;
             --accent-cyan: #00ffff;
             --highlight-yellow: #ffd60a;
-            --color-red: #ff5c5c;         /* 紅色 (上漲/獲利) */
+            --color-red: #ff5c5c;         /* 紅色 (上漲/獲利/紅湯圓) */
             --color-green: #5cff5c;       /* 綠色 (下跌/停損) */
+            --color-white: #ffffff;       /* 白湯圓 */
+            --color-pink: #ff99cc;        /* 粉紅湯圓 (節慶點綴) */
         }
 
         body {
@@ -34,16 +36,66 @@
             margin: 0;
             padding: 10px;
             line-height: 1.7;
+            overflow-x: hidden; /* 防止雪花造成橫向捲軸 */
         }
 
-        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+        /* 冬至飄雪特效 */
+        .snowflake {
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial;
+            text-shadow: 0 0 1px #000;
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            user-select: none;
+            cursor: default;
+            animation-name: snowflakes-fall, snowflakes-shake;
+            animation-duration: 10s, 3s;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            play-state: running, running;
+            opacity: 0.6;
+        }
+
+        @keyframes snowflakes-fall {
+            0% { top: -10%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes snowflakes-shake {
+            0% { transform: translateX(0px); }
+            50% { transform: translateX(80px); }
+            100% { transform: translateX(0px); }
+        }
+
+        /* 不同位置與速度的雪花 */
+        .snowflake:nth-of-type(0) { left: 1%; animation-delay: 0s, 0s; }
+        .snowflake:nth-of-type(1) { left: 10%; animation-delay: 1s, 1s; }
+        .snowflake:nth-of-type(2) { left: 20%; animation-delay: 6s, 0.5s; }
+        .snowflake:nth-of-type(3) { left: 30%; animation-delay: 4s, 2s; }
+        .snowflake:nth-of-type(4) { left: 40%; animation-delay: 2s, 2s; }
+        .snowflake:nth-of-type(5) { left: 50%; animation-delay: 8s, 3s; }
+        .snowflake:nth-of-type(6) { left: 60%; animation-delay: 6s, 2s; }
+        .snowflake:nth-of-type(7) { left: 70%; animation-delay: 2.5s, 1s; }
+        .snowflake:nth-of-type(8) { left: 80%; animation-delay: 1s, 0s; }
+        .snowflake:nth-of-type(9) { left: 90%; animation-delay: 3s, 1.5s; }
+        
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; position: relative; z-index: 1; }
 
         header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
         header h1 {
             color: var(--highlight-yellow); font-size: 2.5em; font-weight: 700; margin: 0 0 10px 0;
-            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+            text-shadow: 0 0 15px rgba(255, 214, 10, 0.6);
         }
-        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+        header .festive-subtitle {
+            color: var(--color-pink);
+            font-size: 1.1em;
+            margin-top: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        header p { color: var(--text-secondary); font-size: 1em; font-family: 'Fira Code', monospace; }
 
         section { margin-bottom: 45px; }
 
@@ -119,9 +171,15 @@
     </style>
 </head>
 <body>
+    <!-- 雪花元素 -->
+    <div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div>
+    <div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div>
+    <div class="snowflake">❄</div><div class="snowflake">❄</div>
+
     <div class="container">
         <header>
             <h1>靈蛇週報 1219</h1>
+            <div class="festive-subtitle">❄️ 冬至特刊：一陽來復，財源滾滾 🥣</div>
             <p>靈蛇投資研究中心 // 2025年12月19日</p>
         </header>
 
@@ -139,25 +197,25 @@
                 </table>
             </div>
             <div class="stock-card">
-                <h4>績效評語：紀律至上，保存戰果</h4>
-                <p>上週市場經歷了劇烈的技術性修正，我們推薦的三檔設備與載板股雖然基本面不變，但技術面皆跌破關鍵支撐。<strong>投資最重要的不是預測，而是修正</strong>。既然<strong><a href="../stocks/3189.html" class="stock-link">景碩</a></strong>、<strong><a href="../stocks/6187.html" class="stock-link">萬潤</a></strong>、<strong><a href="../stocks/3680.html" class="stock-link">家登</a></strong>皆觸及停損價，請務必嚴格執行停損，回收資金等待落底訊號。</p>
+                <h4>績效評語：去蕪存菁，如冬藏待春發</h4>
+                <p>冬至是陰氣最盛之時，也是陽氣初生之日。上週市場的劇烈修正，如同寒冬考驗著投資人的紀律。我們推薦的<strong><a href="../stocks/3189.html" class="stock-link">景碩</a></strong>、<strong><a href="../stocks/6187.html" class="stock-link">萬潤</a></strong>、<strong><a href="../stocks/3680.html" class="stock-link">家登</a></strong>雖觸及停損，但嚴格執行「斷捨離」，正是為了保全本金，迎接即將到來的春暖花開。</p>
             </div>
         </section>
 
         <!-- 2. 產業觀察區塊 -->
         <section id="industry-focus">
-            <h2><span class="icon">🔍</span>盤勢觀察：總經數據捎喜訊，資金轉向防禦與主升段</h2>
+            <h2><span class="icon">🥣</span>盤勢觀察：冬至一陽生，資金轉進主升段</h2>
             <div class="stock-card">
-                <h3>盤勢重點：CPI 降溫，AI 實質業績破除泡沫</h3>
-                <p>本週總經面傳來佳音，美國 CPI 降至 2.7%，遠低於預期，Fed 明年降息空間可望擴大至 3-4 碼。台灣央行大幅上調今年 GDP 至 7.31%，基本面底氣十足。美光 (Micron) 財報與「產能被訂光」的聲明，有力地粉碎了 AI 泡沫論。</p>
-                <p>隨著時序進入聖誕假期前夕，加上 12/19-12/23 費波南希轉折窗口，市場資金開始出現防禦性移動，同時佈局 2026 年展望明確的記憶體與網通族群。</p>
+                <h3>盤勢重點：吃湯圓長一歲，抱對股賺一倍</h3>
+                <p>俗話說「冬至圓吃一顆長一歲」，在股市裡，<strong>「選對股抱一段」</strong>資產也能翻倍成長。本週總經面傳來佳音，美國 CPI 降至 2.7%，Fed 降息空間擴大，正如冬至過後白晝漸長，資金面的陽光也將普照。</p>
+                <p>美光 (Micron) 財報報喜，證實 AI 需求如剛出鍋的湯圓般火熱。隨著 12/19-12/23 費波南希轉折窗口，我們預期市場將在震盪中築出堅實底部。</p>
                 
                 <h3>本週熱門族群與資金流向</h3>
                 <ul>
-                    <li><b>記憶體：</b> 美光效應擴散，南亞科入選 0050，預期下週一將有被動買盤點火，族群熱度升溫。</li>
-                    <li><b>BBU (電池備援)：</b> 從投機炒作轉向正規軍（AES-KY、順達），顯示趨勢逐步穩固。</li>
-                    <li><b>PCB / 載板：</b> 2026 產值衝 1.3 兆，高層板與 ABF 仍是長線剛需。</li>
-                    <li><b>金融股：</b> 具備低 P/B 與高殖利率優勢，成為年底資金避風港。</li>
+                    <li><b>記憶體：</b> 產業正處於「復甦初升段」，如同冬至後的日照，時間站在多方。</li>
+                    <li><b>BBU (電池備援)：</b> 從投機炒作轉向正規軍，趨勢穩固。</li>
+                    <li><b>PCB / 載板：</b> 2026 產值衝 1.3 兆，是電子業的長線剛需。</li>
+                    <li><b>金融股：</b> 具備防禦屬性與高殖利率，是寒冬中的暖暖包。</li>
                 </ul>
                 <div class="chart-container">
                     <canvas id="industryPieChart"></canvas>
@@ -220,17 +278,17 @@
 
         <!-- 5. 靈蛇觀點總結 -->
         <section id="macro-summary">
-            <h2><span class="icon">🐍</span>靈蛇觀點：留得青山在，不怕沒柴燒</h2>
+            <h2><span class="icon">🐍</span>靈蛇觀點：冬至圓滿，佈局明年</h2>
             <div class="stock-card">
                  <h4>市場主旋律：汰弱留強，鎖定主升段</h4>
                 <p>上週的停損是為了保護本金，這是投資長久生存的鐵律。面對即將到來的聖誕假期與費波南希轉折，我們調整策略，將資金移往<strong>「籌碼更集中、趨勢更明確」</strong>的主升段個股。</p>
                 <p><strong><a href="../stocks/2345.html" class="stock-link">智邦</a></strong>與<strong><a href="../stocks/2344.html" class="stock-link">華邦電</a></strong>皆有營收創高與法人大買的雙重優勢，是攻守兼備的首選。而<strong><a href="../stocks/3711.html" class="stock-link">日月光投控</a></strong>則提供了相對穩健的 AI 曝險部位。</p>
-                <p><strong>操作心法：</strong>本週建議採取<strong>「右側順勢」</strong>交易。確認股價突破關鍵壓力或回測支撐有守後再進場，切勿在跌勢未止時貿然接刀。預祝各位投資人操作順利！</p>
+                <p><strong>操作心法：</strong>本週建議採取<strong>「右側順勢」</strong>交易。就像煮湯圓一樣，浮起來（突破確認）再撈才好吃。預祝各位投資人冬至快樂，闔家團圓，獲利圓滿！</p>
             </div>
         </section>
 
         <footer class="site-footer">
-            <p>&copy; 2025 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+            <p>&copy; 2025 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書 | ❄️ 冬至快樂</p>
         </footer>
     </div>
 
