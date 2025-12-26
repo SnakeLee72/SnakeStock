@@ -3,64 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>靈蛇週報 1226 - 封關倒數，鎖定「記憶體」與「CPO」跨年大戲</title>
-    <meta name="description" content="靈蛇週報1226期分析。封關前夕內資主導，鎖定CPO轉機股華星光(4979)、AI高階材料台燿(6274)，以及記憶體報價回升晶豪科(3006)。">
-    <meta name="keywords" content="靈蛇週報, 1226, 華星光, 台燿, 晶豪科, CPO, 記憶體, AI伺服器, CES展">
+    <title>靈蛇週報 1226 🎄 聖誕特刊 - 封關倒數與 2026 新展望</title>
+    <meta name="description" content="靈蛇週報1226聖誕特刊。宣佈2026年全新改版計畫。本週鎖定CPO轉機股華星光(4979)、AI高階材料台燿(6274)，以及記憶體報價回升晶豪科(3006)。">
+    <meta name="keywords" content="靈蛇週報, 1226, 華星光, 台燿, 晶豪科, CPO, 記憶體, AI伺服器, 聖誕節, 雙週刊">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap');
         
-        /* 技術藍圖風格 (Tech Blueprint Style) */
+        /* 🎄 聖誕節慶風格 (Xmas Edition) */
         :root {
-            --bg-main: #0d1b2a;
-            --bg-card: #1b263b;
-            --border-color: #415a77;
-            --text-primary: #e0e1dd;
-            --text-secondary: #778da9;
-            --accent-cyan: #00ffff;
-            --highlight-yellow: #ffd60a;
-            --color-red: #ff5c5c;         /* 紅色 (上漲/獲利) */
-            --color-green: #5cff5c;       /* 綠色 (下跌/停損) */
+            --bg-main: #0f172a; /* 深夜雪地藍 */
+            --bg-card: rgba(30, 41, 59, 0.9);
+            --border-color: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            
+            /* 聖誕配色 */
+            --xmas-red: #ff4757;
+            --xmas-green: #2ed573;
+            --xmas-gold: #ffa502;
+            --snow-white: #ffffff;
+            
+            --accent-cyan: #00ffff; /* 保留一點科技感 */
         }
 
         body {
             font-family: 'Noto Sans TC', 'Fira Code', monospace;
             background-color: var(--bg-main);
             background-image: 
-                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
-            background-size: 20px 20px;
+                radial-gradient(circle at 50% 0%, #1e3a8a 0%, transparent 70%); /* 北極光感 */
             color: var(--text-primary);
             margin: 0;
             padding: 10px;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+        /* ❄️ 飄雪動畫 */
+        .snowflake {
+            color: #fff;
+            font-size: 1.2em;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #000;
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            user-select: none;
+            cursor: default;
+            pointer-events: none;
+            animation-name: snowflakes-fall, snowflakes-shake;
+            animation-duration: 10s, 3s;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            play-state: running, running;
+            opacity: 0.7;
+        }
 
-        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        @keyframes snowflakes-fall {
+            0% { top: -10%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes snowflakes-shake {
+            0% { transform: translateX(0px); }
+            50% { transform: translateX(80px); }
+            100% { transform: translateX(0px); }
+        }
+
+        .snowflake:nth-of-type(0) { left: 1%; animation-delay: 0s, 0s; }
+        .snowflake:nth-of-type(1) { left: 10%; animation-delay: 1s, 1s; }
+        .snowflake:nth-of-type(2) { left: 20%; animation-delay: 6s, 0.5s; }
+        .snowflake:nth-of-type(3) { left: 30%; animation-delay: 4s, 2s; }
+        .snowflake:nth-of-type(4) { left: 40%; animation-delay: 2s, 2s; }
+        .snowflake:nth-of-type(5) { left: 50%; animation-delay: 8s, 3s; }
+        .snowflake:nth-of-type(6) { left: 60%; animation-delay: 6s, 2s; }
+        .snowflake:nth-of-type(7) { left: 70%; animation-delay: 2.5s, 1s; }
+        .snowflake:nth-of-type(8) { left: 80%; animation-delay: 1s, 0s; }
+        .snowflake:nth-of-type(9) { left: 90%; animation-delay: 3s, 1.5s; }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; position: relative; z-index: 1; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; border-bottom: 2px dashed var(--xmas-green); }
         header h1 {
-            color: var(--highlight-yellow); font-size: 2.5em; font-weight: 700; margin: 0 0 10px 0;
-            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+            color: var(--xmas-red); 
+            font-size: 2.8em; 
+            font-weight: 700; 
+            margin: 0 0 10px 0;
+            font-family: 'Mountains of Christmas', 'Noto Sans TC', cursive;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+            letter-spacing: 2px;
         }
-        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+        header p { color: var(--xmas-gold); font-size: 1.1em; font-weight: bold; }
+
+        /* 重要公告卡片 */
+        .notice-card {
+            background: linear-gradient(135deg, rgba(165, 30, 45, 0.2), rgba(20, 50, 20, 0.2));
+            border: 2px solid var(--xmas-gold);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 165, 2, 0.2);
+        }
+        
+        .notice-card::before {
+            content: '🎅 2026 新年特別公告';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--xmas-gold);
+            color: #000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .notice-card h3 { color: var(--text-primary); margin-top: 10px; font-size: 1.5em; }
+        .notice-card p { font-size: 1.1em; line-height: 1.8; color: #e2e8f0; }
+        .highlight-text { color: var(--xmas-gold); font-weight: bold; font-size: 1.2em; border-bottom: 2px wavy var(--xmas-red); }
 
         section { margin-bottom: 45px; }
 
         h2 {
-            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            font-size: 1.6em; color: var(--xmas-green); padding-bottom: 15px; margin-bottom: 25px;
             display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
         }
-        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+        h2 .icon { margin-right: 12px; font-size: 1.4em; }
 
         .table-responsive {
             overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
-            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+            background-color: rgba(0,0,0,0.3); border-radius: 8px;
         }
         
         table { width: 100%; border-collapse: collapse; min-width: 600px; }
         th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
-        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        thead th { font-weight: 700; color: var(--xmas-gold); font-size: 0.9em; background-color: rgba(255,255,255,0.05); }
         td { font-weight: 500; }
 
         /* 個股連結樣式 */
@@ -71,22 +152,24 @@
             transition: all 0.3s ease;
         }
         .stock-link:hover {
-            color: var(--highlight-yellow);
-            border-bottom: 1px solid var(--highlight-yellow);
+            color: var(--xmas-gold);
+            border-bottom: 1px solid var(--xmas-gold);
             text-shadow: 0 0 5px rgba(255, 214, 10, 0.3);
         }
 
-        .target-price { color: var(--color-red); font-weight: 700; }
-        .stop-loss { color: var(--color-green); font-weight: 700; }
-        .positive-return { color: var(--color-red); font-weight: 700; }
-        .negative-return { color: var(--color-green); font-weight: 700; }
-
+        .target-price { color: var(--xmas-red); font-weight: 700; }
+        .stop-loss { color: var(--xmas-green); font-weight: 700; }
+        .positive-return { color: var(--xmas-red); font-weight: 700; }
+        
         .stock-card {
             background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
-            border: 1px solid var(--border-color); position: relative; border-radius: 4px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); display: flex; align-items: center; }
+        /* 裝飾線條 */
+        .stock-card::top { border-top: 3px solid var(--xmas-red); }
+        
+        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--xmas-gold); display: flex; align-items: center; }
         .stock-card h4 {
             font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
             padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
@@ -95,14 +178,12 @@
         .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
         .stock-card ul li { position: relative; padding-left: 25px; margin-bottom: 18px; font-size: 1.05em; }
         .stock-card ul li::before {
-            content: '>'; position: absolute; left: 0; top: 0px;
-            color: var(--accent-cyan); font-weight: 700;
+            content: '🎁'; position: absolute; left: 0; top: 0px; font-size: 0.8em;
         }
         
-        .fact-tag { background-color: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
-        .analysis-tag { background-color: rgba(92, 255, 92, 0.15); color: var(--color-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
-        .chips-tag { background-color: rgba(241, 250, 140, 0.15); color: var(--highlight-yellow); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
-        .highlight-tag { background-color: rgba(255, 92, 92, 0.15); color: var(--color-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .fact-tag { background-color: rgba(255, 71, 87, 0.15); color: var(--xmas-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .analysis-tag { background-color: rgba(46, 213, 115, 0.15); color: var(--xmas-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .chips-tag { background-color: rgba(255, 165, 2, 0.15); color: var(--xmas-gold); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
         
         .chart-container { position: relative; height: 300px; width: 100%; margin: 20px auto; }
 
@@ -113,21 +194,37 @@
         
         /* Mobile Optimization */
         @media (max-width: 600px) {
-            header h1 { font-size: 2em; }
+            header h1 { font-size: 2.2em; }
             .stock-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- 雪花特效 -->
+    <div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div>
+    <div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div>
+    <div class="snowflake">❅</div><div class="snowflake">❅</div>
+
     <div class="container">
         <header>
-            <h1>靈蛇週報 1226</h1>
-            <p>靈蛇投資研究中心 // 2025年12月26日</p>
+            <h1>🎄 靈蛇週報 1226 🎅</h1>
+            <p>Merry Christmas & Happy New Year!</p>
+            <p style="font-size: 0.9em; color: #aaa;">靈蛇投資研究中心 // 2025年12月26日</p>
         </header>
+
+        <!-- 🌟 重要公告區塊 (NEW) -->
+        <div class="notice-card">
+            <h3>【 2026 靈蛇進化再升級 】</h3>
+            <p>親愛的讀者們，聖誕快樂！🐍</p>
+            <p>感謝大家一年來的陪伴與支持。為了在 2026 年提供更具深度與獲利爆發力的研究內容，我們決定進行重大的策略調整：</p>
+            <p>自明年起，靈蛇週報將調整為 <span class="highlight-text">「雙週刊」(Bi-weekly)</span> 形式發行。</p>
+            <p>我們堅持「重質不重量」，這將讓我們有更多時間打磨內容，並不定時穿插 <span class="highlight-text">「單一成長股深度專欄」</span>，為各位挖掘出真正能抱滿主升段的倍數潛力股。</p>
+            <p>讓我們一起迎接更精準、更獲利的 2026！🚀</p>
+        </div>
 
         <!-- 1. 績效回測區塊 -->
         <section id="review">
-            <h2><span class="icon">📈</span>上週績效驗證 (12/19-12/26)</h2>
+            <h2><span class="icon">🎁</span>上週績效驗證 (12/19-12/26)</h2>
             <div class="table-responsive">
                 <table>
                     <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高(元)</th><th>停損參考</th><th>狀態</th></tr></thead>
@@ -139,8 +236,8 @@
                 </table>
             </div>
             <div class="stock-card">
-                <h4>績效評語：精準撈底，趨勢主升段</h4>
-                <p>上週市場雖有震盪，但我們選定的「主升段」邏輯發揮得淋漓盡致。<strong><a href="../stocks/3711.html" class="stock-link">日月光投控(3711)</a></strong> 展現權值股罕見的爆發力，波段漲幅逾 10%。<strong><a href="../stocks/2345.html" class="stock-link">智邦(2345)</a></strong> 與 <strong><a href="../stocks/2344.html" class="stock-link">華邦電(2344)</a></strong> 亦穩步墊高。驗證了「汰弱留強」策略的有效性，本週獲利資金將轉進更具爆發力的中小型題材股。</p>
+                <h4>績效評語：精準撈底，最好的聖誕禮物</h4>
+                <p>上週市場雖有震盪，但我們選定的「主升段」邏輯發揮得淋漓盡致，送給了讀者最好的聖誕禮物。<strong><a href="../stocks/3711.html" class="stock-link">日月光投控(3711)</a></strong> 展現權值股罕見的爆發力，波段漲幅逾 10%。<strong><a href="../stocks/2345.html" class="stock-link">智邦(2345)</a></strong> 與 <strong><a href="../stocks/2344.html" class="stock-link">華邦電(2344)</a></strong> 亦穩步墊高。驗證了「汰弱留強」策略的有效性，本週獲利資金將轉進更具爆發力的中小型題材股。</p>
             </div>
         </section>
 
@@ -148,7 +245,7 @@
         <section id="industry-focus">
             <h2><span class="icon">🔍</span>盤勢觀察：封關倒數，內資作帳與 CES 雙響炮</h2>
             <div class="stock-card">
-                <h3>盤勢重點：外資休假去，內資唱大戲</h3>
+                <h3>盤勢重點：外資過聖誕，內資跨年趴</h3>
                 <p>隨著聖誕假期外資量縮，台股進入典型的「內資盤」。指數雖呈現高檔震盪，但中小型股活蹦亂跳。11月外銷訂單創新高，加上美國經濟數據持穩，為元月行情打下良好基礎。</p>
                 <p>展望下週，市場焦點將鎖定 <strong>CES 2026 (1/6開展)</strong> 的前哨戰，主題聚焦 "AI Forward"，預期 AIPC、CPO (矽光子) 與機器人將重回鎂光燈焦點。</p>
                 
@@ -167,7 +264,7 @@
 
         <!-- 3. 本週精選個股清單 -->
         <section id="selections">
-            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <h2><span class="icon">🦌</span>下週靈蛇精選股 (可布局)</h2>
             <div class="table-responsive">
                 <table>
                      <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場</th><th class="stop-loss">停損參考</th><th class="target-price">目標價</th></tr></thead>
@@ -225,12 +322,13 @@
                  <h4>市場主旋律：元月行情前哨戰</h4>
                 <p>2025 年即將畫下句點，台股在內資主導下展現強韌生命力。目前的環境有利多方，投資策略應採<strong>「汰弱留強」</strong>。</p>
                 <p><strong><a href="../stocks/3006.html" class="stock-link">晶豪科</a></strong> 代表的是記憶體產業的強勢回歸；<strong><a href="../stocks/6274.html" class="stock-link">台燿</a></strong> 與 <strong><a href="../stocks/4979.html" class="stock-link">華星光</a></strong> 則演繹了 AI 硬體升級的剛性需求。</p>
-                <p><strong>操作心法：</strong>不要預設高點，但也別盲目追價。優先選擇「剛突破季線」或「回測月線支撐」的績優個股，耐心等待市場給予的豐厚回報。預祝各位投資人跨年操作順利，獲利滿滿！</p>
+                <p><strong>操作心法：</strong>不要預設高點，但也別盲目追價。優先選擇「剛突破季線」或「回測月線支撐」的績優個股，耐心等待市場給予的豐厚回報。預祝各位投資人跨年操作順利，獲利滿滿，2026 我們雙週刊見！</p>
             </div>
         </section>
 
         <footer class="site-footer">
             <p>&copy; 2025 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+            <p style="color: var(--xmas-green);">🎄 Merry Christmas 🎄</p>
         </footer>
     </div>
 
@@ -246,7 +344,7 @@
                 datasets: [{
                     label: '資金流向權重',
                     data: [35, 30, 20, 15],
-                    backgroundColor: ['#00ffff', '#ff5c5c', '#ffd60a', '#778da9'],
+                    backgroundColor: ['#00ffff', '#ff4757', '#ffa502', '#2ed573'], /* 改為聖誕科技配色 */
                     borderColor: '#1b263b',
                     borderWidth: 4,
                     hoverOffset: 4
