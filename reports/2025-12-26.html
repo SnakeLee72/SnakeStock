@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 1226 - 封關倒數，鎖定「記憶體」與「CPO」跨年大戲</title>
+    <meta name="description" content="靈蛇週報1226期分析。封關前夕內資主導，鎖定CPO轉機股華星光(4979)、AI高階材料台燿(6274)，以及記憶體報價回升晶豪科(3006)。">
+    <meta name="keywords" content="靈蛇週報, 1226, 華星光, 台燿, 晶豪科, CPO, 記憶體, AI伺服器, CES展">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        /* 技術藍圖風格 (Tech Blueprint Style) */
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;         /* 紅色 (上漲/獲利) */
+            --color-green: #5cff5c;       /* 綠色 (下跌/停損) */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fira Code', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.5em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        /* 個股連結樣式 */
+        .stock-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-cyan);
+            transition: all 0.3s ease;
+        }
+        .stock-link:hover {
+            color: var(--highlight-yellow);
+            border-bottom: 1px solid var(--highlight-yellow);
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.3);
+        }
+
+        .target-price { color: var(--color-red); font-weight: 700; }
+        .stop-loss { color: var(--color-green); font-weight: 700; }
+        .positive-return { color: var(--color-red); font-weight: 700; }
+        .negative-return { color: var(--color-green); font-weight: 700; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); display: flex; align-items: center; }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 25px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before {
+            content: '>'; position: absolute; left: 0; top: 0px;
+            color: var(--accent-cyan); font-weight: 700;
+        }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.15); color: var(--color-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.15); color: var(--highlight-yellow); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .highlight-tag { background-color: rgba(255, 92, 92, 0.15); color: var(--color-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        
+        .chart-container { position: relative; height: 300px; width: 100%; margin: 20px auto; }
+
+        .site-footer {
+            text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);
+            color: var(--text-secondary); font-size: 0.9em;
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            .stock-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 1226</h1>
+            <p>靈蛇投資研究中心 // 2025年12月26日</p>
+        </header>
+
+        <!-- 1. 績效回測區塊 -->
+        <section id="review">
+            <h2><span class="icon">📈</span>上週績效驗證 (12/19-12/26)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本週最高(元)</th><th>停損參考</th><th>狀態</th></tr></thead>
+                    <tbody>
+                        <tr><td>2345</td><td><a href="../stocks/2345.html" class="stock-link">智邦</a></td><td>1,120-1,140</td><td>1,215.0</td><td>1,090</td><td class="positive-return">獲利續抱</td></tr>
+                        <tr><td>2344</td><td><a href="../stocks/2344.html" class="stock-link">華邦電</a></td><td>73.0-75.5</td><td>76.9</td><td>68.0</td><td class="positive-return">獲利續抱</td></tr>
+                        <tr><td>3711</td><td><a href="../stocks/3711.html" class="stock-link">日月光投控</a></td><td>215.0-218.0</td><td>240.5</td><td>205.0</td><td class="positive-return">強勢達標</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stock-card">
+                <h4>績效評語：精準撈底，趨勢主升段</h4>
+                <p>上週市場雖有震盪，但我們選定的「主升段」邏輯發揮得淋漓盡致。<strong><a href="../stocks/3711.html" class="stock-link">日月光投控(3711)</a></strong> 展現權值股罕見的爆發力，波段漲幅逾 10%。<strong><a href="../stocks/2345.html" class="stock-link">智邦(2345)</a></strong> 與 <strong><a href="../stocks/2344.html" class="stock-link">華邦電(2344)</a></strong> 亦穩步墊高。驗證了「汰弱留強」策略的有效性，本週獲利資金將轉進更具爆發力的中小型題材股。</p>
+            </div>
+        </section>
+
+        <!-- 2. 產業觀察區塊 -->
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：封關倒數，內資作帳與 CES 雙響炮</h2>
+            <div class="stock-card">
+                <h3>盤勢重點：外資休假去，內資唱大戲</h3>
+                <p>隨著聖誕假期外資量縮，台股進入典型的「內資盤」。指數雖呈現高檔震盪，但中小型股活蹦亂跳。11月外銷訂單創新高，加上美國經濟數據持穩，為元月行情打下良好基礎。</p>
+                <p>展望下週，市場焦點將鎖定 <strong>CES 2026 (1/6開展)</strong> 的前哨戰，主題聚焦 "AI Forward"，預期 AIPC、CPO (矽光子) 與機器人將重回鎂光燈焦點。</p>
+                
+                <h3>本週熱門族群與資金流向</h3>
+                <ul>
+                    <li><b>記憶體 (Memory)：</b> 報價調漲至 2026 Q1，族群全面擴散，是目前盤面最強主流。</li>
+                    <li><b>PCB & CCL：</b> AI 伺服器層數增加拉高技術門檻，台廠具壟斷優勢，強者恆強。</li>
+                    <li><b>CPO (矽光子)：</b> CES 展覽亮點，光收發模組廠營收開始兌現，具備爆發性成長預期。</li>
+                    <li><b>BBU：</b> 從選配變標配，電力剛需帶動重電與電池族群輪動。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 本週精選個股清單 -->
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場</th><th class="stop-loss">停損參考</th><th class="target-price">目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>4979</strong></td><td><strong><a href="../stocks/4979.html" class="stock-link">華星光</a></strong></td><td>營收爆發，CPO轉機股</td><td>285 - 295</td><td class="stop-loss">272</td><td class="target-price">340 - 360</td></tr>
+                        <tr><td><strong>6274</strong></td><td><strong><a href="../stocks/6274.html" class="stock-link">台燿</a></strong></td><td>AI高階材料，法人認養</td><td>485 - 505</td><td class="stop-loss">455</td><td class="target-price">600 - 650</td></tr>
+                        <tr><td><strong>3006</strong></td><td><strong><a href="../stocks/3006.html" class="stock-link">晶豪科</a></strong></td><td>記憶體回升，暴力突破</td><td>100 - 105</td><td class="stop-loss">95.5</td><td class="target-price">130 - 140</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. 個股深度分析 -->
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            
+            <div class="stock-card">
+                 <h3>【4979 <a href="../stocks/4979.html" class="stock-link">華星光</a>】營收跳增確認轉機，CPO 題材續熱</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 11 月營收月增 30.3% 創 15 年同期新高，確認庫存調整結束，新訂單動能強勁。受惠 Marvell 等大客戶 800G 需求，2026 年展望樂觀。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 週線突破長達數月的 220-280 元大箱型整理，W底型態完成。日線呈現多頭排列，價漲量增。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 投信近期連續買超作帳，融資餘額反而減少，呈現完美的「資減價漲」主力鎖碼格局。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 具備典型的「有基之彈」。操作上不建議過度追高，等待回測 5 日線或 300 元整數關卡轉支撐時佈局。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                 <h3>【6274 <a href="../stocks/6274.html" class="stock-link">台燿</a>】AI 高階材料需求爆發，法人集體共振</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 營收連續三個月創歷史新高，AI 伺服器與 800G 交換器帶動高階 CCL (M7/M8) 出貨。泰國廠 2026 年量產，全球佈局完善。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價帶量創歷史新高，MACD 紅柱放大，KD 高檔鈍化，屬於最強勢的多頭型態。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資與投信近 5 日聯手買超逾 11,500 張，主力持股比例攀升，籌碼高度集中。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 不僅是題材股，更是具備實質業績的成長股。建議利用盤中震盪回測 5 日線時建立基本部位，目標價上看 600 元。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                <h3>【3006 <a href="../stocks/3006.html" class="stock-link">晶豪科</a>】記憶體谷底翻身，帶量長紅表態</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 11 月營收年增 45% 創 41 個月新高，Q3 正式轉虧為盈。受惠原廠轉向 HBM，導致 DDR3/DDR4 供給缺口擴大，報價漲勢確立。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 12/26 爆出 5.7 萬張巨量鎖漲停，一舉突破長達一年的底部盤整區，均線全數向上發散。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資近 5 日買超逾萬張，內外資聯手作多，特定贏家分點積極吸納。</li>
+                    <li><span class="highlight-tag">[投資重點]</span> 正處於「景氣循環谷底翻轉」的最強爆發點。雖短線漲幅大，但長線空間仍足，建議回測 100-102 元支撐確認後分批進場。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <!-- 5. 靈蛇觀點總結 -->
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：乘風破浪，擁抱趨勢</h2>
+            <div class="stock-card">
+                 <h4>市場主旋律：元月行情前哨戰</h4>
+                <p>2025 年即將畫下句點，台股在內資主導下展現強韌生命力。目前的環境有利多方，投資策略應採<strong>「汰弱留強」</strong>。</p>
+                <p><strong><a href="../stocks/3006.html" class="stock-link">晶豪科</a></strong> 代表的是記憶體產業的強勢回歸；<strong><a href="../stocks/6274.html" class="stock-link">台燿</a></strong> 與 <strong><a href="../stocks/4979.html" class="stock-link">華星光</a></strong> 則演繹了 AI 硬體升級的剛性需求。</p>
+                <p><strong>操作心法：</strong>不要預設高點，但也別盲目追價。優先選擇「剛突破季線」或「回測月線支撐」的績優個股，耐心等待市場給予的豐厚回報。預祝各位投資人跨年操作順利，獲利滿滿！</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+        </footer>
+    </div>
+
+<!-- Chart.js for Visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['記憶體', 'PCB / CCL', 'CPO / 光通訊', 'BBU / 重電'],
+                datasets: [{
+                    label: '資金流向權重',
+                    data: [35, 30, 20, 15],
+                    backgroundColor: ['#00ffff', '#ff5c5c', '#ffd60a', '#778da9'],
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週主力資金流向預估 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Noto Sans TC', weight: '700' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 12, family: 'Noto Sans TC' },
+                            padding: 20
+                        } 
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
