@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇價值投資報告 #001 - 南俊國際 (6584) 深度價值分析</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fira Code', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; border-bottom: 2px solid var(--accent-cyan); }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.2em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 10px rgba(255, 214, 10, 0.3);
+        }
+        header p { color: var(--text-secondary); font-size: 1em; font-family: 'Fira Code', monospace; }
+
+        .update-box {
+            background-color: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        section { margin-bottom: 40px; }
+
+        h2 {
+            font-size: 1.5em; color: var(--accent-cyan); padding-bottom: 10px; margin-bottom: 20px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2::before { content: '// '; margin-right: 10px; opacity: 0.5; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 25px; margin-bottom: 20px;
+            border: 1px solid var(--border-color); border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-item {
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .status-label { color: var(--text-secondary); font-size: 0.85em; display: block; }
+        .status-value { color: var(--highlight-yellow); font-size: 1.2em; font-weight: 700; }
+
+        .table-responsive {
+            overflow-x: auto; margin: 20px 0; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+        }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        thead th { color: var(--accent-cyan); font-size: 0.9em; background-color: rgba(0,0,0,0.3); }
+
+        .tag { padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; }
+        .fact-tag { background: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); }
+        .analysis-tag { background: rgba(92, 255, 92, 0.15); color: var(--color-green); }
+        .highlight-tag { background: rgba(255, 92, 92, 0.15); color: var(--color-red); }
+
+        .valuation-zone {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .zone-box {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        .zone-cheap { border-color: var(--color-green); color: var(--color-green); }
+        .zone-normal { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .zone-expensive { border-color: var(--color-red); color: var(--color-red); }
+
+        .chart-placeholder {
+            height: 300px;
+            background: rgba(13, 27, 42, 0.5);
+            border: 1px dashed var(--border-color);
+            margin: 20px 0;
+            padding: 15px;
+        }
+
+        .footer {
+            text-align: center; margin-top: 50px; padding: 30px 0; border-top: 1px solid var(--border-color);
+            color: var(--text-secondary); font-size: 0.85em;
+        }
+
+        .live-indicator {
+            width: 8px; height: 8px; background: var(--color-green);
+            border-radius: 50%; display: inline-block; margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        .score-total {
+            font-size: 1.4em;
+            color: var(--highlight-yellow);
+            text-align: right;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p>SNAKE VALUE REPORT // SERIES #001</p>
+            <h1>南俊國際 (6584) 深度價值報告</h1>
+            <p>發布日期：2026年01月10日 // 研究員：靈蛇投資中心</p>
+        </header>
+
+        <div class="update-box">
+            <span class="live-indicator"></span> 
+            <strong>核心邏輯：</strong> 隨著 NVIDIA GB300 與美系 CSP ASIC 訂單放量，南俊正迎來「估值倍數 (PS)」與「獲利 (EPS)」雙成長的主升段。
+        </div>
+
+        <!-- 數據指標 -->
+        <section>
+            <h2>基本數據與估值概況</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-label">目前股價 (01/10)</span>
+                    <span class="status-value">339.5 元</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">2026 預估 EPS</span>
+                    <span class="status-value">13.10 元</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">估值狀態</span>
+                    <span class="status-value" style="color:var(--color-green)">極度便宜</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">產業評分</span>
+                    <span class="status-value">13 / 15 分</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 質化分析 -->
+        <section>
+            <h2>質化分析：靈蛇 DNA 鑑定 (決定倍數)</h2>
+            <div class="stock-card">
+                <p>根據照片中的「PS 估值法」邏輯，我們對南俊在 AI 產業中的地位進行打分，這將決定市場應給予的 PS (股價營收比) 倍數。</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>評分維度</th><th>權重分</th><th>關鍵因子分析</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="fact-tag">供應鏈地位</span></td>
+                                <td>5 / 5</td>
+                                <td>成功進入 NVIDIA GB300 推薦清單 (RVL)，地位從二線躍升為核心一線。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fact-tag">技術門檻</span></td>
+                                <td>4 / 5</td>
+                                <td>具備高精度導軌專利與越南廠成本優勢，製程自動化程度領先同業。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fact-tag">不可取代性</span></td>
+                                <td>4 / 5</td>
+                                <td>身為大型雲端服務商 (CSP) 的核心滑軌供應商，在規格轉向中佔據先機。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="score-total">總分：13 分 (建議 PS 區間：10x - 12x)</div>
+            </div>
+        </section>
+
+        <!-- 量化估值 -->
+        <section>
+            <h2>量化估值：未來價值推算 (2026 展望)</h2>
+            <div class="stock-card">
+                <p>結合群益與元大等主流法人報告，我們預期 2026 年南俊的營收將迎來階梯式跳升。</p>
+                <ul>
+                    <li><span class="analysis-tag">2026 預估營收基準</span> <strong>35.7 億元</strong> (取法人共識平均值)</li>
+                    <li><span class="analysis-tag">目標市值計算 (PS 10x)</span> 35.7 億 × 10 = 357 億元</li>
+                    <li><span class="analysis-tag">目標股價 (發行 0.665億股)</span> <strong>537 元</strong></li>
+                </ul>
+                
+                <div class="valuation-zone">
+                    <div class="zone-box zone-cheap">
+                        <small>便宜買進區 (0.8x)</small><br>
+                        <strong>430 元以下</strong>
+                    </div>
+                    <div class="zone-box zone-normal">
+                        <small>合理價值區</small><br>
+                        <strong>480 - 540 元</strong>
+                    </div>
+                    <div class="zone-box zone-expensive">
+                        <small>昂貴套利區 (1.2x)</small><br>
+                        <strong>640 元以上</strong>
+                    </div>
+                </div>
+                <p style="margin-top:20px; font-size:0.9em; color:var(--text-secondary); text-align:center;">
+                    ※ 目前股價 339.5 元處於「極度低估區」，隱含約 58% 的價值修復空間。
+                </p>
+            </div>
+        </section>
+
+        <!-- 獲利趨勢圖 -->
+        <section>
+            <h2>獲利爆發趨勢圖</h2>
+            <div class="chart-placeholder">
+                <canvas id="nanjunChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 操作建議 -->
+        <section>
+            <h2>靈蛇觀點與操作建議</h2>
+            <div class="stock-card">
+                <h4 style="color:var(--highlight-yellow); margin-top:0;">核心選股點評</h4>
+                <p>南俊國際目前具備「高成長」與「低評價」的背離特質。當前股價 339.5 元甚至還沒達到 2026 年的便宜區間，具備強大的安全邊際。</p>
+                <ul>
+                    <li><span class="highlight-tag">進場策略</span> 目前價位為價值投資布局點，建議 340 元以下分批建立基本部位。</li>
+                    <li><span class="highlight-tag">動能確認</span> 股價若帶量突破 360 元整數關卡，代表資金達成共識，進入評價修正的主升段。</li>
+                    <li><span class="highlight-tag">波段目標</span> 短線看 425 元 (法人共識)，長線持有至 2026 年收割獲利，目標 510-530 元。</li>
+                    <li><span class="highlight-tag">風險控制</span> 跌破 300 元整數心理關卡或帶量跌破季線應考慮暫時撤退。</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 靈蛇研究團隊謹製 // 投資一定有風險，買賣前請詳閱研究報告</p>
+            <p style="font-family: 'Fira Code'; font-size: 0.8em; opacity: 0.6;">ANALYSIS_MODE: VALUE_INVESTING_V1.0</p>
+        </footer>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('nanjunChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2024 (A)', '2025 (E)', '2026 (E)'],
+                datasets: [{
+                    label: '營收 (億元)',
+                    data: [18.2, 24.3, 35.7],
+                    backgroundColor: 'rgba(0, 255, 255, 0.3)',
+                    borderColor: '#00ffff',
+                    borderWidth: 2,
+                    order: 2
+                }, {
+                    label: 'EPS (元)',
+                    data: [2.8, 5.5, 13.1],
+                    type: 'line',
+                    borderColor: '#ffd60a',
+                    backgroundColor: '#ffd60a',
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    yAxisID: 'y1',
+                    order: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { color: 'rgba(65, 90, 119, 0.2)' },
+                        ticks: { color: '#778da9' },
+                        title: { display: true, text: '營收 (億)', color: '#00ffff' }
+                    },
+                    y1: {
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: { display: false },
+                        ticks: { color: '#ffd60a' },
+                        title: { display: true, text: 'EPS (元)', color: '#ffd60a' }
+                    },
+                    x: { ticks: { color: '#778da9' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#e0e1dd', font: { family: 'Noto Sans TC' } } },
+                    title: { display: true, text: '南俊國際 2024-2026 營收與獲利成長曲線', color: '#e0e1dd', font: { size: 16 } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
