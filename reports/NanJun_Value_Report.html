@@ -18,6 +18,7 @@
             --highlight-yellow: #ffd60a;
             --color-red: #ff5c5c;
             --color-green: #5cff5c;
+            --bg-overlay: rgba(0, 0, 0, 0.4);
         }
 
         body {
@@ -66,6 +67,23 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
+        .logic-explanation {
+            background: var(--bg-overlay);
+            border: 1px dashed var(--accent-cyan);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .logic-title {
+            color: var(--accent-cyan);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
         .status-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -110,12 +128,12 @@
             border-radius: 4px;
             border: 1px solid var(--border-color);
         }
-        .zone-cheap { border-color: var(--color-green); color: var(--color-green); }
-        .zone-normal { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-        .zone-expensive { border-color: var(--color-red); color: var(--color-red); }
+        .zone-cheap { border-color: var(--color-green); color: var(--color-green); background: rgba(92, 255, 92, 0.05); }
+        .zone-normal { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0, 255, 255, 0.05); }
+        .zone-expensive { border-color: var(--color-red); color: var(--color-red); background: rgba(255, 92, 92, 0.05); }
 
         .chart-placeholder {
-            height: 300px;
+            height: 350px;
             background: rgba(13, 27, 42, 0.5);
             border: 1px dashed var(--border-color);
             margin: 20px 0;
@@ -141,6 +159,30 @@
             margin-top: 15px;
             font-weight: 700;
         }
+
+        .step-info {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .company-profile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .company-profile { grid-template-columns: 1fr; }
+        }
+        .profile-text { font-size: 0.95em; color: var(--text-primary); }
+        .highlight-box { 
+            background: rgba(255, 214, 10, 0.1); 
+            border: 1px solid var(--highlight-yellow); 
+            padding: 15px; 
+            border-radius: 4px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -153,8 +195,33 @@
 
         <div class="update-box">
             <span class="live-indicator"></span> 
-            <strong>核心邏輯：</strong> 隨著 NVIDIA GB300 與美系 CSP ASIC 訂單放量，南俊正迎來「估值倍數 (PS)」與「獲利 (EPS)」雙成長的主升段。
+            <strong>最新動態：</strong> 南俊 (REPON) 受惠於 NVIDIA GB300 換機潮與美系雲端大廠 ASIC 訂單，2026 年將迎來史上最強獲利年度。
         </div>
+
+        <!-- 認識公司 -->
+        <section>
+            <h2>認識南俊國際：從傳統導軌到 AI 核心</h2>
+            <div class="stock-card">
+                <div class="company-profile">
+                    <div class="profile-text">
+                        <p><strong>南俊國際 (REPON)</strong> 成立於 1977 年，是全球知名的鋼珠導軌領導廠商。早期讀者可能對這類「黑手產業」感到陌生，但事實上，從您的冰箱、辦公室抽屜，到醫院的手術設備，只要需要「順暢滑動」的地方，幾乎都有導軌的身影。</p>
+                        <p>過去南俊主要供應<strong>辦公家具、白電 (如冰箱) 與工業設備</strong>，屬於穩健的傳產股。然而，真正的轉折點在於進入了<strong>「雲端資料中心」</strong>供應鏈。</p>
+                    </div>
+                    <div class="highlight-box">
+                        <strong style="color: var(--highlight-yellow);">為什麼 AI 伺服器非它不可？</strong>
+                        <p style="font-size: 0.9em; margin-top: 10px;">隨著 AI 機櫃規格提升 (如 GB200/GB300)，整台機台重量可達 1.5 噸以上。這對「滑軌」的要求不再只是順暢，而是具備極高的<strong>抗壓承重力、滑動精度與防晃鎖定機制</strong>。這是一個利潤極高且具備技術壁壘的「關鍵零件」。</p>
+                    </div>
+                </div>
+                <div class="logic-explanation" style="margin-top: 20px;">
+                    <span class="logic-title">🛡️ 核心競爭優勢</span>
+                    <ul>
+                        <li><strong>產能優勢：</strong> 越南廠具備避稅與成本優勢，是美系大廠的首選 Second Source。</li>
+                        <li><strong>自動化程度：</strong> 具備高度自動化連線生產技術，降低人工誤差，確保產品一致性。</li>
+                        <li><strong>研發實力：</strong> 擁有 U 型軌與多節滑軌專利，能承載極高功率伺服器的劇烈散熱震動。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- 數據指標 -->
         <section>
@@ -181,13 +248,29 @@
 
         <!-- 質化分析 -->
         <section>
-            <h2>質化分析：靈蛇 DNA 鑑定 (決定倍數)</h2>
+            <h2>質化分析：靈蛇評分體系 (決定倍數)</h2>
             <div class="stock-card">
-                <p>根據 <strong>PS 估值法</strong> 邏輯，我們對南俊在 AI 產業中的地位進行打分，這將決定市場應給予的 PS (股價營收比) 倍數。</p>
+                <div class="step-info">第一步：質化評分 (決定倍數高低)</div>
+                <p>我們對南俊的評分邏輯基於下表。總分將直接決定我們該給予多少倍的 <strong>PS (股價營收比)</strong>。</p>
+                
+                <div class="logic-explanation">
+                    <span class="logic-title">📊 算法與意義說明</span>
+                    <ul>
+                        <li><strong>打分邏輯 (1-5分)：</strong> 
+                            <ul>
+                                <li><strong>5分 (核心)：</strong> 領先地位、專利牆、獲利最強。</li>
+                                <li><strong>4分 (次核心)：</strong> 重要供應鏈、毛利高、替代難。</li>
+                                <li><strong>3分 (主題)：</strong> 隨景氣波動、具一定競爭力。</li>
+                            </ul>
+                        </li>
+                        <li><strong>倍數對應：</strong> 總分 12-13 分的公司，代表已進入「次核心/核心」位階，市場願意給予 <strong>10x - 12x</strong> 的 PS 溢價。</li>
+                    </ul>
+                </div>
+
                 <div class="table-responsive">
                     <table>
                         <thead>
-                            <tr><th>評分維度</th><th>權重分</th><th>關鍵因子分析</th></tr>
+                            <tr><th>評分維度</th><th>得分</th><th>關鍵因子分析</th></tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -208,20 +291,44 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="score-total">總分：13 分 (建議 PS 區間：10x - 12x)</div>
+                <div class="score-total">總分：13 分 (位階：核心成長 / PS 倍數：10x-12x)</div>
             </div>
         </section>
 
         <!-- 量化估值 -->
         <section>
-            <h2>量化估值：未來價值推算 (2026 展望)</h2>
+            <h2>量化估值：估值邏輯與價格位階</h2>
             <div class="stock-card">
-                <p>結合群益與元大等主流法人報告，我們預期 2026 年南俊的營收將迎來階梯式跳升。</p>
-                <ul>
-                    <li><span class="analysis-tag">2026 預估營收基準</span> <strong>35.7 億元</strong> (取法人共識平均值)</li>
-                    <li><span class="analysis-tag">目標市值計算 (PS 10x)</span> 35.7 億 × 10 = 357 億元</li>
-                    <li><span class="analysis-tag">目標股價 (發行 0.665億股)</span> <strong>537 元</strong></li>
-                </ul>
+                <div class="step-info">第二步：量化估價 (設定目標市值)</div>
+                
+                <div class="logic-explanation">
+                    <span class="logic-title">📐 目標價算法 (Formula)</span>
+                    <p>公式：<strong>目標市值 = 2026年預估營收 × 合理 PS 倍數 (10x)</strong></p>
+                    <ul>
+                        <li><strong>便宜區 (0.8x)：</strong> 具備安全邊際，為最佳佈局點。</li>
+                        <li><strong>合理區：</strong> 符合產業平均成長預期。</li>
+                        <li><strong>昂貴區 (1.2x)：</strong> 市場情緒過熱，應考慮分批獲利了結。</li>
+                    </ul>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><span class="analysis-tag">2026 預估營收基準</span></td>
+                                <td><strong>35.7 億元</strong> (取法人共識平均值)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="analysis-tag">合理 PS 倍數</span></td>
+                                <td><strong>10.0x</strong> (基於質化 13 分評等)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="analysis-tag">目標股價 (預計市值/股數)</span></td>
+                                <td><strong>537 元</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 
                 <div class="valuation-zone">
                     <div class="zone-box zone-cheap">
@@ -237,15 +344,12 @@
                         <strong>640 元以上</strong>
                     </div>
                 </div>
-                <p style="margin-top:20px; font-size:0.9em; color:var(--text-secondary); text-align:center;">
-                    ※ 目前股價 318 元處於「深度低估區」，隱含約 68% 的價值修復空間。
-                </p>
             </div>
         </section>
 
         <!-- 獲利趨勢圖 -->
         <section>
-            <h2>獲利爆發趨勢圖</h2>
+            <h2>獲利爆發趨勢圖 (2024-2026)</h2>
             <div class="chart-placeholder">
                 <canvas id="nanjunChart"></canvas>
             </div>
@@ -253,22 +357,22 @@
 
         <!-- 操作建議 -->
         <section>
-            <h2>靈蛇觀點與操作建議</h2>
+            <h2>靈蛇觀點：操作與風險管理</h2>
             <div class="stock-card">
                 <h4 style="color:var(--highlight-yellow); margin-top:0;">核心選股點評</h4>
-                <p>南俊國際目前具備「高成長」與「低評價」的背離特質。當前股價 318 元甚至還沒達到 2026 年的便宜區間下限，具備強大的安全邊際。</p>
+                <p>南俊國際目前具備「高成長」與「低評價」的極端背離特質。當前股價 318 元甚至還沒達到 2026 年的便宜區間下限，具備強大的安全邊際。</p>
                 <ul>
-                    <li><span class="highlight-tag">進場策略</span> 目前價位為價值投資布局點，建議 320 元以下分批建立基本部位。</li>
-                    <li><span class="highlight-tag">動能確認</span> 股價若帶量突破 340-350 元壓力區，代表資金達成共識，進入評價修正的主升段。</li>
-                    <li><span class="highlight-tag">波段目標</span> 短線看 425 元 (法人共識)，長線持有至 2026 年收割獲利，目標 510-530 元。</li>
-                    <li><span class="highlight-tag">風險控制</span> 跌破 285 元 (前波起漲支撐) 或帶量跌破季線應考慮暫時撤退。</li>
+                    <li><span class="highlight-tag">進場策略</span> 320 元以下為長線價值佈局點。</li>
+                    <li><span class="highlight-tag">動能確認</span> 股價若帶量突破 340-350 元壓力區，代表資金達成共識。</li>
+                    <li><span class="highlight-tag">波段目標</span> 第一目標看 425 元，長線持有至 2026 年展望兌現。</li>
+                    <li><span class="highlight-tag">風險控制</span> 跌破 285 元代表趨勢轉弱，應考慮暫時撤退。</li>
                 </ul>
             </div>
         </section>
 
         <footer class="footer">
             <p>&copy; 2026 靈蛇研究團隊謹製 // 投資一定有風險，買賣前請詳閱研究報告</p>
-            <p style="font-family: 'Fira Code'; font-size: 0.8em; opacity: 0.6;">ANALYSIS_MODE: VALUE_INVESTING_V1.1</p>
+            <p style="font-family: 'Fira Code'; font-size: 0.8em; opacity: 0.6;">ANALYSIS_MODE: VALUE_INVESTING_V1.1 // LOGIC: PS_SCORING_METHOD</p>
         </footer>
     </div>
 
@@ -281,7 +385,7 @@
             data: {
                 labels: ['2024 (A)', '2025 (E)', '2026 (E)'],
                 datasets: [{
-                    label: '營收 (億元)',
+                    label: '營營收 (億元)',
                     data: [18.2, 24.3, 35.7],
                     backgroundColor: 'rgba(0, 255, 255, 0.3)',
                     borderColor: '#00ffff',
