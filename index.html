@@ -31,6 +31,8 @@
             --accent-tech: #58a6ff;
             --accent-profit: #a371f7;
             --color-red: #ff5555;
+            --color-green: #5cff5c;
+            --highlight-yellow: #ffd60a;
         }
 
         body {
@@ -49,7 +51,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             margin-top: 30px;
         }
 
@@ -107,16 +109,26 @@
             box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
         }
 
-        .cta-button.secondary {
-            background-color: transparent;
-            color: var(--accent-tech);
+        /* 公告區域樣式 */
+        .update-box {
+            background-color: rgba(88, 166, 255, 0.05);
             border: 1px solid var(--accent-tech);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-button.secondary:hover {
-            background-color: var(--accent-tech);
-            color: #fff;
+        .update-box strong { color: var(--accent-tech); }
+        .update-box .live-indicator {
+            width: 8px; height: 8px; background: var(--color-green);
+            border-radius: 50%; display: inline-block; margin-right: 8px;
+            animation: blink 2s infinite;
         }
+
+        @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 
         section {
             margin-bottom: 40px;
@@ -201,6 +213,7 @@
         .research-card p {
             color: var(--text-secondary);
             flex-grow: 1;
+            font-size: 0.95em;
         }
 
         .read-more,
@@ -216,6 +229,7 @@
             align-self: flex-start;
             border: none;
             cursor: pointer;
+            font-size: 0.9em;
         }
 
         .read-more:hover,
@@ -320,6 +334,17 @@
             animation: pulse 1.5s infinite;
         }
 
+        .value-badge {
+            background-color: var(--highlight-yellow);
+            color: #000;
+            font-size: 0.6em;
+            padding: 3px 7px;
+            border-radius: 5px;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-weight: bold;
+        }
+
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 85, 85, 0.7); }
             70% { transform: scale(1.1); box-shadow: 0 0 10px 10px rgba(255, 85, 85, 0); }
@@ -340,6 +365,11 @@
             </div>
         </header>
 
+        <!-- 公告區域 -->
+        <div class="update-box fade-in-on-scroll">
+            <p><span class="live-indicator"></span> 📢 <strong>新專欄發布：</strong> 首篇《靈蛇價值投資報告》已上線！深入剖析 <strong>6584 南俊國際</strong> 2026 年翻倍成長邏輯。</p>
+        </div>
+
         <section class="mission-statement fade-in-on-scroll">
             <p>結合數據科學與市場脈動，透過獨家AI模型與深度分析，每週為您篩選最具潛力的投資標的，旨在追求長期穩健的超額報酬。</p>
         </section>
@@ -347,7 +377,6 @@
         <section class="report-list">
             <h2 class="fade-in-on-scroll"><span class="icon">📂</span> 最新週報</h2>
             <div id="reportListContainer">
-               <!-- [新增] 0109 2026首刊 -->
                  <article class="report-card fade-in-on-scroll">
                     <div class="card-header">
                         <h3>靈蛇週報 0109 <span class="new-badge">New!</span></h3><span class="date">2026.01.09</span>
@@ -583,6 +612,12 @@
         <section class="special-reports">
             <h2 class="fade-in-on-scroll"><span class="icon">🌟</span> 深度研究 & 公告</h2>
             <div class="research-grid" id="researchGrid">
+                <!-- [新增] 南俊國際價值報告 -->
+                <article class="research-card fade-in-on-scroll">
+                    <h3>【價值首選】南俊國際 (6584) 深度價值分析 <span class="new-badge">New!</span><span class="value-badge">VALUE</span></h3>
+                    <p>運用 PS 估值模型與 2026 年營收爆發數據，揭示南俊國際在 AI 伺服器滑軌市場的領導地位與目前被市場低估的獲利空間。</p>
+                    <a href="reports/NanJun_Value_Report.html" target="_blank" class="read-more">閱讀深度報告 &rarr;</a>
+                </article>
                 <article class="research-card fade-in-on-scroll"> <!-- 新增的文章放在最前面 -->
                     <h3>【特別專欄】四檔潛力股追蹤分析</h3>
                     <p>全面剖析鴻海、華新科、宜鼎、佳能的最新趨勢，結合基本面、技術面與籌碼面，提供精準的投資策略彙整。</p>
