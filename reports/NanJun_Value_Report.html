@@ -41,22 +41,90 @@
 
         /* 價值尺背景 */
         .valuation-gradient {
-            background: linear-gradient(90deg, #22c55e 0%, #22c55e 40%, #06b6d4 40%, #06b6d4 80%, #ef4444 80%);
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e 40%, #06b6d4 40%, #06b6d4 60%, #ef4444 60%);
         }
 
         .pulse {
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        .logic-explanation {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .btn-link {
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-link:hover {
+            filter: brightness(1.2);
+            transform: translateY(-1px);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .share-btn:active { transform: scale(0.95); }
+
+        /* 通知氣泡 */
+        #copy-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--accent-cyan);
+            color: var(--bg-main);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 100;
+        }
+        #copy-toast.show { transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body class="p-4 md:p-8">
     <div class="max-w-4xl mx-auto">
         <!-- 頁首 -->
-        <header class="text-center mb-12 border-b-2 border-cyan-400 pb-6">
-            <p class="font-code text-cyan-400 tracking-widest text-sm mb-2">SNAKE VALUE REPORT // SERIES #001</p>
-            <h1 class="text-4xl font-bold text-yellow-400 mb-2">南俊國際 (6584) 深度價值報告</h1>
-            <p class="text-slate-400">發布日期：2026年01月10日 // 研究員：靈蛇投資中心</p>
+        <header class="text-center mb-10 border-b-2 border-cyan-400 pb-6 relative">
+            <p class="font-code text-cyan-400 tracking-widest text-sm mb-2 uppercase">Snake Value Report // Series #001</p>
+            <h1 class="text-4xl font-bold text-yellow-400 mb-4">南俊國際 (6584) 深度價值報告</h1>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-slate-400 text-xs">
+                <div class="flex items-center gap-4">
+                    <span>發布日期：2026年01月11日</span>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 pulse"></span>
+                        <span>數據同步：2026/01/11 22:30 (即時快照)</span>
+                    </div>
+                </div>
+                <!-- 連結更新：改為 Goodinfo -->
+                <div class="flex gap-2">
+                    <a href="https://tw.stock.yahoo.com/quote/6584.TWO" target="_blank" class="btn-link bg-purple-600/20 border border-purple-400/50 text-purple-300 px-3 py-1 rounded-full text-[10px] flex items-center">
+                        <span class="mr-1">📈</span> Yahoo 即時行情
+                    </a>
+                    <a href="https://goodinfo.com.tw/tw/StockDetail.asp?STOCK_ID=6584" target="_blank" class="btn-link bg-blue-600/20 border border-blue-400/50 text-blue-300 px-3 py-1 rounded-full text-[10px] flex items-center">
+                        <span class="mr-1">📊</span> Goodinfo! 股市資訊
+                    </a>
+                </div>
+            </div>
         </header>
 
         <!-- 即時動態 -->
@@ -65,182 +133,189 @@
             <p class="text-sm"><strong>最新動態：</strong> 南俊目前股價 318 元，遠低於 2026 年預估價值區，正處於極度低估之「價值窪地」。</p>
         </div>
 
-        <!-- 認識公司 -->
+        <!-- 認識公司專欄 -->
         <section class="mb-12">
             <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
                 <span class="opacity-50 mr-2">//</span> 認識公司：從傳統導軌到 AI 核心
             </h2>
-            <div class="glass-card rounded-xl p-6 shadow-2xl">
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <p class="mb-4 leading-relaxed"><strong>南俊國際 (REPON)</strong> 成立於 1977 年。它是全球知名的鋼珠導軌領導廠商，產品廣泛應用於雲端資料中心及醫療設備。</p>
-                        <p class="leading-relaxed">進入 AI 時代後，南俊的角色發生了質變。由於 AI 機櫃 (如 GB200/GB300) 重量倍增，導軌的「抗壓承重」與「精度」成為關鍵壁壘。</p>
+                    <div class="space-y-4">
+                        <p class="text-sm leading-relaxed"><strong>南俊國際 (REPON)</strong> 成立於 1977 年。它是全球知名的鋼珠導軌領導廠商，產品廣泛應用於雲端資料中心及醫療設備。</p>
+                        <p class="text-sm leading-relaxed">進入 AI 時代後，南俊的角色發生了質變。由於 AI 機櫃 (如 GB200/GB300) 重量倍增且對震動極度敏感，導軌的「抗壓承重」與「滑動精度」成為關鍵壁壘。</p>
                     </div>
                     <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-5">
-                        <strong class="text-yellow-400 block mb-3 text-sm">🛡️ 為什麼 AI 伺服器非它不可？</strong>
+                        <strong class="text-yellow-400 block mb-3 text-sm">🛡️ 核心競爭優勢</strong>
                         <ul class="text-xs space-y-2 text-slate-300">
-                            <li>● <span class="text-slate-100">承重極限：</span> 單一機櫃重達 1.5 噸，南俊 U 型軌具備極高物理強度。</li>
-                            <li>● <span class="text-slate-100">推薦清單：</span> 成功取得 NVIDIA RVL 資格，代表技術獲官方背書。</li>
-                            <li>● <span class="text-slate-100">產能優勢：</span> 越南廠避稅且自動化程度高，是美系 CSP 大廠的首選。</li>
+                            <li>● <span class="text-slate-100 font-bold">技術護城河：</span> 具備 U 型軌專利，能承載 1.5 噸以上極限重量。</li>
+                            <li>● <span class="text-slate-100 font-bold">推薦清單：</span> 成功取得 NVIDIA RVL 資格，地位無可取代。</li>
+                            <li>● <span class="text-slate-100 font-bold">產能布局：</span> 越南廠規避地緣政治風險，是美系 CSP 大廠首選。</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 視覺圖卡核心區 -->
+        <!-- 第一步：質化評分 -->
         <section class="mb-12">
             <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
-                <span class="opacity-50 mr-2">//</span> 靈蛇價值分析視覺圖卡
+                <span class="opacity-50 mr-2">//</span> 第一步：質化評分 (決定倍數高低)
             </h2>
-            
-            <div class="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative">
-                <!-- 標題 -->
-                <div class="bg-slate-800/50 border-b border-slate-700 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="bg-yellow-500 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded">SNAKE REPORT</span>
-                            <span class="text-cyan-400 font-code text-xs tracking-widest uppercase">Analysis Card</span>
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <!-- 算法說明框 -->
+                <div class="logic-explanation mb-8">
+                    <p class="text-cyan-400 font-bold mb-2">📊 算法與意義說明</p>
+                    <div class="grid md:grid-cols-2 gap-6 text-[11px] leading-relaxed">
+                        <ul class="space-y-1 text-slate-300">
+                            <li><strong>打分邏輯 (1-5分)：</strong></li>
+                            <li>● <span class="text-yellow-400 font-bold">5分 (核心)：</span> 領先地位、專利牆、獲利最強。</li>
+                            <li>● <span class="text-yellow-400 font-bold">4分 (次核心)：</span> 重要供應鏈、毛利高、替代難。</li>
+                            <li>● <span class="text-yellow-400 font-bold">3分 (主題)：</span> 隨景氣波動、具一定競爭力。</li>
+                        </ul>
+                        <div class="text-slate-400">
+                            <p><strong>倍數對應：</strong></p>
+                            <p class="mt-1">總分達 <span class="text-cyan-400 font-bold">12-13 分</span> 的公司，代表已進入「次核心/核心」位階，市場認可給予 <span class="text-yellow-400 font-bold">10x - 12x</span> 的 PS 溢價。</p>
                         </div>
-                        <h3 class="text-2xl font-black">南俊國際 <span class="text-slate-500 text-lg">(6584)</span></h3>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-slate-400 text-[10px] uppercase">Current Price</p>
-                        <p class="text-4xl font-code font-bold text-yellow-400">$318</p>
                     </div>
                 </div>
 
-                <!-- 內容 -->
-                <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 左：質化評分 -->
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-cyan-500 pl-3">
-                            <h4 class="text-sm font-bold text-cyan-400 uppercase">第一步：質化評分 (決定倍數高低)</h4>
-                        </div>
-                        
-                        <div class="bg-slate-800/60 p-4 rounded-lg border border-slate-700/50 text-xs">
-                            <p class="text-cyan-400 font-bold mb-2">📊 算法與意義說明</p>
-                            <ul class="space-y-1 text-slate-300">
-                                <li><span class="text-yellow-400">● 打分邏輯 (1-5分)：</span></li>
-                                <li class="pl-2">5分 (核心)：領先地位、專利牆、獲利最強。</li>
-                                <li class="pl-2">4分 (次核心)：重要供應鏈、毛利高、替代難。</li>
-                                <li class="pl-2">3分 (主題)：隨景氣波動、具一定競爭力。</li>
-                                <li class="pt-1 text-slate-400 italic">※ 總分 12-13 分的公司，代表已進入「次核心/核心」位階，市場願意給予 10x - 12x 的 PS 溢價。</li>
-                            </ul>
-                        </div>
-
-                        <div class="space-y-4">
-                            <!-- 評分項目 -->
-                            <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm font-bold">供應鏈地位</span>
-                                    <div class="flex gap-1">
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[10px] text-slate-400">進入 NVIDIA GB300 推薦清單，躍升核心一線。</p>
+                <!-- 燈號評分內容 -->
+                <div class="space-y-6 mb-8">
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-3">
+                            <div class="flex-1">
+                                <span class="text-sm font-bold block mb-1">供應鏈地位 (Supply Chain Position)</span>
+                                <p class="text-[10px] text-slate-400">成功進入 NVIDIA GB300 推薦清單 (RVL)，地位從二線躍升為核心一線。</p>
                             </div>
-                            <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm font-bold">技術門檻</span>
-                                    <div class="flex gap-1">
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
-                                    </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="text-cyan-400 font-code font-bold text-xs">Score: 5 / 5</span>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
                                 </div>
-                                <p class="text-[10px] text-slate-400">具備高精度導軌專利與高度自動化產線。</p>
-                            </div>
-                            <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50">
-                                <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm font-bold">不可取代性</span>
-                                    <div class="flex gap-1">
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
-                                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
-                                    </div>
-                                </div>
-                                <p class="text-[10px] text-slate-400">美系 CSP 核心影子廠，規格升級領先者。</p>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-lg flex justify-between items-center border border-slate-700">
-                            <span class="text-xs font-bold text-slate-400">總分判定 (Total Score)</span>
-                            <div class="text-right">
-                                <span class="text-2xl font-black text-yellow-400">13</span>
-                                <span class="text-slate-500 text-xs font-bold ml-1">/ 15</span>
-                                <p class="text-[9px] text-cyan-400 font-bold tracking-widest">核心成長位階 (PS: 10x)</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 右：價值尺 -->
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-yellow-500 pl-3">
-                            <h4 class="text-sm font-bold text-yellow-500 uppercase">第二步：量化估計 (設定目標市值)</h4>
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-3">
+                            <div class="flex-1">
+                                <span class="text-sm font-bold block mb-1">技術門檻 (Technical Barrier)</span>
+                                <p class="text-[10px] text-slate-400">具備高精度導軌專利與越南廠成本優勢，製程自動化程度領先同業。</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="text-cyan-400 font-code font-bold text-xs">Score: 4 / 5</span>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-3">
+                            <div class="flex-1">
+                                <span class="text-sm font-bold block mb-1">不可替代性 (Irreplaceability)</span>
+                                <p class="text-[10px] text-slate-400">身為美系 CSP 大廠的核心滑軌供應商，在 AI 規格轉向中佔據先機。</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="text-cyan-400 font-code font-bold text-xs">Score: 4 / 5</span>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 總分彙整 -->
+                <div class="bg-slate-800 p-5 rounded-lg flex flex-col md:flex-row justify-between items-center border border-slate-700">
+                    <div class="mb-2 md:mb-0">
+                        <span class="text-xs font-bold text-slate-400 block uppercase tracking-tighter">南俊質化判定總分 (Quality Score Total)</span>
+                        <p class="text-[10px] text-cyan-400 font-bold uppercase mt-1">位階：次核心成長股 // 建議 PS: 10x - 12x</p>
+                    </div>
+                    <div class="text-right flex items-baseline gap-1">
+                        <span class="text-4xl font-black text-yellow-400 font-code">13</span>
+                        <span class="text-slate-500 text-lg font-bold">/ 15</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二步：量化估價 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 第二步：量化估價 (設定目標市值)
+            </h2>
+            
+            <div class="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative">
+                <div class="p-8">
+                    <!-- 公式框 -->
+                    <div class="bg-slate-800/60 p-5 rounded-lg border border-slate-700/50 mb-10">
+                        <p class="text-yellow-500 font-bold mb-3 text-xs uppercase tracking-widest">📐 目標價算法 (Formula)</p>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            公式：<span class="text-cyan-400 font-bold">目標市值 = 2026年預估營收 (35.7億) × 合理 PS (10x)</span>
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 mt-4 text-[10px] text-slate-400">
+                            <p><span class="text-green-400 font-bold">● 便宜區 (0.8x)：</span>安全邊際，佈局點。</p>
+                            <p><span class="text-cyan-400 font-bold">● 合理區 (1.0x)：</span>平均成長預期。</p>
+                            <p><span class="text-red-400 font-bold">● 昂貴區 (1.2x)：</span>過熱，分批出場。</p>
+                        </div>
+                    </div>
+
+                    <!-- 價值尺 -->
+                    <div class="relative py-16">
+                        <div class="h-4 w-full rounded-full valuation-gradient border border-slate-700 shadow-inner"></div>
                         
-                        <div class="bg-slate-800/60 p-4 rounded-lg border border-slate-700/50 text-xs">
-                            <p class="text-yellow-500 font-bold mb-2">📐 目標價算法 (Formula)</p>
-                            <p class="text-slate-300 mb-2">公式：<span class="text-cyan-400">目標市值 = 2026年預估營收 × 合理 PS 倍數 (10x)</span></p>
-                            <ul class="space-y-1 text-slate-300">
-                                <li><span class="text-green-400">● 便宜區 (0.8x)：</span>具備安全邊際，為最佳佈局點。</li>
-                                <li><span class="text-cyan-400">● 合理區 (1.0x)：</span>符合產業平均成長預期。</li>
-                                <li><span class="text-red-400">● 昂貴區 (1.2x)：</span>市場情緒過熱，應考慮分批獲利了結。</li>
-                            </ul>
+                        <div class="absolute top-4 left-[22%] flex flex-col items-center">
+                            <div class="bg-yellow-400 text-slate-950 text-[9px] font-black px-1.5 py-0.5 rounded shadow-lg mb-1 pulse tracking-tighter">現價 318</div>
+                            <div class="w-0.5 h-16 bg-yellow-400"></div>
                         </div>
 
-                        <!-- 價值尺 -->
-                        <div class="relative py-12">
-                            <!-- 背景刻度色塊 -->
-                            <div class="h-3 w-full rounded-full valuation-gradient border border-slate-700 shadow-inner"></div>
-                            
-                            <!-- 現價指標 -->
-                            <div class="absolute top-0 left-[20%] flex flex-col items-center">
-                                <div class="bg-yellow-400 text-slate-950 text-[9px] font-black px-1.5 py-0.5 rounded shadow-lg mb-1">現價 318</div>
-                                <div class="w-0.5 h-16 bg-yellow-400"></div>
-                            </div>
-
-                            <!-- 比例文字：落在交接點 -->
-                            <div class="absolute bottom-2 left-[40%] -ml-8 w-16 text-center">
-                                <p class="text-[9px] text-green-400 font-bold uppercase leading-none">便宜區</p>
-                                <p class="text-[8px] text-slate-500 font-code font-bold">(0.8x)</p>
-                                <p class="text-[10px] text-slate-300 font-code mt-0.5">$430</p>
-                            </div>
-                            <div class="absolute bottom-2 left-[80%] -ml-8 w-16 text-center">
-                                <p class="text-[9px] text-cyan-400 font-bold uppercase leading-none">合理區</p>
-                                <p class="text-[8px] text-slate-500 font-code font-bold">(1.0x)</p>
-                                <p class="text-[10px] text-slate-300 font-code mt-0.5">$537</p>
-                            </div>
-                            <div class="absolute bottom-2 right-0 w-16 text-right">
-                                <p class="text-[9px] text-red-400 font-bold uppercase leading-none">昂貴區</p>
-                                <p class="text-[8px] text-slate-500 font-code font-bold">(1.2x)</p>
-                                <p class="text-[10px] text-slate-300 font-code mt-0.5">$644</p>
-                            </div>
+                        <!-- 0.8x 臨界點 -->
+                        <div class="absolute top-16 left-[40%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-green-400 font-bold leading-none uppercase">便宜區</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(0.8x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$430</p>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-700">
-                                <span class="text-[9px] text-slate-500 uppercase block">2026 預期營收</span>
-                                <span class="text-lg font-bold font-code text-slate-200">35.7 億</span>
-                            </div>
-                            <div class="bg-slate-800/30 p-3 rounded-lg border border-slate-700">
-                                <span class="text-[9px] text-slate-500 uppercase block">2026 預估 EPS</span>
-                                <span class="text-lg font-bold font-code text-slate-200">13.1 元</span>
-                            </div>
+                        <!-- 1.0x 臨界點 -->
+                        <div class="absolute top-16 left-[50%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-cyan-400 font-bold leading-none uppercase">目標價</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(1.0x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$537</p>
                         </div>
 
-                        <div class="bg-cyan-400/10 border border-cyan-400/30 p-4 rounded-lg">
-                            <p class="text-[11px] text-slate-300 leading-relaxed italic">
-                                "目前 PS 僅 6.1x，處於「非理性超跌」區間。基於 13 分質化評等，長線具備強大的價值修復空間。"
-                            </p>
+                        <!-- 1.2x 臨界點 -->
+                        <div class="absolute top-16 left-[60%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-red-400 font-bold leading-none uppercase">昂貴區</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(1.2x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$644</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700">
+                            <span class="text-[9px] text-slate-500 uppercase block mb-1">2026 預期總營收</span>
+                            <span class="text-xl font-bold font-code text-slate-200">35.7 億</span>
+                        </div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700">
+                            <span class="text-[9px] text-slate-500 uppercase block mb-1">2026 預估每股盈餘</span>
+                            <span class="text-xl font-bold font-code text-slate-200">13.1 元</span>
                         </div>
                     </div>
                 </div>
@@ -251,7 +326,7 @@
         <!-- 獲利趨勢圖 -->
         <section class="mb-12">
             <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
-                <span class="opacity-50 mr-2">//</span> 獲利爆發趨勢圖 (2024-2026)
+                <span class="opacity-50 mr-2">//</span> 獲利與營收成長曲線 (2024-2026)
             </h2>
             <div class="glass-card rounded-xl p-6 h-80">
                 <canvas id="nanjunChart"></canvas>
@@ -264,40 +339,86 @@
                 <span class="opacity-50 mr-2">//</span> 靈蛇觀點：操作與風險管理
             </h2>
             <div class="glass-card rounded-xl p-8">
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-8 text-sm">
                     <ul class="space-y-4">
                         <li class="flex items-start">
                             <span class="text-green-400 mr-2">▶</span>
-                            <p class="text-sm"><strong>進場策略：</strong> 目前 318 元處於「深度便宜區」，分批布局之風險收益比極佳。</p>
+                            <p><strong>進場策略：</strong> 目前 318 元處於「深度便宜區」，建議 320 元以下分批建立核心倉位。</p>
                         </li>
                         <li class="flex items-start">
                             <span class="text-cyan-400 mr-2">▶</span>
-                            <p class="text-sm"><strong>動能確認：</strong> 需觀察股價何時站穩 340 元平台並帶量突破。</p>
+                            <p><strong>動能確認：</strong> 需觀察股價何時站穩 340 元平台並帶量突破，那是評價回歸的主升段訊號。</p>
                         </li>
                     </ul>
                     <ul class="space-y-4">
                         <li class="flex items-start">
                             <span class="text-yellow-400 mr-2">▶</span>
-                            <p class="text-sm"><strong>獲利目標：</strong> 第一階段看 430 元 (0.8x 便宜區上限)，最終看 530 元。</p>
+                            <p><strong>獲利目標：</strong> 第一階段目標價 430 元 (0.8x 臨界點)，長線價值回歸看 530 元。</p>
                         </li>
                         <li class="flex items-start">
                             <span class="text-red-400 mr-2">▶</span>
-                            <p class="text-sm"><strong>停損風險：</strong> 若帶量跌破 285 元 (起漲點支撐) 需考慮減碼。</p>
+                            <p><strong>停損風險：</strong> 若帶量跌破 285 元 (起漲支撐) 或 2026 營收展望大幅下修則考慮撤退。</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <footer class="text-center py-12 border-t border-slate-800 opacity-50 text-[10px] font-code">
+        <!-- 社群分享區 -->
+        <section class="mb-12 border-t border-slate-700 pt-10 text-center">
+            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-6">Share This Report</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div onclick="shareLine()" class="share-btn bg-[#06C755]/20 border-[#06C755]/50 text-[#06C755] hover:bg-[#06C755]/30">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.3c0-4.6-5.4-8.3-12-8.3S0 5.7 0 10.3c0 4.1 4.3 7.5 10 8.2.4.1.9.4 1 .9l.4 2.3c.1.4.3.5.6.3s1.7-2.6 2.3-3.6c2.1-.2 4-.9 5.6-2.1 2.5-1.7 4.1-3.8 4.1-6M8.5 13.1H6.7c-.2 0-.3-.1-.3-.3V7.5c0-.2.1-.3.3-.3h.4c.2 0 .3.1.3.3v4.6h1.1c.2 0 .3.1.3.3v.4c0 .2-.1.3-.3.3m3.1 0h-.4c-.2 0-.3-.1-.3-.3V7.5c0-.2.1-.3.3-.3h.4c.2 0 .3.1.3.3v5.3c0 .2-.1.3-.3.3m4.8 0h-.4c-.2 0-.3-.1-.3-.3V9.2l-2.2 3.7c-.1.1-.2.2-.4.2h-.1c-.2 0-.3-.1-.3-.3V7.5c0-.2.1-.3.3-.3h.4c.2 0 .3.1.3.3v3.9l2.2-3.7c.1-.1.2-.2.4-.2h.1c.2 0 .3.1.3.3v5.3c0 .2-.1.3-.3.3m4 0h-1.8c-.2 0-.3-.1-.3-.3V7.5c0-.2.1-.3.3-.3h1.8c.2 0 .3.1.3.3v.4c0 .2-.1.3-.3.3h-1.1v1.2h1.1c.2 0 .3.1.3.3v.4c0 .2-.1.3-.3.3h-1.1v1.3h1.1c.2 0 .3.1.3.3v.4c0 .2-.1.3-.3.3"/></svg>
+                    LINE
+                </div>
+                <div onclick="shareFB()" class="share-btn bg-[#1877F2]/20 border-[#1877F2]/50 text-[#1877F2] hover:bg-[#1877F2]/30">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </div>
+                <div onclick="copyLink()" class="share-btn bg-slate-700/50 border-slate-500/50 text-slate-300 hover:bg-slate-700">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    複製連結
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-12 border-t border-slate-800 opacity-50 text-[10px] font-code uppercase tracking-widest">
             <p>&copy; 2026 靈蛇研究團隊 // 投資一定有風險 買賣前請詳閱研究報告</p>
-            <p class="mt-2 uppercase">Analysis Mode: PS_Valuation_V2.0 // Location: Sanchong, TW</p>
+            <p class="mt-2">Valuation Model: PS_Logic_V2.2 // Update: Sanchong, TW</p>
         </footer>
     </div>
+
+    <!-- 提示框 -->
+    <div id="copy-toast">連結已複製到剪貼簿</div>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        function shareLine() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://social-plugins.line.me/lineit/share?url=${url}`, '_blank');
+        }
+
+        function shareFB() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function copyLink() {
+            const dummy = document.createElement('input');
+            const text = window.location.href;
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            const toast = document.getElementById('copy-toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
         window.onload = function() {
             const ctx = document.getElementById('nanjunChart').getContext('2d');
             new Chart(ctx, {
@@ -343,9 +464,7 @@
                             ticks: { color: '#ffd60a' },
                             title: { display: true, text: 'EPS (元)', color: '#ffd60a', font: { size: 10 } }
                         },
-                        x: {
-                            ticks: { color: '#778da9' }
-                        }
+                        x: { ticks: { color: '#778da9' } }
                     }
                 }
             });
