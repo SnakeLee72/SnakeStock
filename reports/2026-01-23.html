@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0123 - AI 電力與 IP 雙箭頭，首度揭露「資金配置」戰略</title>
+    <meta name="description" content="靈蛇週報0123期。本期新增資金配置建議。鎖定測試大廠京元電(2449)、重電黑馬亞力(1514)，以及測試股欣銓(3264)。">
+    <meta name="keywords" content="靈蛇週報, 0123, 京元電, 亞力, 欣銓, 資金配置, CoWoS, 重電, 雙週刊">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+            
+            /* 資金配置專用色 */
+            --alloc-core: #ffd700;   /* 核心 - 金色 */
+            --alloc-swing: #00ffff;  /* 波段 - 藍色 */
+            --alloc-sat: #ff5c5c;    /* 衛星 - 紅色 */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fira Code', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.5em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        .stock-link {
+            color: var(--accent-cyan); text-decoration: none; border-bottom: 1px dotted var(--accent-cyan); transition: all 0.3s ease;
+        }
+        .stock-link:hover { color: var(--highlight-yellow); border-bottom: 1px solid var(--highlight-yellow); }
+
+        .target-price { color: var(--color-red); font-weight: 700; }
+        .stop-loss { color: var(--color-green); font-weight: 700; }
+        .positive-return { color: var(--color-red); font-weight: 700; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); display: flex; align-items: center; }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 25px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before {
+            content: '>'; position: absolute; left: 0; top: 0px; color: var(--accent-cyan); font-weight: 700;
+        }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.15); color: var(--color-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
+        .chips-tag { background-color: rgba(241, 250, 140, 0.15); color: var(--highlight-yellow); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
+        .highlight-tag { background-color: rgba(255, 92, 92, 0.15); color: var(--color-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
+        
+        /* --- 資金配置區塊樣式 (NEW) --- */
+        .allocation-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .alloc-card {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .alloc-card:hover { transform: translateY(-5px); border-color: var(--highlight-yellow); }
+        .alloc-title { font-size: 1.1em; margin-bottom: 10px; display: block; font-weight: bold; }
+        .alloc-percent { font-size: 2em; font-family: 'Fira Code'; font-weight: 700; display: block; margin-bottom: 10px; }
+        .alloc-stock { color: var(--text-primary); font-size: 1.2em; font-weight: bold; }
+        
+        .core-style { color: var(--alloc-core); border-top: 3px solid var(--alloc-core); }
+        .swing-style { color: var(--alloc-swing); border-top: 3px solid var(--alloc-swing); }
+        .sat-style { color: var(--alloc-sat); border-top: 3px solid var(--alloc-sat); }
+
+        .chart-container { position: relative; height: 300px; width: 100%; margin: 20px auto; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0123</h1>
+            <p>靈蛇投資研究中心 // 2026年01月23日</p>
+        </header>
+
+        <!-- 1. 績效回測 -->
+        <section id="review">
+            <h2><span class="icon">📈</span>上期選股回測 (01/12~01/23)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間</th><th>本週最高</th><th>報酬率</th><th>狀態</th></tr></thead>
+                    <tbody>
+                        <tr><td>3037</td><td><a href="../stocks/3037.html" class="stock-link">欣興</a></td><td>215-223</td><td>327</td><td class="positive-return">+46.6%</td><td>穩健獲利</td></tr>
+                        <tr><td>2347</td><td><a href="../stocks/2347.html" class="stock-link">聯強</a></td><td>62.5-63.8</td><td>67.5</td><td class="positive-return">+5.8%</td><td>穩健獲利</td></tr>
+                        <tr><td>1477</td><td><a href="../stocks/1477.html" class="stock-link">聚陽</a></td><td>310-318</td><td>338.5</td><td class="positive-return">+6.4%</td><td>穩健獲利</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stock-card">
+                <h4>績效評語：選股邏輯驗證，全數獲利</h4>
+                <p>上期精選的<strong><a href="../stocks/3037.html" class="stock-link">欣興</a></strong>展現了ABF載板龍頭的強勁反彈，波段漲幅驚人。<strong><a href="../stocks/2347.html" class="stock-link">聯強</a></strong>與<strong><a href="../stocks/1477.html" class="stock-link">聚陽</a></strong>也穩步墊高，驗證了我們在盤勢震盪中選擇低基期、有業績支撐個股的策略是正確的。</p>
+            </div>
+        </section>
+
+        <!-- 2. 產業觀察 -->
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：AI 趨勢擴散與地緣政治風險</h2>
+            <div class="stock-card">
+                <h3>盤勢重點：AI 需求強勁，但需留意國際變數</h3>
+                <p>輝達執行長黃仁勳重申 AI 需求強勁，並強調電力與基礎建設的重要性，帶動了重電與綠能族群的表現。同時，AI 應用正從雲端伺服器擴散至邊緣裝置（AI PC、手機）及物理 AI（機器人、自駕車），相關供應鏈值得關注。</p>
+                <p>然而，川普對格陵蘭的企圖引發地緣政治風險，加上記憶體族群近期震盪加劇，投資人需保持警覺，避免追高殺低。IMF 上修全球 GDP 預測，則為股市長線提供了基本面支撐。</p>
+            </div>
+        </section>
+
+        <!-- 3. 本週精選個股 -->
+        <section id="selections">
+            <h2><span class="icon">🎯</span>本週靈蛇精選股</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場</th><th class="stop-loss">停損參考</th><th class="target-price">目標價</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2449</strong></td><td><strong><a href="../stocks/2449.html" class="stock-link">京元電</a></strong></td><td>強勢動能突破型</td><td>275 - 286</td><td class="stop-loss">255</td><td class="target-price">320 - 350</td></tr>
+                        <tr><td><strong>1514</strong></td><td><strong><a href="../stocks/1514.html" class="stock-link">亞力</a></strong></td><td>強勢動能突破型</td><td>135.0 - 142.5</td><td class="stop-loss">115.0</td><td class="target-price">175.0 - 185.0</td></tr>
+                        <tr><td><strong>3264</strong></td><td><strong><a href="../stocks/3264.html" class="stock-link">欣銓</a></strong></td><td>強勢動能轉折策略</td><td>145.0 - 152.0</td><td class="stop-loss">138.0</td><td class="target-price">180.0 - 200.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. 資金配置戰略 (NEW FEATURE) -->
+        <section id="allocation">
+            <h2><span class="icon">💰</span>本期資金配置戰略 (Capital Allocation)</h2>
+            <div class="stock-card">
+                <p>本週建議採取 <strong>「核心+衛星」</strong> 的配置策略，以<strong>京元電</strong>為核心持股，搭配爆發力強的<strong>亞力</strong>與<strong>欣銓</strong>。</p>
+                
+                <div class="allocation-box">
+                    <!-- 核心持股 -->
+                    <div class="alloc-card core-style">
+                        <span class="alloc-title">🛡️ 核心持股 (Core)</span>
+                        <span class="alloc-percent">40%</span>
+                        <span class="alloc-stock">2449 京元電</span>
+                        <p style="font-size:0.9em; margin-top:10px; color:#aaa;">技術領先，獲利穩健。<br>適合較大部位佈局。</p>
+                    </div>
+
+                    <!-- 波段攻擊 -->
+                    <div class="alloc-card swing-style">
+                        <span class="alloc-title">🚀 波段攻擊 (Swing)</span>
+                        <span class="alloc-percent">30%</span>
+                        <span class="alloc-stock">1514 亞力</span>
+                        <p style="font-size:0.9em; margin-top:10px; color:#aaa;">籌碼強勢，爆發力強。<br>適合波段操作。</p>
+                    </div>
+
+                    <!-- 動能衛星 -->
+                    <div class="alloc-card sat-style">
+                        <span class="alloc-title">⚡ 動能衛星 (Sat)</span>
+                        <span class="alloc-percent">30%</span>
+                        <span class="alloc-stock">3264 欣銓</span>
+                        <p style="font-size:0.9em; margin-top:10px; color:#aaa;">底部起漲，轉機題材。<br>適合積極操作。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 個股深度分析 -->
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>個股深度分析</h2>
+            
+            <div class="stock-card">
+                 <h3>【2449 <a href="../stocks/2449.html" class="stock-link">京元電</a>】旱地拔蔥，大格局突破</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 12月營收創28個月新高，2026年資本支出創新高，顯示對AI測試需求的強烈信心。掌握3kW-5kW高功率測試技術，為Google TPU獨家供應商。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 1/23帶量長紅突破整理區間，均線多頭排列，週線站穩長期上升軌道。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 法人鎖碼，資減價揚。外資回補，主力買盤集中，融資減少顯示籌碼流向大戶。</li>
+                    <li><span class="highlight-tag">[配置建議]</span> <strong>核心持股 (40%)</strong>。具備技術護城河，營收獲利同步成長，適合拉回支撐時佈局。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                 <h3>【1514 <a href="../stocks/1514.html" class="stock-link">亞力</a>】旱地拔蔥，多頭主升段啟動</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 12月營收創近兩年新高，受惠台電強韌電網計畫及AI資料中心電力需求，訂單能見度高。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 突破長達數月的箱型壓力區，均線多頭排列且角度陡峭，週線大底突破。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資單日大買5萬張，法人暴力式掃貨，籌碼高度集中。</li>
+                    <li><span class="highlight-tag">[配置建議]</span> <strong>波段攻擊 (30%)</strong>。籌碼面極強，但乖離率稍高，建議回測5日線時分批進場。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                <h3>【3264 <a href="../stocks/3264.html" class="stock-link">欣銓</a>】大底突破，回測頸線支撐</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 12月營收創近兩年新高，受惠AI HBM測試需求及車用電子復甦，產能利用率維持高檔。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 突破一年大底，近期回測跳空缺口支撐守穩，月線強力支撐。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 投信連續多日大舉買超，內資法人暴力式掃貨，籌碼集中度提升。</li>
+                    <li><span class="highlight-tag">[配置建議]</span> <strong>動能衛星 (30%)</strong>。底部起漲，轉機題材明確，適合趁回測時佈局。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <!-- 6. 結語 -->
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：選股不選市，聚焦實質成長</h2>
+            <div class="stock-card">
+                <p>本週精選的三檔個股，共同點在於<strong>「營收創高」</strong>與<strong>「法人重押」</strong>。京元電與欣銓受惠於AI晶片測試需求的爆發，亞力則搭上電力基礎建設的列車。這些都是具備實質業績支撐的趨勢股。</p>
+                <p>面對盤勢震盪，建議投資人<strong>「嚴守紀律，汰弱留強」</strong>。不要追高乖離率過大的個股，而是尋找剛突破或回測支撐的標的。透過資金配置，我們可以在控制風險的同時，最大化獲利潛力。祝各位操作順利！</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+        </footer>
+    </div>
+</body>
+</html>
