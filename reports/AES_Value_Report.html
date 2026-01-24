@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇價值投資報告 #005 - AES-KY (6781) 深度價值分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+        }
+
+        .font-code { font-family: 'Fira Code', monospace; }
+
+        .glass-card {
+            background: rgba(27, 38, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+        }
+
+        /* 價值尺背景色塊：40%為0.8x交界, 50%為1.0x, 60%為1.2x */
+        .valuation-gradient {
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e 40%, #06b6d4 40%, #06b6d4 60%, #ef4444 60%);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        .logic-explanation {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .btn-link {
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-link:hover {
+            filter: brightness(1.2);
+            transform: translateY(-1px);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .share-btn:active { transform: scale(0.95); }
+
+        #copy-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--accent-cyan);
+            color: var(--bg-main);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 100;
+        }
+        #copy-toast.show { transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- 頁首 -->
+        <header class="text-center mb-10 border-b-2 border-cyan-400 pb-6 relative">
+            <p class="font-code text-cyan-400 tracking-widest text-sm mb-2 uppercase">Snake Value Report // Series #005</p>
+            <h1 class="text-4xl font-bold text-yellow-400 mb-4">AES-KY (6781) AI 能源之心</h1>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-slate-400 text-xs">
+                <div class="flex items-center gap-4">
+                    <span>發布日期：2026年01月24日</span>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 pulse"></span>
+                        <span>數據同步：2026/01/24 (即時行情)</span>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <a href="https://tw.stock.yahoo.com/quote/6781.TW" target="_blank" class="btn-link bg-purple-600/20 border border-purple-400/50 text-purple-300 px-3 py-1 rounded-full text-[10px] flex items-center">
+                        <span class="mr-1">📈</span> Yahoo 即時行情
+                    </a>
+                    <a href="https://goodinfo.com.tw/tw/StockDetail.asp?STOCK_ID=6781" target="_blank" class="btn-link bg-blue-600/20 border border-blue-400/50 text-blue-300 px-3 py-1 rounded-full text-[10px] flex items-center">
+                        <span class="mr-1">📊</span> Goodinfo! 股市資訊
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 即時動態 -->
+        <div class="bg-cyan-400/5 border border-cyan-400 rounded-lg p-4 mb-8 flex items-center justify-center text-center">
+            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 pulse"></span>
+            <p class="text-sm"><strong>最新動態：</strong> AES-KY 目前股價 1,195 元。BBU 業務佔比已達 73% 並朝高壓 HVDC 升級，2027 年 EPS 具備挑戰 73 元之實力。</p>
+        </div>
+
+        <!-- 認識公司專欄 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 認識公司：高效能電池管理專家
+            </h2>
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <p class="text-sm leading-relaxed"><strong>AES-KY (新普子公司)</strong> 專注於中大型鋰電池組設計。它是全球資料中心 <strong>BBU (Backup Battery Unit)</strong> 的領航者，掌握了電池管理系統 (BMS) 的核心演算法。</p>
+                        <p class="text-sm leading-relaxed">在 AI 伺服器 Blackwell 世代中，由於瞬間功耗極大，BBU 必須承擔毫秒級的電力補償。AES-KY 憑藉其高可靠性，成為美系雲端巨頭 (CSP) 的首選方案。</p>
+                    </div>
+                    <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-5">
+                        <strong class="text-yellow-400 block mb-3 text-sm">🛡️ BBU 價值量噴發</strong>
+                        <ul class="text-xs space-y-2 text-slate-300">
+                            <li>● <span class="text-slate-100 font-bold">由選配轉標配：</span> AI 算力不容斷電，BBU 滲透率從 20% 躍升至近 100%。</li>
+                            <li>● <span class="text-slate-100 font-bold">高技術門檻：</span> 具備主動平衡與高溫充放電專利，二線廠難以進入 CSP 驗證。</li>
+                            <li>● <span class="text-slate-100 font-bold">高壓 HVDC：</span> 4Q26 推出高壓產品，進一步提升附加價值與 ASP。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一步：質化評分 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 第一步：質化評分 (決定倍數高低)
+            </h2>
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <div class="logic-explanation mb-8">
+                    <p class="text-cyan-400 font-bold mb-2">📊 算法與意義說明</p>
+                    <div class="grid md:grid-cols-2 gap-6 text-[11px] leading-relaxed">
+                        <ul class="space-y-1 text-slate-300">
+                            <li><strong>打分邏輯 (1-5分)：</strong></li>
+                            <li>● <span class="text-yellow-400 font-bold">5分 (核心)：</span> 全球 BBU 市佔第一、高壓技術壟斷。</li>
+                            <li>● <span class="text-yellow-400 font-bold">4分 (次核心)：</span> 集團綜效強、毛利穩定上升。</li>
+                        </ul>
+                        <div class="text-slate-400">
+                            <p><strong>倍數對應：</strong></p>
+                            <p class="mt-1">總分達 <span class="text-cyan-400 font-bold">14 分</span> 的能源核心股，市場認可給予 <span class="text-yellow-400 font-bold">4.5x - 5.5x</span> 的 PS 溢價 (或 25x-30x PE)。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 mb-8">
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-3">
+                            <div class="flex-1">
+                                <span class="text-sm font-bold block mb-1">供應鏈地位 (BBU 王者)</span>
+                                <p class="text-[10px] text-slate-400">全球首家打入美系 CSP 的 BBU 廠商，市佔率與認證優先權穩居第一。</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="text-cyan-400 font-code font-bold text-xs">Score: 5 / 5</span>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-3">
+                            <div class="flex-1">
+                                <span class="text-sm font-bold block mb-1">技術門檻 (BMS 演算法)</span>
+                                <p class="text-[10px] text-slate-400">在高壓放電與散熱管理具備深厚專利，新進對手難以跨越 CSP 安全驗證。</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="text-cyan-400 font-code font-bold text-xs">Score: 5 / 5</span>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50">
+                        <div class="flex flex-col md:flex-row justify-between md:items-center gap-3">
+                            <div class="flex-1">
+                                <span class="text-sm font-bold block mb-1">不可替代性 (越南產能佈局)</span>
+                                <p class="text-[10px] text-slate-400">越南廠擴產進度領先，完美規避地緣政治風險，獲美系大廠長期承諾。</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-2">
+                                <span class="text-cyan-400 font-code font-bold text-xs">Score: 4 / 5</span>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-5 rounded-lg flex flex-col md:flex-row justify-between items-center border border-slate-700">
+                    <div class="mb-2 md:mb-0">
+                        <span class="text-xs font-bold text-slate-400 block uppercase tracking-tighter">AES-KY 質化判定總分 (Quality Score Total)</span>
+                        <p class="text-[10px] text-cyan-400 font-bold uppercase mt-1">位階：核心能源股 // 建議 PS: 4.8x - 5.2x</p>
+                    </div>
+                    <div class="text-right flex items-baseline gap-1">
+                        <span class="text-4xl font-black text-yellow-400 font-code">14</span>
+                        <span class="text-slate-500 text-lg font-bold">/ 15</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二步：量化估價 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 第二步：量化估價 (設定目標市值)
+            </h2>
+            <div class="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative">
+                <div class="p-8">
+                    <div class="bg-slate-800/60 p-5 rounded-lg border border-slate-700/50 mb-10">
+                        <p class="text-yellow-500 font-bold mb-3 text-xs uppercase tracking-widest">📐 目標價算法 (Formula)</p>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            公式：<span class="text-cyan-400 font-bold">目標市值 = 2027年預期營收 (285億) × 合理 PS (4.8x)</span><br>
+                            換算：<span class="text-highlight-yellow font-bold">目標股價 = 目標市值 ÷ 總發行股數 (0.854億股)</span>
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 mt-4 text-[10px] text-slate-400">
+                            <p><span class="text-green-400 font-bold">● 便宜區 (0.8x)：</span>$ 1,280</p>
+                            <p><span class="text-cyan-400 font-bold">● 合理區 (1.0x)：</span>$ 1,600</p>
+                            <p><span class="text-red-400 font-bold">● 昂貴區 (1.2x)：</span>$ 1,920</p>
+                        </div>
+                    </div>
+
+                    <div class="relative py-16">
+                        <div class="h-4 w-full rounded-full valuation-gradient border border-slate-700 shadow-inner"></div>
+                        <!-- 現價 1195 標記位置計算：(1195/1600) * 50% = 37% -->
+                        <div class="absolute top-4 left-[34%] flex flex-col items-center">
+                            <div class="bg-yellow-400 text-slate-950 text-[9px] font-black px-1.5 py-0.5 rounded shadow-lg mb-1 pulse tracking-tighter">現價 1,195</div>
+                            <div class="w-0.5 h-16 bg-yellow-400"></div>
+                        </div>
+                        <div class="absolute top-16 left-[40%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-green-400 font-bold leading-none uppercase">便宜區</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(0.8x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$1,280</p>
+                        </div>
+                        <div class="absolute top-16 left-[50%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-cyan-400 font-bold leading-none uppercase">目標價</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(1.0x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$1,600</p>
+                        </div>
+                        <div class="absolute top-16 left-[60%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-red-400 font-bold leading-none uppercase">昂貴區</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(1.2x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$1,920</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700"><span class="text-[9px] text-slate-500 block mb-1">2027 預期營收</span><span class="text-xl font-bold font-code text-slate-200">285 億</span></div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700"><span class="text-[9px] text-slate-500 block mb-1">合理 PS 倍數</span><span class="text-xl font-bold font-code text-cyan-400">4.80 x</span></div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700"><span class="text-[9px] text-slate-500 block mb-1">目標市值 (預計)</span><span class="text-xl font-bold font-code text-yellow-400">1,368 億</span></div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700"><span class="text-[9px] text-slate-500 block mb-1">總發行股數</span><span class="text-xl font-bold font-code text-slate-200">0.854 億股</span></div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700"><span class="text-[9px] text-slate-500 block mb-1">2027 預估 EPS</span><span class="text-xl font-bold font-code text-slate-200">72.88 元</span></div>
+                        <div class="bg-yellow-400/10 p-4 rounded-lg border border-yellow-400/30"><span class="text-[9px] text-yellow-500 block mb-1 font-bold">換算目標股價</span><span class="text-xl font-bold font-code text-yellow-400">$ 1,600</span></div>
+                    </div>
+                </div>
+                <div class="h-1 bg-gradient-to-r from-green-400 via-cyan-400 to-red-400"></div>
+            </div>
+        </section>
+
+        <!-- 獲利趨勢圖 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 獲利與營收成長曲線 (2025-2027)
+            </h2>
+            <div class="glass-card rounded-xl p-6 h-80">
+                <canvas id="aesChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 操作建議 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 靈蛇觀點：操作與風險管理
+            </h2>
+            <div class="glass-card rounded-xl p-8">
+                <div class="grid md:grid-cols-2 gap-8 text-sm">
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="text-green-400 mr-2">▶</span><p><strong>進場策略：</strong> 目前 1,195 元遠低於 1,280 元便宜區臨界點。基於 2027 年 EPS 跳階至 72 元之展望，目前為極佳的中長線布局點。</p></li>
+                        <li class="flex items-start"><span class="text-cyan-400 mr-2">▶</span><p><strong>動能確認：</strong> 需觀察單月營收年增率 (YoY) 是否維持在 50% 以上，那是 BBU 全面標配化進度的關鍵指標。</p></li>
+                    </ul>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">▶</span><p><strong>獲利目標：</strong> 第一階段看 1,550 元 (合庫投顧區間上限)，終極價值回歸挑戰 1,725 元 (凱基投顧目標價)。</p></li>
+                        <li class="flex items-start"><span class="text-red-400 mr-2">▶</span><p><strong>停損風險：</strong> 若跌破 1,050 元 (前波起漲區) 或匯率劇烈變動影響毛利率表現，需下修 PS 預估倍數。</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 社群分享區 -->
+        <section class="mb-12 border-t border-slate-700 pt-10 text-center">
+            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-6">Share This Report</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div onclick="shareLine()" class="share-btn bg-[#06C755]/20 border-[#06C755]/50 text-[#06C755] hover:bg-[#06C755]/30">LINE</div>
+                <div onclick="shareFB()" class="share-btn bg-[#1877F2]/20 border-[#1877F2]/50 text-[#1877F2] hover:bg-[#1877F2]/30">Facebook</div>
+                <div onclick="copyLink()" class="share-btn bg-slate-700/50 border-slate-500/50 text-slate-300 hover:bg-slate-700">複製連結</div>
+            </div>
+        </section>
+
+        <footer class="text-center py-12 border-t border-slate-800 opacity-50 text-[10px] font-code uppercase tracking-widest">
+            <p>&copy; 2026 靈蛇研究團隊 // 投資一定有風險 買賣前請詳閱研究報告</p>
+            <p class="mt-2">Valuation Model: PS_Logic_V2.5 // Update: Sanchong, TW</p>
+        </footer>
+    </div>
+    <div id="copy-toast">連結已複製到剪貼簿</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function shareLine() { window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}`, '_blank'); }
+        function shareFB() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank'); }
+        function copyLink() {
+            const dummy = document.createElement('input'); document.body.appendChild(dummy); dummy.value = window.location.href; dummy.select(); document.execCommand('copy'); document.body.removeChild(dummy);
+            const toast = document.getElementById('copy-toast'); toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+        window.onload = function() {
+            const ctx = document.getElementById('aesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2025 (E)', '2026 (E)', '2027 (E)'],
+                    datasets: [{ label: '營收 (億元)', data: [158.5, 203.8, 285.0], backgroundColor: 'rgba(0, 255, 255, 0.2)', borderColor: '#00ffff', borderWidth: 2, yAxisID: 'y' },
+                    { label: 'EPS (元)', data: [38.5, 50.6, 72.9], type: 'line', borderColor: '#ffd60a', backgroundColor: '#ffd60a', borderWidth: 3, pointRadius: 6, yAxisID: 'y1', tension: 0.3 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: 'rgba(65, 90, 119, 0.1)' }, ticks: { color: '#778da9' } }, y1: { position: 'right', beginAtZero: true, grid: { display: false }, ticks: { color: '#ffd60a' } } } }
+            });
+        };
+    </script>
+</body>
+</html>
