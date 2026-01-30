@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇價值投資報告 #006 - 聯鈞 (3450) 深度價值分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+        }
+
+        .font-code { font-family: 'Fira Code', monospace; }
+
+        .glass-card {
+            background: rgba(27, 38, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+        }
+
+        .valuation-gradient {
+            background: linear-gradient(90deg, #22c55e 0%, #22c55e 40%, #06b6d4 40%, #06b6d4 60%, #ef4444 60%);
+        }
+
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        .logic-explanation {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .share-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+            transition: all 0.2s; cursor: pointer; border: 1px solid transparent;
+        }
+
+        .infographic-container {
+            border: 2px solid var(--accent-cyan);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- 頁首 -->
+        <header class="text-center mb-10 border-b-2 border-cyan-400 pb-6 relative">
+            <p class="font-code text-cyan-400 tracking-widest text-sm mb-2 uppercase">Snake Value Report // Series #006</p>
+            <h1 class="text-4xl font-bold text-yellow-400 mb-4">聯鈞 (3450) CPO 矽光子霸權解密</h1>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-slate-400 text-xs">
+                <div class="flex items-center gap-4">
+                    <span>發布日期：2026年01月30日</span>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 pulse"></span>
+                        <span>數據同步：2026/01/30 (即時行情)</span>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <a href="https://tw.stock.yahoo.com/quote/3450.TW" target="_blank" class="btn-link bg-purple-600/20 border border-purple-400/50 text-purple-300 px-3 py-1 rounded-full text-[10px] flex items-center px-3">
+                        📈 Yahoo 即時
+                    </a>
+                    <a href="https://goodinfo.com.tw/tw/StockDetail.asp?STOCK_ID=3450" target="_blank" class="btn-link bg-blue-600/20 border border-blue-400/50 text-blue-300 px-3 py-1 rounded-full text-[10px] flex items-center px-3">
+                        📊 Goodinfo!
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 即時動態 -->
+        <div class="bg-cyan-400/5 border border-cyan-400 rounded-lg p-4 mb-8 flex items-center justify-center text-center">
+            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 pulse"></span>
+            <p class="text-sm"><strong>最新動態：</strong> 現價 252 元。隨 2027 年 CPO 產業爆發，聯鈞正處於獲利跳階前夕，目前位階具備極大的安全邊際。</p>
+        </div>
+
+        <!-- Visual Insight：公司介紹圖卡 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> Visual Insight：公司核心競爭力概覽
+            </h2>
+            <div class="infographic-container bg-slate-900">
+                <img src="https://github.com/user-attachments/assets/420a7337-959a-4ab0-9e70-b8c2f6b0be0e" alt="聯鈞 3450 公司介紹圖卡" class="w-full h-auto block">
+                <div class="p-4 bg-slate-800/80 text-xs text-slate-400 italic text-center">
+                    圖卡來源：NotebookLM 分析整合法說會與產業研究數據。
+                </div>
+            </div>
+        </section>
+
+        <!-- 認識公司專欄 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 認識公司：矽光子與 CPO 雙引擎
+            </h2>
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <p class="text-sm leading-relaxed"><strong>聯鈞 (Fositek)</strong> 貴為全球前三大雷射二極體封測廠。在 AI 伺服器傳輸速率邁向 1.6T 時代的浪潮中，公司已成功從消費性封測轉型為掌握 <strong>CPO (共封裝光學)</strong> 核心製程的高階半導體平台。</p>
+                        <p class="text-sm leading-relaxed">聯鈞憑藉與全球矽光子晶片大廠的長期合作，掌握了關鍵的 <strong>EOP (光電一體)</strong> 封裝技術。隨著 COS 產能擴展五倍，2027 年將迎來 CPO 商業化量產，獲利將進入跳階式增長。</p>
+                    </div>
+                    <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-5">
+                        <strong class="text-yellow-400 block mb-3 text-sm">🛡️ 核心競爭優勢</strong>
+                        <ul class="text-xs space-y-2 text-slate-300">
+                            <li>● <span class="text-slate-100 font-bold">技術領先：</span> 台灣矽光子聯盟核心成員，技術路徑直接對接權威大廠。</li>
+                            <li>● <span class="text-slate-100 font-bold">美系認證：</span> 具備直接供應美系 CSP 雲端大廠之 AOC 供應鏈資格。</li>
+                            <li>● <span class="text-slate-100 font-bold">去中化受惠：</span> 受惠 China+1 趨勢，成為美系大廠在高階光模組封測的首選。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一步：質化評分 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 第一步：質化評分 (決定倍數高低)
+            </h2>
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <div class="logic-explanation mb-8">
+                    <p class="text-cyan-400 font-bold mb-2">📊 算法與意義說明</p>
+                    <div class="grid md:grid-cols-2 gap-6 text-[11px] leading-relaxed">
+                        <ul class="space-y-1 text-slate-300">
+                            <li><strong>打分邏輯 (1-5分)：</strong></li>
+                            <li>● <span class="text-yellow-400 font-bold">5分 (核心)：</span> 全球前三大、具備壟斷專利。</li>
+                            <li>● <span class="text-yellow-400 font-bold">4分 (次核心)：</span> 重要供應商、驗證門檻高。</li>
+                        </ul>
+                        <div class="text-slate-400">
+                            <p><strong>評價修復：</strong></p>
+                            <p class="mt-1">總分達 <span class="text-cyan-400 font-bold">14 分</span> 的標的，市場認可給予 <span class="text-yellow-400 font-bold">6.0x - 7.5x</span> 的 PS 溢價 (依成長斜率)。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 mb-8">
+                    <!-- 供應鏈地位 -->
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50 flex justify-between items-center">
+                        <div class="flex-1">
+                            <span class="text-sm font-bold block mb-1">供應鏈地位 (CPO 核心成員)</span>
+                            <p class="text-[10px] text-slate-400">矽光子聯盟創始成員，與台積電、美系大廠協同定義 2027 封裝規範。</p>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                        </div>
+                    </div>
+                    <!-- 技術門檻 -->
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50 flex justify-between items-center">
+                        <div class="flex-1">
+                            <span class="text-sm font-bold block mb-1">技術門檻 (光電一體封裝)</span>
+                            <p class="text-[10px] text-slate-400">掌握關鍵 EOP 封測技術，COS 產能擴展五倍以因應 1.6T/CPO 需求。</p>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                        </div>
+                    </div>
+                    <!-- 不可替代性 -->
+                    <div class="bg-slate-800/40 p-5 rounded-lg border border-slate-700/50 flex justify-between items-center">
+                        <div class="flex-1">
+                            <span class="text-sm font-bold block mb-1">不可替代性 (美系驗證壁壘)</span>
+                            <p class="text-[10px] text-slate-400">通過 CSP 大廠嚴苛驗證，具備高階光模組「去中化」之排他性供應地位。</p>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_cyan]"></div>
+                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-5 rounded-lg flex flex-col md:flex-row justify-between items-center border border-slate-700">
+                    <div class="mb-2 md:mb-0">
+                        <span class="text-xs font-bold text-slate-400 block uppercase">聯鈞質化判定總分</span>
+                        <p class="text-[10px] text-cyan-400 font-bold uppercase mt-1">位階：隱藏版黑馬股 // 建議 PS: 6.5x</p>
+                    </div>
+                    <div class="text-right flex items-baseline gap-1">
+                        <span class="text-4xl font-black text-yellow-400 font-code">14</span>
+                        <span class="text-slate-500 text-lg font-bold">/ 15</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二步：量化估價 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 第二步：量化估價 (設定目標市值)
+            </h2>
+            <div class="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative">
+                <div class="p-8">
+                    <div class="bg-slate-800/60 p-5 rounded-lg border border-slate-700/50 mb-10 text-sm">
+                        公式：<span class="text-cyan-400 font-bold">目標市值 = 2027年預期營收 (180億) × 合理 PS (6.5x)</span><br>
+                        換算：<span class="text-highlight-yellow font-bold">目標股價 = 目標市值 ÷ 總發行股數 (1.46億股)</span>
+                    </div>
+
+                    <!-- 價值尺：現價 252 定位 -->
+                    <div class="relative py-16">
+                        <div class="h-4 w-full rounded-full valuation-gradient border border-slate-700 shadow-inner"></div>
+                        <!-- 現價 252 標記 (位於極左側) -->
+                        <div class="absolute top-4 left-[10%] flex flex-col items-center">
+                            <div class="bg-yellow-400 text-slate-950 text-[9px] font-black px-1.5 py-0.5 rounded shadow-lg mb-1 pulse tracking-tighter">現價 252</div>
+                            <div class="w-0.5 h-16 bg-yellow-400"></div>
+                        </div>
+                        <div class="absolute top-16 left-[40%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-green-400 font-bold uppercase">便宜區</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(0.8x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$640</p>
+                        </div>
+                        <div class="absolute top-16 left-[50%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-cyan-400 font-bold leading-none uppercase">目標價</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(1.0x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$800</p>
+                        </div>
+                        <div class="absolute top-16 left-[60%] -translate-x-1/2 flex flex-col items-center">
+                            <div class="w-px h-6 bg-slate-600 mb-1"></div>
+                            <p class="text-[9px] text-red-400 font-bold leading-none uppercase">昂貴區</p>
+                            <p class="text-[8px] text-slate-500 font-code font-bold mt-0.5">(1.2x)</p>
+                            <p class="text-[10px] text-slate-300 font-code mt-0.5">$960</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700 text-center">
+                            <span class="text-[9px] text-slate-500 block mb-1 uppercase">2027 預期營收</span>
+                            <span class="text-xl font-bold font-code text-slate-200">180 億</span>
+                        </div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700 text-center">
+                            <span class="text-[9px] text-slate-500 block mb-1 uppercase">合理 PS 倍數</span>
+                            <span class="text-xl font-bold font-code text-cyan-400">6.50 x</span>
+                        </div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700 text-center">
+                            <span class="text-[9px] text-slate-500 block mb-1 uppercase">目標市值 (預計)</span>
+                            <span class="text-xl font-bold font-code text-yellow-400">1,170 億</span>
+                        </div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700 text-center">
+                            <span class="text-[9px] text-slate-500 block mb-1 uppercase">總發行股數</span>
+                            <span class="text-xl font-bold font-code text-slate-200">1.46 億股</span>
+                        </div>
+                        <div class="bg-slate-800/30 p-4 rounded-lg border border-slate-700 text-center">
+                            <span class="text-[9px] text-slate-500 block mb-1 uppercase">2027 預估 EPS</span>
+                            <span class="text-xl font-bold font-code text-slate-200">25.0 元</span>
+                        </div>
+                        <div class="bg-yellow-400/10 p-4 rounded-lg border border-yellow-400/30 text-center">
+                            <span class="text-[9px] text-yellow-500 block mb-1 font-bold uppercase">換算目標股價</span>
+                            <span class="text-xl font-bold font-code text-yellow-400">$ 800</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-1 bg-gradient-to-r from-green-400 via-cyan-400 to-red-400"></div>
+            </div>
+        </section>
+
+        <!-- 獲利趨勢圖 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 獲利與營收成長曲線 (2025-2027)
+            </h2>
+            <div class="glass-card rounded-xl p-6 h-80">
+                <canvas id="fositekChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 操作建議 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> 靈蛇觀點：避開擁擠，佈局「光速」成長
+            </h2>
+            <div class="glass-card rounded-xl p-8">
+                <div class="grid md:grid-cols-2 gap-8 text-sm">
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="text-green-400 mr-2">▶</span><p><strong>進場策略：</strong> 目前 252 元遠低於便宜區門檻 (640 元)。這種「資訊落差」正是靈蛇模型的獲利甜蜜點，目前為極佳的長線佈局點。</p></li>
+                        <li class="flex items-start"><span class="text-cyan-400 mr-2">▶</span><p><strong>動能確認：</strong> 需觀察單月營收年增率是否開始超越 50%，這是 CPO 認證通過並開始大量貢獻營收的領先指標。</p></li>
+                    </ul>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="text-yellow-400 mr-2">▶</span><p><strong>獲利目標：</strong> 第一階段看 640 元 (評價修復)，終極目標挑戰 2027 年之目標價 800 元。</p></li>
+                        <li class="flex items-start"><span class="text-red-400 mr-2">▶</span><p><strong>停損風險：</strong> 若 CPO 標準化時程推遲，或美系大廠開發出競爭性之矽光子替代技術，需動態修正預期。</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 社群分享區 -->
+        <section class="mb-12 border-t border-slate-700 pt-10 text-center">
+            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-6">Share This Report</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div onclick="shareLine()" class="share-btn bg-[#06C755] text-white hover:bg-[#05a346] cursor-pointer">分享到 Line</div>
+                <div onclick="shareFB()" class="share-btn bg-[#1877F2] text-white hover:bg-[#1565d6] cursor-pointer">分享到 Facebook</div>
+                <div onclick="copyLink()" class="share-btn bg-slate-600 text-white hover:bg-slate-700 cursor-pointer">複製連結</div>
+            </div>
+        </section>
+
+        <footer class="text-center py-12 border-t border-slate-800 opacity-50 text-[10px] font-code uppercase tracking-widest">
+            <p>&copy; 2026 靈蛇研究團隊 // 投資一定有風險 買賣前請詳閱研究報告</p>
+            <p class="mt-2">Valuation Model: PS_Logic_V2.7 // Update: Sanchong, TW</p>
+        </footer>
+    </div>
+    <div id="copy-toast" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #00ffff; color: #0d1b2a; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); z-index: 100;">連結已複製到剪貼簿</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function shareLine() { window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}`, '_blank'); }
+        function shareFB() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank'); }
+        function copyLink() {
+            const dummy = document.createElement('input'); document.body.appendChild(dummy); dummy.value = window.location.href; dummy.select(); document.execCommand('copy'); document.body.removeChild(dummy);
+            const toast = document.getElementById('copy-toast'); toast.style.transform = 'translateX(-50%) translateY(0)'; setTimeout(() => toast.style.transform = 'translateX(-50%) translateY(100px)', 2000);
+        }
+        window.onload = function() {
+            const ctx = document.getElementById('fositekChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2025 (E)', '2026 (E)', '2027 (E)'],
+                    datasets: [{ label: '營收 (億元)', data: [85, 125, 180], backgroundColor: 'rgba(0, 255, 255, 0.2)', borderColor: '#00ffff', borderWidth: 2, yAxisID: 'y' },
+                    { label: 'EPS (元)', data: [6.2, 13.5, 25.0], type: 'line', borderColor: '#ffd60a', backgroundColor: '#ffd60a', borderWidth: 3, pointRadius: 6, yAxisID: 'y1', tension: 0.3 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: 'rgba(65, 90, 119, 0.1)' } }, y1: { position: 'right', beginAtZero: true, grid: { display: false } } } }
+            });
+        };
+    </script>
+</body>
+</html>
