@@ -97,6 +97,15 @@
             z-index: 100;
         }
         #copy-toast.show { transform: translateX(-50%) translateY(0); }
+    
+        .infographic-container {
+            border: 2px solid var(--accent-cyan);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+            margin-bottom: 2rem;
+        }
+    
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -133,6 +142,19 @@
             <p class="text-sm"><strong>最新動態：</strong> 南俊目前股價 318 元，遠低於 2026 年預估價值區，正處於極度低估之「價值窪地」。</p>
         </div>
 
+        <!-- Visual Insight：公司介紹圖卡 -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
+                <span class="opacity-50 mr-2">//</span> Visual Insight：公司核心競爭力概覽
+            </h2>
+            <div class="infographic-container bg-slate-900">
+                <img src="https://raw.githubusercontent.com/SnakeLee72/SnakeStock/main/Image/ELASER.jpg" alt="聯鈞 3450 公司介紹圖卡" class="w-full h-auto block">
+                <div class="p-4 bg-slate-800/80 text-xs text-slate-400 italic text-center">
+                    圖卡來源：NotebookLM 分析整合法說會與產業研究數據。
+                </div>
+            </div>
+        </section>
+        
         <!-- 認識公司專欄 -->
         <section class="mb-12">
             <h2 class="text-xl font-bold text-cyan-400 mb-6 flex items-center">
