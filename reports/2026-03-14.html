@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0314 - 戰火下的淬鍊，AI 擴散與防禦配置</title>
+    <meta name="description" content="靈蛇週報0314期。面對系統性風險嚴守紀律，本週採取4-3-3啞鈴式防禦配置，鎖定鴻海(2317)、辛耘(3583)、華星光(4979)。">
+    <meta name="keywords" content="靈蛇週報, 0314, 鴻海, 辛耘, 華星光, 資金配置, 停損紀律, AI擴散, CoWoS, 矽光子">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+            
+            /* 資金配置專屬色 */
+            --alloc-core: #ffd700;   /* 核心 - 金色 */
+            --alloc-swing: #00ffff;  /* 波段 - 藍色 */
+            --alloc-sat: #ff5c5c;    /* 衛星 - 紅色 */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fira Code', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.5em; font-weight: 700; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        .stock-link {
+            color: var(--accent-cyan); text-decoration: none; border-bottom: 1px dotted var(--accent-cyan); transition: all 0.3s ease;
+        }
+        .stock-link:hover { color: var(--highlight-yellow); border-bottom: 1px solid var(--highlight-yellow); }
+
+        .target-price { color: var(--color-red); font-weight: 700; }
+        .stop-loss { color: var(--color-green); font-weight: 700; }
+        .positive-return { color: var(--color-red); font-weight: 700; }
+        .negative-return { color: var(--color-green); font-weight: 700; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); display: flex; align-items: center; }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 25px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before {
+            content: '>'; position: absolute; left: 0; top: 0px; color: var(--accent-cyan); font-weight: 700;
+        }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.15); color: var(--color-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.15); color: var(--highlight-yellow); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .highlight-tag { background-color: rgba(255, 92, 92, 0.15); color: var(--color-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        
+        /* 資金配置區塊 */
+        .allocation-box { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+        .alloc-card {
+            flex: 1; min-width: 200px; background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;
+            text-align: center; transition: transform 0.3s;
+        }
+        .alloc-card:hover { transform: translateY(-5px); border-color: var(--highlight-yellow); }
+        .alloc-title { font-size: 1.1em; margin-bottom: 10px; display: block; font-weight: bold; }
+        .alloc-percent { font-size: 2em; font-family: 'Fira Code'; font-weight: 700; display: block; margin-bottom: 10px; }
+        .alloc-stock { color: var(--text-primary); font-size: 1.2em; font-weight: bold; }
+        
+        .core-style { color: var(--alloc-core); border-top: 3px solid var(--alloc-core); }
+        .swing-style { color: var(--alloc-swing); border-top: 3px solid var(--alloc-swing); }
+        .sat-style { color: var(--alloc-sat); border-top: 3px solid var(--alloc-sat); }
+        
+        /* --- 計算機樣式 (Optimized for Mobile) --- */
+        .calc-container {
+            background-color: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 25px; margin-top: 30px;
+        }
+        .calc-input-group { margin-bottom: 20px; text-align: center; }
+        .calc-input-group label { display: block; margin-bottom: 10px; font-size: 1.1em; color: var(--accent-cyan); font-weight: bold; }
+        .calc-input {
+            width: 100%; max-width: 300px; padding: 12px 15px; font-size: 1.2em;
+            background-color: var(--bg-main); border: 1px solid var(--border-color);
+            color: var(--text-primary); border-radius: 5px; text-align: center; box-sizing: border-box;
+        }
+        .calc-input:focus { outline: none; border-color: var(--highlight-yellow); }
+        
+        /* 表格響應式容器 */
+        .calc-table-wrapper {
+            overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px;
+            border: 1px solid var(--border-color); border-radius: 8px;
+        }
+        .calc-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        .calc-table th { color: var(--text-secondary); padding: 12px; font-size: 0.9em; border-bottom: 1px solid var(--border-color); white-space: nowrap; background-color: rgba(0,0,0,0.2); }
+        .calc-table td { padding: 15px 12px; text-align: center; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        
+        .scroll-hint { text-align: center; color: var(--text-secondary); font-size: 0.8em; margin-bottom: 5px; display: none; }
+        .price-input { width: 90px; padding: 8px; background: var(--bg-main); border: 1px solid #555; color: #fff; text-align: center; border-radius: 4px; font-size: 1em; }
+        .calc-btn {
+            background: linear-gradient(90deg, var(--alloc-swing), var(--alloc-core));
+            color: #000; border: none; padding: 12px 40px; font-size: 1.1em;
+            border-radius: 25px; cursor: pointer; font-weight: bold; transition: transform 0.2s;
+            display: block; margin: 0 auto; width: 100%; max-width: 200px;
+        }
+        .calc-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 214, 10, 0.4); }
+        .result-shares { color: var(--highlight-yellow); font-weight: bold; font-family: 'Fira Code'; font-size: 1.1em; }
+        .result-value { color: var(--text-secondary); font-size: 0.85em; display: block; margin-top: 5px; }
+
+        .chart-container { position: relative; height: 300px; width: 100%; margin: 20px auto; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            .stock-card { padding: 20px; }
+            .scroll-hint { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>靈蛇週報 0314</h1>
+            <p>靈蛇投資研究中心 // 2026年03月14日</p>
+        </header>
+
+        <!-- 1. 績效回測區塊 -->
+        <section id="review">
+            <h2><span class="icon">📈</span>上期選股回測 (03/02~03/13)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本期最高(元)</th><th>停損參考點</th><th>是否觸及停損</th></tr></thead>
+                    <tbody>
+                        <tr><td>1560</td><td><a href="../stocks/1560.html" class="stock-link">中砂</a></td><td>495 - 510</td><td>506.0</td><td class="stop-loss">465.0</td><td><span class="negative-return">是 (嚴格停損)</span></td></tr>
+                        <tr><td>8028</td><td><a href="../stocks/8028.html" class="stock-link">昇陽半導體</a></td><td>182 - 186</td><td>189.0</td><td class="stop-loss">175.0</td><td><span class="negative-return">是 (嚴格停損)</span></td></tr>
+                        <tr><td>6282</td><td><a href="../stocks/6282.html" class="stock-link">康舒</a></td><td>50.5 - 52.0</td><td>51.7</td><td class="stop-loss">48.0</td><td><span class="negative-return">是 (嚴格停損)</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stock-card">
+                <h4>績效評語：系統風險降臨，嚴守紀律保命</h4>
+                <p>「停損是投資市場的保命符。」面對史詩級的宏觀利空（原油飆破百元、通膨預期死灰復燃），大盤出現無差別恐慌拋售。強勢股如中砂與昇陽半導體，雖然基本面優異，但高檔正乖離過大，成為法人提款首選；低檔轉機的康舒亦跌破長線支撐。</p>
+                <p>觸及停損即代表「原先設定的上漲慣性已被破壞」。這波回檔正是洗出浮額的最佳時機，本週我們將重新出發，鎖定具備「軋空題材」、「籌碼乾淨」與「低位階防禦」的標的。</p>
+            </div>
+        </section>
+
+        <!-- 2. 產業觀察區塊 -->
+        <section id="industry-focus">
+            <h2><span class="icon">🔍</span>盤勢觀察：戰火下的淬鍊，尋找避風港</h2>
+            <div class="stock-card">
+                <h3>盤勢重點：地緣政治黑天鵝與 AI 實體擴張</h3>
+                <p><strong>地緣政治與原油市場：</strong>中東戰火升溫，荷莫茲海峽受阻導致布蘭特原油一度衝破百元，引發全球股市劇烈震盪。但隨著美國部署護航與國際釋出戰備儲油，期貨市場油價呈「逆價差」，顯示交易員預期高油價無法長期維持，市場恐慌屬短期現象。</p>
+                <p><strong>AI 產業硬需求：</strong>美國四大 CSP 今年資本支出預估飆升至 6,500 億美元以上。台灣作為「AI 硬體大戰場」，在晶圓代工、先進封裝及 CPO 矽光子領域將全面受惠。尋找「春節加班股」（2 月營收逆勢年增 20% 以上）將是本季選股密碼。</p>
+                
+                <h3>本週熱門族群與資金流向</h3>
+                <ul>
+                    <li><b>高股息與金融防禦：</b> 在「AI 末日」報告與戰火陰霾下，八大官股與市場資金湧入具防禦性、低波動的高股息 ETF 與金融股。</li>
+                    <li><b>漲價概念分化：</b> 記憶體製造商受惠 HBM4 產能排擠，但模組廠面臨低價庫存消耗完畢的毛利壓縮風險，操作需汰弱留強。</li>
+                    <li><b>股東會行情：</b> 旺季來臨，具備高話題性紀念品的公司易受零股買盤推升，優先挑選獲利預估成長的企業。</li>
+                </ul>
+                <div class="chart-container">
+                    <canvas id="industryPieChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 本週精選個股清單 -->
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週靈蛇精選股 (可布局)</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場 (元)</th><th class="stop-loss">停損參考 (元)</th><th class="target-price">波段目標 (元)</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>2317</strong></td><td><strong><a href="../stocks/2317.html" class="stock-link">鴻海</a></strong></td><td>基本面支撐、長均線低接防禦</td><td>210.0 - 215.0</td><td class="stop-loss">205.0</td><td class="target-price">235.0 - 245.0</td></tr>
+                        <tr><td><strong>3583</strong></td><td><strong><a href="../stocks/3583.html" class="stock-link">辛耘</a></strong></td><td>營收雙增逆勢成長、外資鎖碼</td><td>365.0 - 380.0</td><td class="stop-loss">348.0</td><td class="target-price">415.0 - 425.0</td></tr>
+                        <tr><td><strong>4979</strong></td><td><strong><a href="../stocks/4979.html" class="stock-link">華星光</a></strong></td><td>多頭趨勢延續與軋空題材發酵</td><td>385.0 - 395.0</td><td class="stop-loss">372.0</td><td class="target-price">440.0 - 460.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. 資金配置戰略 (含計算機) -->
+        <section id="allocation">
+            <h2><span class="icon">💰</span>本期資金配置戰略與計算機</h2>
+            <div class="stock-card">
+                <p>本週大盤波動劇烈，建議採取 <strong>「4-3-3 啞鈴式防禦配置」</strong>，利用鴻海做為資產壓艙石，辛耘與華星光作為動能攻擊。</p>
+                
+                <div class="allocation-box">
+                    <div class="alloc-card core-style">
+                        <span class="alloc-title">🛡️ 核心防禦 (Core)</span>
+                        <span class="alloc-percent">40%</span>
+                        <span class="alloc-stock">2317 鴻海</span>
+                        <p style="font-size:0.9em; margin-top:10px; color:#aaa;">權值股護體，位階低。<br>具長線 AI 業績，抗跌性強。</p>
+                    </div>
+
+                    <div class="alloc-card swing-style">
+                        <span class="alloc-title">🚀 波段攻擊 (Swing)</span>
+                        <span class="alloc-percent">30%</span>
+                        <span class="alloc-stock">3583 辛耘</span>
+                        <p style="font-size:0.9em; margin-top:10px; color:#aaa;">籌碼最乾淨，外資認養。<br>CoWoS 業績實打實。</p>
+                    </div>
+
+                    <div class="alloc-card sat-style">
+                        <span class="alloc-title">⚡ 動能衛星 (Sat)</span>
+                        <span class="alloc-percent">30%</span>
+                        <span class="alloc-stock">4979 華星光</span>
+                        <p style="font-size:0.9em; margin-top:10px; color:#aaa;">融券強制回補軋空倒數。<br>波動大，嚴格設停損短作。</p>
+                    </div>
+                </div>
+
+                <!-- 🧮 股數計算機 -->
+                <div class="calc-container">
+                    <h3 style="text-align:center; color:#fff; margin-bottom:20px;">🧮 智能部位計算機</h3>
+                    
+                    <div class="calc-input-group">
+                        <label for="totalAmount">請輸入預計總投入金額 (NT$)</label>
+                        <input type="text" id="totalAmount" class="calc-input" placeholder="例如: 1000000" onkeyup="formatCurrency(this)">
+                    </div>
+
+                    <p class="scroll-hint">← 左右滑動查看完整表格 →</p>
+                    <div class="calc-table-wrapper">
+                        <table class="calc-table">
+                            <thead>
+                                <tr>
+                                    <th>股票名稱</th>
+                                    <th>配置權重</th>
+                                    <th>輸入成交價</th>
+                                    <th>建議買入</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="color:var(--alloc-core)">鴻海 (2317)</td>
+                                    <td>40%</td>
+                                    <td><input type="number" id="price_2317" class="price-input" value="214.5"></td>
+                                    <td><span id="result_2317" class="result-shares">-</span><span id="value_2317" class="result-value"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="color:var(--alloc-swing)">辛耘 (3583)</td>
+                                    <td>30%</td>
+                                    <td><input type="number" id="price_3583" class="price-input" value="372.5"></td>
+                                    <td><span id="result_3583" class="result-shares">-</span><span id="value_3583" class="result-value"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="color:var(--alloc-sat)">華星光 (4979)</td>
+                                    <td>30%</td>
+                                    <td><input type="number" id="price_4979" class="price-input" value="401.5"></td>
+                                    <td><span id="result_4979" class="result-shares">-</span><span id="value_4979" class="result-value"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button class="calc-btn" onclick="calculateShares()">開始試算</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 個股深度分析 -->
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析</h2>
+            
+            <div class="stock-card">
+                 <h3>【4979 <a href="../stocks/4979.html" class="stock-link">華星光</a>】矽光子長線護體，軋空行情倒數</h3>
+                 <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 2 月營收雖雙減，但近 12 個月累計營收仍年增 18.3%。預估 Q1 營收達 12 億元，矽光子 (CPO) 長線剛性需求依然是市場熱點。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 經歷主升段大漲後，近期在高檔劇烈震盪洗盤，3/13 重新站回短均線之上。當沖比例高達 70%，盤中波動風險大。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> <strong>融券最後回補日落在 3/20（倒數 5 個工作天）</strong>，空方籌碼面臨實質買回壓力，具潛在軋空動能。需留意投信近期連續獲利了結。</li>
+                    <li><span class="highlight-tag">[投資叮嚀]</span> 處於歷史相對高價區，屬於高波動度的強勢題材股。建議以「短波段防守操作」為主，嚴格遵守 372 元停損紀律。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                 <h3>【3583 <a href="../stocks/3583.html" class="stock-link">辛耘</a>】外資連續點火，CoWoS 設備純度最高</h3>
+                 <h4>飆股DNA評估</h4>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 2 月營收達 10.49 億元，無懼工作天數減少，逆勢繳出「年月雙增」佳績。作為台積電合格供應商，訂單能見度極高。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 3/13 收盤上漲 1.05%，成交量維持溫和擴量狀態。越過 400 元整數關卡後，將面臨前波 427.5 元的歷史套牢區震盪。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> <strong>外資連續 5 日買超</strong>，融資餘額維持低檔，散戶未大量上車，籌碼極度乾淨且集中於外資手中。</li>
+                    <li><span class="highlight-tag">[投資叮嚀]</span> 建議趁大盤震盪量縮時切入，若未來投信加入買超，上攻力道會更紮實；反之若外資買盤停滯，易陷入整理。</li>
+                 </ul>
+            </div>
+
+            <div class="stock-card">
+                <h3>【2317 <a href="../stocks/2317.html" class="stock-link">鴻海</a>】基本面護底，乖離收斂的價值浮現</h3>
+                <h4>飆股DNA評估</h4>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 2 月營收達 5,958.13 億元，年增 8.1%。AI 伺服器與消費性電子代工雙引擎維持穩健成長，本業獲利能力未被稀釋。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價自 265 元回落，目前於週線級別的長天期均線與前波平台（約 210-215 元）取得支撐，呈現「量縮震盪打底」階段。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 三大法人土洋對作且整體偏空，外資買賣反覆，尚未形成連續買超推升動能。需留意若外資持續提款的壓力。</li>
+                    <li><span class="highlight-tag">[投資叮嚀]</span> 股價已大幅修正前期過熱指標，來到相對有撐的技術面防守區。上方套牢賣壓重，預期走勢以震盪盤堅為主，適合建立核心防禦部位。</li>
+                 </ul>
+            </div>
+        </section>
+
+        <!-- 6. 靈蛇觀點總結 -->
+        <section id="macro-summary">
+            <h2><span class="icon">🐍</span>靈蛇觀點：在恐懼中貪婪，綁好安全繩</h2>
+            <div class="stock-card">
+                <p>過去一週的系統性下殺給了所有投資人一堂震撼教育。當宏觀黑天鵝降臨時，再好的基本面也會遭遇流動性拋售。但歷史經驗告訴我們，因非經濟因素（如戰爭）引發的暴跌，往往是財富重分配的最佳契機。</p>
+                <p>下週策略，請摒棄「閉眼買 AI」的慣性。資金將會極度挑剔，只流向<strong>「2月營收逆勢成長」</strong>、<strong>「有高息保護」</strong>以及<strong>「籌碼被外資鎖碼」</strong>的真金白銀股。</p>
+                <p>利用鴻海穩定軍心，利用辛耘與華星光攻擊獲利，並隨時設好停損。活下來，我們就能在未來的征途中，繼續獵殺超額報酬！</p>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+        </footer>
+    </div>
+
+<!-- Chart.js for Visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const pieCtx = document.getElementById('industryPieChart');
+    if (pieCtx) {
+        new Chart(pieCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['防禦型/高股息', 'AI 伺服器/權值', '先進封裝設備', '光通訊/CPO'],
+                datasets: [{
+                    label: '市場資金流向預估 (%)',
+                    data: [35, 30, 20, 15],
+                    backgroundColor: ['#778da9', '#ffd60a', '#00ffff', '#ff5c5c'],
+                    borderColor: '#1b263b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    title: { 
+                        display: true, 
+                        text: '本週主力資金避險流向預估 (%)', 
+                        color: '#e0e1dd', 
+                        font: { size: 16, family: 'Noto Sans TC', weight: '700' } 
+                    },
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#778da9', 
+                            font: { size: 12, family: 'Noto Sans TC' },
+                            padding: 20
+                        } 
+                    }
+                }
+            }
+        });
+    }
+
+    // --- 計算機功能邏輯 ---
+    function formatCurrency(input) {
+        let value = input.value.replace(/,/g, '');
+        if (!isNaN(value) && value !== '') {
+            input.value = parseInt(value).toLocaleString();
+        }
+    }
+
+    function calculateShares() {
+        const totalAmountStr = document.getElementById('totalAmount').value.replace(/,/g, '');
+        const totalAmount = parseInt(totalAmountStr);
+
+        if (isNaN(totalAmount) || totalAmount <= 0) {
+            alert("請輸入有效的總金額！");
+            return;
+        }
+
+        const stocks = [
+            { id: '2317', ratio: 0.40 },
+            { id: '3583', ratio: 0.30 },
+            { id: '4979', ratio: 0.30 }
+        ];
+
+        stocks.forEach(stock => {
+            const price = parseFloat(document.getElementById(`price_${stock.id}`).value);
+            if (!isNaN(price) && price > 0) {
+                const budget = totalAmount * stock.ratio;
+                // 計算股數 (無條件捨去至整數)
+                const shares = Math.floor(budget / price);
+                // 計算實際市值
+                const value = Math.round(shares * price);
+                
+                // 顯示結果
+                document.getElementById(`result_${stock.id}`).innerText = shares.toLocaleString() + " 股";
+                document.getElementById(`value_${stock.id}`).innerText = "約 " + (value / 10000).toFixed(1) + " 萬";
+            }
+        });
+    }
+</script>
+</body>
+</html>
