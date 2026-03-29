@@ -199,6 +199,10 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
+        /* 新增 ETF 專屬卡片頂部裝飾線 */
+        .etf-card-accent {
+            border-top: 3px solid var(--highlight-yellow);
+        }
         .hidden {
             display: none;
         }
@@ -237,6 +241,16 @@
             background-color: #2f81f7;
         }
 
+        /* ETF 專屬按鈕樣式 */
+        .btn-gold {
+            background-color: var(--highlight-yellow);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background-color: #e5c100;
+            box-shadow: 0 0 10px rgba(255, 214, 10, 0.4);
+        }
+        
         .toggle-container {
             text-align: center;
             margin-top: 25px;
@@ -660,6 +674,26 @@
             </div>
         </section>
 
+        <!-- 區塊 2: [全新] ETF 專區與資產配置 -->
+        <section class="etf-reports">
+            <h2 class="fade-in-on-scroll"><span class="icon">📊</span> ETF 專區與資產配置</h2>
+            <div class="research-grid">
+                <!-- 第一篇：最新的配置策略與計算機 -->
+                <article class="research-card etf-card-accent fade-in-on-scroll">
+                    <h3>【ETF 特輯】打造抗震黃金鐵三角 <span class="new-badge">Hot!</span></h3>
+                    <p>因應台股高檔震盪，靈蛇團隊精選 006208、00713、00891，為您建構兼具大盤成長、防禦現金流與產業爆發力的「4-3-3」配置策略。內含各檔 DNA 深度評比與智能計算機。</p>
+                    <a href="reports/etf-special-01.html" target="_blank" class="read-more btn-gold">計算我的被動收入 &rarr;</a>
+                </article>
+
+                <!-- 第二篇：將原本隱藏的「主動式 ETF 大對決」移到這裡曝光 -->
+                <article class="research-card fade-in-on-scroll">
+                    <h3>【專欄】主動式 ETF 大對決 <span class="etf-badge">評比</span></h3>
+                    <p>買被動不如買主動？一篇看懂 00981A、00982A、00988A 三檔熱門主動式 ETF 的差異與選擇策略。靈蛇週報為您整合市場觀點，釐清經理人的選股邏輯，做出更精準的決策。</p>
+                    <a href="articles/active-etf-review-20251008.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
+                </article>
+            </div>
+        </section>
+
         <section class="special-reports">
             <h2 class="fade-in-on-scroll"><span class="icon">🌟</span> 深度研究 & 公告</h2>
             <div class="research-grid" id="researchGrid">
@@ -700,11 +734,6 @@
                     <h3>【個股解析】矽科宏晟 (6725)</h3>
                     <p>解密半導體隱藏王牌！深度剖析這家營收獲利雙位數成長，卻缺乏法人關愛的公司，揭示其投資價值的矛盾與機會。</p>
                     <a href="articles/special-report-6725.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
-                </article>
-                <article class="research-card hidden fade-in-on-scroll">
-                    <h3>【特別專欄】主動式ETF大對決：00981A vs 00982A vs 00988A</h3>
-                    <p>一篇看懂三檔熱門主動式ETF的差異與選擇策略。靈蛇週報為您整合市場觀點，做出更精準的決策。</p>
-                    <a href="articles/active-etf-review-20251008.html" target="_blank" class="read-more">閱讀專欄文章 &rarr;</a>
                 </article>
                 <article class="research-card hidden fade-in-on-scroll">
                     <h3>【特別專欄】總監持股診斷：亞翔、光寶科、南俊國際</h3>
