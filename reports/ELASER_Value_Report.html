@@ -67,10 +67,14 @@
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
             margin-bottom: 2rem;
         }
+        .nav-btn { display: inline-block; padding: 8px 15px; background: var(--border-color); color: var(--text-primary); text-decoration: none; border-radius: 5px; margin-bottom: 20px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--accent-cyan); color: #000; 
     </style>
 </head>
 <body class="p-4 md:p-8">
     <div class="max-w-4xl mx-auto">
+        <!-- 就是這行：返回首頁按鈕 -->
+        <a href="/SnakeStock/index.html" class="nav-btn">&larr; 返回首頁</a>
         <!-- 頁首 -->
         <header class="text-center mb-10 border-b-2 border-cyan-400 pb-6 relative">
             <p class="font-code text-cyan-400 tracking-widest text-sm mb-2 uppercase">Snake Value Report // Series #006</p>
