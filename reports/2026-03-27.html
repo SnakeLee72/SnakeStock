@@ -158,10 +158,29 @@
             .stock-card { padding: 20px; }
             .scroll-hint { display: block; }
         }
+    .nav-btn { 
+    display: inline-block; 
+    padding: 8px 15px; 
+    background: var(--border-color); 
+    color: var(--text-primary); 
+    text-decoration: none; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+    transition: 0.3s; 
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.nav-btn:hover { 
+    background: var(--accent-blue); /* 如果是週報頁面，可以改成 var(--accent-cyan) */
+    color: #000; 
+}
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="container">
+    <!-- 就是這行：返回首頁按鈕 -->
+    <a href="/SnakeStock/index.html" class="nav-btn">&larr; 返回首頁</a>
         <header>
             <h1>靈蛇週報 0327</h1>
             <p>靈蛇投資研究中心 // 2026年03月27日</p>
