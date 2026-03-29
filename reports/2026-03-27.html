@@ -152,28 +152,13 @@
 
         .chart-container { position: relative; height: 350px; width: 100%; margin: 20px auto; }
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
-        
+        .nav-btn { display: inline-block; padding: 8px 15px; background: var(--border-color); color: var(--text-primary); text-decoration: none; border-radius: 5px; margin-bottom: 20px; transition: 0.3s; }
+        .nav-btn:hover { background: var(--accent-cyan); color: #000; }
         @media (max-width: 600px) {
             header h1 { font-size: 2em; }
             .stock-card { padding: 20px; }
             .scroll-hint { display: block; }
         }
-    .nav-btn { 
-    display: inline-block; 
-    padding: 8px 15px; 
-    background: var(--border-color); 
-    color: var(--text-primary); 
-    text-decoration: none; 
-    border-radius: 5px; 
-    margin-bottom: 20px; 
-    transition: 0.3s; 
-    font-weight: bold;
-    font-size: 0.9em;
-}
-.nav-btn:hover { 
-    background: var(--accent-blue); /* 如果是週報頁面，可以改成 var(--accent-cyan) */
-    color: #000; 
-}
     </style>
 </head>
 <body>
