@@ -144,12 +144,12 @@
             align-items: center;
         }
 
-        /* --- Animation Styles --- */
+        /* --- Animation Styles (修正延遲) --- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
-            }
+                transform: translateY(30px);
+            } /* 縮小位移量讓動畫更俐落 */
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -162,7 +162,8 @@
         }
 
         .fade-in-on-scroll.is-visible {
-            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            /* 統一使用 0.6s 的動畫時間，不再排隊等待 */
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
         .mission-statement {
@@ -837,13 +838,11 @@
             setupToggler('toggleArticles', 'researchGrid', '.research-card.hidden');
             setupToggler('toggleReports', 'reportListContainer', '.report-card.hidden');
 
-            // --- [升級] Logic for Staggered Fade-in Animation ---
+            // --- 解決動畫延遲問題 ---
+            // 直接觸發動畫，不再使用 dataset.index 計算延遲 (因為會被前面隱藏的文章墊高 index 導致延遲太久)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // 使用 dataset 來避免重複計算延遲
-                        let delay = (entry.target.dataset.index || 0) * 90;
-                        entry.target.style.animationDelay = `${delay}ms`;
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
@@ -854,9 +853,7 @@
             });
 
             const elementsToAnimate = document.querySelectorAll('.fade-in-on-scroll');
-            // 為每個元素分配一個索引以用於交錯動畫
-            elementsToAnimate.forEach((el, index) => {
-                el.dataset.index = index;
+            elementsToAnimate.forEach((el) => {
                 observer.observe(el);
             });
         });
