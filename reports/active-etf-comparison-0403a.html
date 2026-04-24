@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【ETF專欄】00403A vs 00981A：主動式雙雄對決 - 靈蛇週報</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --00403A-color: #ffd700;
+            --00981A-color: #58a6ff;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        .nav-btn { 
+            display: inline-block; padding: 8px 15px; background: var(--border-color); 
+            color: var(--text-primary); text-decoration: none; border-radius: 5px; 
+            margin-bottom: 30px; transition: 0.3s; font-weight: bold;
+        }
+        .nav-btn:hover { background: var(--accent-cyan); color: #000; }
+
+        header { border-bottom: 2px solid var(--accent-cyan); padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 { font-size: 2.2em; font-weight: 900; margin: 0; color: var(--highlight-yellow); }
+        .post-meta { color: var(--text-secondary); font-family: 'Fira Code', monospace; margin-top: 10px; }
+
+        .pro-tip {
+            background: rgba(0, 255, 255, 0.05); border-left: 4px solid var(--accent-cyan);
+            padding: 20px; margin: 30px 0; border-radius: 4px;
+        }
+
+        h2 { color: var(--accent-cyan); font-size: 1.6em; margin-top: 50px; border-left: 5px solid var(--accent-cyan); padding-left: 15px; }
+        
+        .comparison-table {
+            width: 100%; border-collapse: collapse; margin: 30px 0;
+            background: var(--bg-card); border-radius: 8px; overflow: hidden;
+        }
+        .comparison-table th { background: rgba(0,0,0,0.3); padding: 15px; text-align: center; border: 1px solid var(--border-color); }
+        .comparison-table td { padding: 15px; border: 1px solid var(--border-color); text-align: center; }
+        .table-label { text-align: left !important; color: var(--text-secondary); font-weight: bold; width: 25%; }
+
+        .vs-badge { background: #ff5c5c; color: white; padding: 2px 8px; border-radius: 4px; font-weight: 900; }
+
+        .stock-highlight {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;
+        }
+        .stock-box {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-color);
+            padding: 20px; border-radius: 8px;
+        }
+        .stock-box h4 { margin-top: 0; color: var(--highlight-yellow); }
+
+        footer { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="nav-btn">&larr; 返回首頁</a>
+        
+        <header>
+            <h1>主動式 ETF 雙雄對決：00403A vs 00981A 深度評比</h1>
+            <div class="post-meta">DATE: 2026.04.24 // CATEGORY: ETF STRATEGY // AUTHOR: SNAKE RESEARCH</div>
+        </header>
+
+        <p>台股主動式 ETF 市場正式進入戰國時代。繼統一投信首檔強棒 <strong>00981A（統一台股增長）</strong> 橫掃市場後，姊妹作 <strong>00403A（統一台股升級50）</strong> 正式接棒。許多讀者私訊詢問：這兩檔該怎麼挑？靈蛇團隊今天就帶大家拆解這兩台「超跑級」主動基金的內裝差異。</p>
+
+        <div class="pro-tip">
+            <strong>🐍 靈蛇語錄：</strong> 「被動型 ETF 像火車，固定軌道、準時但難以超速；主動型 ETF 像賽車，選股交給專業車手，目標就是超車（創造 Alpha 超額報酬）。」
+        </div>
+
+        <h2>一、 基本面規格對決</h2>
+        <div style="overflow-x: auto;">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th style="color:var(--00403A-color)">00403A 統一升級50</th>
+                        <th style="color:var(--00981A-color)">00981A 統一增長</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-label">投資主軸</td>
+                        <td><span style="color:var(--00403A-color)">市值再進化</span><br>汰弱留強、大型強勢股</td>
+                        <td><span style="color:var(--00981A-color)">成長與創新</span><br>中大型績優、創新技術</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label">選股範圍</td>
+                        <td>台股市值前 200 大<br>(聚焦前 50 大核心)</td>
+                        <td>台股市值前 300 大<br>(範圍更廣)</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label">配息頻率</td>
+                        <td>季配息 (1, 4, 7, 10月)</td>
+                        <td>季配息 (2, 5, 8, 11月)</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label">保管費</td>
+                        <td style="color:var(--color-green)">0.035% (極低)</td>
+                        <td>0.10% ~ 0.12%</td>
+                    </tr>
+                    <tr>
+                        <td class="table-label">經理人</td>
+                        <td>張哲瑋 (資歷17年)</td>
+                        <td>林世彬 (資歷20年以上)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>二、 00403A：解決 0050 「大而不強」的痛點</h2>
+        <p>傳統市值型 ETF（如 0050）有個硬傷：成分股只看市值，不看營收成長。當前 50 大企業中有部分公司陷入衰退時，被動指數仍必須持股。<strong>00403A</strong> 的策略就是：</p>
+        <ul>
+            <li><strong>核心基石</strong>：以市值前 50 大為底，確保穩定性。</li>
+            <li><strong>動能升級</strong>：若 50 大中有人「掉隊」，經理人會主動將資金移往市值 51-200 大中「動能最強」的黑馬（如奇鋐、川湖、旺矽等）。</li>
+            <li><strong>集中火力</strong>：第一大持股上限提高至 30%，讓權值股的噴發力最大化。</li>
+        </ul>
+
+        <h2>三、 00981A：追求極致成長的攻擊手</h2>
+        <p>相較於 00403A 帶有「進化版 0050」的味道，<strong>00981A</strong> 更像是一檔「全明星成長股基金」。它的選股不侷限於市值排名，更看重公司的<strong>獲利品質 (Quality)</strong> 與<strong>創新能力 (Innovation)</strong>。如果你希望配置中包含更多中型爆發股，00981A 是更好的選擇。</p>
+
+        <h2>四、 靈蛇戰略：如何打造「主動式月月配」？</h2>
+        <p>這兩檔 ETF 的配息月份剛好<strong>完全錯開</strong>！這為追求現金流的投資人提供了完美的組合契機：</p>
+        <div class="stock-highlight">
+            <div class="stock-box">
+                <h4>戰略配置 A (平衡型)</h4>
+                <p><strong>00403A (50%) + 00981A (50%)</strong></p>
+                <p>優點：涵蓋市值穩定與極致成長，且一年有 8 個月在領股息，大幅降低單月波動感。</p>
+            </div>
+            <div class="stock-box">
+                <h4>戰略配置 B (核心進攻型)</h4>
+                <p><strong>00403A (70%) + 00981A (30%)</strong></p>
+                <p>優點：以市值大型龍頭為重，適合追求長線超越大盤表現的投資人。</p>
+            </div>
+        </div>
+
+        <div class="pro-tip" style="border-color: var(--highlight-yellow);">
+            <strong>⚠️ 靈蛇提示：</strong> 雖然 00403A 保管費 0.035% 僅為 00981A 的三分之一左右，長期持有的內扣成本更優勢。但選主動式 ETF 的核心在於<strong>經理人的操盤功力</strong>。建議投資人先觀察 00403A 上市後的追蹤誤差與 Alpha 創造能力。
+        </div>
+
+        <footer>
+            <p>&copy; 2026 靈蛇週報 研究團隊謹製</p>
+            <p style="font-size: 0.8em;">投資一定有風險，基金投資有賺有賠，申購前請詳閱公開說明書。</p>
+        </footer>
+    </div>
+</body>
+</html>
