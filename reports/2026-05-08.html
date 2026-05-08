@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>靈蛇週報 0508 - 資金健康輪動，高檔震盪下的強勢突圍</title>
+    <meta name="description" content="靈蛇週報0508期。台股五萬點底層邏輯與巴菲特指標解析，本週精選聯詠(3034)、新盛力(4931)、神達(3706)。">
+    <meta name="keywords" content="靈蛇週報, 0508, 聯詠, 新盛力, 神達, 資金配置, AI, BBU, 價值重估">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        
+        :root {
+            --bg-main: #0d1b2a;
+            --bg-card: #1b263b;
+            --border-color: #415a77;
+            --text-primary: #e0e1dd;
+            --text-secondary: #778da9;
+            --accent-cyan: #00ffff;
+            --highlight-yellow: #ffd60a;
+            --color-red: #ff5c5c;
+            --color-green: #5cff5c;
+            
+            /* 資金配置專屬色 */
+            --alloc-core1: #ffd700;  /* 聯詠 */
+            --alloc-core2: #ff5c5c;  /* 新盛力 */
+            --alloc-defense: #00ffff; /* 神達 */
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fira Code', monospace;
+            background-color: var(--bg-main);
+            background-image: 
+                linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 900px; margin: 20px auto; padding: 15px; }
+
+        /* 返回首頁按鈕 */
+        .nav-btn { 
+            display: inline-block; 
+            padding: 8px 15px; 
+            background: var(--border-color); 
+            color: var(--text-primary); 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+            transition: 0.3s; 
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover { background: var(--accent-cyan); color: #000; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 40px; }
+        header h1 {
+            color: var(--highlight-yellow); font-size: 2.5em; font-weight: 900; margin: 0 0 10px 0;
+            text-shadow: 0 0 5px rgba(255, 214, 10, 0.5);
+        }
+        header p { color: var(--text-secondary); font-size: 1.1em; font-family: 'Fira Code', monospace; }
+
+        section { margin-bottom: 45px; }
+
+        h2 {
+            font-size: 1.6em; color: var(--accent-cyan); padding-bottom: 15px; margin-bottom: 25px;
+            display: flex; align-items: center; font-weight: 700; border-bottom: 1px solid var(--border-color);
+        }
+        h2 .icon { margin-right: 12px; font-size: 1.2em; }
+
+        .table-responsive {
+            overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border-color);
+            background-color: rgba(27, 38, 59, 0.8); border-radius: 4px;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        thead th { font-weight: 500; color: var(--text-secondary); font-size: 0.9em; background-color: rgba(0,0,0,0.2); }
+        td { font-weight: 500; }
+
+        .stock-link { color: var(--accent-cyan); text-decoration: none; border-bottom: 1px dotted var(--accent-cyan); transition: all 0.3s ease; }
+        .stock-link:hover { color: var(--highlight-yellow); border-bottom: 1px solid var(--highlight-yellow); }
+
+        .target-price { color: var(--color-red); font-weight: 700; }
+        .stop-loss { color: var(--color-green); font-weight: 700; }
+        .positive-return { color: var(--color-red); font-weight: 700; }
+        .negative-return { color: var(--color-green); font-weight: 700; }
+
+        .stock-card {
+            background-color: var(--bg-card); padding: 30px; margin-bottom: 25px;
+            border: 1px solid var(--border-color); position: relative; border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .stock-card h3 { font-size: 1.4em; font-weight: 700; margin-top: 0; color: var(--highlight-yellow); display: flex; align-items: center; margin-bottom: 10px; }
+        .stock-card h4 {
+            font-size: 1.1em; font-weight: 500; color: var(--text-secondary); margin-top: 0; margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stock-card ul { list-style-type: none; padding-left: 0; margin-top: 20px; }
+        .stock-card ul li { position: relative; padding-left: 25px; margin-bottom: 18px; font-size: 1.05em; }
+        .stock-card ul li::before { content: '>'; position: absolute; left: 0; top: 0px; color: var(--accent-cyan); font-weight: 700; }
+        
+        .fact-tag { background-color: rgba(0, 255, 255, 0.15); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .analysis-tag { background-color: rgba(92, 255, 92, 0.15); color: var(--color-green); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .chips-tag { background-color: rgba(241, 250, 140, 0.15); color: var(--highlight-yellow); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        .highlight-tag { background-color: rgba(255, 92, 92, 0.15); color: var(--color-red); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; margin-right: 8px; display: inline-block; vertical-align: text-bottom; margin-bottom: 4px;}
+        
+        /* 資金配置區塊 */
+        .allocation-box { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+        .alloc-card {
+            flex: 1; min-width: 150px; background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;
+            text-align: center; transition: transform 0.3s;
+        }
+        .alloc-card:hover { transform: translateY(-5px); border-color: var(--highlight-yellow); }
+        .alloc-title { font-size: 1.1em; margin-bottom: 10px; display: block; font-weight: bold; }
+        .alloc-percent { font-size: 2.2em; font-family: 'Fira Code'; font-weight: 700; display: block; margin-bottom: 10px; }
+        .alloc-stock { color: var(--text-primary); font-size: 1.2em; font-weight: bold; }
+        
+        .core1-style { color: var(--alloc-core1); border-top: 3px solid var(--alloc-core1); }
+        .core2-style { color: var(--alloc-core2); border-top: 3px solid var(--alloc-core2); }
+        .defense-style { color: var(--alloc-defense); border-top: 3px solid var(--alloc-defense); }
+        
+        /* --- 計算機樣式 --- */
+        .calc-container {
+            background-color: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 25px; margin-top: 30px;
+        }
+        .calc-input-group { margin-bottom: 20px; text-align: center; }
+        .calc-input-group label { display: block; margin-bottom: 10px; font-size: 1.1em; color: var(--accent-cyan); font-weight: bold; }
+        .calc-input {
+            width: 100%; max-width: 300px; padding: 12px 15px; font-size: 1.2em;
+            background-color: var(--bg-main); border: 1px solid var(--border-color);
+            color: var(--text-primary); border-radius: 5px; text-align: center; box-sizing: border-box;
+        }
+        .calc-input:focus { outline: none; border-color: var(--highlight-yellow); }
+        
+        .calc-table-wrapper {
+            overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px;
+            border: 1px solid var(--border-color); border-radius: 8px;
+        }
+        .calc-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        .calc-table th { color: var(--text-secondary); padding: 12px; font-size: 0.9em; border-bottom: 1px solid var(--border-color); white-space: nowrap; background-color: rgba(0,0,0,0.2); }
+        .calc-table td { padding: 15px 12px; text-align: center; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        
+        .price-input { width: 90px; padding: 8px; background: var(--bg-main); border: 1px solid #555; color: #fff; text-align: center; border-radius: 4px; font-size: 1em; }
+        .calc-btn {
+            background: linear-gradient(90deg, #ff5c5c, #ffd700);
+            color: #000; border: none; padding: 12px 40px; font-size: 1.1em;
+            border-radius: 25px; cursor: pointer; font-weight: bold; transition: transform 0.2s;
+            display: block; margin: 0 auto; width: 100%; max-width: 200px;
+        }
+        .calc-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 214, 10, 0.4); }
+        .result-shares { color: var(--highlight-yellow); font-weight: bold; font-family: 'Fira Code'; font-size: 1.1em; }
+        .result-value { color: var(--text-secondary); font-size: 0.85em; display: block; margin-top: 5px; }
+
+        .chart-container { position: relative; height: 350px; width: 100%; margin: 20px auto; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; }
+        
+        blockquote { border-left: 4px solid var(--accent-cyan); background: rgba(0, 255, 255, 0.05); margin: 0; padding: 20px; border-radius: 4px; font-size: 1.1em; line-height: 1.8; }
+        
+        @media (max-width: 600px) { header h1 { font-size: 2em; } .stock-card { padding: 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="nav-btn">&larr; 返回首頁</a>
+
+        <header>
+            <h1>靈蛇週報 0508</h1>
+            <p>靈蛇投資研究中心 // 2026年05月08日</p>
+        </header>
+
+        <!-- 1. 績效回測區塊 -->
+        <section id="review">
+            <h2><span class="icon">📉</span>上期選股回測摘要 (04/27~05/08)</h2>
+            <div class="stock-card" style="padding-bottom: 10px;">
+                <p>上週我們強調「大底突破」與「籌碼乾淨」的防禦反擊策略。在台股持續高檔強勢輪動的環境下，我們精準捕捉到了法人鎖碼發動的強勢波段。三檔精選個股皆未觸及停損，其中臻鼎-KY 更是拉出超過兩成半的驚人波段漲幅。</p>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead><tr><th>股票代號</th><th>名稱</th><th>進場區間(元)</th><th>本期最高(元)</th><th>停損參考點</th><th>是否觸及停損</th><th>績效評估</th></tr></thead>
+                    <tbody>
+                        <tr><td>4958</td><td><a href="../stocks/4958.html" class="stock-link">臻鼎-KY</a></td><td>340 - 350</td><td>432.5</td><td class="stop-loss">332.5</td><td>否</td><td><span class="positive-return">強勢噴發 (+25.4%)</span></td></tr>
+                        <tr><td>3711</td><td><a href="../stocks/3711.html" class="stock-link">日月光投控</a></td><td>480 - 490</td><td>540.0</td><td class="stop-loss">460.0</td><td>否</td><td><span class="positive-return">穩健達標 (+11.3%)</span></td></tr>
+                        <tr><td>3376</td><td><a href="../stocks/3376.html" class="stock-link">新日興</a></td><td>205 - 213</td><td>215.0</td><td class="stop-loss">190.0</td><td>否</td><td><span class="positive-return">橫盤整理 (+2.9%)</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stock-card">
+                <h4>績效評語：精準切入，強勢收成</h4>
+                <p>臻鼎-KY 以完美的「大底突破」姿態，強勢噴發超過 25%；日月光投控也如期站上 500 元並直達 540 元目標價；新日興則受限於上方套牢賣壓，目前仍處於健康的橫盤打底階段。本週我們將資金動能轉向「營收落底回溫的設計龍頭」與「AI 備援電池爆發黑馬」。</p>
+            </div>
+        </section>
+
+        <!-- 2. 本週精選個股清單 -->
+        <section id="selections">
+            <h2><span class="icon">🎯</span>下週精選股：帶量突破與營收爆發</h2>
+            <div class="table-responsive">
+                <table>
+                     <thead><tr><th>股票代號</th><th>名稱</th><th>選股策略</th><th>建議進場 (元)</th><th class="stop-loss">停損參考 (元)</th><th class="target-price">波段目標 (元)</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>3034</strong></td><td><strong><a href="../stocks/3034.html" class="stock-link">聯詠</a></strong></td><td>面板驅動IC龍頭，帶量突破</td><td>480.0 - 495.0</td><td class="stop-loss">455.0</td><td class="target-price">540.0 - 560.0</td></tr>
+                        <tr><td><strong>4931</strong></td><td><strong><a href="../stocks/4931.html" class="stock-link">新盛力</a></strong></td><td>BBU備援電池，營收倍增</td><td>164.0 - 168.0</td><td class="stop-loss">154.0</td><td class="target-price">185.0 - 195.0</td></tr>
+                        <tr><td><strong>3706</strong></td><td><strong><a href="../stocks/3706.html" class="stock-link">神達</a></strong></td><td>AI伺服器代工，外資鎖碼</td><td>83.0 - 85.0</td><td class="stop-loss">81.0</td><td class="target-price">95.0 - 100.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. 個股深度分析與雷達圖 -->
+        <section id="analysis">
+            <h2><span class="icon">🔬</span>本週精選股深度分析與 DNA 評比</h2>
+            
+            <div class="stock-card mb-8">
+                <h3 style="color: var(--text-primary); text-align: center; margin-bottom: 5px; justify-content: center;">🧬 選股 DNA 綜合評比 (雷達圖)</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9em; text-align: center; margin-bottom: 20px;">本週專注於「技術面強勢表態」與「實質營收成長」的高勝率標的。</p>
+                <div class="chart-container" style="height: 350px;">
+                    <canvas id="dnaRadarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Stock 1: 聯詠 -->
+            <div class="stock-card">
+                 <h3>一、 【3034 <a href="../stocks/3034.html" class="stock-link">聯詠</a>】面板驅動IC龍頭，帶量突破</h3>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 4月營收達92.25億元，繳出年月雙增（MoM +8.9%，YoY +1.1%）且創下近一年多來新高，顯示面板鏈庫存去化已告一段落，終端迎來實質拉貨回補需求。第一季毛利率高達39.1%，護城河極深。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價以跳空帶量長紅K之姿，強勢突破近半年的大區間整理平台（400-460元），均線瞬間扭轉為標準的多頭發散排列，為教科書級別的突破型態。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資近期轉為連續買超，投信同步共襄盛舉；主力買超分點火力集中，加上融資使用率極低（0.7%），整體籌碼結構乾淨且安定。</li>
+                    <li><span class="highlight-tag">[分析師點評]</span> 盤中迅速亮燈鎖死漲停（498.0元），展現極具統治力的追買意願。考量短線乖離率已達25%，不建議開盤市價盲目追高；可待盤中獲利了結賣壓出籠、股價震盪回測漲停K棒上緣或5日線附近時，再行分批承接。</li>
+                 </ul>
+                 <div style="display: flex; gap: 15px; margin-top: 15px;">
+                     <span style="color: var(--text-secondary); font-size: 0.9em;">基本面：★★★★☆</span>
+                     <span style="color: var(--text-secondary); font-size: 0.9em;">技術面：★★★★★</span>
+                     <span style="color: var(--text-secondary); font-size: 0.9em;">爆發力：★★★★★</span>
+                 </div>
+            </div>
+
+            <!-- Stock 2: 新盛力 -->
+            <div class="stock-card">
+                 <h3>二、 【4931 <a href="../stocks/4931.html" class="stock-link">新盛力</a>】BBU備援電池，營收倍增</h3>
+                  <ul>
+                    <li><span class="fact-tag">[基本面]</span> 4月營收達3.03億，繳出驚人的年增率（YoY +97.4%），Q1單季EPS 1.35元且毛利率高達26.3%，明確受惠於AI資料中心建置與BBU（備援電池模組）需求大增，基本面展現實質爆發力。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價前波創高至179.0元後回測，近期於季線與多空線（146.7）上方獲得強力支撐，帶量拉出一根帶有下影線的紅K（收170.0），短均線重新翻揚，多頭攻擊態勢成型。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 外資與自營商近期開始轉賣為買，主力分點進駐；但投信目前零持股，且當沖比例偏高（57%），籌碼面短線較為浮動。</li>
+                    <li><span class="highlight-tag">[分析師點評]</span> 基本面強勁非單純作夢題材。但因當沖比例過半，盤中震盪洗盤機率大。建議待股價量縮回測5日線或紅K中值附近分批佈局。若帶量跌破 154.0 元防守線，應嚴格執行停損。</li>
+                 </ul>
+                 <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">基本面：★★★★★</span>
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">技術面：★★★★☆</span>
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">爆發力：★★★★☆</span>
+                </div>
+            </div>
+
+            <!-- Stock 3: 神達 -->
+            <div class="stock-card">
+                <h3>三、 【3706 <a href="../stocks/3706.html" class="stock-link">神達</a>】AI伺服器代工，外資鎖碼</h3>
+                 <ul>
+                    <li><span class="fact-tag">[基本面]</span> 4月營收116.33億，維持高檔水位（YoY +31.9%），Q1財報表現亮眼（EPS 0.98）。雲端運算產品（佔比近9成）強勁的拉貨動能為股價提供堅實支撐。</li>
+                    <li><span class="analysis-tag">[技術面]</span> 股價於5/6帶量突破盤整區後，近兩日創高（88.7元）遇壓拉回，日K連收黑K，短線進入高檔震盪消化賣壓階段，但整體仍穩守在多空線上方的多頭格局。</li>
+                    <li><span class="chips-tag">[籌碼面]</span> 近期走勢由外資主導（長天期主要買超為高盛、大摩等），籌碼集中在長線法人手中，融資並無失控跡象。但投信法人目前幾乎零持股。</li>
+                    <li><span class="highlight-tag">[分析師點評]</span> 屬於台股中少數營收成長率能完美跟上AI題材的實質受惠股。日K連黑顯示短壓沉重，切忌猜底承接，可耐心等待量縮回測下方短期均線支撐區，確認止跌企穩後再行分批佈局。</li>
+                 </ul>
+                 <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">基本面：★★★★☆</span>
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">籌碼面：★★★★☆</span>
+                    <span style="color: var(--text-secondary); font-size: 0.9em;">防禦力：★★★★☆</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 資金配置計算機 -->
+        <section id="allocation">
+            <h2><span class="icon">💰</span>智能資金配置計算機</h2>
+            <div class="stock-card">
+                <p>因應大盤高檔震盪，系統將為您計算出本週三檔精選股的最佳配置權重：<strong>聯詠 (35%)、新盛力 (30%)、神達 (35%)</strong>。請輸入總資金進行實戰試算：</p>
+                
+                <div class="allocation-box">
+                    <div class="alloc-card core1-style">
+                        <span class="alloc-stock">3034 聯詠</span>
+                        <span class="alloc-percent">35%</span>
+                        <span class="alloc-title">核心動能</span>
+                    </div>
+                    <div class="alloc-card core2-style">
+                        <span class="alloc-stock">4931 新盛力</span>
+                        <span class="alloc-percent">30%</span>
+                        <span class="alloc-title">爆發黑馬</span>
+                    </div>
+                    <div class="alloc-card defense-style">
+                        <span class="alloc-stock">3706 神達</span>
+                        <span class="alloc-percent">35%</span>
+                        <span class="alloc-title">穩健代工</span>
+                    </div>
+                </div>
+
+                <div class="calc-container">
+                    <div class="calc-input-group">
+                        <label for="totalAmount">預計總投資金額 (NT$)</label>
+                        <input type="text" id="totalAmount" class="calc-input" value="1,000,000" onkeyup="formatAndCalculate(this)">
+                    </div>
+
+                    <div class="calc-table-wrapper">
+                        <table class="calc-table">
+                            <thead>
+                                <tr>
+                                    <th>股票名稱</th>
+                                    <th>配置權重</th>
+                                    <th>輸入成交價</th>
+                                    <th>建議買入股數</th>
+                                    <th>換算張數</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="color:var(--alloc-core1); font-weight:bold;">聯詠 (3034)</td>
+                                    <td>35%</td>
+                                    <td><input type="number" id="price_3034" class="price-input" value="488.0" step="1" onchange="calculateShares()"></td>
+                                    <td><span id="shares_3034" class="result-shares">-</span></td>
+                                    <td><span id="lots_3034" style="color:var(--text-primary);">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="color:var(--alloc-core2); font-weight:bold;">新盛力 (4931)</td>
+                                    <td>30%</td>
+                                    <td><input type="number" id="price_4931" class="price-input" value="166.0" step="0.5" onchange="calculateShares()"></td>
+                                    <td><span id="shares_4931" class="result-shares">-</span></td>
+                                    <td><span id="lots_4931" style="color:var(--text-primary);">-</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="color:var(--alloc-defense); font-weight:bold;">神達 (3706)</td>
+                                    <td>35%</td>
+                                    <td><input type="number" id="price_3706" class="price-input" value="84.0" step="0.5" onchange="calculateShares()"></td>
+                                    <td><span id="shares_3706" class="result-shares">-</span></td>
+                                    <td><span id="lots_3706" style="color:var(--text-primary);">-</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 盤勢觀察 -->
+        <section id="macro-focus">
+            <h2><span class="icon">🌍</span>盤勢觀察與焦點題材</h2>
+            
+            <div class="stock-card">
+                <h4 style="color:var(--accent-cyan); font-size:1.2em;">1. 台股上看 5 萬點的底層邏輯</h4>
+                <p>法人評估台股並未見頂，核心關鍵在於台積電。若台積電今年 EPS 達 100 元，給予 25 倍本益比（即 2500 元），大盤可達 43,000 點；若給予 30 倍本益比（即 3000 元），則台股直指 5 萬點。市場資金正處於財富重分配階段。</p>
+            </div>
+
+            <div class="stock-card">
+                <h4 style="color:var(--accent-cyan); font-size:1.2em;">2. 破除「巴菲特指標」泡沬化疑慮</h4>
+                <p>針對外媒引用巴菲特指標（市值/GDP > 200%）指稱台股「玩火」，分析師指出此指標未能與時俱進。當前台股與美股的飆漲是由「AI 基礎建設」剛性需求帶動，而非傳統消費電子的景氣循環。企業實質盈餘的爆發足以支撐目前的高估值，長多格局未變。</p>
+            </div>
+
+            <div class="stock-card">
+                <h4 style="color:var(--accent-cyan); font-size:1.2em;">3. 資金板塊健康輪動（高位階 vs 低基期）</h4>
+                <p>市場資金並未撤出，而是從短線過熱、漲幅過大的標的（如部分散熱、載板）獲利了結，轉入低基期、具漲價與升級題材的族群（如被動元件、矽晶圓、部分驅動 IC）。此輪動有助於大盤走得更長遠。</p>
+            </div>
+
+            <div class="stock-card">
+                <h4 style="color:var(--accent-cyan); font-size:1.2em;">4. ODM 代工廠的估值重塑（Re-rating）</h4>
+                <p>以緯穎為首的組裝代工廠，其營運模式正轉變為由 CSP 大廠「代採購」高價記憶體等缺料零件。此模式使代工廠不需承擔墊款與原料漲價風險，將促使「毛利率大幅飆升」。外資與市場將開始給予 ODM 廠更高的本益比評價。</p>
+            </div>
+            
+            <div class="stock-card">
+                <h4 style="color:var(--accent-cyan); font-size:1.2em;">5. 股債資產配置建議</h4>
+                <p>在台股逼近 42,000 點的高波動階段，建議將部分獲利資金轉入「短天期、非投資等級債券 ETF」（如 0098B，年化配息率達 9.2%）。其受利率波動影響小，既可做為高息的資金避風港，亦可保留未來股市遇急跌時「進可攻、退可守」的彈性銀彈。</p>
+            </div>
+        </section>
+
+        <!-- 6. 投資結語 -->
+        <section id="conclusion">
+            <h2><span class="icon">✍️</span>投資結語與策略建議</h2>
+            <blockquote>
+                <h3 style="color:var(--accent-cyan); margin-top:0;">【靈蛇觀點】</h3>
+                <p>本週台股持續在歷史高檔爆量震盪。雖然大盤亮起 40 分的紅燈，市場情緒亢奮，但從資金流向觀察，主力資金並未盲目追高，而是聰明地轉向「低基期、營收落底回溫」的族群進行健康輪動。這正是多頭市場能走得長遠的重要特徵。</p>
+                <p>在操作策略上，現階段的最高指導原則是：「寧可錯過，不可做錯。買跌不買漲。」面對強勢表態的標的（如聯詠），我們寧願等待盤中獲利了結賣壓出籠時的拉回承接，也絕不在開盤時盲目追價。同時，高波動的投機題材（如新盛力）必須嚴格設定停損紀律。</p>
+                <p style="color: var(--highlight-yellow); font-weight: bold;">靈蛇戰略總結：大盤位階已高，資金輪動極快。切勿在一檔股票噴出後才急於上車。請善用我們本週提供的「資金配置計算機」，確保單一個股不超重，並考慮將部分資金停泊於高息債券 ETF，為自己在狂熱的市場中，留下一道堅固的防波堤。</p>
+            </blockquote>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 靈蛇研究團隊謹製 | 投資一定有風險，申購前請詳閱公開說明書</p>
+        </footer>
+    </div>
+
+<!-- Chart.js for Radar Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const radarCtx = document.getElementById('dnaRadarChart');
+        if (radarCtx) {
+            new Chart(radarCtx.getContext('2d'), {
+                type: 'radar',
+                data: {
+                    labels: ['基本面 (Fund)', '技術面 (Tech)', '籌碼面 (Chips)', '爆發力 (Momentum)', '防禦力 (Defense)'],
+                    datasets: [
+                        {
+                            label: '聯詠 (3034)',
+                            data: [4, 5, 4, 5, 4],
+                            backgroundColor: 'rgba(255, 215, 0, 0.25)', 
+                            borderColor: '#ffd700',
+                            pointBackgroundColor: '#ffd700',
+                            borderWidth: 2
+                        },
+                        {
+                            label: '新盛力 (4931)',
+                            // 微調過度邊緣以呈現飽滿多邊形
+                            data: [5, 4, 4, 4, 3],
+                            backgroundColor: 'rgba(255, 92, 92, 0.35)', 
+                            borderColor: '#ff5c5c',
+                            pointBackgroundColor: '#ff5c5c',
+                            borderWidth: 2
+                        },
+                        {
+                            label: '神達 (3706)',
+                            // 微調過度邊緣以呈現飽滿多邊形
+                            data: [4, 4, 5, 4, 4], 
+                            backgroundColor: 'rgba(0, 255, 255, 0.30)', 
+                            borderColor: '#00ffff',
+                            pointBackgroundColor: '#00ffff',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            pointLabels: { color: '#e0e1dd', font: { size: 13, family: 'Noto Sans TC' } },
+                            ticks: { display: false, min: 0, max: 5 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#778da9', font: { family: 'Noto Sans TC', size: 14 } } }
+                    }
+                }
+            });
+        }
+        
+        calculateShares();
+    });
+
+    function formatAndCalculate(input) {
+        let value = input.value.replace(/,/g, '').replace(/[^\d]/g, '');
+        if (value !== '') {
+            input.value = parseInt(value).toLocaleString();
+        }
+        calculateShares();
+    }
+
+    function calculateShares() {
+        const totalInput = document.getElementById('totalAmount');
+        if(!totalInput) return;
+        
+        const totalAmountStr = totalInput.value.replace(/,/g, '');
+        const totalAmount = parseInt(totalAmountStr);
+
+        if (isNaN(totalAmount) || totalAmount <= 0) {
+            ['3034', '4931', '3706'].forEach(id => {
+                document.getElementById(`shares_${id}`).innerText = "-";
+                document.getElementById(`lots_${id}`).innerText = "-";
+            });
+            return;
+        }
+
+        const config = [
+            { id: '3034', weight: 0.35 },
+            { id: '4931', weight: 0.30 },
+            { id: '3706', weight: 0.35 }
+        ];
+
+        config.forEach(stock => {
+            const priceEl = document.getElementById(`price_${stock.id}`);
+            const sharesEl = document.getElementById(`shares_${stock.id}`);
+            const lotsEl = document.getElementById(`lots_${stock.id}`);
+            
+            if (priceEl && sharesEl && lotsEl) {
+                const price = parseFloat(priceEl.value);
+                if (!isNaN(price) && price > 0) {
+                    const budget = totalAmount * stock.weight;
+                    const shares = Math.floor(budget / price);
+                    const lots = (shares / 1000).toFixed(2);
+                    
+                    sharesEl.innerText = shares.toLocaleString();
+                    lotsEl.innerText = lots + " 張";
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
