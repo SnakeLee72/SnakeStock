@@ -78,7 +78,44 @@
         .action-margin { background: rgba(255, 214, 10, 0.05); border-color: var(--highlight-yellow); }
         .action-card h3 { margin-top: 0; display: flex; align-items: center; }
 
-        footer { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
+        /* 社群分享區塊樣式 */
+        .share-container {
+            margin-top: 50px; padding-top: 20px; text-align: center;
+            border-top: 1px dashed var(--border-color);
+        }
+        .share-title { color: var(--text-secondary); font-size: 0.9em; margin-bottom: 15px; }
+        .share-buttons {
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+        }
+        .share-btn {
+            display: flex; align-items: center; justify-content: center;
+            padding: 10px 20px; border-radius: 30px; text-decoration: none;
+            color: #fff; font-weight: bold; font-size: 0.9em; transition: 0.3s;
+            border: none; cursor: pointer;
+        }
+        .share-btn svg { width: 18px; height: 18px; margin-right: 8px; fill: currentColor; }
+        .share-line { background-color: #00B900; }
+        .share-line:hover { background-color: #009900; transform: translateY(-3px); }
+        .share-fb { background-color: #1877F2; }
+        .share-fb:hover { background-color: #166FE5; transform: translateY(-3px); }
+        .share-copy { background-color: var(--border-color); color: var(--text-primary); }
+        .share-copy:hover { background-color: var(--accent-cyan); color: #000; transform: translateY(-3px); }
+
+        /* 複製成功的提示小氣球 */
+        #toast {
+            visibility: hidden; min-width: 200px; margin-left: -100px;
+            background-color: var(--highlight-yellow); color: #000; text-align: center;
+            border-radius: 5px; padding: 10px; position: fixed; z-index: 1;
+            left: 50%; bottom: 30px; font-weight: bold;
+        }
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        footer { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
         
         @media (max-width: 600px) {
             .action-grid { grid-template-columns: 1fr; }
@@ -164,10 +201,69 @@
             </ol>
         </div>
 
+        <!-- 社群分享區塊 -->
+        <div class="share-container">
+            <div class="share-title">分享這份定心丸給正在焦慮的股友：</div>
+            <div class="share-buttons">
+                <a href="#" id="share-line" class="share-btn share-line">
+                    <svg viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 3.906 8.878 9.243 9.61.353.073.831.226.953.513.111.261.072.671.034.939-.034.238-.22.955-.268 1.139-.06.223-.284 1.189.96 0 .762-.727 4.11-3.924 5.961-5.885 4.354-2.915 7.117-6.289 7.117-6.316zm-15.011 2.378h-2.115v-4.148c0-.263-.213-.476-.476-.476-.263 0-.476.213-.476.476v4.624c0 .263.213.476.476.476h2.591c.263 0 .476-.213.476-.476 0-.263-.213-.476-.476-.476zm2.846-.476c0 .263-.213.476-.476.476-.263 0-.476-.213-.476-.476v-4.148c0-.263.213-.476.476-.476.263 0 .476.213.476.476v4.148zm4.721-3.672v3.672c0 .263-.213.476-.476.476-.118 0-.225-.043-.31-.114l-2.679-3.235v2.873c0 .263-.213.476-.476.476-.263 0-.476-.213-.476-.476v-4.148c0-.263.213-.476.476-.476.118 0 .225.043.31.114l2.679 3.235v-2.873c0-.263.213-.476.476-.476.263 0 .476.213.476.476h.001zm3.87 0v1.07h-1.92v.871h1.92c.263 0 .476.213.476.476 0 .263-.213.476-.476.476h-1.92v.871h1.92c.263 0 .476.213.476.476 0 .263-.213.476-.476.476h-2.396c-.263 0-.476-.213-.476-.476v-4.148c0-.263.213-.476.476-.476h2.396c.263 0 .476.213.476.476 0 .263-.213.476-.476.476z"/></svg>
+                    LINE
+                </a>
+                <a href="#" id="share-fb" class="share-btn share-fb">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </a>
+                <button id="share-copy" class="share-btn share-copy">
+                    <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                    複製連結
+                </button>
+            </div>
+        </div>
+
+        <!-- 複製成功提示 -->
+        <div id="toast">✅ 已複製連結至剪貼簿！</div>
+
         <footer>
             <p>&copy; 2026 靈蛇週報 研究團隊謹製</p>
             <p style="font-size: 0.8em;">投資一定有風險，恐慌性崩跌中請嚴格衡量自身風險承受度。本特刊僅供參考，不構成投資建議。</p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 取得當前網址
+            const currentUrl = encodeURIComponent(window.location.href);
+            const currentTitle = encodeURIComponent(document.title);
+
+            // LINE 分享按鈕
+            document.getElementById('share-line').href = `https://social-plugins.line.me/lineit/share?url=${currentUrl}&text=${currentTitle}`;
+
+            // Facebook 分享按鈕
+            document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+
+            // 複製連結按鈕
+            document.getElementById('share-copy').addEventListener('click', function() {
+                // 使用 document.execCommand('copy') 以確保相容性
+                const textArea = document.createElement("textarea");
+                textArea.value = window.location.href;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast();
+                } catch (err) {
+                    console.error('複製失敗', err);
+                }
+                document.body.removeChild(textArea);
+            });
+
+            // 顯示提示氣球的函數
+            function showToast() {
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            }
+        });
+    </script>
 </body>
 </html>
