@@ -1,72 +1,137 @@
-<header>
-    <h1>個股追蹤：2383 台光電</h1>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個股追蹤：2383 台光電 - 靈蛇週報</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
+:root {
+    --bg-dark-ai:#0a0a1a;
+    --bg-card:#101024;
+    --border-color:#2a2a4a;
+    --text-primary:#e6e6fa;
+    --text-secondary:#a0a0c0;
+    --accent-blue:#00d1ff;
+    --color-red:#ff5555;
+    --color-green:#50fa7b;
+    --color-yellow:#f1fa8c;
+}
+
+body {
+    font-family:'Noto Sans TC',sans-serif;
+    background:var(--bg-dark-ai);
+    color:var(--text-primary);
+}
+
+.container{max-width:900px;margin:auto;padding:15px;}
+.nav-btn{background:#2a2a4a;padding:8px 15px;text-decoration:none;color:#fff;}
+.stock-card{background:#101024;padding:25px;margin:20px 0;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="/SnakeStock/index.html" class="nav-btn">← 返回首頁</a>
+
+<header style="text-align:center;">
+<h1 style="color:#ffd60a;">個股追蹤：2383 台光電</h1>
 </header>
 
-<section id="rating">
-    <h2>靈蛇評等摘要 (2026-06-18 更新)</h2>
-    <div class="kpi-grid">
-        <div class="kpi-card">
-            <div class="value" style="color:var(--color-yellow);">趨勢王者</div>
-            <div class="label">評等</div>
-        </div>
-        <div class="kpi-card">
-            <div class="value">CCL / AI材料</div>
-            <div class="label">核心題材</div>
-        </div>
-        <div class="kpi-card">
-            <div class="value" style="color:var(--color-red);">高檔震盪</div>
-            <div class="label">現況</div>
-        </div>
-    </div>
+<!-- K線 -->
+<section>
+<h2>即時股價K線圖</h2>
+<div class="stock-card" style="text-align:center;">
+<a class="nav-btn" href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=2383" target="_blank">
+查看K線
+</a>
+</div>
 </section>
 
-<section id="profile">
-    <h2>核心業務分析</h2>
-    <div class="stock-card">
-        <p>
-            台光電為高階 CCL 龍頭廠，
-            受惠 AI Server、高速交換器與高階材料需求。
-        </p>
+<!-- KPI -->
+<section>
+<h2>靈蛇評等摘要 (2026-06-18 更新)</h2>
 
-        <p>
-            <strong>[2026-06-18 最新診斷]</strong><br>
-            收盤價 5600，
+<div style="display:flex;gap:20px;flex-wrap:wrap;">
 
-            <br><br>
-            ▶ 積極：5650 以上<br>
-            ▶ 穩健：5250 - 5350<br>
-            ▶ 保守：5000<br>
-            ▶ 停損：4900<br>
-            ▶ 目標：6000 → 6500
+<div class="stock-card">
+✅ 趨勢王者
+</div>
 
-            <br><br>
-            <strong>靈蛇觀點：</strong>
-            趨勢最強，但也是風險最高的高價股，
-            只適合分批布局，不適合追高。
-        </p>
-    </div>
+<div class="stock-card">
+✅ CCL / AI材料
+</div>
+
+<div class="stock-card">
+✅ 高檔震盪
+</div>
+
+</div>
+
 </section>
 
-<section id="history">
-    <h2>完整推薦歷史</h2>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th>推薦日期</th>
-                    <th>報告連結</th>
-                    <th>建議進場區間</th>
-                    <th>績效</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2026-06-18</td>
-                    <td><a href="/SnakeStock/reports/2026-06-18.html" target="_blank" class="report-link">0618報告</a></td>
-                    <td>5250 - 5350 / 突破5650</td>
-                    <td class="positive-return">進行中</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<!-- 分析 -->
+<section>
+<h2>核心業務分析</h2>
+
+<div class="stock-card">
+
+<p>
+台光電為高階 CCL 龍頭，
+受惠 AI Server、高速交換器與高頻材料。
+</p>
+
+<p>
+<strong>[2026-06-18 深度診斷]</strong>
+<br><br>
+
+▶ 積極：5650  
+▶ 穩健：5250 ~ 5350  
+▶ 保守：5000  
+▶ 停損：4900  
+
+<br><br>
+
+🎯 目標：6000 → 6500
+
+<br><br>
+
+<strong>靈蛇觀點：</strong><br>
+趨勢最強標的，但高價高波動，
+只適合分批布局，不適合追高。
+</p>
+
+</div>
 </section>
+
+<!-- 歷史 -->
+<section>
+<h2>完整推薦歷史</h2>
+
+<div class="stock-card">
+
+<table>
+<tr>
+<th>日期</th>
+<th>策略</th>
+</tr>
+
+<tr>
+<td>2026-06-18</td>
+<td>主升段布局</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+</body>
+</html>
