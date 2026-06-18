@@ -127,22 +127,6 @@
             border-radius: 50%; display: inline-block; margin-right: 8px;
             animation: blink 2s infinite;
         }
-
-        @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-
-        section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 1.8em;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-        }
 /* ===== 公告自動滾動 / 水平跑馬燈 ===== */
 
 .ticker-box {
@@ -200,7 +184,23 @@
         transform: translateX(-100%);
     }
 }
-``
+        @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+
         /* --- Animation Styles (修正延遲) --- */
         @keyframes fadeInUp {
             from {
@@ -437,7 +437,7 @@
             </div>
         </header>
 
-        <!-- 緊急公告區域 -->
+        <!-- 公告區域 -->
         <div class="update-box fade-in-on-scroll ticker-box">
     <div class="ticker-wrapper">
         <div class="ticker-content">
