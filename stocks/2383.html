@@ -1,137 +1,323 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>個股追蹤：2383 台光電 - 靈蛇週報</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個股追蹤：2383 台光電 - 靈蛇週報</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+    <link rel="manifest" href="/SnakeStock/manifest.json">
 
-:root {
-    --bg-dark-ai:#0a0a1a;
-    --bg-card:#101024;
-    --border-color:#2a2a4a;
-    --text-primary:#e6e6fa;
-    --text-secondary:#a0a0c0;
-    --accent-blue:#00d1ff;
-    --color-red:#ff5555;
-    --color-green:#50fa7b;
-    --color-yellow:#f1fa8c;
-}
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/SnakeStock/sw.js');
+            });
+        }
+    </script>
 
-body {
-    font-family:'Noto Sans TC',sans-serif;
-    background:var(--bg-dark-ai);
-    color:var(--text-primary);
-}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
 
-.container{max-width:900px;margin:auto;padding:15px;}
-.nav-btn{background:#2a2a4a;padding:8px 15px;text-decoration:none;color:#fff;}
-.stock-card{background:#101024;padding:25px;margin:20px 0;}
-</style>
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555; 
+            --color-green: #50fa7b; 
+            --color-yellow: #f1fa8c;
+        } 
+
+        body { 
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark-ai);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container { max-width: 900px; margin: 10px auto; padding: 15px; }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--border-color);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .nav-btn:hover { background: var(--accent-blue); color: #000; }
+
+        header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; } 
+
+        header h1 { 
+            color: var(--accent-blue);
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 900;
+        } 
+
+        section { margin-bottom: 40px; } 
+
+        h2 {
+            font-size: 1.6em;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 10px;
+        }
+
+        .stock-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            line-height: 1.8;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .kpi-card {
+            background-color: #191932;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .kpi-card .value {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .kpi-card .label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        thead th {
+            background-color: rgba(42, 42, 74, 0.7);
+            color: var(--text-secondary);
+        }
+
+        .positive-return { color: var(--color-red); }
+
+        .report-link {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .report-link:hover {
+            background-color: var(--accent-blue);
+            color: #000;
+        }
+
+        .chart-button-container { text-align: center; }
+
+        .chart-button {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .chart-button:hover {
+            background-color: #2f81f7;
+            transform: translateY(-2px);
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .footer-links { margin-bottom: 15px; }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover { color: var(--accent-blue); }
+
+    </style>
 </head>
 
 <body>
 
 <div class="container">
 
-<a href="/SnakeStock/index.html" class="nav-btn">← 返回首頁</a>
+    <a href="/SnakeStock/index.html" class="nav-btn">← 返回首頁</a>
 
-<header style="text-align:center;">
-<h1 style="color:#ffd60a;">個股追蹤：2383 台光電</h1>
-</header>
+    <header>
+        <h1>個股追蹤：2383 台光電</h1>
+    </header>
 
-<!-- K線 -->
-<section>
-<h2>即時股價K線圖</h2>
-<div class="stock-card" style="text-align:center;">
-<a class="nav-btn" href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=2383" target="_blank">
-查看K線
-</a>
-</div>
-</section>
+    <!-- ✅ K線 -->
+    <section id="chart">
+        <h2>即時股價K線圖</h2>
+        <div class="stock-card chart-button-container">
+            <p style="color: var(--text-secondary);">
+                點擊下方按鈕查看即時互動K線
+            </p>
 
-<!-- KPI -->
-<section>
-<h2>靈蛇評等摘要 (2026-06-18 更新)</h2>
+            <a href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=2383"
+               target="_blank"
+               class="chart-button">
+               前往 Goodinfo 查看K線 →
+            </a>
+        </div>
+    </section>
 
-<div style="display:flex;gap:20px;flex-wrap:wrap;">
+    <!-- ✅ KPI -->
+    <section id="rating">
+        <h2>靈蛇評等摘要 (2026-06-18 更新)</h2>
 
-<div class="stock-card">
-✅ 趨勢王者
-</div>
+        <div class="kpi-grid">
 
-<div class="stock-card">
-✅ CCL / AI材料
-</div>
+            <div class="kpi-card">
+                <div class="value" style="color:var(--color-yellow);">趨勢王者</div>
+                <div class="label">評等</div>
+            </div>
 
-<div class="stock-card">
-✅ 高檔震盪
-</div>
+            <div class="kpi-card">
+                <div class="value">CCL / AI材料</div>
+                <div class="label">核心題材</div>
+            </div>
 
-</div>
+            <div class="kpi-card">
+                <div class="value" style="color:var(--color-red);">高檔震盪</div>
+                <div class="label">現況</div>
+            </div>
 
-</section>
+        </div>
+    </section>
 
-<!-- 分析 -->
-<section>
-<h2>核心業務分析</h2>
+    <!-- ✅ 分析 -->
+    <section id="profile">
+        <h2>核心業務分析</h2>
 
-<div class="stock-card">
+        <div class="stock-card">
 
-<p>
-台光電為高階 CCL 龍頭，
-受惠 AI Server、高速交換器與高頻材料。
-</p>
+            <p>
+                台光電為全球高階 CCL（銅箔基板）龍頭，
+                在 AI Server、高速交換器、800G / 1.6T 通訊規格中，
+                具備不可替代的材料技術優勢。
+            </p>
 
-<p>
-<strong>[2026-06-18 深度診斷]</strong>
-<br><br>
+            <p>
+                <strong>[2026-06-18 深度診斷]</strong><br><br>
 
-▶ 積極：5650  
-▶ 穩健：5250 ~ 5350  
-▶ 保守：5000  
-▶ 停損：4900  
+                收盤價：5600
 
-<br><br>
+                <br><br>
 
-🎯 目標：6000 → 6500
+                ▶ 積極進場：5650 以上（續強，小部位）<br>
+                ▶ 穩健進場：5250 ~ 5350（回測支撐）<br>
+                ▶ 保守進場：5000 附近<br>
+                ▶ 停損：4900<br>
+                ▶ 第一目標：6000<br>
+                ▶ 第二目標：6500
 
-<br><br>
+                <br><br>
 
-<strong>靈蛇觀點：</strong><br>
-趨勢最強標的，但高價高波動，
-只適合分批布局，不適合追高。
-</p>
+                <strong>靈蛇觀點：</strong><br>
+                台光電是 AI 材料鏈中趨勢最純的標的，
+                但同時也是價格最高、波動最大的族群代表。<br>
+                適合分批布局與波段持有，
+                不適合在急漲時一次性重壓。
+            </p>
 
-</div>
-</section>
+        </div>
+    </section>
 
-<!-- 歷史 -->
-<section>
-<h2>完整推薦歷史</h2>
+    <!-- ✅ 歷史 -->
+    <section id="history">
+        <h2>完整推薦歷史</h2>
 
-<div class="stock-card">
+        <div class="table-responsive">
 
-<table>
-<tr>
-<th>日期</th>
-<th>策略</th>
-</tr>
+            <table>
 
-<tr>
-<td>2026-06-18</td>
-<td>主升段布局</td>
-</tr>
+                <thead>
+                    <tr>
+                        <th>推薦日期</th>
+                        <th>報告連結</th>
+                        <th>建議進場區間</th>
+                        <th>該次推薦後績效</th>
+                    </tr>
+                </thead>
 
-</table>
+                <tbody>
+                    <tr>
+                        <td>2026-06-18</td>
+                        <td>
+                            <a href="/SnakeStock/reports/2026-06-18.html"
+                               target="_blank"
+                               class="report-link">0618報告</a>
+                        </td>
+                        <td>5250 - 5350 / 突破5650</td>
+                        <td class="positive-return">進行中</td>
+                    </tr>
+                </tbody>
 
-</div>
+            </table>
 
-</section>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="/SnakeStock/index.html">返回首頁</a>
+            <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+            <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+        </div>
+
+        <p>© 2026 靈蛇研究團隊</p>
+    </footer>
 
 </div>
 
 </body>
 </html>
+``
