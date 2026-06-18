@@ -1,41 +1,137 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>個股追蹤：3044 健鼎 - 靈蛇週報</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個股追蹤：3044 健鼎 - 靈蛇週報</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+    <link rel="manifest" href="/SnakeStock/manifest.json">
 
-:root {
-    --bg-dark-ai:#0a0a1a;
-    --bg-card:#101024;
-    --border-color:#2a2a4a;
-    --text-primary:#e6e6fa;
-    --text-secondary:#a0a0c0;
-    --accent-blue:#00d1ff;
-    --color-red:#ff5555;
-    --color-green:#50fa7b;
-    --color-yellow:#f1fa8c;
-}
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/SnakeStock/sw.js');
+            });
+        }
+    </script>
 
-body {
-    font-family:'Noto Sans TC',sans-serif;
-    background:var(--bg-dark-ai);
-    color:var(--text-primary);
-}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
 
-.container{max-width:900px;margin:auto;padding:15px;}
-.nav-btn{background:#2a2a4a;padding:8px 15px;text-decoration:none;color:#fff;}
-header{text-align:center;margin-bottom:30px;}
-header h1{color:var(--accent-blue);}
+        :root { 
+            --bg-dark-ai: #0a0a1a; 
+            --bg-card: #101024; 
+            --border-color: #2a2a4a; 
+            --text-primary: #e6e6fa; 
+            --text-secondary: #a0a0c0; 
+            --accent-blue: #00d1ff; 
+            --color-red: #ff5555; 
+            --color-green: #50fa7b; 
+            --color-yellow: #f1fa8c;
+        } 
 
-.stock-card{background:var(--bg-card);padding:25px;margin-bottom:20px;}
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,150px);gap:15px;}
-.kpi-card{background:#191932;padding:15px;text-align:center;}
-.table-responsive{overflow:auto;border:1px solid var(--border-color);}
-</style>
+        body { font-family: 'Noto Sans TC'; background: var(--bg-dark-ai); color: var(--text-primary); }
+        .container { max-width: 900px; margin: auto; padding: 15px; }
+
+        .nav-btn {
+            display:inline-block;
+            padding:8px 15px;
+            background:var(--border-color);
+            color:white;
+            text-decoration:none;
+        }
+
+        header { text-align:center; margin:30px 0; }
+        header h1 { color: var(--accent-blue); }
+
+        section { margin-bottom:40px; }
+
+        h2 {
+            border-bottom:2px solid var(--accent-blue);
+            padding-bottom:10px;
+        }
+
+        .stock-card {
+            background: var(--bg-card);
+            padding:25px;
+            border:1px solid var(--border-color);
+            margin-bottom:20px;
+            line-height:1.8;
+        }
+
+        .kpi-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+            gap:20px;
+        }
+
+        .kpi-card {
+            background:#191932;
+            padding:20px;
+            text-align:center;
+            border:1px solid var(--border-color);
+        }
+
+        .kpi-card .value {
+            font-size:1.4em;
+            font-weight:700;
+        }
+
+        .kpi-card .label {
+            color:var(--text-secondary);
+            font-size:0.85em;
+        }
+
+        .table-responsive {
+            overflow-x:auto;
+            border:1px solid var(--border-color);
+        }
+
+        table {
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th,td {
+            padding:15px;
+            border-bottom:1px solid var(--border-color);
+        }
+
+        .positive-return {
+            color: var(--color-red);
+        }
+
+        .report-link {
+            display:inline-block;
+            padding:5px 12px;
+            background:var(--border-color);
+            color:white;
+            text-decoration:none;
+        }
+
+        .chart-button-container { text-align:center; }
+
+        .chart-button {
+            display:inline-block;
+            background:var(--accent-blue);
+            color:white;
+            padding:12px 25px;
+            text-decoration:none;
+        }
+
+        .site-footer {
+            text-align:center;
+            margin-top:50px;
+            border-top:1px solid var(--border-color);
+        }
+
+        .footer-links a {
+            color:var(--text-secondary);
+            margin:0 10px;
+            text-decoration:none;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -45,110 +141,121 @@ header h1{color:var(--accent-blue);}
 <a href="/SnakeStock/index.html" class="nav-btn">← 返回首頁</a>
 
 <header>
-<h1>個股追蹤：3044 健鼎</h1>
+    <h1>個股追蹤：3044 健鼎</h1>
 </header>
 
-<!-- K線 -->
-<section>
-<h2>即時股價K線圖</h2>
-<div class="stock-card" style="text-align:center;">
-<a class="nav-btn" href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=3044" target="_blank">
-查看K線
-</a>
-</div>
+<!-- ✅ K線 -->
+<section id="chart">
+    <h2>即時股價K線圖</h2>
+    <div class="stock-card chart-button-container">
+        <p style="color: var(--text-secondary);">
+            點擊下方查看即時K線
+        </p>
+        <a href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=3044" target="_blank" class="chart-button">
+            查看K線 →
+        </a>
+    </div>
 </section>
 
-<!-- KPI -->
-<section>
-<h2>靈蛇評等摘要 (2026-06-18 更新)</h2>
+<!-- ✅ KPI -->
+<section id="rating">
+    <h2>靈蛇評等摘要 (2026-06-18 更新)</h2>
 
-<div class="kpi-grid">
-<div class="kpi-card">
-<div class="value" style="color:var(--color-yellow);">穩健攻擊</div>
-<div class="label">評等</div>
-</div>
+    <div class="kpi-grid">
 
-<div class="kpi-card">
-<div class="value">AI PCB</div>
-<div class="label">核心題材</div>
-</div>
+        <div class="kpi-card">
+            <div class="value" style="color:var(--color-yellow);">穩健攻擊</div>
+            <div class="label">評等</div>
+        </div>
 
-<div class="kpi-card">
-<div class="value" style="color:var(--color-green);">趨勢溫和上升</div>
-<div class="label">現況</div>
-</div>
-</div>
+        <div class="kpi-card">
+            <div class="value">AI PCB</div>
+            <div class="label">核心題材</div>
+        </div>
 
+        <div class="kpi-card">
+            <div class="value" style="color:var(--color-green);">趨勢溫和上升</div>
+            <div class="label">現況</div>
+        </div>
+
+    </div>
 </section>
 
-<!-- 分析 -->
-<section>
-<h2>核心業務分析</h2>
+<!-- ✅ 分析 -->
+<section id="profile">
+    <h2>核心業務分析</h2>
+    <div class="stock-card">
 
-<div class="stock-card">
+        <p>
+        健鼎為 AI PCB 供應鏈核心廠商，
+        主要受惠於 AI Server、高速運算與 ASIC 板需求成長，
+        屬於 AI 硬體規格升級趨勢的受惠族群。
+        </p>
 
-<p>
-健鼎為 AI PCB 供應鏈核心公司，
-受惠 AI Server、ASIC、高速運算板需求提升。
-</p>
+        <p>
+        <strong>[2026-06-18 深度診斷]</strong><br><br>
 
-<p>
-<strong>[2026-06-18 深度診斷]</strong>
-<br><br>
+        收盤價：573
 
-▶ 積極：585 突破  
-▶ 穩健：550 ~ 560  
-▶ 保守：530  
-▶ 停損：525  
+        <br><br>
 
-<br><br>
+        ▶ 積極進場：585 突破<br>
+        ▶ 穩健進場：550 ~ 560<br>
+        ▶ 保守進場：530 附近<br>
+        ▶ 停損：525<br>
+        ▶ 第一目標：620<br>
+        ▶ 第二目標：650+
 
-🎯 目標：620 → 650+
+        <br><br>
 
-<br><br>
+        <strong>靈蛇觀點：</strong><br>
+        健鼎屬於低波動 AI 主升段個股，
+        不會最飆，但勝在穩定，
+        是資金配置與波段操作的核心選擇。
+        </p>
 
-<strong>靈蛇觀點：</strong><br>
-健鼎屬於低波動 AI 主升段股票，
-適合資金配置與波段操作，
-是本週最穩標的。
-</p>
-
-</div>
+    </div>
 </section>
 
-<!-- 歷史 -->
-<section>
-<h2>完整推薦歷史</h2>
+<!-- ✅ 歷史 -->
+<section id="history">
+    <h2>完整推薦歷史</h2>
 
-<div class="table-responsive">
+    <div class="table-responsive">
+        <table>
 
-<table>
-<thead>
-<tr>
-<th>推薦日期</th>
-<th>報告連結</th>
-<th>建議進場</th>
-<th>績效</th>
-</tr>
-</thead>
+            <thead>
+                <tr>
+                    <th>推薦日期</th>
+                    <th>報告連結</th>
+                    <th>建議進場區間</th>
+                    <th>績效</th>
+                </tr>
+            </thead>
 
-<tbody>
-<tr>
-<td>2026-06-18</td>
-<td><a href="/SnakeStock/reports/2026-06-18.html">0618報告</a></td>
-<td>550 ~ 560 / 突破585</td>
-<td style="color:red;">進行中</td>
-</tr>
-</tbody>
+            <tbody>
+                <tr>
+                    <td>2026-06-18</td>
+                    <td><a href="/SnakeStock/reports/2026-06-18.html" target="_blank" class="report-link">0618報告</a></td>
+                    <td>550 - 560 / 突破585</td>
+                    <td class="positive-return">進行中</td>
+                </tr>
+            </tbody>
 
-</table>
-
-</div>
-
+        </table>
+    </div>
 </section>
+
+<footer class="site-footer">
+    <div class="footer-links">
+        <a href="/SnakeStock/index.html">返回首頁</a>
+        <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+        <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+    </div>
+    <p>© 2026 靈蛇研究團隊</p>
+</footer>
 
 </div>
 
 </body>
 </html>
-``
