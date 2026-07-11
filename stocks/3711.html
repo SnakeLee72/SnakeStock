@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個股追蹤：3711 日月光投控 - 靈蛇週報</title>
+    <link rel="manifest" href="/SnakeStock/manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/SnakeStock/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
         :root { 
             --bg-dark-ai: #0a0a1a; 
             --bg-card: #101024; 
@@ -16,114 +28,115 @@
             --color-red: #ff5555; 
             --color-green: #50fa7b; 
             --color-yellow: #f1fa8c;
+            --storm-purple: #8c7cff;
         } 
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; } 
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-dark-ai); color: var(--text-primary); margin: 0; padding: 10px; line-height: 1.8; } 
         .container { max-width: 900px; margin: 10px auto; padding: 15px; } 
-        
-        /* 返回首頁按鈕 */
-        .nav-btn { 
-            display: inline-block; 
-            padding: 8px 15px; 
-            background: var(--border-color); 
-            color: var(--text-primary); 
-            text-decoration: none; 
-            border-radius: 5px; 
-            margin-bottom: 20px; 
-            transition: 0.3s; 
-            font-weight: bold;
-            font-size: 0.9em;
-        }
+        .nav-btn { display: inline-block; padding: 8px 15px; background: var(--border-color); color: var(--text-primary); text-decoration: none; border-radius: 5px; margin-bottom: 20px; transition: 0.3s; font-weight: bold; font-size: 0.9em; }
         .nav-btn:hover { background: var(--accent-blue); color: #000; }
-
         header { text-align: center; padding-bottom: 20px; margin-bottom: 30px; } 
-        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; } 
+        header h1 { color: var(--accent-blue); font-size: 2.5em; margin: 0; font-weight: 900; } 
+        header p { color: var(--text-secondary); margin-top: 8px; }
         section { margin-bottom: 40px; } 
         h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; } 
         .stock-card { background-color: var(--bg-card); border-radius: 8px; padding: 25px; margin-bottom: 25px; border: 1px solid var(--border-color); } 
+        .storm-card { background: linear-gradient(135deg, rgba(140,124,255,0.18), rgba(0,209,255,0.08)); border-left: 4px solid var(--storm-purple); }
         .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; } 
-        .kpi-card { background-color: #191932; padding: 20px; border-radius: 8px; text-align: center; } 
-        .kpi-card .value { font-size: 1.5em; font-weight: 700; color: var(--accent-blue); } 
-        .kpi-card .label { font-size: 0.9em; color: var(--text-secondary); } 
+        .kpi-card { background-color: #191932; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid var(--border-color); } 
+        .kpi-card .value { font-size: 1.35em; font-weight: 700; color: var(--accent-blue); } 
+        .kpi-card .label { font-size: 0.9em; color: var(--text-secondary); margin-top: 5px; } 
         .table-responsive { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; } 
         table { width: 100%; border-collapse: collapse; min-width: 600px; } 
         th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; } 
-        thead th { background-color: rgba(42, 42, 74, 0.7); } 
+        thead th { background-color: rgba(42, 42, 74, 0.7); color: var(--text-secondary); font-weight: 500; } 
         .positive-return { color: var(--color-red); font-weight: bold; } 
-        .report-link { display: inline-block; padding: 5px 10px; background-color: var(--border-color); color: var(--text-primary); border-radius: 5px; text-decoration: none; transition: background-color 0.3s; } 
+        .negative-return { color: var(--color-green); font-weight: bold; }
+        .target-price { color: var(--color-red); font-weight: bold; }
+        .stop-loss { color: var(--color-green); font-weight: bold; }
+        .report-link { display: inline-block; padding: 5px 10px; background-color: var(--border-color); color: var(--text-primary); border-radius: 5px; text-decoration: none; transition: background-color 0.3s; margin-right: 6px; } 
         .report-link:hover { background-color: var(--accent-blue); color: var(--bg-dark-ai); } 
         .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; } 
         .footer-links { margin-bottom: 15px; } 
-        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; } 
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; transition: color 0.3s; } 
         .footer-links a:hover { color: var(--accent-blue); } 
         .chart-button-container { text-align: center; } 
         .chart-button { display: inline-block; background-color: var(--accent-blue); color: #ffffff; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 700; transition: all 0.3s; } 
-        .chart-button:hover { background-color: #2f81f7; transform: translateY(-3px); }
+        .chart-button:hover { background-color: #2f81f7; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 209, 255, 0.3); }
+        .tag { display:inline-block; padding:3px 8px; border-radius:4px; margin-right:6px; margin-bottom:4px; font-size:0.85em; font-weight:700; }
+        .tag-blue { background: rgba(0,209,255,0.14); color: var(--accent-blue); }
+        .tag-yellow { background: rgba(241,250,140,0.14); color: var(--color-yellow); }
+        .tag-red { background: rgba(255,85,85,0.14); color: var(--color-red); }
+        .tag-green { background: rgba(80,250,123,0.14); color: var(--color-green); }
+        @media (max-width: 600px) { header h1 { font-size: 2em; } .stock-card { padding: 20px; } .footer-links a { display:inline-block; margin: 6px 10px; } }
+        header h1 { color: #8c7cff; }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="/SnakeStock/index.html" class="nav-btn">&larr; 返回首頁</a>
 
-        <header><h1>個股追蹤：3711 日月光投控</h1></header>
+        <header>
+            <h1>個股追蹤：3711 日月光投控</h1>
+            <p>靈蛇週報 0711 更新｜颱風盤策略版</p>
+        </header>
+
         <section id="chart">
             <h2>即時股價K線圖</h2>
             <div class="stock-card chart-button-container">
                 <p style="color: var(--text-secondary); margin-top: 0; margin-bottom: 20px;">為確保最佳瀏覽體驗與資訊準確性，請點擊下方按鈕，在新分頁中查看即時互動K線圖。</p>
-                <a href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=3711" target="_blank" class="chart-button">前往 Goodinfo! 查看K線圖 &rarr;</a>
+                <a href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=3711" target="_blank" rel="noopener noreferrer" class="chart-button">前往 Goodinfo! 查看K線圖 &rarr;</a>
             </div>
         </section>
+
         <section id="rating">
-            <h2>靈蛇評等摘要 (2026-04-24 更新)</h2>
+            <h2>靈蛇評等摘要 (2026-07-11 更新)</h2>
             <div class="kpi-grid">
-                <div class="kpi-card"><div class="value" style="color:var(--color-red);">權值驅動</div><div class="label">評等</div></div>
-                <div class="kpi-card"><div class="value">先進封裝 / CoWoS</div><div class="label">核心題材</div></div>
-                <div class="kpi-card"><div class="value" style="color:var(--color-red);">強勢突破 500</div><div class="label">現況</div></div>
+                <div class="kpi-card"><div class="value" style="color:var(--color-yellow);">核心避風港</div><div class="label">評等</div></div>
+                <div class="kpi-card"><div class="value">AI封測 / 先進封裝</div><div class="label">核心題材</div></div>
+                <div class="kpi-card"><div class="value" style="color:var(--color-red);">資金回流</div><div class="label">現況</div></div>
             </div>
         </section>
+
         <section id="profile">
             <h2>核心業務分析</h2>
             <div class="stock-card">
-                <p>日月光投控為全球半導體封裝與測試服務(OSAT)龍頭。受惠 AI 與 HPC 晶片帶動，完美承接台積電 CoWoS 產能吃緊的外溢訂單。此外，其在先進封裝（如 FOPLP）技術的佈局，已成為 2026 年最強的獲利跳階引擎。</p>
-                <p><strong>[2026-04-24 更新]</strong> 3 月營收達 615.77 億元，創下 3 年 5 個月新高。技術面強勢噴發，盤中直逼 500 元大關。籌碼結構極度乾淨（融資低迷、券資比極低），顯示此波大漲完全由長線大戶與法人主導，無散戶浮額過多問題。目前處於完美的多頭上升通道中。</p>
+                <p>日月光投控為全球半導體封裝與測試服務 OSAT 龍頭，長線受惠 AI GPU、ASIC、HPC 晶片帶動的先進封裝與測試需求。相較於純題材股，3711 具備大型權值股、現金流與產業地位優勢，是颱風盤與高檔震盪盤中較適合作為核心配置的標的。</p>
+                <p><strong>[2026-07-11 深度診斷]</strong> 0709 收盤 677 元，單日強彈並收復短線跌勢，顯示資金在 AI 題材股修正後，開始回流半導體後段大型龍頭。若股價回測 650 - 665 元區間量縮有守，可視為較佳承接區；若帶量突破 685 元，則有機會挑戰 720 - 760 元。</p>
+                <p><span class="tag tag-blue">靈蛇觀點</span>日月光不是本期最會噴的股票，但在風雨盤中，最重要的是能不能活下來。3711 適合作為本期三檔中的核心避風港，建議以穩健分批為主。</p>
             </div>
         </section>
+
+        <section id="strategy">
+            <h2>0711 操作策略</h2>
+            <div class="stock-card storm-card">
+                <p><span class="tag tag-blue">0709收盤</span><strong>677</strong> 元</p>
+                <p><span class="tag tag-yellow">建議進場</span>650 - 665 / 突破 685</p>
+                <p><span class="tag tag-green">停損防線</span>620</p>
+                <p><span class="tag tag-red">波段目標</span>720 - 760</p>
+                <p><strong>颱風盤提醒：</strong>巴威颱風期間，市場容易量縮、隔日跳空或受國際盤影響。請優先確認支撐與量價，不建議在風雨中一次重倉追價。</p>
+            </div>
+        </section>
+
         <section id="history">
             <h2>完整推薦歷史</h2>
             <div class="table-responsive">
                 <table>
-                    <thead><tr><th>推薦日期</th><th>報告連結</th><th>建議進場區間</th><th>該次推薦後最高績效</th></tr></thead>
+                    <thead><tr><th>推薦日期</th><th>報告連結</th><th>建議進場區間</th><th>該次推薦後最高績效 / 目前狀態</th></tr></thead>
                     <tbody>
-                        <!-- 2026 最新推薦 -->
-                        <tr>
-                            <td>2026-04-24</td>
-                            <td><a href="/SnakeStock/reports/2026-04-24.html" target="_blank" class="report-link">0424報告</a></td>
-                            <td>480.0 - 490.0 元</td>
-                            <td class="positive-return">觀察中...</td>
-                        </tr>
-                        <!-- 歷史紀錄 -->
-                        <tr>
-                            <td>2025-12-19</td>
-                            <td><a href="/SnakeStock/reports/2025-12-19.html" target="_blank" class="report-link">1219報告</a></td>
-                            <td>215 - 218 元</td>
-                            <td class="positive-return">+11.0% (結案)</td>
-                        </tr>
-                        <tr>
-                            <td>2025-09-12</td>
-                            <td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" class="report-link">0912報告</a></td>
-                            <td>165 - 168 元</td>
-                            <td class="positive-return">+17.33%</td>
-                        </tr>
-                        <tr>
-                            <td>2025-08-16</td>
-                            <td><a href="/SnakeStock/reports/2025-08-16.html" target="_blank" class="report-link">0816報告</a></td>
-                            <td>146 - 150 元</td>
-                            <td class="positive-return">+28.5%</td>
-                        </tr>
+                        <tr><td>2026-07-11</td><td><a href="/SnakeStock/reports/2026-07-11.html" target="_blank" rel="noopener noreferrer" class="report-link">0711報告</a></td><td>650 - 665 / 突破 685</td><td class="positive-return">進行中</td></tr>
+                        <tr><td>2026-04-24</td><td><a href="/SnakeStock/reports/2026-04-24.html" target="_blank" rel="noopener noreferrer" class="report-link">0424報告</a></td><td>480 - 490 元</td><td class="positive-return">最高約 +41.0%（以0709收盤677估算）</td></tr>
+                        <tr><td>2025-12-19</td><td><a href="/SnakeStock/reports/2025-12-19.html" target="_blank" rel="noopener noreferrer" class="report-link">1219報告</a></td><td>215 - 218 元</td><td class="positive-return">+11.0%（已結案）</td></tr>
+                        <tr><td>2025-09-12</td><td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" rel="noopener noreferrer" class="report-link">0912報告</a></td><td>165 - 168 元</td><td class="positive-return">+17.33%</td></tr>
+                        <tr><td>2025-08-16</td><td><a href="/SnakeStock/reports/2025-08-16.html" target="_blank" rel="noopener noreferrer" class="report-link">0816報告</a></td><td>146 - 150 元</td><td class="positive-return">+28.5%</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
-        <footer class="site-footer"><div class="footer-links"><a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/glossary.html">投資術語庫</a><a href="/SnakeStock/disclaimer.html">免責聲明</a></div><p>&copy; 2026 靈蛇研究團隊謹製</p></footer>
+
+        <footer class="site-footer">
+            <div class="footer-links"><a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/glossary.html">投資術語庫</a><a href="/SnakeStock/disclaimer.html">免責聲明</a></div>
+            <p>&copy; 2026 靈蛇研究團隊謹製 | 本內容僅供研究參考，不構成投資建議。</p>
+        </footer>
     </div>
 </body>
 </html>
