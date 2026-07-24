@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個股追蹤：3231 緯創 - 靈蛇週報</title>
+  <meta name="description" content="靈蛇週報0725個股追蹤：3231 緯創。包含最新評等、基本面、技術面、進場區間、停損與波段目標。">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+:root {
+  --bg-dark-ai:#0a0a1a; --bg-card:#101024; --border-color:#2a2a4a;
+  --text-primary:#e6e6fa; --text-secondary:#a0a0c0; --accent-blue:#00d1ff;
+  --color-red:#ff5555; --color-green:#50fa7b; --color-yellow:#f1fa8c;
+  --color-purple:#a978ff;
+}
+* { box-sizing:border-box; }
+body { font-family:'Noto Sans TC',sans-serif; background:var(--bg-dark-ai); color:var(--text-primary); margin:0; padding:10px; line-height:1.8; }
+.container { max-width:900px; margin:10px auto; padding:15px; }
+.nav-btn { display:inline-block; padding:8px 15px; background:var(--border-color); color:var(--text-primary); text-decoration:none; border-radius:5px; margin-bottom:20px; transition:.3s; font-weight:bold; font-size:.9em; }
+.nav-btn:hover { background:var(--accent-blue); color:#000; }
+header { text-align:center; padding-bottom:20px; margin-bottom:30px; }
+header h1 { color:var(--accent-blue); font-size:2.5em; margin:0; font-weight:900; text-shadow:0 0 10px rgba(0,209,255,.25); }
+header p { color:var(--text-secondary); margin:7px 0 0; }
+section { margin-bottom:40px; }
+h2 { font-size:1.6em; color:var(--text-primary); border-bottom:2px solid var(--accent-blue); padding-bottom:10px; margin-bottom:25px; }
+.stock-card { background:linear-gradient(135deg,#101024,#15152d); border-radius:8px; padding:25px; margin-bottom:25px; border:1px solid var(--border-color); }
+.strategy-card { border-left:4px solid var(--accent-blue); }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; }
+.kpi-card { background:#191932; padding:20px; border-radius:8px; text-align:center; border:1px solid var(--border-color); }
+.kpi-card .value { font-size:1.35em; font-weight:700; color:var(--accent-blue); }
+.kpi-card .label { font-size:.9em; color:var(--text-secondary); margin-top:5px; }
+.table-responsive { overflow-x:auto; border:1px solid var(--border-color); border-radius:8px; }
+table { width:100%; border-collapse:collapse; min-width:650px; }
+th,td { padding:15px; text-align:left; border-bottom:1px solid var(--border-color); white-space:nowrap; }
+thead th { background:rgba(42,42,74,.7); color:var(--text-secondary); }
+.positive-return,.target-price { color:var(--color-red); font-weight:bold; }
+.negative-return,.stop-loss { color:var(--color-green); font-weight:bold; }
+.report-link { display:inline-block; padding:5px 10px; margin:2px; background:var(--border-color); color:var(--text-primary); border-radius:5px; text-decoration:none; transition:.3s; }
+.report-link:hover { background:var(--accent-blue); color:var(--bg-dark-ai); }
+.chart-button-container { text-align:center; }
+.chart-button { display:inline-block; background:var(--accent-blue); color:#fff; padding:12px 25px; border-radius:5px; text-decoration:none; font-weight:700; transition:.3s; }
+.chart-button:hover { background:#2f81f7; transform:translateY(-3px); }
+.tag { display:inline-block; padding:3px 9px; border-radius:5px; margin-right:7px; font-size:.85em; font-weight:700; }
+.tag-blue { background:rgba(0,209,255,.14); color:var(--accent-blue); }
+.tag-yellow { background:rgba(241,250,140,.14); color:var(--color-yellow); }
+.tag-green { background:rgba(80,250,123,.14); color:var(--color-green); }
+.tag-red { background:rgba(255,85,85,.14); color:var(--color-red); }
+.risk-note { color:var(--text-secondary); padding-top:15px; border-top:1px dashed var(--border-color); }
+.site-footer { text-align:center; margin-top:50px; padding-top:30px; border-top:1px solid var(--border-color); color:var(--text-secondary); font-size:.9em; }
+.footer-links { margin-bottom:15px; }
+.footer-links a { color:var(--text-secondary); text-decoration:none; margin:0 12px; }
+.footer-links a:hover { color:var(--accent-blue); }
+@media(max-width:600px){ header h1{font-size:2em}.stock-card{padding:20px}.footer-links a{display:inline-block;margin:6px 9px} }
+</style>
+</head>
+<body>
+  <div class="container">
+    <a href="/SnakeStock/index.html" class="nav-btn">&larr; 返回首頁</a>
+    <header>
+      <h1>個股追蹤：3231 緯創</h1>
+      <p>AI 伺服器與北美算力製造｜靈蛇週報 0725 更新</p>
+    </header>
+
+    <section id="chart">
+      <h2>即時股價K線圖</h2>
+      <div class="stock-card chart-button-container">
+        <p style="color:var(--text-secondary);margin-top:0;">點擊下方按鈕，在新分頁查看即時互動K線圖。</p>
+        <a href="https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=3231" target="_blank" rel="noopener noreferrer" class="chart-button">前往 Goodinfo! 查看K線圖 &rarr;</a>
+      </div>
+    </section>
+
+    <section id="rating">
+      <h2>靈蛇評等摘要（2026-07-25 更新）</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="value" style="color:var(--color-yellow);">逆勢攻擊</div><div class="label">評等</div></div>
+        <div class="kpi-card"><div class="value">AI伺服器 / AMD / NVIDIA</div><div class="label">核心題材</div></div>
+        <div class="kpi-card"><div class="value" style="color:var(--color-red);">連續強勢</div><div class="label">現況</div></div>
+      </div>
+    </section>
+
+    <section id="profile">
+      <h2>核心業務與最新分析</h2>
+      <div class="stock-card">
+        <p>緯創是全球大型資訊電子製造服務商，AI 伺服器與資料中心業務為主要成長動能。北美製造布局、德州 AI 超級晶片工廠與新一代 AMD、NVIDIA 平台量產，使緯創具備訂單、產能與在地供應鏈三項優勢。</p>
+        <p><strong>[2026-07-25 深度診斷]</strong> 0724 台股重挫 1,195 點時，緯創仍逆勢收 179 元、上漲 3.17%，成交量放大且外盤占優，顯示資金集中。但股價已連續上漲，短線乖離與融券同步增加，追高風險上升。168 - 174 為回測觀察區，184 為短線突破確認價。</p>
+        <p><span class="tag tag-blue">靈蛇觀點</span>緯創是本期攻擊主將，但不能把逆勢強當成無條件追價理由。優先等回測承接或帶量突破，並把單一持股控制在可承受範圍。</p>
+      </div>
+    </section>
+
+    <section id="strategy">
+      <h2>0725 操作策略</h2>
+      <div class="stock-card strategy-card">
+        <p><span class="tag tag-blue">0724收盤</span><strong>179</strong> 元</p>
+        <p><span class="tag tag-yellow">建議進場</span>168 - 174 / 突破 184</p>
+        <p><span class="tag tag-green">停損防線</span><span class="stop-loss">160</span></p>
+        <p><span class="tag tag-red">波段目標</span><span class="target-price">195 - 205</span></p>
+        <p class="risk-note"><strong>國際事件週提醒：</strong>若科技巨頭財報支持 AI 資本支出，緯創有機會延續動能；若大盤再破 43,600 且緯創跌破 160 元，應依紀律退出。</p>
+      </div>
+    </section>
+
+    <section id="history">
+      <h2>完整推薦歷史</h2>
+      <div class="table-responsive">
+        <table>
+          <thead><tr><th>推薦日期</th><th>報告連結</th><th>建議進場區間</th><th>最高績效／目前狀態</th></tr></thead>
+          <tbody><tr><td>2026-07-25</td><td><a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725報告</a></td><td>168 - 174 / 突破 184</td><td class="positive-return">進行中</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/SnakeStock/index.html">返回首頁</a><a href="/SnakeStock/about.html">關於我們</a><a href="/SnakeStock/dashboard.html">個股儀表板</a><a href="/SnakeStock/glossary.html">投資術語庫</a><a href="/SnakeStock/disclaimer.html">免責聲明</a>
+      </div>
+      <p>&copy; 2026 靈蛇研究團隊謹製 | 本內容僅供研究參考，不構成投資建議。</p>
+    </footer>
+  </div>
+</body>
+</html>
