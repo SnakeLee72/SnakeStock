@@ -103,6 +103,232 @@
             </div>
             <div class="info-container">
                 <div class="label">SYSTEM ALERT // 靈蛇總經觀測站</div>
+                <div class="typing-text">雙事件定價週：中型科技、AI財報與利率攻防 🌐</div>
+                <div class="warning-text" id="snake-warning">※ 0822 週報已更新：本期避開大型權值與金融股，採「AI伺服器基本面、SMT動能、記憶體封測轉機」三層配置。聚焦NVIDIA財報、Jackson Hole與台股45K攻防，至少保留40%現金。 ※</div>
+            </div>
+        </div>
+
+        <main>
+            <section id="data-table">
+                <h2>詳細數據列表</h2>
+                <div class="search-container"><input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="搜尋股票代號、名稱或狀態..."></div>
+                <div class="table-responsive">
+                    <table id="stockDashboard">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable(0)">股票代號</th>
+                                <th onclick="sortTable(1)">股票名稱</th>
+                                <th onclick="sortTable(2)">總推薦次數</th>
+                                <th onclick="sortTable(3)">波段最高報酬</th>
+                                <th onclick="sortTable(4)">目前狀態</th>
+                                <th onclick="sortTable(5)">最新分析日期</th>
+                                <th>相關報告連結</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 2026-08-22 最新精選 -->
+                            <tr><td>3706</td><td><a href="/SnakeStock/stocks/3706.html">神達</a></td><td>5</td><td class="perf-positive">歷史最高 +5.7%</td><td><span class="status-tag status-midcore">🔵 AI伺服器核心</span></td><td>2026-08-22</td><td><a href="/SnakeStock/reports/2025-08-29.html" target="_blank" rel="noopener noreferrer" class="report-link">0829</a> <a href="/SnakeStock/reports/2025-10-31.html" target="_blank" rel="noopener noreferrer" class="report-link">1031</a> <a href="/SnakeStock/reports/2026-05-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0508</a> <a href="/SnakeStock/reports/2026-08-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0808</a> <a href="/SnakeStock/reports/2026-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822</a></td></tr>
+                            <tr><td>6278</td><td><a href="/SnakeStock/stocks/6278.html">台表科</a></td><td>1</td><td class="perf-neutral">觀察中...</td><td><span class="status-tag status-momentum">🟠 SMT動能攻擊</span></td><td>2026-08-22</td><td><a href="/SnakeStock/reports/2026-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822</a></td></tr>
+                            <tr><td>8110</td><td><a href="/SnakeStock/stocks/8110.html">華東</a></td><td>1</td><td class="perf-neutral">觀察中...</td><td><span class="status-tag status-turnaround">🟣 記憶體轉機</span></td><td>2026-08-22</td><td><a href="/SnakeStock/reports/2026-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822</a></td></tr>
+                            <!-- 2026-08-08 回測結果 -->
+                            <tr><td>6414</td><td><a href="/SnakeStock/stocks/6414.html">樺漢</a></td><td>1</td><td class="perf-negative">區間 -18.05%</td><td><span class="status-tag status-stop">🟢 跌破438停損</span></td><td>2026-08-22</td><td><a href="/SnakeStock/reports/2026-08-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0808</a> <a href="/SnakeStock/reports/2026-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822回測</a></td></tr>
+                            <tr><td>2891</td><td><a href="/SnakeStock/stocks/2891.html">中信金</a></td><td>1</td><td class="perf-negative">區間 -2.26%</td><td><span class="status-tag status-stop">🟢 防禦任務結束</span></td><td>2026-08-22</td><td><a href="/SnakeStock/reports/2026-08-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0808</a> <a href="/SnakeStock/reports/2026-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822回測</a></td></tr>
+
+
+
+                            <!-- 2026-07-25 回測結果 -->
+                            <tr><td>3231</td><td><a href="/SnakeStock/stocks/3231.html">緯創</a></td><td>1</td><td class="perf-positive">區間 +7.94%／最高 +19.12%</td><td><span class="status-tag status-caution">🟡 移動停利</span></td><td>2026-08-08</td><td><a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725</a> <a href="/SnakeStock/reports/2026-08-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0808回測</a></td></tr>
+                            <tr><td>2412</td><td><a href="/SnakeStock/stocks/2412.html">中華電</a></td><td>1</td><td class="perf-negative">區間 -2.48%／最高 +1.06%</td><td><span class="status-tag status-stop">🟢 防禦任務結束</span></td><td>2026-08-08</td><td><a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725</a> <a href="/SnakeStock/reports/2026-08-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0808回測</a></td></tr>
+                            <tr><td>2301</td><td><a href="/SnakeStock/stocks/2301.html">光寶科</a></td><td>4</td><td class="perf-positive">區間 +27.32%／最高 +38.40%</td><td><span class="status-tag status-stop">🟢 達標停利觀察</span></td><td>2026-08-08</td><td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" rel="noopener noreferrer" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-08-16.html" target="_blank" rel="noopener noreferrer" class="report-link">0816</a> <a href="/SnakeStock/reports/2026-04-10.html" target="_blank" rel="noopener noreferrer" class="report-link">0410</a> <a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725</a> <a href="/SnakeStock/reports/2026-08-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0808回測</a></td></tr>
+
+                            <!-- 2026-07-11 回測結果 -->
+                            <tr><td>3711</td><td><a href="/SnakeStock/stocks/3711.html">日月光投控</a></td><td>5</td><td class="perf-positive">歷史最高 +41.0%</td><td><span class="status-tag status-stop">🟢 0711 觸及停損</span></td><td>2026-07-25</td><td><a href="/SnakeStock/reports/2025-08-16.html" target="_blank" rel="noopener noreferrer" class="report-link">0816</a> <a href="/SnakeStock/reports/2025-09-12.html" target="_blank" rel="noopener noreferrer" class="report-link">0912</a> <a href="/SnakeStock/reports/2025-12-19.html" target="_blank" rel="noopener noreferrer" class="report-link">1219</a> <a href="/SnakeStock/reports/2026-04-24.html" target="_blank" rel="noopener noreferrer" class="report-link">0424</a> <a href="/SnakeStock/reports/2026-07-11.html" target="_blank" rel="noopener noreferrer" class="report-link">0711</a> <a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725回測</a></td></tr>
+                            <tr><td>2449</td><td><a href="/SnakeStock/stocks/2449.html">京元電</a></td><td>2</td><td class="perf-positive">歷史最高 +12.2%</td><td><span class="status-tag status-stop">🟢 0711 觸及停損</span></td><td>2026-07-25</td><td><a href="/SnakeStock/reports/2026-01-23.html" target="_blank" rel="noopener noreferrer" class="report-link">0123</a> <a href="/SnakeStock/reports/2026-07-11.html" target="_blank" rel="noopener noreferrer" class="report-link">0711</a> <a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725回測</a></td></tr>
+                            <tr><td>6274</td><td><a href="/SnakeStock/stocks/6274.html">台燿</a></td><td>2</td><td class="perf-positive">歷史最高 +223.7%</td><td><span class="status-tag status-stop">🟢 0711 觸及停損</span></td><td>2026-07-25</td><td><a href="/SnakeStock/reports/2025-12-26.html" target="_blank" rel="noopener noreferrer" class="report-link">1226</a> <a href="/SnakeStock/reports/2026-07-11.html" target="_blank" rel="noopener noreferrer" class="report-link">0711</a> <a href="/SnakeStock/reports/2026-07-25.html" target="_blank" rel="noopener noreferrer" class="report-link">0725回測</a></td></tr>
+
+                            <!-- 2026-06-18 回測結果 -->
+                            <tr><td>3044</td><td><a href="/SnakeStock/stocks/3044.html">健鼎</a></td><td>1</td><td class="perf-negative">-20.76%</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-06-18</td><td><a href="/SnakeStock/reports/2026-06-18.html" target="_blank" rel="noopener noreferrer" class="report-link">0618</a></td></tr>
+                            <tr><td>3450</td><td><a href="/SnakeStock/stocks/3450.html">聯鈞</a></td><td>3</td><td class="perf-negative">-9.87%</td><td><span class="status-tag status-caution">🟡 高波動觀察</span></td><td>2026-06-18</td><td><a href="/SnakeStock/reports/2025-09-26.html" target="_blank" rel="noopener noreferrer" class="report-link">0926</a> <a href="/SnakeStock/reports/2026-06-05.html" target="_blank" rel="noopener noreferrer" class="report-link">0605</a> <a href="/SnakeStock/reports/2026-06-18.html" target="_blank" rel="noopener noreferrer" class="report-link">0618</a></td></tr>
+                            <tr><td>2383</td><td><a href="/SnakeStock/stocks/2383.html">台光電</a></td><td>1</td><td class="perf-negative">-9.10%</td><td><span class="status-tag status-caution">🟡 高檔震盪</span></td><td>2026-06-18</td><td><a href="/SnakeStock/reports/2026-06-18.html" target="_blank" rel="noopener noreferrer" class="report-link">0618</a></td></tr>
+
+                            <!-- 2026-06-05 結算績效 -->
+                            <tr><td>2303</td><td><a href="/SnakeStock/stocks/2303.html">聯電</a></td><td>1</td><td class="perf-positive">+10.65%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-06-05</td><td><a href="/SnakeStock/reports/2026-06-05.html" target="_blank" rel="noopener noreferrer" class="report-link">0605</a></td></tr>
+                            <tr><td>3312</td><td><a href="/SnakeStock/stocks/3312.html">弘憶股</a></td><td>1</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-06-05</td><td><a href="/SnakeStock/reports/2026-06-05.html" target="_blank" rel="noopener noreferrer" class="report-link">0605</a></td></tr>
+
+                            <!-- 2026-05-22 結算績效 -->
+                            <tr><td>6215</td><td><a href="/SnakeStock/stocks/6215.html">和椿</a></td><td>1</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-05-22</td><td><a href="/SnakeStock/reports/2026-05-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0522</a></td></tr>
+                            <tr><td>3305</td><td><a href="/SnakeStock/stocks/3305.html">昇貿</a></td><td>1</td><td class="perf-positive">+19.6%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-05-22</td><td><a href="/SnakeStock/reports/2026-05-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0522</a></td></tr>
+                            <tr><td>3042</td><td><a href="/SnakeStock/stocks/3042.html">晶技</a></td><td>1</td><td class="perf-positive">+29.9%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-05-22</td><td><a href="/SnakeStock/reports/2026-05-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0522</a></td></tr>
+
+                            <!-- 2026-05-08 結算績效 -->
+                            <tr><td>3034</td><td><a href="/SnakeStock/stocks/3034.html">聯詠</a></td><td>1</td><td class="perf-positive">+1.8%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-05-08</td><td><a href="/SnakeStock/reports/2026-05-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0508</a></td></tr>
+                            <tr><td>4931</td><td><a href="/SnakeStock/stocks/4931.html">新盛力</a></td><td>2</td><td class="perf-positive">+27.7%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-05-08</td><td><a href="/SnakeStock/reports/2025-12-05.html" target="_blank" rel="noopener noreferrer" class="report-link">1205</a> <a href="/SnakeStock/reports/2026-05-08.html" target="_blank" rel="noopener noreferrer" class="report-link">0508</a></td></tr>
+
+
+                            <!-- 2026-04-24 結算績效 -->
+                            <tr><td>4958</td><td><a href="/SnakeStock/stocks/4958.html">臻鼎-KY</a></td><td>1</td><td class="perf-positive">+25.4%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-04-24</td><td><a href="/SnakeStock/reports/2026-04-24.html" target="_blank" rel="noopener noreferrer" class="report-link">0424</a></td></tr>
+                            <tr><td>3376</td><td><a href="/SnakeStock/stocks/3376.html">新日興</a></td><td>2</td><td class="perf-positive">+2.9%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-04-24</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" rel="noopener noreferrer" class="report-link">0719</a> <a href="/SnakeStock/reports/2026-04-24.html" target="_blank" rel="noopener noreferrer" class="report-link">0424</a></td></tr>
+
+                            <!-- 歷史資料摘要 -->
+                            <tr><td>6139</td><td><a href="/SnakeStock/stocks/6139.html">亞翔</a></td><td>2</td><td class="perf-positive">+21.6%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-04-10</td><td><a href="/SnakeStock/reports/2025-07-19.html" target="_blank" rel="noopener noreferrer" class="report-link">0719</a> <a href="/SnakeStock/reports/2026-04-10.html" target="_blank" rel="noopener noreferrer" class="report-link">0410</a></td></tr>
+                            <tr><td>4766</td><td><a href="/SnakeStock/stocks/4766.html">南寶</a></td><td>2</td><td class="perf-positive">+2.0%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-04-10</td><td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822</a> <a href="/SnakeStock/reports/2026-04-10.html" target="_blank" rel="noopener noreferrer" class="report-link">0410</a></td></tr>
+
+                            <tr><td>2313</td><td><a href="/SnakeStock/stocks/2313.html">華通</a></td><td>2</td><td class="perf-positive">+10.0%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-03-27</td><td><a href="/SnakeStock/reports/2025-09-12.html" target="_blank" rel="noopener noreferrer" class="report-link">0912</a> <a href="/SnakeStock/reports/2026-03-27.html" target="_blank" rel="noopener noreferrer" class="report-link">0327</a></td></tr>
+                            <tr><td>1582</td><td><a href="/SnakeStock/stocks/1582.html">信錦</a></td><td>1</td><td class="perf-positive">+8.0%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-03-27</td><td><a href="/SnakeStock/reports/2026-03-27.html" target="_blank" rel="noopener noreferrer" class="report-link">0327</a></td></tr>
+                            <tr><td>6187</td><td><a href="/SnakeStock/stocks/6187.html">萬潤</a></td><td>3</td><td class="perf-negative">(甩轎停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-03-27</td><td><a href="/SnakeStock/reports/2025-09-05.html" target="_blank" rel="noopener noreferrer" class="report-link">0905</a> <a href="/SnakeStock/reports/2025-12-12.html" target="_blank" rel="noopener noreferrer" class="report-link">1212</a> <a href="/SnakeStock/reports/2026-03-27.html" target="_blank" rel="noopener noreferrer" class="report-link">0327</a></td></tr>
+                            <tr><td>3583</td><td><a href="/SnakeStock/stocks/3583.html">辛耘</a></td><td>1</td><td class="perf-positive">+35.4%</td><td><span class="status-tag status-stop">🟢 獲利結案</span></td><td>2026-03-14</td><td><a href="/SnakeStock/reports/2026-03-14.html" target="_blank" rel="noopener noreferrer" class="report-link">0314</a></td></tr>
+                            <tr><td>4979</td><td><a href="/SnakeStock/stocks/4979.html">華星光</a></td><td>5</td><td class="perf-positive">+9.5%</td><td><span class="status-tag status-stop">🟢 獲利結案</span></td><td>2026-03-14</td><td><a href="/SnakeStock/reports/2025-08-22.html" target="_blank" rel="noopener noreferrer" class="report-link">0822</a> <a href="/SnakeStock/reports/2025-11-28.html" target="_blank" rel="noopener noreferrer" class="report-link">1128</a> <a href="/SnakeStock/reports/2025-12-26.html" target="_blank" rel="noopener noreferrer" class="report-link">1226</a> <a href="/SnakeStock/reports/2026-01-09.html" target="_blank" rel="noopener noreferrer" class="report-link">0109</a> <a href="/SnakeStock/reports/2026-03-14.html" target="_blank" rel="noopener noreferrer" class="report-link">0314</a></td></tr>
+                            <tr><td>2317</td><td><a href="/SnakeStock/stocks/2317.html">鴻海</a></td><td>8</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-03-14</td><td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" rel="noopener noreferrer" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-10-17.html" target="_blank" rel="noopener noreferrer" class="report-link">1017</a> <a href="/SnakeStock/reports/2026-02-07.html" target="_blank" rel="noopener noreferrer" class="report-link">0207</a> <a href="/SnakeStock/reports/2026-03-14.html" target="_blank" rel="noopener noreferrer" class="report-link">0314</a></td></tr>
+                            <tr><td>1560</td><td><a href="/SnakeStock/stocks/1560.html">中砂</a></td><td>2</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-02-27</td><td><a href="/SnakeStock/reports/2025-12-05.html" target="_blank" rel="noopener noreferrer" class="report-link">1205</a> <a href="/SnakeStock/reports/2026-02-27.html" target="_blank" rel="noopener noreferrer" class="report-link">0227</a></td></tr>
+                            <tr><td>8028</td><td><a href="/SnakeStock/stocks/8028.html">昇陽半導體</a></td><td>1</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-02-27</td><td><a href="/SnakeStock/reports/2026-02-27.html" target="_blank" rel="noopener noreferrer" class="report-link">0227</a></td></tr>
+                            <tr><td>6282</td><td><a href="/SnakeStock/stocks/6282.html">康舒</a></td><td>1</td><td class="perf-negative">(觸及停損)</td><td><span class="status-tag status-stop">🟢 觸及停損</span></td><td>2026-02-27</td><td><a href="/SnakeStock/reports/2026-02-27.html" target="_blank" rel="noopener noreferrer" class="report-link">0227</a></td></tr>
+                            <tr><td>2382</td><td><a href="/SnakeStock/stocks/2382.html">廣達</a></td><td>6</td><td class="perf-positive">+8.1%</td><td><span class="status-tag status-stop">🟢 獲利結案</span></td><td>2026-02-07</td><td><a href="/SnakeStock/reports/2025-08-09.html" target="_blank" rel="noopener noreferrer" class="report-link">0809</a> <a href="/SnakeStock/reports/2025-09-05.html" target="_blank" rel="noopener noreferrer" class="report-link">0905</a> <a href="/SnakeStock/reports/2025-11-21.html" target="_blank" rel="noopener noreferrer" class="report-link">1121</a> <a href="/SnakeStock/reports/2026-02-07.html" target="_blank" rel="noopener noreferrer" class="report-link">0207</a></td></tr>
+                            <tr><td>6781</td><td><a href="/SnakeStock/stocks/6781.html">AES-KY</a></td><td>1</td><td class="perf-positive">+12.8%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-02-07</td><td><a href="/SnakeStock/reports/2026-02-07.html" target="_blank" rel="noopener noreferrer" class="report-link">0207</a></td></tr>
+                            <tr><td>1514</td><td><a href="/SnakeStock/stocks/1514.html">亞力</a></td><td>1</td><td class="perf-positive">+7.2%</td><td><span class="status-tag status-caution">🟡 盤整蓄勢</span></td><td>2026-01-23</td><td><a href="/SnakeStock/reports/2026-01-23.html" target="_blank" rel="noopener noreferrer" class="report-link">0123</a></td></tr>
+                            <tr><td>3264</td><td><a href="/SnakeStock/stocks/3264.html">欣銓</a></td><td>1</td><td class="perf-positive">+11.8%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-01-23</td><td><a href="/SnakeStock/reports/2026-01-23.html" target="_blank" rel="noopener noreferrer" class="report-link">0123</a></td></tr>
+                            <tr><td>3037</td><td><a href="/SnakeStock/stocks/3037.html">欣興</a></td><td>5</td><td class="perf-positive">+46.6%</td><td><span class="status-tag status-strong">🔴 趨勢強勁</span></td><td>2026-01-09</td><td><a href="/SnakeStock/reports/2025-07-26.html" target="_blank" rel="noopener noreferrer" class="report-link">0726</a> <a href="/SnakeStock/reports/2025-10-31.html" target="_blank" rel="noopener noreferrer" class="report-link">1031</a> <a href="/SnakeStock/reports/2026-01-09.html" target="_blank" rel="noopener noreferrer" class="report-link">0109</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="/SnakeStock/index.html">返回首頁</a>
+                <a href="/SnakeStock/about.html">關於我們</a>
+                <a href="/SnakeStock/dashboard.html">個股儀表板</a>
+                <a href="/SnakeStock/tools/index.html">投資工具箱</a>
+                <a href="/SnakeStock/glossary.html">投資術語庫</a>
+                <a href="/SnakeStock/disclaimer.html">免責聲明</a>
+            </div>
+            <p>&copy; 2026 靈蛇研究團隊謹製</p>
+        </footer>
+    </div>
+
+<script>
+    // 搜尋功能
+    function searchFunction() { 
+        let input = document.getElementById('searchInput'); 
+        let filter = input.value.toUpperCase(); 
+        let table = document.getElementById("stockDashboard"); 
+        let tbody = table.getElementsByTagName("tbody")[0]; 
+        let tr = tbody.getElementsByTagName('tr'); 
+        for (let i = 0; i < tr.length; i++) { 
+            let found = false; 
+            for (let j = 0; j < 6; j++) { 
+                let td = tr[i].getElementsByTagName("td")[j]; 
+                if (td) { 
+                    let txtValue = td.textContent || td.innerText; 
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) { 
+                        found = true; break; 
+                    } 
+                } 
+            } 
+            tr[i].style.display = found ? "" : "none"; 
+        } 
+    }
+
+    // 排序功能
+    const sortDirections = {};
+    function sortTable(columnIndex) { 
+        const table = document.getElementById("stockDashboard"); 
+        const tbody = table.getElementsByTagName('tbody')[0]; 
+        const rows = Array.from(tbody.getElementsByTagName('tr')); 
+        const direction = sortDirections[columnIndex] === 'asc' ? 'desc' : 'asc'; 
+        for(let key in sortDirections){ if(key != columnIndex) sortDirections[key] = 'none'; } 
+        sortDirections[columnIndex] = direction; 
+        rows.sort((a, b) => { 
+            const aText = a.getElementsByTagName('td')[columnIndex].innerText; 
+            const bText = b.getElementsByTagName('td')[columnIndex].innerText; 
+            let aValue = aText; let bValue = bText; 
+            if(columnIndex === 3){ 
+                aValue = parseFloat(aText.replace('+','').replace('%','').replace('(','').replace(')','')) || -Infinity; 
+                bValue = parseFloat(bText.replace('+','').replace('%','').replace('(','').replace(')','')) || -Infinity; 
+            } else if (columnIndex === 2 || columnIndex === 0) { 
+                aValue = parseFloat(aText); bValue = parseFloat(bText); 
+            } else { 
+                aValue = aText.toLowerCase(); bValue = bText.toLowerCase(); 
+            } 
+            if (aValue < bValue) return direction === 'asc' ? -1 : 1; 
+            if (aValue > bValue) return direction === 'asc' ? 1 : -1; 
+            return 0; 
+        }); 
+        tbody.innerHTML = ""; 
+        rows.forEach(row => tbody.appendChild(row)); 
+    }
+</script>
+</body>
+</html>
+            width: 50px; height: 50px; background: #000; border-radius: 50%; 
+            display: flex; justify-content: center; align-items: center; margin-right: 25px; 
+            box-shadow: 0 0 15px rgba(0,209,255,0.35); border: 2px solid var(--accent-blue); flex-shrink: 0;
+        }
+        .cyber-pupil { 
+            width: 4px; height: 35px; background: var(--accent-blue); border-radius: 50%; 
+            box-shadow: 0 0 8px var(--accent-blue), 0 0 15px var(--accent-blue); 
+            animation: pupil-pulse 2s infinite ease-in-out; 
+        }
+        .info-container { display: flex; flex-direction: column; overflow: hidden; }
+        .label { color: var(--accent-blue); font-size: 0.85em; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
+        .typing-text { 
+            color: var(--color-yellow); font-size: 1.35em; font-weight: 900; white-space: nowrap; 
+            border-right: 2px solid var(--color-yellow); overflow: hidden;
+            animation: typing 2.8s steps(24, end) forwards, blink 0.75s step-end infinite; 
+        }
+        .warning-text { color: var(--text-secondary); font-size: 0.95em; margin-top: 10px; font-weight: 500; }
+        @keyframes pupil-pulse { 
+            0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; } 
+            50% { transform: scaleY(1.15) scaleX(0.6); opacity: 0.8; } 
+        }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink { from, to { border-color: transparent; } 50% { border-color: var(--color-yellow); } }
+
+        section { margin-bottom: 40px; } 
+        h2 { font-size: 1.6em; color: var(--text-primary); border-bottom: 2px solid var(--accent-blue); padding-bottom: 10px; margin-bottom: 25px; } 
+        .search-container { margin-bottom: 20px; } 
+        #searchInput { width: 100%; padding: 12px 20px; border-radius: 20px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-primary); font-size: 1em; box-sizing: border-box; } 
+        #searchInput:focus { outline: none; border-color: var(--accent-blue); } 
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 8px; background-color: var(--bg-card); } 
+        table { width: 100%; border-collapse: collapse; min-width: 900px; } 
+        th, td { padding: 15px 20px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; } 
+        thead th { background-color: rgba(42, 42, 74, 0.7); color: var(--text-primary); font-weight: 700; cursor: pointer; user-select: none; } 
+        thead th:hover { background-color: rgba(60, 60, 90, 0.7); } 
+        tbody tr:hover { background-color: rgba(42, 42, 74, 0.5); } 
+        td a { color: var(--accent-blue); text-decoration: none; } 
+        td a:hover { text-decoration: underline; } 
+        .report-link { display: inline-block; margin-right: 8px; padding: 5px 10px; background-color: var(--border-color); color: var(--text-primary); border-radius: 5px; text-decoration: none; transition: background-color 0.3s; } 
+        .report-link:hover { background-color: var(--accent-blue); color: var(--bg-dark-ai); } 
+        .status-tag { padding: 5px 10px; border-radius: 15px; font-weight: bold; font-size: 0.9em; } 
+        .status-strong { background-color: rgba(255, 85, 85, 0.15); color: var(--color-red); } 
+        .status-caution { background-color: rgba(241, 250, 140, 0.15); color: var(--color-yellow); } 
+        .status-stop { background-color: rgba(80, 250, 123, 0.15); color: var(--color-green); }
+        .status-core { background-color: rgba(163, 113, 247, 0.15); color: var(--color-purple); }
+        .status-attack { background-color: rgba(255, 184, 108, 0.15); color: var(--color-orange); }
+        .perf-positive { color: var(--color-red); font-weight: bold; } 
+        .perf-negative { color: var(--color-green); font-weight: bold; }
+        .perf-neutral { color: var(--color-yellow); font-weight: bold; }
+        .site-footer { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9em; } 
+        .footer-links { margin-bottom: 15px; } 
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+        .footer-links a:hover { color: var(--accent-blue); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/SnakeStock/index.html" class="nav-btn">&larr; 返回首頁</a>
+        
+        <header>
+            <h1>🐍 靈蛇個股儀表板</h1>
+            <p>2026 全新賽季：數據驅動，價值發現</p>
+        </header>
+
+        <div id="cyber-banner">
+            <div class="pupil-container">
+                <div class="cyber-pupil"></div>
+            </div>
+            <div class="info-container">
+                <div class="label">SYSTEM ALERT // 靈蛇總經觀測站</div>
                 <div class="typing-text">財報淘汰賽：AI落地、關稅與低估值輪動 🌍</div>
                 <div class="warning-text" id="snake-warning">※ 0808 週報已更新：本期採「伺服器價值成長、工業電腦財報催化、金融低波動防禦」三層配置。聚焦AI營收兌現、第二季財報、美國關稅與匯率波動，至少保留30%現金。 ※</div>
             </div>
